@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-10-31T09:56:21.760Z</updated>
+  <updated>2020-10-31T09:59:53.166Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>test2</title>
+    <link href="/2020/10/31/test2/"/>
+    <id>/2020/10/31/test2/</id>
+    <published>2020-10-30T16:00:00.000Z</published>
+    <updated>2020-10-31T09:59:53.166Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;test2&lt;/p&gt;
+
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>第一次test</title>
@@ -62,31 +87,6 @@
     
     
       <category term="测试" scheme="/tags/%E6%B5%8B%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>test2</title>
-    <link href="/2020/10/31/test2/"/>
-    <id>/2020/10/31/test2/</id>
-    <published>2020-10-30T16:00:00.000Z</published>
-    <updated>2020-10-31T09:59:53.166Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;test2&lt;/p&gt;
-
-        
-      
-    
-    </summary>
-    
-      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
-    
     
   </entry>
   
