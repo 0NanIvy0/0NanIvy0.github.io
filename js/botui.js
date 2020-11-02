@@ -69,15 +69,15 @@ function bot_ui_ini() {
             }).then(function () {
                 botui.message.add({
                     delay: 1500,
-                    content: "向往技术却啥都学不会的说"
+                    content: "向往技术却啥都学不会"
                 }).then(function () {
                     botui.message.add({
                         delay: 1200,
-                        content: "毕竟吾辈笨嘛"
+                        content: "毕竟，菜，是对我最好的描述！"
                     }).then(function () {
                         botui.message.add({
                             delay: 1500,
-                            content: "现在主攻信息安全，想要守护美好的二次元"
+                            content: "现在在学信息安全，想要守护美好的二次元"
                         }).then(function () {
                             botui.message.add({
                                 delay: 1500,
@@ -85,7 +85,7 @@ function bot_ui_ini() {
                             }).then(function () {
                                 botui.message.add({
                                     delay: 1800,
-                                    content: "最喜欢夕阳的余晖带给人的温馨感"
+                                    content: "喜欢夕阳的余晖带给人的温馨感"
                                 }).then(function () {
                                     botui.action.button({
                                         delay: 1100,
@@ -111,7 +111,7 @@ function bot_ui_ini() {
                 botui.action.button({
                     delay: 1500,
                     action: [{
-                        text: "为什么会喜欢二次元呢 🤔",
+                        text: "那为什么会喜欢二次元呢 🤔",
                         value: "why-cat"
                     }]
                 }).then(function (a) {
@@ -122,7 +122,7 @@ function bot_ui_ini() {
         fourthpart = function () {
             botui.message.add({
                 delay: 1E3,
-                content: "或许因为它在我心中构建了一个美好的世界吧 "
+                content: "别问，问就是纸片人万岁！ "
             }).then(function () {
                 botui.message.add({
                     delay: 1100,
