@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">archive_a | NanIvy</title>
+  <title itemprop="name">web学习笔记——文件上传 | NanIvy</title>
   
     <link rel="shortcut icon" href="/qq_pic_merged_1602861906220.jpg">
   
@@ -305,146 +305,188 @@
   </div>
 </header>
 
-      <div class="blank" style="padding-top: 75px;">
-</div>
-<div id="content" class="site-content">
-  <div id="main">
-    <header class="page-header">
-      <h1 class="cat-title">
-      归档</h1>
-      <span class="cat-des">
-        <p>
-        Archives</p>
-      </span>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.1/illust_72360695_20181230_000724.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.1/illust_72360695_20181230_000724.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      web学习笔记——文件上传</h1>
+      <p class="entry-census">
+        <span>
+          <a href="NanIvy.space">
+            <img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.1/qq_pic_merged_1602861906220.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="NanIvy.space">NanIvy</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2021-1-29<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
-    <div id="main-part">
-      <article class="art">
-        <div class="art-main">
-          <div class="art-content">
-            <div id="archives">
-              <p style="text-align:right;">
-                [<span id="al_expand_collapse" style="cursor: s-resize;">
-                全部展开/收缩</span>
-              ]</p>
-              
-              
-              
-              
-              
-                
-                <h3 class="al_year">2021年</h3>
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      03月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2021/03/03/wp/">
-                          <span style="color:#0bf;">
-                          03日00:00:00</span>
-                          Hgame2021及xctf新手区总结及wp
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
-              
-              
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      01月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2021/01/29/web学习笔记——文件上传/">
-                          <span style="color:#0bf;">
-                          29日00:00:00</span>
-                          web学习笔记——文件上传
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2021/01/03/web学习笔记——SQL注入/">
-                          <span style="color:#0bf;">
-                          03日00:00:00</span>
-                          web学习笔记——SQL注入
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
-              
-              
-              
-                
-                <h3 class="al_year">2020年</h3>
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      10月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2020/10/31/test/">
-                          <span style="color:#0bf;">
-                          31日00:00:00</span>
-                          第一次test
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/10/31/test2/">
-                          <span style="color:#0bf;">
-                          31日00:00:00</span>
-                          test2
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="文件上传漏洞总结"><a href="#文件上传漏洞总结" class="headerlink" title="文件上传漏洞总结"></a>文件上传漏洞总结</h1><p>常见工具：BurpSuite、蚁剑。</p>
+<h2 id="原理及利用"><a href="#原理及利用" class="headerlink" title="原理及利用"></a>原理及利用</h2><p>为什么会有文件上传漏洞，字面意思文件上传的漏洞。在一些上传文件的入口，面对上传文件，若不对上传文件进行严格的验证和过滤就容易造成这漏洞的产生。即可能上传任何文件——包括病毒、脚本。</p>
+<p>上传正常的php对服务器没有什么危害，但总有离谱的——如：PHP是编程语言，可以查看目录下的文件，查看文件中的代码，还能执行系统命令。上传恶意的PHP文件，甚至还能控制整个网站文件甚至是服务器。</p>
+<p>或者有上传钓鱼图片的，flash的策略文件.xml的。</p>
+<p>不过一般情况下的利用，指的应该就是“上传web脚本”并让服务器解析吧。即webshell攻击。成功的条件也是有的：能上传，能调用，能被执行，不被安全检查（想办法绕过）或格式化或者图片马被压缩（可能会导致内容改变而影响功能）。</p>
+<h2 id="常见绕过总结"><a href="#常见绕过总结" class="headerlink" title="常见绕过总结"></a>常见绕过总结</h2><h3 id="常见校验上传文件的方法及对应绕过思路"><a href="#常见校验上传文件的方法及对应绕过思路" class="headerlink" title="常见校验上传文件的方法及对应绕过思路"></a>常见校验上传文件的方法及对应绕过思路</h3><h4 id="客户端校验"><a href="#客户端校验" class="headerlink" title="客户端校验"></a>客户端校验</h4><p>通过javascript来校验上传文件的后缀是否合法，可以采用白名单，也可以采用黑名单的方式<br>判断方式：在浏览加载文件，但还未点击上传按钮时便弹出对话框，内容如：只允许上传.jpg/.jpeg/.png后缀名的文件，而此时并没有发送数据包。<br>客户端校验绕过：<br>直接修改js代码（一些浏览器自带选项貌似有禁用js选项）或者使用抓包的方法修改请求内容绕过，可以先上传一个gif木马，通过抓包修改为 jsp/php/asp，只用这种方法来检测是肯定可以绕过的。</p>
+<h4 id="服务器端校验"><a href="#服务器端校验" class="headerlink" title="服务器端校验"></a>服务器端校验</h4><p>校验请求头 content-type字段，例如用PHP检测</p>
+<p> if($_FILES[‘userfile’][‘type’] != “image/gif”){<br> ….<br>}<br>通过自己写正则匹配来判断文件幻数(文件头)内容是否符合要求，一般来说属于白名单的检测，常见的文件头（文件头标志位）如下：<br>括号中对应的二进制代码<br>（1）.JPEG;.JPE;.JPG，”JPGGraphicFile”（FFD8FFFE00）<br>（2）.gif，”GIF89A”（474946383961）<br>（3）.zip，”ZipCompressed”（504B0304）<br>（4）.doc;.xls;.xlt;.ppt;.apr，”MSCompoundDocumentv1orLotusApproachAPRfile”（D0CF11E0A1B11AE1）<br>还有其他的文件头可自行资料查找。</p>
+<p>服务端绕过<br>校验请求头content-type字段绕过</p>
+<p>通过抓包来修改Http头的content-type即可绕过，也肯定是可以绕过这种检测</p>
+<p> POST /upload.php HTTP/1.1<br>TE: deflate,gzip;q=0.3<br>Connection: TE, close<br>Host: localhost<br>User-Agent: libwww-perl/5.803<br>Content-Type: multipart/form-data; boundary=xYzZY<br>Content-Length: 155<br>–666666666666666666666666-<br>Content-Disposition: form-data; name=”userfile”; filename=”shell.php”<br>Content-Type: image/gif (原为 Content-Type: text/plain)<br>&lt;?php system($_GET[‘command’]);?&gt;<br>–6666666666666666666666666-</p>
+<p>文件幻数(文件头)检测绕过：</p>
+<p>在木马内容的前面插入对应的文件头内容，例如：GIF89a ，更靠谱的方法是在可上传的文件中插入木马代码，然后修改后缀</p>
+<h4 id="文件加载检测："><a href="#文件加载检测：" class="headerlink" title="文件加载检测："></a>文件加载检测：</h4><p>一般是调用API或函数去进行文件加载测试，例如图像渲染测试，当测试结果正常的时候才允许上传</p>
+<p>1、一次渲染（代码注入）<br>2、二次渲染</p>
+<p> 文件加载检绕过<br>通过例如加载文件进行图像渲染的方式来测试，这个时候就一般需要在正常的文件中插入木马代码了，例如图像，那么插入的代码一般会放在图像的注释区，因此不会影响图像正常渲染绕过这种检测，此时可以使用工具（称为插马器）来进行插入，例如edjpgcom，或者直接用copy命令来合成也可以。当然这种检测不一定能够完全绕过</p>
+<h4 id="后缀名黑名单校验、后缀名白名单校验："><a href="#后缀名黑名单校验、后缀名白名单校验：" class="headerlink" title="后缀名黑名单校验、后缀名白名单校验："></a>后缀名黑名单校验、后缀名白名单校验：</h4><p>后缀名检测</p>
+<p>后缀黑名单检测绕过：找查blacklist(黑名单列表)的漏网之鱼，例如<br>大小写：如果检测的时候不忽略大小写，那么可以改变后缀名的大小写绕过<br>扩展名：黑名单中如果忽略了某些能被解析的文件扩展名：<br>     jsp jspx jspf<br>    asp asa cer aspx<br>    php php php3 php4 pht php5<br>    exe exee</p>
+<p>后缀白名单检测绕过：白名单检测还是会比黑名单强一点，常见的绕过方法有%00截断，还有服务器的解析漏洞<br>%00截断漏洞：如果存在这类漏洞，那么后缀名的检测都可以绕过，此时我们可以如下命名一个上传文件</p>
+<p>test.php%00.jpg</p>
+<h4 id="操作系统相关绕过："><a href="#操作系统相关绕过：" class="headerlink" title="操作系统相关绕过："></a>操作系统相关绕过：</h4><p>上传不符合windows文件命名规则的文件名</p>
+<p> test.asp.（windows的结尾默认不为为.会自动消掉这个点）<br>test.asp(空格)<br>test.php:1.jpg<br>test.php::$DATA<br>shell.php::$DATA…….<br>会被某些版本的windows系统自动去掉不符合规则符号后面的内容。</p>
+<p>linux下后缀名大小写：<br>linux是大小写敏感的，因此一般检测也会区分大小写，但某些解析器是不区分大小写的，例如PHP，上传php不被解析，可以试试上传pHp后缀的文件名。</p>
+<h4 id="竞争条件攻击："><a href="#竞争条件攻击：" class="headerlink" title="竞争条件攻击："></a>竞争条件攻击：</h4><p>一些网站上传文件逻辑上是允许上传任意文件的，然后检查上传文件的内容是否包含webshell脚本，如果包含则删除该文件，这里存在的问题是文件上传成功之后和删除文件之间存在一个短的时间差，攻击者就可以利用这个时间差来上传漏洞攻击。攻击者先上传一个webshell脚本1.php内容如下：</p>
+<p>&lt;?php fputs(fopen(‘../shell.php’,’w’),’&lt;?php @eval($_POST[a]) ?&gt;’); ?&gt;<br>代码内容就是生成一个新的webshell，shell.php，那么当1.php上传成功之后，我们快速访问这个文件，这时就会在服务器端当前目录下自动生成shell.php，这时就利用时间差完成了webshell的上传。</p>
+<h4 id="CMS、编辑器漏洞"><a href="#CMS、编辑器漏洞" class="headerlink" title="CMS、编辑器漏洞"></a>CMS、编辑器漏洞</h4><p>CMS漏洞： 可以针对不同CMS存在的上传漏洞进行绕过。<br>编辑器漏洞：比如FCK，ewebeditor等，可以针对编辑器的漏洞进行绕过。<br>参考链接：<br><a href="https://www.leavesongs.com/PENETRATION/UseOfFckeditor.html" target="_blank" rel="noopener">https://www.leavesongs.com/PENETRATION/UseOfFckeditor.html</a><br><a href="https://docs.google.com/document/d/1w_61xR8U7nmn4Y0CvBHpG1uFIU2ORx69QnqTxQt8Km0/edit?pli=1" target="_blank" rel="noopener">https://docs.google.com/document/d/1w_61xR8U7nmn4Y0CvBHpG1uFIU2ORx69QnqTxQt8Km0/edit?pli=1</a></p>
+<h4 id="WAF校验："><a href="#WAF校验：" class="headerlink" title="WAF校验："></a>WAF校验：</h4><p>即使用不同的WAF产品来进行过滤，通常是独立与服务程序的一段中间程序或者硬件<br> WAF绕过：<br>参考链接：<a href="https://www.freebuf.com/articles/web/160175.html" target="_blank" rel="noopener">https://www.freebuf.com/articles/web/160175.html</a></p>
+<h3 id="解析漏洞："><a href="#解析漏洞：" class="headerlink" title="解析漏洞："></a>解析漏洞：</h3><p>这类漏洞是本身服务器的中间件产生的，例如apache，nginx都被爆出过存在解析漏洞，存在解析漏洞的话，上传的安全性几乎就完全失去了，下面再详细分析。</p>
+<p>服务器解析漏洞</p>
+<h4 id="IS5-x-6-x解析漏洞"><a href="#IS5-x-6-x解析漏洞" class="headerlink" title="IS5.x-6.x解析漏洞"></a>IS5.x-6.x解析漏洞</h4><p>使用iis5.x-6.x版本的服务器，大多为windows server 2003，网站比较古老，开发语句一般为asp；该解析漏洞也只能解析asp文件，而不能解析aspx文件。</p>
+<p>目录解析(6.0)<br>形式：<a href="http://www.xxx.com/xx.asp/xx.jpg" target="_blank" rel="noopener">www.xxx.com/xx.asp/xx.jpg</a> 原理: 服务器默认会把.asp，.asp目录下的文件都解析成asp文件。</p>
+<p>文件解析<br>形式：<a href="http://www.xxx.com/xx.asp;.jpg" target="_blank" rel="noopener">www.xxx.com/xx.asp;.jpg</a> 原理：服务器默认不解析;号后面的内容，因此xx.asp;.jpg便被解析成asp文件了。 解析文件类型</p>
+<p>IIS6.0 默认的可执行文件除了asp还包含这三种 :<br>/test.asa<br>/test.cer<br>/test.cdx</p>
+<h4 id="apache解析漏洞"><a href="#apache解析漏洞" class="headerlink" title="apache解析漏洞"></a>apache解析漏洞</h4><p>漏洞原理</p>
+<p>Apache 解析文件的规则是从右到左开始判断解析,如果后缀名为不可识别文件解析,就再往左判断。比如 test.php.qwe.asd “.qwe”和”.asd” 这两种后缀是apache不可识别解析,apache就会把wooyun.php.qwe.asd解析成php。</p>
+<p>漏洞形式</p>
+<p><a href="http://www.xxxx.xxx.com/test.php.php123" target="_blank" rel="noopener">www.xxxx.xxx.com/test.php.php123</a><br>其余配置问题导致漏洞</p>
+<p>如果在 Apache 的 conf 里有这样一行配置 AddHandler php5-script .php 这时只要文件名里包含.php 即使文件名是 test2.php.jpg 也会以 php 来执行。</p>
+<p>如果在 Apache 的 conf 里有这样一行配置 AddType application/x-httpd-php .jpg 即使扩展名是 jpg，一样能以 php 方式执行。</p>
+<h4 id="nginx解析漏洞"><a href="#nginx解析漏洞" class="headerlink" title="nginx解析漏洞"></a>nginx解析漏洞</h4><p>漏洞原理</p>
+<p>Nginx默认是以CGI的方式支持PHP解析的，普遍的做法是在Nginx配置文件中通过正则匹配设置 SCRIPT_FILENAME。当访问 <a href="http://www.xx.com/phpinfo.jpg/1.php这个URL时，" target="_blank" rel="noopener">www.xx.com/phpinfo.jpg/1.php这个URL时，</a> $fastcgi_script_name会被设置为 “phpinfo.jpg/1.php”，然后构造成 SCRIPT_FILENAME传递给PHP CGI，但是PHP为什么会接受这样的参数，并将phpinfo.jpg作为PHP文件解析呢?这就要说到fix_pathinfo这个选项了。 如果开启了这个选项，那么就会触发在PHP中的如下逻辑：</p>
+<p>PHP会认为SCRIPTFILENAME是phpinfo.jpg，而1.php是PATHINFO，所以就会将phpinfo.jpg作为PHP文件来解析了</p>
+<p>漏洞形式</p>
+<p><a href="http://www.xxxx.com/UploadFiles/image/1.jpg/1.php" target="_blank" rel="noopener">www.xxxx.com/UploadFiles/image/1.jpg/1.php</a><br><a href="http://www.xxxx.com/UploadFiles/image/1.jpg" target="_blank" rel="noopener">www.xxxx.com/UploadFiles/image/1.jpg</a> %00.php<br><a href="http://www.xxxx.com/UploadFiles/image/1.jpg/" target="_blank" rel="noopener">www.xxxx.com/UploadFiles/image/1.jpg/</a> %20.php</p>
+<p>另外一种手法：上传一个名字为test.jpg，然后访问test.jpg/.php,在这个目录下就会生成一句话木马shell.php。</p>
+<p>IIS7.5解析漏洞</p>
+<p>IIS7.5的漏洞与nginx的类似，都是由于php配置文件中，开启了 cgi.fix_pathinfo，而这并不是nginx或者iis7.5本身的漏洞。</p>
+<p>参考文章</p>
+<p><a href="https://www.secpulse.com/archives/95987.html" target="_blank" rel="noopener">https://www.secpulse.com/archives/95987.html</a><br><a href="https://blog.csdn.net/weixin_44119101/article/details/107669831" target="_blank" rel="noopener">https://blog.csdn.net/weixin_44119101/article/details/107669831</a></p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.1null"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.1null"></li>
+              </ul>
             </div>
           </div>
         </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
       </article>
-    </div>
-  </div>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2021/03/03/wp/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.1/80264773_0.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.1/80264773_0.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                Hgame2021及xctf新手区总结及wp</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2021/01/03/web学习笔记——SQL注入/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.1/2K-苹果糖夏日祭.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.1/2K-苹果糖夏日祭.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                web学习笔记——SQL注入</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "A4UqsWsXYTvl3ILey3Nis8hs-gzGzoHsz",
+        appKey: "s2r99t5u9k6DkKd3O6JbRauV",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="NanIvy.space" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.1/qq_pic_merged_1602861906220.jpg" itemprop="image" alt="NanIvy" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="NanIvy.space" itemprop="url" rel="author">NanIvy</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>菜菜子新人</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
 
     </div>    
    <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/xuehua.js"></script>

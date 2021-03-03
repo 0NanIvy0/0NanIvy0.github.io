@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-12-28T09:46:14.523Z</updated>
+  <updated>2021-03-03T12:08:33.523Z</updated>
   <id>/</id>
   
   <author>
@@ -17,11 +17,33 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>文件上传漏洞小结</title>
-    <link href="/2020/12/28/test3/"/>
-    <id>/2020/12/28/test3/</id>
-    <published>2020-12-27T16:00:00.000Z</published>
-    <updated>2020-12-28T09:46:14.523Z</updated>
+    <title>Hgame2021及xctf新手区总结及wp</title>
+    <link href="/2021/03/03/wp/"/>
+    <id>/2021/03/03/wp/</id>
+    <published>2021-03-02T16:00:00.000Z</published>
+    <updated>2021-03-03T12:08:33.523Z</updated>
+    
+    <summary type="html">
+    
+      部分简单题的wp
+    
+    </summary>
+    
+      <category term="生活" scheme="/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="学习" scheme="/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="CTF" scheme="/tags/CTF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>web学习笔记——文件上传</title>
+    <link href="/2021/01/29/web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
+    <id>/2021/01/29/web学习笔记——文件上传/</id>
+    <published>2021-01-28T16:00:00.000Z</published>
+    <updated>2021-03-03T12:16:00.562Z</updated>
     
     <summary type="html">
     
@@ -39,9 +61,59 @@
       <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
+      <category term="学习" scheme="/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
       <category term="文件上传漏洞" scheme="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/"/>
     
+  </entry>
+  
+  <entry>
+    <title>web学习笔记——SQL注入</title>
+    <link href="/2021/01/03/web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94SQL%E6%B3%A8%E5%85%A5/"/>
+    <id>/2021/01/03/web学习笔记——SQL注入/</id>
+    <published>2021-01-02T16:00:00.000Z</published>
+    <updated>2021-03-03T12:15:04.485Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;SQL产生原理&quot;&gt;&lt;a href=&quot;#SQL产生原理&quot; class=&quot;headerlink&quot; title=&quot;SQL产生原理&quot;&gt;&lt;/a&gt;SQL产生原理&lt;/h3&gt;&lt;p&gt;​       
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="SQL注入漏洞" scheme="/tags/SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/"/>
+    
       <category term="学习" scheme="/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第一次test</title>
+    <link href="/2020/10/31/test/"/>
+    <id>/2020/10/31/test/</id>
+    <published>2020-10-30T16:00:00.000Z</published>
+    <updated>2021-03-03T11:20:37.904Z</updated>
+    
+    <summary type="html">
+    
+      test
+    
+    </summary>
+    
+      <category term="生活" scheme="/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="悦读" scheme="/tags/%E6%82%A6%E8%AF%BB/"/>
+    
+      <category term="练习" scheme="/tags/%E7%BB%83%E4%B9%A0/"/>
     
   </entry>
   
@@ -50,7 +122,7 @@
     <link href="/2020/10/31/test2/"/>
     <id>/2020/10/31/test2/</id>
     <published>2020-10-30T16:00:00.000Z</published>
-    <updated>2020-12-28T09:39:06.621Z</updated>
+    <updated>2021-03-03T11:26:53.308Z</updated>
     
     <summary type="html">
     
@@ -67,28 +139,6 @@
     
       <category term="随想" scheme="/categories/%E9%9A%8F%E6%83%B3/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>第一次test</title>
-    <link href="/2020/10/31/test/"/>
-    <id>/2020/10/31/test/</id>
-    <published>2020-10-30T16:00:00.000Z</published>
-    <updated>2020-10-31T09:56:21.760Z</updated>
-    
-    <summary type="html">
-    
-      第一次尝试博客上传，欸嘿。
-    
-    </summary>
-    
-      <category term="生活" scheme="/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="悦读" scheme="/tags/%E6%82%A6%E8%AF%BB/"/>
-    
-      <category term="练习" scheme="/tags/%E7%BB%83%E4%B9%A0/"/>
     
   </entry>
   
