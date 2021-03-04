@@ -342,9 +342,9 @@
         
         <div class="entry-content">
           <h1 id="CSRF介绍、概念"><a href="#CSRF介绍、概念" class="headerlink" title="CSRF介绍、概念"></a>CSRF介绍、概念</h1><p><strong>CSRF跨站点请求伪造(Cross—Site Request Forgery)</strong>，也被称为 <strong>one-click attack</strong> 或者 <strong>session riding</strong>，通常缩写为 <strong>CSRF</strong> 或者 <strong>XSRF</strong>， 是一种挟制用户在当前已登录的Web应用程序上执行非本意的操作的攻击方法。跟跨网站脚本（XSS）相比，<strong>XSS</strong>利用的是用户对指定网站的信任，CSRF 利用的是网站对用户网页浏览器的信任。</p>
-<h4 id="简单理解："><a href="#简单理解：" class="headerlink" title="简单理解："></a><strong>简单理解：</strong></h4><p> 攻击者盗用了你的身份，以你的名义发送恶意请求，对服务器来说这个请求是完全合法的，但是却完成了攻击者所期望的一个操作，比如以你的名义发送邮件、发消息，盗取你的账号，添加系统管理员，甚至于购买商品、虚拟货币转账等。 </p>
+<h2 id="简单理解："><a href="#简单理解：" class="headerlink" title="简单理解："></a><strong>简单理解：</strong></h2><p> 攻击者盗用了你的身份，以你的名义发送恶意请求，对服务器来说这个请求是完全合法的，但是却完成了攻击者所期望的一个操作，比如以你的名义发送邮件、发消息，盗取你的账号，添加系统管理员，甚至于购买商品、虚拟货币转账等。 </p>
 <p>如下：其中Web A为存在CSRF漏洞的网站，Web B为攻击者构建的恶意网站，User C为Web A网站的合法用户。</p>
-<h4 id="攻击原理："><a href="#攻击原理：" class="headerlink" title="攻击原理："></a><strong>攻击原理：</strong></h4><ol>
+<h2 id="攻击原理："><a href="#攻击原理：" class="headerlink" title="攻击原理："></a><strong>攻击原理：</strong></h2><ol>
 <li>用户C打开浏览器，访问受信任网站A，输入用户名和密码请求登录网站A；</li>
 </ol>
 <p>​    2.在用户信息通过验证后，网站A产生Cookie信息并返回给浏览器，此时用户登录网站A成功，可以正常发送请求到网站A；</p>
