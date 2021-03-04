@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">web学习笔记——CSRF | NanIvy</title>
+  <title itemprop="name">web学习笔记——SQL注入 | NanIvy</title>
   
     <link rel="shortcut icon" href="/qq_pic_merged_1602861906220.jpg">
   
@@ -311,11 +311,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/85208671.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/85208671.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/2K-苹果糖夏日祭.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/2K-苹果糖夏日祭.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      web学习笔记——CSRF</h1>
+      web学习笔记——SQL注入</h1>
       <p class="entry-census">
         <span>
           <a href="NanIvy.space">
@@ -327,7 +327,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2021-3-4<span class="bull">
+        2021-1-3<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -341,44 +341,139 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="CSRF介绍、概念"><a href="#CSRF介绍、概念" class="headerlink" title="CSRF介绍、概念"></a>CSRF介绍、概念</h1><p><strong>CSRF跨站点请求伪造(Cross—Site Request Forgery)</strong>，也被称为 <strong>one-click attack</strong> 或者 <strong>session riding</strong>，通常缩写为 <strong>CSRF</strong> 或者 <strong>XSRF</strong>， 是一种挟制用户在当前已登录的Web应用程序上执行非本意的操作的攻击方法。跟跨网站脚本（XSS）相比，<strong>XSS</strong>利用的是用户对指定网站的信任，CSRF 利用的是网站对用户网页浏览器的信任。</p>
-<h4 id="简单理解："><a href="#简单理解：" class="headerlink" title="简单理解："></a><strong>简单理解：</strong></h4><p> 攻击者盗用了你的身份，以你的名义发送恶意请求，对服务器来说这个请求是完全合法的，但是却完成了攻击者所期望的一个操作，比如以你的名义发送邮件、发消息，盗取你的账号，添加系统管理员，甚至于购买商品、虚拟货币转账等。 </p>
-<p>如下：其中Web A为存在CSRF漏洞的网站，Web B为攻击者构建的恶意网站，User C为Web A网站的合法用户。</p>
-<h4 id="攻击原理："><a href="#攻击原理：" class="headerlink" title="攻击原理："></a><strong>攻击原理：</strong></h4><ol>
-<li>用户C打开浏览器，访问受信任网站A，输入用户名和密码请求登录网站A；</li>
-</ol>
-<p>​    2.在用户信息通过验证后，网站A产生Cookie信息并返回给浏览器，此时用户登录网站A成功，可以正常发送请求到网站A；</p>
-<p>​    3. 用户未退出网站A之前，在同一浏览器中，打开一个TAB页访问网站B；</p>
-<p>​    4. 网站B接收到用户请求后，返回一些攻击性代码，并发出一个请求要求访问第三方站点A；</p>
-<pre><code>5. 浏览器在接收到这些攻击性代码后，根据网站B的请求，在用户不知情的情况下携带Cookie信息，向网站A发出请求。网站A并不知道该请求其实是由B发起的，所以会根据用户C的Cookie信息以C的权限处理该请求，导致来自网站B的恶意代码被执行。
-</code></pre><p>受害者只需要做下面两件事情，攻击者就能够完成CSRF攻击：</p>
-<ul>
-<li>登录受信任站点 A，并在本地生成cookie；</li>
-<li>在不登出站点A（清除站点A的cookie）的情况下，访问恶意站点B。</li>
-</ul>
-<h1 id="CSRF攻击举例"><a href="#CSRF攻击举例" class="headerlink" title="CSRF攻击举例"></a>CSRF攻击举例</h1><h4 id="GET型"><a href="#GET型" class="headerlink" title="GET型"></a>GET型</h4><p>假设某银行网站A以GET请求来发起转账操作，转账的地址为<code>www.xxx.com/transfer.do?accountNum=l000l&amp;money=10000</code>，参数accountNum表示转账的账户，参数money表示转账金额。<br> 而某大型论坛B上，一个恶意用户上传了一张图片，而图片的地址栏中填的并不是图片的地址，而是前而所说的砖账地址：<code>&lt;img src=&quot;http://www.xxx.com/transfer.do?accountNum=l000l&amp;money=10000&quot;&gt;</code><br> 当你登录网站A后，没有及时登出，这时你访问了论坛B，不幸的事情发生了，你会发现你的账号里面少了10000块…<br> 为什么会这样呢，在你登录银行A时，你的浏览器端会生成银行A的cookie，而当你访问论坛B的时候，页面上的<img>标签需要浏览器发起一个新的HTTP请求，以获得图片资源，当浏览器发起请求时，请求的却是银行A的转账地址<code>www.xxx.com/transfer.do?accountNum=l000l&amp;money=10000</code>，并且会带上银行A的cookie信息，结果银行的服务器收到这个请求后，会以为是你发起的一次转账操作，因此你的账号里边便少了10000块。<br> 当然，绝大多数网站都不会使用GET请求来进行数据更新，因此，攻击者也需要改变思路，与时俱进。</p>
-<h4 id="POST型"><a href="#POST型" class="headerlink" title="POST型"></a>POST型</h4><p>假设银行将其转账方式改成POST提交，而论坛B恰好又存在一个XSS漏洞，恶意用户在它的页面上植入如下代码：</p>
-<pre><code class="xml">&lt;form id=&quot;aaa&quot; action=&quot;http://www.xxx.com/transfer.do&quot; metdod=&quot;POST&quot; display=&quot;none&quot;&gt;
-    &lt;input type=&quot;text&quot; name=&quot;accountNum&quot; value=&quot;10001&quot;/&gt;
-    &lt;input ty。pe=&quot;text&quot; name=&quot;money&quot; value=&quot;10000&quot;/&gt;
-&lt;/form&gt;
-&lt;script&gt;
-    var form = document.forms(&#39;aaa&#39;);
-    form.submit();
-&lt;/script&gt;
+          <h3 id="SQL产生原理"><a href="#SQL产生原理" class="headerlink" title="SQL产生原理"></a>SQL产生原理</h3><p>​        所谓SQL注入，就是通过把SQL命令插入到Web表单递交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令。当应用程序使用输入内容来构造动态sql语句以访问数据库时，会发生sql注入攻击。如果代码使用存储过程，而这些存储过程作为包含未筛选的用户输入的字符串来传递，也会发生sql注入。 黑客通过SQL注入攻击可以拿到网站数据库的访问权限，之后他们就可以拿到网站数据库中所有的数据，恶意的黑客可以通过SQL注入功能篡改数据库中的数据甚至会把数据库中的数据毁坏掉</p>
+<p>​        通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。</p>
+<p>​        根据相关技术原理，SQL注入可以分为平台层注入和代码层注入。前者由不安全的数据库配置或数据库平台的漏洞所致；后者主要是由于程序员对输入未进行细致地过滤，从而执行了非法的数据查询。基于此，SQL注入的产生原因通常表现在以下几方面：①不当的类型处理；②不安全的数据库配置；③不合理的查询集处理；④不当的错误处理；⑤转义字符处理不合适；⑥多个提交处理不当。</p>
+<h3 id="SQL注入方法理解"><a href="#SQL注入方法理解" class="headerlink" title="SQL注入方法理解"></a>SQL注入方法理解</h3><p><strong>1.数字注入</strong></p>
+<p>  在浏览器地址栏输入：learn.me/sql/article.php?id=1，这是一个<strong>get型接口</strong>，发送这个请求相当于调用一个查询语句：</p>
+<pre><code class="sql">$sql = &quot;SELECT * FROM article WHERE id =&quot;,$id
 </code></pre>
-<p>如果你此时恰好登录了银行A，且没有登出，当你打开上述页面后，脚本会将表单aaa提交，把accountNum和money参数传递给银行的转账地址<code>http://www.xxx.com/transfer.do</code>，同样的，银行以为是你发起的一次转账会从你的账户中扣除10000块。</p>
-<h1 id="CSRF防御"><a href="#CSRF防御" class="headerlink" title="CSRF防御"></a>CSRF防御</h1><h4 id="1、尽量使用POST，限制GET"><a href="#1、尽量使用POST，限制GET" class="headerlink" title="1、尽量使用POST，限制GET"></a><strong>1、尽量使用POST，限制GET</strong></h4><p> GET接口太容易被拿来做CSRF攻击，看上面示例就知道，只要构造一个img标签，而img标签又是不能过滤的数据。接口最好限制为POST使用，GET则无效，降低攻击风险。<br> 当然POST并不是万无一失，攻击者只要构造一个form就可以，但需要在第三方页面做，这样就增加暴露的可能性。</p>
-<h4 id="2、增加token"><a href="#2、增加token" class="headerlink" title="2、增加token"></a><strong>2、增加token</strong></h4><p>类似一种不需要输入的“验证码”。</p>
-<p> CSRF攻击之所以能够成功，是因为攻击者可以伪造用户的请求，该请求中所有的用户验证信息都存在于cookie中，因此攻击者可以在不知道用户验证信息的情况下直接利用用户的cookie来通过安全验证。由此可知，抵御CSRF攻击的关键在于：<strong>在请求中放入攻击者所不能伪造的信息，并且该信息总不存在于cookie之中</strong>。鉴于此，系统开发人员可以在HTTP请求中以参数的形式加入一个随机产生的token，并在服务端进行token校验，如果请求中没有token或者token内容不正确，则认为是CSRF攻击而拒绝该请求。也可以在HTML表单中加入隐藏的token，在提交表单时验证（适用范围小）</p>
-<p>但如果网站同时存在xss、csrf，这种token防御机制可能就失效了，因为攻击者能从javascript获取token值。</p>
-<h4 id="3、二次确认"><a href="#3、二次确认" class="headerlink" title="3、二次确认"></a><strong>3、二次确认</strong></h4><p>在用户进行一些关键操作时候，产生对话框二次提示确认。</p>
-<p>或要求输入验证码，敏感操作要进行验证码验证。</p>
-<p>这样用户突然收到提示也会警觉起来。</p>
-<p>参考：</p>
-<p><a href="https://blog.csdn.net/stpeace/article/details/53512283" target="_blank" rel="noopener">https://blog.csdn.net/stpeace/article/details/53512283</a></p>
-<p><a href="https://www.jianshu.com/p/67408d73c66d" target="_blank" rel="noopener">https://www.jianshu.com/p/67408d73c66d</a></p>
-<p><a href="https://www.cnblogs.com/hyddd/archive/2009/04/09/1432744.html" target="_blank" rel="noopener">https://www.cnblogs.com/hyddd/archive/2009/04/09/1432744.html</a></p>
+<p>  正常情况下，应该返回一个id=1的文章信息。那么，如果在浏览器地址栏输入：<strong>learn.me/sql/article.php?id=-1 OR 1 =1</strong>，这就是一个SQL注入攻击了，可能会返回所有文章的相关信息。为什么会这样呢？</p>
+<p>  这是因为，id = -1永远是false，1=1永远是true，所有整个where语句永远是ture，所以where条件相当于没有加where条件，那么查询的结果相当于整张表的内容。（危）</p>
+<p><strong>2.字符串注入</strong></p>
+<p>  有这样一个用户登录场景：登录界面包括用户名和密码输入框，以及提交按钮。输入用户名和密码，提交。</p>
+<p>  这是一个post请求，登录时调用接口learn.me/sql/login.html，首先连接数据库，然后后台对post请求参数中携带的用户名、密码进行参数校验，即sql的查询过程。假设正确的用户名和密码为user和pwd123，输入正确的用户名和密码、提交，相当于调用了以下的SQL语句：</p>
+<pre><code class="sql">SELECT * FROM user WHERE username = &#39;user&#39; ADN password = &#39;pwd123&#39;
+</code></pre>
+<p>​      由于用户名和密码都是字符串，SQL注入方法即把参数携带的数据变成mysql中注释的字符串。mysql中有2种注释的方法：</p>
+<p>（1）’#’：’#’后所有的字符串都会被当成注释来处理</p>
+<p> 用户名输入：<strong>user’#</strong>（单引号闭合user左边的单引号），密码随意输入，如：111，然后点击提交按钮。等价于SQL语句：</p>
+<pre><code class="sql">SELECT * FROM user WHERE username = &#39;user&#39;#&#39;ADN password = &#39;111&#39;
+</code></pre>
+<p>  ‘#’后面都被注释掉了，相当于：</p>
+<pre><code class="sql">SELECT * FROM user WHERE username = &#39;user&#39; 
+</code></pre>
+<p>（2）’– ‘ （–后面有个空格）：’– ‘后面的字符串都会被当成注释来处理</p>
+<p>  用户名输入：<strong>user’–</strong> （注意–后面有个空格，单引号闭合user左边的单引号），密码随意输入，如：111，然后点击提交按钮。等价于SQL语句：</p>
+<pre><code class="sql">SELECT * FROM user WHERE username = &#39;user&#39;-- &#39;AND password = &#39;111&#39;
+</code></pre>
+<p>  SELECT * FROM user WHERE username = ‘user’– ‘AND password = ‘1111’</p>
+<p> ‘– ‘后面都被注释掉了，相当于：</p>
+<pre><code class="sql">SELECT * FROM user WHERE username = &#39;user&#39;
+</code></pre>
+<p>  因此，以上两种情况可能输入一个错误的密码或者不输入密码就可登录用户名为’user’的账号，这是十分危险的事情。</p>
+<h3 id="SQL注入点判断"><a href="#SQL注入点判断" class="headerlink" title="SQL注入点判断"></a>SQL注入点判断</h3><p>分类</p>
+<p>1、常见的sql注入按照参数类型可分为两种：数字型和字符型。</p>
+<p>当发生注入点的参数为整数时，比如 ID，num，page等，这种形式的就属于数字型注入漏洞。同样，当注入点是字符串时，则称为字符型注入，字符型注入需要引号来闭合。</p>
+<p>2、也可以根据数据库返回的结果，分为回显注入、报错注入、盲注。</p>
+<p>回显注入：可以直接在存在注入点的当前页面中获取返回结果。</p>
+<p>报错注入：程序将数据库的返回错误信息直接显示在页面中，虽然没有返回数据库的查询结果，但是可以构造一些报错语句从错误信息中获取想要的结果。</p>
+<p>盲注：程序后端屏蔽了数据库的错误信息，没有直接显示结果也没有报错信息，只能通过数据库的逻辑和延时函数来判断注入的结果。根据表现形式的不同，盲注又分为based boolean和based time两种类型。</p>
+<p>3、按照注入位置及方式不同分为：post注入，get注入，cookie注入，盲注，延时注入，搜索注入，base64注入，无论此种分类如何多，都可以归纳为以上两种形式。</p>
+<p>判断</p>
+<p><strong>GET注入</strong></p>
+<p><strong>1、数字型</strong>：</p>
+<p>猜测SQL语句：</p>
+<p>select 字段名 from 表名 where id = 1；</p>
+<pre><code>http://www.sql.com/xxx.php?id=1              假设ID为存在注入的参数
+http://www.sql.com/xxx.php?id=1‘             语句报错
+http://www.sql.com/xxx.php?id=1 and 1=1      页面正常返回结果
+http://www.sql.com/xxx.php?id=1 and 1=2      页面返回错误
+1234
+</code></pre><p>如果以上几个测试步骤结果全部满足，就可能存在sql注入漏洞。</p>
+<p>数字型注入一般出现在asp，php等弱类型语言中，弱类型语言会自动推导变量类型，例如，参数id=1，PHP会自动把ID的数据类型推导为int类型，若是 id=1 and 1=1，则把ID推导为string类型。但是对于Java、c#这类强类型语言，如果把一个字符串转换为int类型，则会抛出异常，无法运行，所以数字型注入一般出现在弱类型的语言当中，强类型语言很少存在。</p>
+<p><strong>2、字符型</strong>：</p>
+<p>猜测SQL语句：</p>
+<p>select 字段名 from 表名 where id =‘；</p>
+<pre><code>http://www.sql.com/xxx.php?id=1                      假设ID为存在注入的参数
+http://www.sql.com/xxx.php?id=1‘                     语句报错
+http://www.sql.com/xxx.php?id=1&#39; and 1=1 and &#39;1&#39;=&#39;1  页面正常返回结果
+http://www.sql.com/xxx.php?id=1&#39; and 1=2 and &#39;1&#39;=&#39;1  页面返回错误
+1234
+</code></pre><p><strong>3、搜索型</strong>：</p>
+<p>猜测SQL语句：</p>
+<p>select 字段 from 表名 where username like ‘%k%’;</p>
+<pre><code>http://www.sql.com/xxx.php?search=test                  假设search为存在注入的参数
+http://www.sql.com/xxx.php?search=test&#39;                 语句报错
+http://www.sql.com/xxx.php?search=test%&#39; and 1=1 and &#39;%&#39;=&#39;   页面正常返回结果
+http://www.sql.com/xxx.php?search=test%&#39; and 1=2 and &#39;%&#39;=&#39;   页面返回错误
+</code></pre><h3 id="常见SQL注入过滤的绕过"><a href="#常见SQL注入过滤的绕过" class="headerlink" title="常见SQL注入过滤的绕过"></a>常见SQL注入过滤的绕过</h3><h4 id="1-1-and-or的过滤-拦截"><a href="#1-1-and-or的过滤-拦截" class="headerlink" title="1-1.and/or的过滤/拦截"></a>1-1.and/or的过滤/拦截</h4><p>双写<br>使用运算符(||、&amp;&amp;)<br>直接使用拼接=号<br>使用异或注入</p>
+<h4 id="1-2-空格被过滤-拦截"><a href="#1-2-空格被过滤-拦截" class="headerlink" title="1-2.空格被过滤/拦截"></a>1-2.空格被过滤/拦截</h4><p>多层括号嵌套<br>改用+号<br>使用注释/**/<br>and/or后面可以跟上偶数个!、~可以替代空格，也可以混合使用(规律又不同)，and/or前的空格可用省略<br>%09, %0a, %0b, %0c, %0d, %a0等部分不可见字符可也代替空格（因为Windows的解析机制无法使用特殊字符代替空格，需要Linux的服务器环境才行）</p>
+<h4 id="1-3-括号被过滤-拦截"><a href="#1-3-括号被过滤-拦截" class="headerlink" title="1-3.括号被过滤/拦截"></a>1-3.括号被过滤/拦截</h4><p>order by 大小比较盲注（见下面的讲解）</p>
+<h4 id="1-4-逗号被过滤-拦截"><a href="#1-4-逗号被过滤-拦截" class="headerlink" title="1-4.逗号被过滤/拦截"></a>1-4.逗号被过滤/拦截</h4><p>改用盲注</p>
+<p>使用join语句代替，如union select 1,2,3 可改为 union select</p>
+<p>join(select 1) join(select 2) join(select 3)</p>
+<p>substr(data from 1 for 1)相当于substr(data,1,1)、limit 9 offset 4相当于limt 9,4</p>
+<h4 id="1-5-information-schema被过滤-拦截"><a href="#1-5-information-schema被过滤-拦截" class="headerlink" title="1-5.information_schema被过滤/拦截"></a>1-5.information_schema被过滤/拦截</h4><p>利用innodb存储引擎(需要Mysql版本在5.5.x后并且Mysql开启了innoDB引擎)，例如下：</p>
+<pre><code class="sql">select table_name from mysql.innodb_table_stats where database_name=database();
+select table_name from mysql.innodb_index_stats where database_name=database();
+</code></pre>
+<p>接下来的四个只能用于查表名，无法查询列名，所以进一步获取数据还需无列名注入<br>sys.schema_auto_increment_columns<br>sys.x$schema_table_statistics_with_buffer<br>sys.schema_table_statistics_with_buffer<br>sys.x$ps_schema_table_statistics_io</p>
+<p>那么接下来就补充一下无列名注入吧</p>
+<h5 id="利用join进行无列名注入（使用别名）"><a href="#利用join进行无列名注入（使用别名）" class="headerlink" title="利用join进行无列名注入（使用别名）"></a>利用join进行无列名注入（使用别名）</h5><p>join … using(xx)</p>
+<p>当知道表名为users时，使用如下语句得到列名<br>第一列：?id=-1’union all select<em>from (select </em> from users as a join users b)c#</p>
+<p>第二列：?id=-1’ union all select<em>from (select </em> from users as a join users b using(id))c–+</p>
+<p>第三列：?id=-1’ union all select<em>from (select </em> from users as a join users b using(id,username))c–+</p>
+<p>后面的列名可以此类推</p>
+<h4 id="1-6-单双引号被被过滤-拦截-转义"><a href="#1-6-单双引号被被过滤-拦截-转义" class="headerlink" title="1-6.单双引号被被过滤/拦截/转义"></a>1-6.单双引号被被过滤/拦截/转义</h4><ul>
+<li><p>可根据sql语句，使用转移符号逃逸出一个单/双引号，例题可参考[BJDCTF 2nd]简单注入</p>
+</li>
+<li><p>需要逃逸单引号的情况：尝试是否存在编码问题而产生的SQL注入。<br>不需要逃逸单引号的情况：字符串可用十六进制(hex函数)表示、也可通过进制转换函数表示成其他进制或者使用其他编码，如char()<br>SELECT FROM Users WHERE username = CHAR(97, 100, 109, 105, 110)</p>
+</li>
+<li><p>还可以使用%2527<br>主要绕过magic_quotes_gpc过滤，因为%25解码为%,结合后面的27也就是%27也就是’，所以成功绕过过滤。</p>
+</li>
+</ul>
+<h4 id="1-7-数字和单个字母被过滤-拦截"><a href="#1-7-数字和单个字母被过滤-拦截" class="headerlink" title="1-7.数字和单个字母被过滤/拦截"></a>1-7.数字和单个字母被过滤/拦截</h4><pre><code>false或!pi()：0
+true或!!pi()：1
+true+true：2
+floor(pi())：3
+ceil(pi())：4
+floor(version())：5
+ceil(version())：6
+ceil(pi()+pi())：7
+floor(version()+pi())：8
+floor(pi()*pi())：9
+ceil(pi()*pi())：10
+ceil(pi()*pi())+true：11
+ceil(pi()+pi()+version())：12
+floor(pi()*pi()+pi())：13
+ceil(pi()*pi()+pi())：14
+ceil(pi()*pi()+version())：15
+floor(pi()*version())：16
+ceil(pi()*version())：17
+ceil(pi()*version())+true：18
+floor((pi()+pi())*pi())：19
+ceil((pi()+pi())*pi())：20
+ceil(ceil(pi())*version())：21
+ceil(pi()*ceil(pi()+pi()))：22
+ceil((pi()+ceil(pi()))*pi())：23
+ceil(pi())*ceil(version())：24
+floor(pi()*(version()+pi()))：25
+floor(version()*version())：26
+ceil(version()*version())：27
+ceil(pi()*pi()*pi()-pi())：28
+floor(pi()*pi()*floor(pi()))：29
+</code></pre><p>使用conv([0-9],10,36)可以表示0~9的数字，conv([10~35],10,36)可以表示a~z单个字母，conv([35+],10,36)可自行按照三十六进制转换</p>
+<h4 id="1-8-其他系统关键字被过滤-拦截"><a href="#1-8-其他系统关键字被过滤-拦截" class="headerlink" title="1-8.其他系统关键字被过滤/拦截"></a>1-8.其他系统关键字被过滤/拦截</h4><p>双写绕过关键字过滤<br>使用同义函数/语句代替，如if函数可用如下语句代替。</p>
+<pre><code class="sql">case when condition then 1 else 0 end
+</code></pre>
+<h4 id="1-9-等号被过滤"><a href="#1-9-等号被过滤" class="headerlink" title="1-9.等号被过滤"></a>1-9.等号被过滤</h4><p>使用in或like关键字绕过</p>
+<h4 id="1-10-过滤sleep"><a href="#1-10-过滤sleep" class="headerlink" title="1-10.过滤sleep()"></a>1-10.过滤sleep()</h4><ul>
+<li>BENCHMARK(count,expr)<br>BENCHMARK()函数重复countTimes次执行表达式expr，它可以用于计时MySQL处理表达式有多快。结果值总是0。</li>
+<li>笛卡尔积<br>select if(1=1,(SELECT count(*) FROM information_schema.columns A, information_schema.columns B),0);</li>
+<li>GET_LOCK<br>在一个session中可以先锁定一个变量例如：select get_lock(‘smi1e’,1)<br>然后通过另一个session 再次执行get_lock函数 select get_lock(‘smi1e’,5),此时会产生5 秒的延迟，其效果类似于sleep(5)。<br>但是利用场景是有条件限制的：需要提供长连接。在Apache+PHP搭建的环境中需要使用 mysql_pconnect函数来连接数据库。</li>
+<li>RLIKE/REGEXP<br>通过rpad或repeat构造长字符串，加以计算量大的pattern，通过repeat的参数可以控制延时长短。<br>select rpad(‘a’,4999999,’a’) RLIKE concat(repeat(‘(a.*)+’,30),’b’)</li>
+</ul>
 
         </div>
         <!-- .entry-content -->
@@ -407,19 +502,36 @@
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2021/01/29/web学习笔记——文件上传/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/illust_72360695_20181230_000724.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/illust_72360695_20181230_000724.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                web学习笔记——文件上传</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
         
           
-            <div class="post-nepre full next">
+            <div class="post-nepre half next">
           
-            <a href="/2021/03/04/web学习笔记——http请求响应/" rel="next">
+            <a href="/2020/10/31/随手写写/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/1604718424577.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/1604718424577.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/illust_69446164_20180705_165355.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/illust_69446164_20180705_165355.jpg">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                web学习笔记——http请求响应</h3>
+                随手写写</h3>
                 <hr>
               </div>
             </a>
@@ -808,5 +920,9 @@ $(document).ready(function() {
     })
   });
 </script>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"> <!-- 这条在sakura中已有，可不添加 --><script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/sakura.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/canvas-nest.min.js"></script>
 </body>
 </html>

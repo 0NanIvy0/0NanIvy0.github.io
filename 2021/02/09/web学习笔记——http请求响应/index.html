@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">web学习笔记——文件上传 | NanIvy</title>
+  <title itemprop="name">web学习笔记——http请求响应 | NanIvy</title>
   
     <link rel="shortcut icon" href="/qq_pic_merged_1602861906220.jpg">
   
@@ -311,11 +311,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/illust_72360695_20181230_000724.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/illust_72360695_20181230_000724.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/1604718424577.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/1604718424577.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      web学习笔记——文件上传</h1>
+      web学习笔记——http请求响应</h1>
       <p class="entry-census">
         <span>
           <a href="NanIvy.space">
@@ -327,7 +327,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-10-31<span class="bull">
+        2021-2-9<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -341,55 +341,59 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="文件上传漏洞总结"><a href="#文件上传漏洞总结" class="headerlink" title="文件上传漏洞总结"></a>文件上传漏洞总结</h1><p>常见工具：BurpSuite、蚁剑。</p>
-<h2 id="原理及利用"><a href="#原理及利用" class="headerlink" title="原理及利用"></a>原理及利用</h2><p>为什么会有文件上传漏洞，字面意思文件上传的漏洞。在一些上传文件的入口，面对上传文件，若不对上传文件进行严格的验证和过滤就容易造成这漏洞的产生。即可能上传任何文件——包括病毒、脚本。</p>
-<p>上传正常的php对服务器没有什么危害，但总有离谱的——如：PHP是编程语言，可以查看目录下的文件，查看文件中的代码，还能执行系统命令。上传恶意的PHP文件，甚至还能控制整个网站文件甚至是服务器。</p>
-<p>或者有上传钓鱼图片的，flash的策略文件.xml的。</p>
-<p>不过一般情况下的利用，指的应该就是“上传web脚本”并让服务器解析吧。即webshell攻击。成功的条件也是有的：能上传，能调用，能被执行，不被安全检查（想办法绕过）或格式化或者图片马被压缩（可能会导致内容改变而影响功能）。</p>
-<h2 id="常见绕过总结"><a href="#常见绕过总结" class="headerlink" title="常见绕过总结"></a>常见绕过总结</h2><h3 id="常见校验上传文件的方法及对应绕过思路"><a href="#常见校验上传文件的方法及对应绕过思路" class="headerlink" title="常见校验上传文件的方法及对应绕过思路"></a>常见校验上传文件的方法及对应绕过思路</h3><h4 id="客户端校验"><a href="#客户端校验" class="headerlink" title="客户端校验"></a>客户端校验</h4><p>通过javascript来校验上传文件的后缀是否合法，可以采用白名单，也可以采用黑名单的方式<br>判断方式：在浏览加载文件，但还未点击上传按钮时便弹出对话框，内容如：只允许上传.jpg/.jpeg/.png后缀名的文件，而此时并没有发送数据包。<br>客户端校验绕过：<br>直接修改js代码（一些浏览器自带选项貌似有禁用js选项）或者使用抓包的方法修改请求内容绕过，可以先上传一个gif木马，通过抓包修改为 jsp/php/asp，只用这种方法来检测是肯定可以绕过的。</p>
-<h4 id="服务器端校验"><a href="#服务器端校验" class="headerlink" title="服务器端校验"></a>服务器端校验</h4><p>校验请求头 content-type字段，例如用PHP检测</p>
-<p> if($_FILES[‘userfile’][‘type’] != “image/gif”){<br> ….<br>}<br>通过自己写正则匹配来判断文件幻数(文件头)内容是否符合要求，一般来说属于白名单的检测，常见的文件头（文件头标志位）如下：<br>括号中对应的二进制代码<br>（1）.JPEG;.JPE;.JPG，”JPGGraphicFile”（FFD8FFFE00）<br>（2）.gif，”GIF89A”（474946383961）<br>（3）.zip，”ZipCompressed”（504B0304）<br>（4）.doc;.xls;.xlt;.ppt;.apr，”MSCompoundDocumentv1orLotusApproachAPRfile”（D0CF11E0A1B11AE1）<br>还有其他的文件头可自行资料查找。</p>
-<p>服务端绕过<br>校验请求头content-type字段绕过</p>
-<p>通过抓包来修改Http头的content-type即可绕过，也肯定是可以绕过这种检测</p>
-<p> POST /upload.php HTTP/1.1<br>TE: deflate,gzip;q=0.3<br>Connection: TE, close<br>Host: localhost<br>User-Agent: libwww-perl/5.803<br>Content-Type: multipart/form-data; boundary=xYzZY<br>Content-Length: 155<br>–666666666666666666666666-<br>Content-Disposition: form-data; name=”userfile”; filename=”shell.php”<br>Content-Type: image/gif (原为 Content-Type: text/plain)<br>&lt;?php system($_GET[‘command’]);?&gt;<br>–6666666666666666666666666-</p>
-<p>文件幻数(文件头)检测绕过：</p>
-<p>在木马内容的前面插入对应的文件头内容，例如：GIF89a ，更靠谱的方法是在可上传的文件中插入木马代码，然后修改后缀</p>
-<h4 id="文件加载检测："><a href="#文件加载检测：" class="headerlink" title="文件加载检测："></a>文件加载检测：</h4><p>一般是调用API或函数去进行文件加载测试，例如图像渲染测试，当测试结果正常的时候才允许上传</p>
-<p>1、一次渲染（代码注入）<br>2、二次渲染</p>
-<p> 文件加载检绕过<br>通过例如加载文件进行图像渲染的方式来测试，这个时候就一般需要在正常的文件中插入木马代码了，例如图像，那么插入的代码一般会放在图像的注释区，因此不会影响图像正常渲染绕过这种检测，此时可以使用工具（称为插马器）来进行插入，例如edjpgcom，或者直接用copy命令来合成也可以。当然这种检测不一定能够完全绕过</p>
-<h4 id="后缀名黑名单校验、后缀名白名单校验："><a href="#后缀名黑名单校验、后缀名白名单校验：" class="headerlink" title="后缀名黑名单校验、后缀名白名单校验："></a>后缀名黑名单校验、后缀名白名单校验：</h4><p>后缀名检测</p>
-<p>后缀黑名单检测绕过：找查blacklist(黑名单列表)的漏网之鱼，例如<br>大小写：如果检测的时候不忽略大小写，那么可以改变后缀名的大小写绕过<br>扩展名：黑名单中如果忽略了某些能被解析的文件扩展名：<br>     jsp jspx jspf<br>    asp asa cer aspx<br>    php php php3 php4 pht php5<br>    exe exee</p>
-<p>后缀白名单检测绕过：白名单检测还是会比黑名单强一点，常见的绕过方法有%00截断，还有服务器的解析漏洞<br>%00截断漏洞：如果存在这类漏洞，那么后缀名的检测都可以绕过，此时我们可以如下命名一个上传文件</p>
-<p>test.php%00.jpg</p>
-<h4 id="操作系统相关绕过："><a href="#操作系统相关绕过：" class="headerlink" title="操作系统相关绕过："></a>操作系统相关绕过：</h4><p>上传不符合windows文件命名规则的文件名</p>
-<p> test.asp.（windows的结尾默认不为为.会自动消掉这个点）<br>test.asp(空格)<br>test.php:1.jpg<br>test.php::$DATA<br>shell.php::$DATA…….<br>会被某些版本的windows系统自动去掉不符合规则符号后面的内容。</p>
-<p>linux下后缀名大小写：<br>linux是大小写敏感的，因此一般检测也会区分大小写，但某些解析器是不区分大小写的，例如PHP，上传php不被解析，可以试试上传pHp后缀的文件名。</p>
-<h4 id="竞争条件攻击："><a href="#竞争条件攻击：" class="headerlink" title="竞争条件攻击："></a>竞争条件攻击：</h4><p>一些网站上传文件逻辑上是允许上传任意文件的，然后检查上传文件的内容是否包含webshell脚本，如果包含则删除该文件，这里存在的问题是文件上传成功之后和删除文件之间存在一个短的时间差，攻击者就可以利用这个时间差来上传漏洞攻击。攻击者先上传一个webshell脚本1.php内容如下：</p>
-<p>&lt;?php fputs(fopen(‘../shell.php’,’w’),’&lt;?php @eval($_POST[a]) ?&gt;’); ?&gt;<br>代码内容就是生成一个新的webshell，shell.php，那么当1.php上传成功之后，我们快速访问这个文件，这时就会在服务器端当前目录下自动生成shell.php，这时就利用时间差完成了webshell的上传。</p>
-<h4 id="CMS、编辑器漏洞"><a href="#CMS、编辑器漏洞" class="headerlink" title="CMS、编辑器漏洞"></a>CMS、编辑器漏洞</h4><p>CMS漏洞： 可以针对不同CMS存在的上传漏洞进行绕过。<br>编辑器漏洞：比如FCK，ewebeditor等，可以针对编辑器的漏洞进行绕过。<br>参考链接：<br><a href="https://www.leavesongs.com/PENETRATION/UseOfFckeditor.html" target="_blank" rel="noopener">https://www.leavesongs.com/PENETRATION/UseOfFckeditor.html</a><br><a href="https://docs.google.com/document/d/1w_61xR8U7nmn4Y0CvBHpG1uFIU2ORx69QnqTxQt8Km0/edit?pli=1" target="_blank" rel="noopener">https://docs.google.com/document/d/1w_61xR8U7nmn4Y0CvBHpG1uFIU2ORx69QnqTxQt8Km0/edit?pli=1</a></p>
-<h4 id="WAF校验："><a href="#WAF校验：" class="headerlink" title="WAF校验："></a>WAF校验：</h4><p>即使用不同的WAF产品来进行过滤，通常是独立与服务程序的一段中间程序或者硬件<br> WAF绕过：<br>参考链接：<a href="https://www.freebuf.com/articles/web/160175.html" target="_blank" rel="noopener">https://www.freebuf.com/articles/web/160175.html</a></p>
-<h3 id="解析漏洞："><a href="#解析漏洞：" class="headerlink" title="解析漏洞："></a>解析漏洞：</h3><p>这类漏洞是本身服务器的中间件产生的，例如apache，nginx都被爆出过存在解析漏洞，存在解析漏洞的话，上传的安全性几乎就完全失去了，下面再详细分析。</p>
-<p>服务器解析漏洞</p>
-<h4 id="IS5-x-6-x解析漏洞"><a href="#IS5-x-6-x解析漏洞" class="headerlink" title="IS5.x-6.x解析漏洞"></a>IS5.x-6.x解析漏洞</h4><p>使用iis5.x-6.x版本的服务器，大多为windows server 2003，网站比较古老，开发语句一般为asp；该解析漏洞也只能解析asp文件，而不能解析aspx文件。</p>
-<p>目录解析(6.0)<br>形式：<a href="http://www.xxx.com/xx.asp/xx.jpg" target="_blank" rel="noopener">www.xxx.com/xx.asp/xx.jpg</a> 原理: 服务器默认会把.asp，.asp目录下的文件都解析成asp文件。</p>
-<p>文件解析<br>形式：<a href="http://www.xxx.com/xx.asp;.jpg" target="_blank" rel="noopener">www.xxx.com/xx.asp;.jpg</a> 原理：服务器默认不解析;号后面的内容，因此xx.asp;.jpg便被解析成asp文件了。 解析文件类型</p>
-<p>IIS6.0 默认的可执行文件除了asp还包含这三种 :<br>/test.asa<br>/test.cer<br>/test.cdx</p>
-<h4 id="apache解析漏洞"><a href="#apache解析漏洞" class="headerlink" title="apache解析漏洞"></a>apache解析漏洞</h4><p>漏洞原理</p>
-<p>Apache 解析文件的规则是从右到左开始判断解析,如果后缀名为不可识别文件解析,就再往左判断。比如 test.php.qwe.asd “.qwe”和”.asd” 这两种后缀是apache不可识别解析,apache就会把wooyun.php.qwe.asd解析成php。</p>
-<p>漏洞形式</p>
-<p><a href="http://www.xxxx.xxx.com/test.php.php123" target="_blank" rel="noopener">www.xxxx.xxx.com/test.php.php123</a><br>其余配置问题导致漏洞</p>
-<p>如果在 Apache 的 conf 里有这样一行配置 AddHandler php5-script .php 这时只要文件名里包含.php 即使文件名是 test2.php.jpg 也会以 php 来执行。</p>
-<p>如果在 Apache 的 conf 里有这样一行配置 AddType application/x-httpd-php .jpg 即使扩展名是 jpg，一样能以 php 方式执行。</p>
-<h4 id="nginx解析漏洞"><a href="#nginx解析漏洞" class="headerlink" title="nginx解析漏洞"></a>nginx解析漏洞</h4><p>漏洞原理</p>
-<p>Nginx默认是以CGI的方式支持PHP解析的，普遍的做法是在Nginx配置文件中通过正则匹配设置 SCRIPT_FILENAME。当访问 <a href="http://www.xx.com/phpinfo.jpg/1.php这个URL时，" target="_blank" rel="noopener">www.xx.com/phpinfo.jpg/1.php这个URL时，</a> $fastcgi_script_name会被设置为 “phpinfo.jpg/1.php”，然后构造成 SCRIPT_FILENAME传递给PHP CGI，但是PHP为什么会接受这样的参数，并将phpinfo.jpg作为PHP文件解析呢?这就要说到fix_pathinfo这个选项了。 如果开启了这个选项，那么就会触发在PHP中的如下逻辑：</p>
-<p>PHP会认为SCRIPTFILENAME是phpinfo.jpg，而1.php是PATHINFO，所以就会将phpinfo.jpg作为PHP文件来解析了</p>
-<p>漏洞形式</p>
-<p><a href="http://www.xxxx.com/UploadFiles/image/1.jpg/1.php" target="_blank" rel="noopener">www.xxxx.com/UploadFiles/image/1.jpg/1.php</a><br><a href="http://www.xxxx.com/UploadFiles/image/1.jpg" target="_blank" rel="noopener">www.xxxx.com/UploadFiles/image/1.jpg</a> %00.php<br><a href="http://www.xxxx.com/UploadFiles/image/1.jpg/" target="_blank" rel="noopener">www.xxxx.com/UploadFiles/image/1.jpg/</a> %20.php</p>
-<p>另外一种手法：上传一个名字为test.jpg，然后访问test.jpg/.php,在这个目录下就会生成一句话木马shell.php。</p>
-<p>IIS7.5解析漏洞</p>
-<p>IIS7.5的漏洞与nginx的类似，都是由于php配置文件中，开启了 cgi.fix_pathinfo，而这并不是nginx或者iis7.5本身的漏洞。</p>
-<p>参考文章</p>
-<p><a href="https://www.secpulse.com/archives/95987.html" target="_blank" rel="noopener">https://www.secpulse.com/archives/95987.html</a><br><a href="https://blog.csdn.net/weixin_44119101/article/details/107669831" target="_blank" rel="noopener">https://blog.csdn.net/weixin_44119101/article/details/107669831</a></p>
+          <p>总结不出什么东西，直接转大佬的</p>
+<h1 id="请求头"><a href="#请求头" class="headerlink" title="请求头"></a>请求头</h1><h4 id="Accept："><a href="#Accept：" class="headerlink" title="Accept："></a><strong>Accept：</strong></h4><p>例：<br>Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,<em>/</em>;q=0.8<br>表示客户端支持的数据格式，或者说客户端<em>“希望”</em>接受到的内容类型。<br>这里只是希望，但是服务器具体返回什么样的内容类型，还是由服务器自己决定，但是无论服务器返回什么样的内容类型，客户端都会接收响应报文，不可能说因为内容类型不同，接收不到服务器响应报文，这不符合http协议规范。</p>
+<p>我们通过浏览器发起get或post请求，该字段都是浏览器自动添加的，同样在服务器端也不会解析该字段的值；<br>通过ajax请求或其他手段，我们可以设置该字段的值，但是通常也不进行设置。</p>
+<p>该字段的应用场景可以是这样的，有两个终端，比如一个是纯文本阅读器，如Kinder（不能显示图片），另一个是移动终端（可以播放图片和视频），均向服务器请求有关“斑马”的信息，那么这时候服务器端就需要判断什么样的终端应该返回什么样的信息，那么它就可以根据Accept的信息来进行判断，如果解析到的Accept的值为“text/plain”，那么就表示客户端只支持文本类型；如果向上面例子中的那样，则表示客户端文本图片视频都可以。如果我们不加判断，当返回给文本阅读器一张图片时，可能它显示的就是乱码。</p>
+<h4 id="Accept-Encoding"><a href="#Accept-Encoding" class="headerlink" title="Accept-Encoding:"></a><strong>Accept-Encoding:</strong></h4><p>例：<br>Accept-Encoding:gzip, deflate, br<br>表示客户端所支持的解码（解压缩）格式。</p>
+<p>网路数据的传输都是占据带宽的，而将文件数据压缩能够降低数据量，减少传输时间。所以服务器在返回数据给客户端时，常常对数据进行压缩（对用户透明，通常由服务器或代理来做），而压缩的方式有多种，到底采用哪一种则需要看客户端支持哪种解码方式，这时候就可以根据header中Accept-Encoding的值。</p>
+<p>文件或数据的压缩，由服务器或代理来做，一般不需要程序员干预；客户端接收到数据时解压缩，通常由浏览器自动完成，对用户透明。<br>对于我们主动发起的ajax请求，一般数据量较少，不需要设置该字段。</p>
+<h4 id="Accept-Language"><a href="#Accept-Language" class="headerlink" title="Accept-Language:"></a><strong>Accept-Language:</strong></h4><p>例<br>Accept-Language:zh-CN,zh;q=0.9<br>表示客户端支持的语言格式（<em>不是编码格式</em>），如中文/英文，通常浏览器直接发起请求时，浏览器会根据被设置的语言环境（默认语言），来附加上该字段。</p>
+<p>一般我们服务器解析报文时，是不理会该字段的。<br>他的使用场景可以是这样的，假如有个文件，有各种语言的版本，这样当不同请求发来时，我们可以根据Accept-Language的值来判断到底返回哪种语言版本给客户端。<br>（其实这种应用场景也一般不采用判断Accept-Language字段的方法，不靠谱，还不如直接在url中体现语言版本呢）</p>
+<h4 id="Accept-Charset："><a href="#Accept-Charset：" class="headerlink" title="Accept-Charset："></a><strong>Accept-Charset：</strong></h4><p>例：<br>Accept-Charset:gbk,utf-8;q=0.8<br>表示客户端支持编码格式。服务器在返回报文时，需要将字符按照一定的编码格式转换为字节序列发送给客户端，那么该采用哪种编码格式呢？<br>当然作为服务器端，他可以采用任何一种编码方式，客户端都得完完整整的接收响应报文。因为目前客户端几乎都支持常见编码类型，所以服务器在返回数据时，只需要按照既定的编码方式编码，然后在响应报文中告知客户端所使用的编码方式。这样客户端在接收到报文后按照该方式进行解码，就就不会出现乱码问题。</p>
+<p>但是，如果客户端已经定了就使用某种解码方式，那么这时候服务器端就不能那么任性了，他就需要解析Accept-Charset字段，根据这个值，来设定采用的编码方式。<br>如上例中，以逗号分隔，客户端支持两种编码方式，gbk和utf-8（gbk优先级高于utf8），其中utf-8后的q值，表示utf-8占的“权重”。</p>
+<h4 id="Referer："><a href="#Referer：" class="headerlink" title="Referer："></a><strong>Referer：</strong></h4><p>例：<br>Referer:<a href="http://localhost:8080/test/11.html" target="_blank" rel="noopener">http://localhost:8080/test/11.html</a><br>表示当前请求是从哪个资源发起的；或者是请求的上一步的地址。</p>
+<h4 id="If-Modified-Since："><a href="#If-Modified-Since：" class="headerlink" title="If-Modified-Since："></a><strong>If-Modified-Since：</strong></h4><p>例：<br>If-Modified-Since:Thu, 29 Mar 2018 08:37:45 GMT<br>表示客户端缓存文件的时间。字面翻译的意思是，“如果从…时间改变了”（就请再发送给我一遍新的文件）。</p>
+<p>当客户端访问服务器的静态文件时，通常会将资源结果缓存下来，并标记一下文件的缓存时间（根据响应头中的Last-Modified字段）；当接下来再发送同样的请求时，会在请求头中添加上这个字段If-Modified-Since；</p>
+<p>服务器端读取字段值，判断服务器端文件的最后修改时间，如果如果不晚于该值，说明浏览器缓存的文件是最新的，然后就不会重新发送文件内容，而是将相应报文的状态设置为<strong>304</strong>，表示你读取缓存的文件就可以了，这就很大程度上节省了带宽。</p>
+<h4 id="If-None-Match"><a href="#If-None-Match" class="headerlink" title="If-None-Match:"></a><strong>If-None-Match:</strong></h4><p>例：<br>If-None-Match:W/”607-1522312665174”<br>该字段同If-Modified-Since字段一样，都是用来表示资源文件是否是最新的。只不过If-Modified-Since的值为文件的最后修改时间，而该值为<strong>资源实体的哈希值，同样是由服务器生成的</strong>。<br>从上面的截图中我们可以看到：<br>第一次请求时，服务器的响应报文中有字段<strong>Etag</strong>，这就是实体的哈希值，浏览器会缓存文件并记录该值。<br>第二次请求时，请求头字段中就有<strong>If-None-Match</strong>，值为Etag的值，而服务器会判断该值与服务器中文件的哈希值是否相同，如果相同，就返回304，让浏览器读取缓存；否则会返回新的资源文件，并在响应头中设置新的Etag值。</p>
+<p>Last-Modified/If-Modified-Since 和 Etag/If-None-Match这两对头字段都是来标记缓存资源的，但是后者的优先级要高于前者。</p>
+<h4 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control:"></a><strong>Cache-Control:</strong></h4><p>例：<br>Cache-Control:no-cache<br>字段的字面意思为“缓存-控制”，前面我们将了几个字段表面客户端/服务器如何使用缓存机制，而这个字段就是<strong>用来控制缓存</strong>的。</p>
+<p>Cache-Control在请求/响应报文头中均可设置，分别表明不同的意思，下面我们以响应报文为例：cache-control在响应报文的的取值可以为：public、private、no-cache、no- store、no-transform、must-revalidate、proxy-revalidate、max-age。</p>
+<p>其中，no-cache、no-store、max-age为常用的取值。<br>比如，服务器在响应报文中添加Cache-Control：no-store，表示浏览器或各级代理，不要缓存本次的相应内容（即使响应报文中有Etag和Last-Modified）;</p>
+<p>比如，响应报文中有Cache-Control：no-cache，表示浏览器可以缓存响应文件，但是在使用缓存之前，必须通过令牌（Etag）来与服务器进行沟通确认缓存有效。</p>
+<p>比如，响应报文中有Cache-Control：max-age=500，表示在接下来的500秒内，浏览器可以自主使用缓存内容，不需要向服务器发送同样的请求。</p>
+<p>在请求报文中，也可以添加cache-control字段，其取值可以为no-cache、no-store、max-age、 max-stale、min-fresh、only-if-cached。<br>客户端在发送请求到服务器时，可能会经过很多层代理，而这些代理可能就缓存了本次请求想要的文件，而请求中的cache-control就可以控制，是否使用代理中的缓存文件。</p>
+<p>比如，请求报文头中有cache-control：no-cache，那就表示，代理如果返回给我缓存文件时，需要到服务器端进行确认，缓存是不是最新的。</p>
+<p>比如，请求报文头中有cache-control：no-store，那就表示，我不需要代理中的缓存文件，我需要直接请求服务器。</p>
+<p>所以我们可以看到，cache-control就是用来控制缓存使用的，如是否缓存，是否使用缓存，缓存到期时间等，而Last-Modified/If-Modified-Since 和 Etag/If-None-Match是标识C/S之间怎么使用缓存。<br>缓存的使用都是服务器和客户端的默认行为，对用户和程序员的透明的，当然我们可以通过配置文件或程序修改他们的行为规则。<br>附：<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html#sec13.2.6" target="_blank" rel="noopener">http协议中对缓存的说明</a></p>
+<h4 id="User-Agent"><a href="#User-Agent" class="headerlink" title="User-Agent:"></a><strong>User-Agent:</strong></h4><p>例：<br>User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36<br>表示客户端的软件环境。如上可以看出使用的是Window10 64位操作系统，Chrome浏览器等信息。服务器可以根据该字段评估客户端的环境从而给出不同的响应。（比如根据请求是从手机端或是电脑端发起的，返回不同版本的页面）</p>
+<h4 id="Host："><a href="#Host：" class="headerlink" title="Host："></a><strong>Host：</strong></h4><p>例：<br>Host:localhost:8080<br>表示请求者的主机地址（IP地址）和端口号。<br>服务器端可以根据该字段进行ip过滤等操作。</p>
+<h1 id="响应头"><a href="#响应头" class="headerlink" title="响应头"></a><strong>响应头</strong></h1><p>Etag、Last-Modified、cache-control在前文中已经说明。</p>
+<h4 id="Content-Length"><a href="#Content-Length" class="headerlink" title="Content-Length:"></a><strong>Content-Length:</strong></h4><p>例：<br>Content-Length:607<br>表示接收到的响应报文的总长度为607。<br>根据这个长度，客户端可以更准确的接收和解析报文内容。或者可以根据当前接收/解析的长度占总长度的百分比，做出进度条的效果。</p>
+<h4 id="Accept-Ranges"><a href="#Accept-Ranges" class="headerlink" title="Accept-Ranges:"></a><strong>Accept-Ranges:</strong></h4><p>例：<br>Accept-Ranges:bytes<br>表示服务器支持http中的Range功能，能够分段请求客户端能够分段请求服务器。<br>我们上网时常用的<strong>“断点续传”</strong>，或者服务器所谓的<strong>“多线程下载”</strong>就是靠的服务器端的Range技术。</p>
+<p>Range功能的请求-响应流程如此：<br>客户端发起带range的请求：</p>
+<pre><code class="http">GET  /test.rar  HTTP/1.1
+Connection:  close
+Host:  116.1.219.219
+Range:  bytes=0-100
+</code></pre>
+<p>在头中添加Range字段，表示我要请求[0-100]这101个字节的数据。<br>此处Range的值，可以添加多个片段，如 Range：bytes=0-100,200-300等。</p>
+<p>服务器响应报文：</p>
+<pre><code class="http">HTTP/1.1 206 OK
+Content-Length:  801     
+Content-Type:  application/octet-stream 
+Content-Location: http://www.onlinedown.net/hj_index.htm
+Content-Range:  bytes  0-100/2350        //2350:文件总大小
+Last-Modified: Mon, 16 Feb 2009 16:10:12 GMT
+Accept-Ranges: bytes
+ETag: &quot;d67a4bc5190c91:512&quot;
+Date: Wed, 18 Feb 2009 07:55:26 GMT
+</code></pre>
+<p>响应报文中有Content-Range字段，表示响应的报文片段内容范围，已经总的数据大小。<br>同时Range请求的正常的返回码是<strong>206</strong>，不是200。</p>
+<p>而即使我们请求的不是Range功能请求，那么服务器的返回字段中会有Accept-Range，表示服务器支持Range功能。</p>
+<h4 id="Server"><a href="#Server" class="headerlink" title="Server:"></a><strong>Server:</strong></h4><p>例：<br>Server: Apache/2.4.1 (Unix)<br>表示服务器的名称，是Unix下的Apache服务器</p>
+<p>转载 Boboma_dut 的CSDN 博客 ，全文地址请点击：<a href="https://blog.csdn.net/Boboma_dut/article/details/79741162?utm_source=copy" target="_blank" rel="noopener">https://blog.csdn.net/Boboma_dut/article/details/79741162?utm_source=copy</a></p>
 
         </div>
         <!-- .entry-content -->
@@ -421,15 +425,15 @@
           
             <div class="post-nepre half previous">
           
-            <a href="/2021/03/03/wp/" rel="prev">
+            <a href="/2021/02/25/web学习笔记——CSRF/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/80264773_0.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/80264773_0.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/85208671.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/85208671.jpg">
               </div>
               <span class="label">
               Previous Post</span>
               <div class="info">
                 <h3>
-                Hgame2021及xctf新手区总结及wp</h3>
+                web学习笔记——CSRF</h3>
                 <hr>
               </div>
             </a>
@@ -439,15 +443,15 @@
           
             <div class="post-nepre half next">
           
-            <a href="/2020/10/31/随手写写/" rel="next">
+            <a href="/2021/01/29/web学习笔记——文件上传/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/illust_69446164_20180705_165355.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/illust_69446164_20180705_165355.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/illust_72360695_20181230_000724.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/illust_72360695_20181230_000724.jpg">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                随手写写</h3>
+                web学习笔记——文件上传</h3>
                 <hr>
               </div>
             </a>
@@ -836,5 +840,9 @@ $(document).ready(function() {
     })
   });
 </script>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"> <!-- 这条在sakura中已有，可不添加 --><script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/sakura.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/canvas-nest.min.js"></script>
 </body>
 </html>
