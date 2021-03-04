@@ -43,7 +43,7 @@
     <link href="/2021/02/25/web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94CSRF/"/>
     <id>/2021/02/25/web学习笔记——CSRF/</id>
     <published>2021-02-25T06:22:33.000Z</published>
-    <updated>2021-03-04T09:38:23.853Z</updated>
+    <updated>2021-03-04T09:51:28.878Z</updated>
     
     <summary type="html">
     
@@ -60,9 +60,9 @@
       <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="学习" scheme="/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="CSRF漏洞" scheme="/tags/CSRF%E6%BC%8F%E6%B4%9E/"/>
+    
+      <category term="学习" scheme="/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -146,9 +146,9 @@
       <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="SQL注入漏洞" scheme="/tags/SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/"/>
-    
       <category term="学习" scheme="/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="SQL注入漏洞" scheme="/tags/SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/"/>
     
   </entry>
   

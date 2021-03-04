@@ -6,7 +6,7 @@
   
   <title itemprop="name">web学习笔记——CSRF | NanIvy</title>
   
-    <link rel="shortcut icon" href="/qq_pic_merged_1602861906220.jpg">
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/images/favicon.ico">
   
   <meta http-equiv="x-dns-prefetch-control" content="on">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
@@ -357,7 +357,7 @@
 <li>在不登出站点A（清除站点A的cookie）的情况下，访问恶意站点B。</li>
 </ul>
 <h1 id="CSRF攻击举例"><a href="#CSRF攻击举例" class="headerlink" title="CSRF攻击举例"></a>CSRF攻击举例</h1><h4 id="GET型"><a href="#GET型" class="headerlink" title="GET型"></a>GET型</h4><p>假设某银行网站A以GET请求来发起转账操作，转账的地址为<code>www.xxx.com/transfer.do?accountNum=l000l&amp;money=10000</code>，参数accountNum表示转账的账户，参数money表示转账金额。<br> 而某大型论坛B上，一个恶意用户上传了一张图片，而图片的地址栏中填的并不是图片的地址，而是前而所说的砖账地址：<code>&lt;img src=&quot;http://www.xxx.com/transfer.do?accountNum=l000l&amp;money=10000&quot;&gt;</code><br> 当你登录网站A后，没有及时登出，这时你访问了论坛B，不幸的事情发生了，你会发现你的账号里面少了10000块…<br> 为什么会这样呢，在你登录银行A时，你的浏览器端会生成银行A的cookie，而当你访问论坛B的时候，页面上的<img>标签需要浏览器发起一个新的HTTP请求，以获得图片资源，当浏览器发起请求时，请求的却是银行A的转账地址<code>www.xxx.com/transfer.do?accountNum=l000l&amp;money=10000</code>，并且会带上银行A的cookie信息，结果银行的服务器收到这个请求后，会以为是你发起的一次转账操作，因此你的账号里边便少了10000块。<br> 当然，绝大多数网站都不会使用GET请求来进行数据更新，因此，攻击者也需要改变思路，与时俱进。</p>
-<h4 id="POST型"><a href="#POST型" class="headerlink" title="POST型"></a>POST型</h4><p>假设银行将其转账方式改成POST提交，而论坛B恰好又存在一个XSS漏洞，恶意用户在它的页面上植入如下代码：</p>
+<h4 id="POST型"><a href="#POST型" class="headerlink" title="POST型"></a><strong>POST型</strong></h4><p>假设银行将其转账方式改成POST提交，而论坛B恰好又存在一个XSS漏洞，恶意用户在它的页面上植入如下代码：</p>
 <pre><code class="xml">&lt;form id=&quot;aaa&quot; action=&quot;http://www.xxx.com/transfer.do&quot; metdod=&quot;POST&quot; display=&quot;none&quot;&gt;
     &lt;input type=&quot;text&quot; name=&quot;accountNum&quot; value=&quot;10001&quot;/&gt;
     &lt;input ty。pe=&quot;text&quot; name=&quot;money&quot; value=&quot;10000&quot;/&gt;
@@ -826,8 +826,5 @@ $(document).ready(function() {
   });
 </script>
 <script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"> <!-- 这条在sakura中已有，可不添加 --><script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/sakura.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/canvas-nest.min.js"></script>
 </body>
 </html>
