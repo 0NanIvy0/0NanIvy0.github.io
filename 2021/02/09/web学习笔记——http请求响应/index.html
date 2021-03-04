@@ -342,23 +342,28 @@
         
         <div class="entry-content">
           <p>总结不出什么东西，直接转大佬的</p>
-<h1 id="请求头"><a href="#请求头" class="headerlink" title="请求头"></a>请求头</h1><h2 id="Accept："><a href="#Accept：" class="headerlink" title="Accept："></a><strong>Accept：</strong></h2><p>例：<br>Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,<em>/</em>;q=0.8<br>表示客户端支持的数据格式，或者说客户端<em>“希望”</em>接受到的内容类型。<br>这里只是希望，但是服务器具体返回什么样的内容类型，还是由服务器自己决定，但是无论服务器返回什么样的内容类型，客户端都会接收响应报文，不可能说因为内容类型不同，接收不到服务器响应报文，这不符合http协议规范。</p>
+<h1 id="请求头"><a href="#请求头" class="headerlink" title="请求头"></a>请求头</h1><h2 id="User-Agent"><a href="#User-Agent" class="headerlink" title="User-Agent:"></a>User-Agent:</h2><p>例：<br>User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36<br>表示客户端的软件环境。如上可以看出使用的是Window10 64位操作系统，Chrome浏览器等信息。服务器可以根据该字段评估客户端的环境从而给出不同的响应。（比如根据请求是从手机端或是电脑端发起的，返回不同版本的页面）</p>
+<h2 id="Host："><a href="#Host：" class="headerlink" title="Host："></a>Host：</h2><p>例：<br>Host:localhost:8080<br>表示请求者的主机地址（IP地址）和端口号。<br>服务器端可以根据该字段进行ip过滤等操作。</p>
+<h2 id="Accept："><a href="#Accept：" class="headerlink" title="Accept："></a>Accept：</h2><p>例：<br>Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,<em>/</em>;q=0.8<br>表示客户端支持的数据格式，或者说客户端<em>“希望”</em>接受到的内容类型。<br>这里只是希望，但是服务器具体返回什么样的内容类型，还是由服务器自己决定，但是无论服务器返回什么样的内容类型，客户端都会接收响应报文，不可能说因为内容类型不同，接收不到服务器响应报文，这不符合http协议规范。</p>
 <p>我们通过浏览器发起get或post请求，该字段都是浏览器自动添加的，同样在服务器端也不会解析该字段的值；<br>通过ajax请求或其他手段，我们可以设置该字段的值，但是通常也不进行设置。</p>
 <p>该字段的应用场景可以是这样的，有两个终端，比如一个是纯文本阅读器，如Kinder（不能显示图片），另一个是移动终端（可以播放图片和视频），均向服务器请求有关“斑马”的信息，那么这时候服务器端就需要判断什么样的终端应该返回什么样的信息，那么它就可以根据Accept的信息来进行判断，如果解析到的Accept的值为“text/plain”，那么就表示客户端只支持文本类型；如果向上面例子中的那样，则表示客户端文本图片视频都可以。如果我们不加判断，当返回给文本阅读器一张图片时，可能它显示的就是乱码。</p>
-<h2 id="Accept-Encoding"><a href="#Accept-Encoding" class="headerlink" title="Accept-Encoding:"></a><strong>Accept-Encoding:</strong></h2><p>例：<br>Accept-Encoding:gzip, deflate, br<br>表示客户端所支持的解码（解压缩）格式。</p>
+<h2 id="Accept-Encoding"><a href="#Accept-Encoding" class="headerlink" title="Accept-Encoding:"></a>Accept-Encoding:</h2><p>例：<br>Accept-Encoding:gzip, deflate, br<br>表示客户端所支持的解码（解压缩）格式。</p>
 <p>网路数据的传输都是占据带宽的，而将文件数据压缩能够降低数据量，减少传输时间。所以服务器在返回数据给客户端时，常常对数据进行压缩（对用户透明，通常由服务器或代理来做），而压缩的方式有多种，到底采用哪一种则需要看客户端支持哪种解码方式，这时候就可以根据header中Accept-Encoding的值。</p>
 <p>文件或数据的压缩，由服务器或代理来做，一般不需要程序员干预；客户端接收到数据时解压缩，通常由浏览器自动完成，对用户透明。<br>对于我们主动发起的ajax请求，一般数据量较少，不需要设置该字段。</p>
-<h2 id="Accept-Language"><a href="#Accept-Language" class="headerlink" title="Accept-Language:"></a><strong>Accept-Language:</strong></h2><p>例<br>Accept-Language:zh-CN,zh;q=0.9<br>表示客户端支持的语言格式（<em>不是编码格式</em>），如中文/英文，通常浏览器直接发起请求时，浏览器会根据被设置的语言环境（默认语言），来附加上该字段。</p>
+<h2 id="Accept-Language"><a href="#Accept-Language" class="headerlink" title="Accept-Language:"></a>Accept-Language:</h2><p>例<br>Accept-Language:zh-CN,zh;q=0.9<br>表示客户端支持的语言格式（<em>不是编码格式</em>），如中文/英文，通常浏览器直接发起请求时，浏览器会根据被设置的语言环境（默认语言），来附加上该字段。</p>
 <p>一般我们服务器解析报文时，是不理会该字段的。<br>他的使用场景可以是这样的，假如有个文件，有各种语言的版本，这样当不同请求发来时，我们可以根据Accept-Language的值来判断到底返回哪种语言版本给客户端。<br>（其实这种应用场景也一般不采用判断Accept-Language字段的方法，不靠谱，还不如直接在url中体现语言版本呢）</p>
-<h2 id="Accept-Charset："><a href="#Accept-Charset：" class="headerlink" title="Accept-Charset："></a><strong>Accept-Charset：</strong></h2><p>例：<br>Accept-Charset:gbk,utf-8;q=0.8<br>表示客户端支持编码格式。服务器在返回报文时，需要将字符按照一定的编码格式转换为字节序列发送给客户端，那么该采用哪种编码格式呢？<br>当然作为服务器端，他可以采用任何一种编码方式，客户端都得完完整整的接收响应报文。因为目前客户端几乎都支持常见编码类型，所以服务器在返回数据时，只需要按照既定的编码方式编码，然后在响应报文中告知客户端所使用的编码方式。这样客户端在接收到报文后按照该方式进行解码，就就不会出现乱码问题。</p>
+<h2 id="Accept-Charset："><a href="#Accept-Charset：" class="headerlink" title="Accept-Charset："></a>Accept-Charset：</h2><p>例：<br>Accept-Charset:gbk,utf-8;q=0.8<br>表示客户端支持编码格式。服务器在返回报文时，需要将字符按照一定的编码格式转换为字节序列发送给客户端，那么该采用哪种编码格式呢？<br>当然作为服务器端，他可以采用任何一种编码方式，客户端都得完完整整的接收响应报文。因为目前客户端几乎都支持常见编码类型，所以服务器在返回数据时，只需要按照既定的编码方式编码，然后在响应报文中告知客户端所使用的编码方式。这样客户端在接收到报文后按照该方式进行解码，就就不会出现乱码问题。</p>
 <p>但是，如果客户端已经定了就使用某种解码方式，那么这时候服务器端就不能那么任性了，他就需要解析Accept-Charset字段，根据这个值，来设定采用的编码方式。<br>如上例中，以逗号分隔，客户端支持两种编码方式，gbk和utf-8（gbk优先级高于utf8），其中utf-8后的q值，表示utf-8占的“权重”。</p>
-<h2 id="Referer："><a href="#Referer：" class="headerlink" title="Referer："></a><strong>Referer：</strong></h2><p>例：<br>Referer:<a href="http://localhost:8080/test/11.html" target="_blank" rel="noopener">http://localhost:8080/test/11.html</a><br>表示当前请求是从哪个资源发起的；或者是请求的上一步的地址。</p>
-<h2 id="If-Modified-Since："><a href="#If-Modified-Since：" class="headerlink" title="If-Modified-Since："></a><strong>If-Modified-Since：</strong></h2><p>例：<br>If-Modified-Since:Thu, 29 Mar 2018 08:37:45 GMT<br>表示客户端缓存文件的时间。字面翻译的意思是，“如果从…时间改变了”（就请再发送给我一遍新的文件）。</p>
+<h2 id="Referer："><a href="#Referer：" class="headerlink" title="Referer："></a>Referer：</h2><p>例：<br>Referer:<a href="http://localhost:8080/test/11.html" target="_blank" rel="noopener">http://localhost:8080/test/11.html</a><br>表示当前请求是从哪个资源发起的；或者是请求的上一步的地址。</p>
+<h2 id="Cookie："><a href="#Cookie：" class="headerlink" title="Cookie："></a>Cookie：</h2><p> cookie是非常重要的请求头，他是一段文本，常用来表示请求者身份等。</p>
+<h2 id="XFF（X-Forward-For）："><a href="#XFF（X-Forward-For）：" class="headerlink" title="XFF（X-Forward-For）："></a>XFF（X-Forward-For）：</h2><p>它代表请求端的ip，可以有多个，中间以逗号隔开。</p>
+<h2 id="If-Modified-Since："><a href="#If-Modified-Since：" class="headerlink" title="If-Modified-Since："></a>If-Modified-Since：</h2><p>例：<br>If-Modified-Since:Thu, 29 Mar 2018 08:37:45 GMT<br>表示客户端缓存文件的时间。字面翻译的意思是，“如果从…时间改变了”（就请再发送给我一遍新的文件）。</p>
 <p>当客户端访问服务器的静态文件时，通常会将资源结果缓存下来，并标记一下文件的缓存时间（根据响应头中的Last-Modified字段）；当接下来再发送同样的请求时，会在请求头中添加上这个字段If-Modified-Since；</p>
 <p>服务器端读取字段值，判断服务器端文件的最后修改时间，如果如果不晚于该值，说明浏览器缓存的文件是最新的，然后就不会重新发送文件内容，而是将相应报文的状态设置为<strong>304</strong>，表示你读取缓存的文件就可以了，这就很大程度上节省了带宽。</p>
-<h2 id="If-None-Match"><a href="#If-None-Match" class="headerlink" title="If-None-Match:"></a><strong>If-None-Match:</strong></h2><p>例：<br>If-None-Match:W/”607-1522312665174”<br>该字段同If-Modified-Since字段一样，都是用来表示资源文件是否是最新的。只不过If-Modified-Since的值为文件的最后修改时间，而该值为<strong>资源实体的哈希值，同样是由服务器生成的</strong>。<br>从上面的截图中我们可以看到：<br>第一次请求时，服务器的响应报文中有字段<strong>Etag</strong>，这就是实体的哈希值，浏览器会缓存文件并记录该值。<br>第二次请求时，请求头字段中就有<strong>If-None-Match</strong>，值为Etag的值，而服务器会判断该值与服务器中文件的哈希值是否相同，如果相同，就返回304，让浏览器读取缓存；否则会返回新的资源文件，并在响应头中设置新的Etag值。</p>
+<h2 id="If-None-Match"><a href="#If-None-Match" class="headerlink" title="If-None-Match:"></a>If-None-Match:</h2><p>例：<br>If-None-Match:W/”607-1522312665174”<br>该字段同If-Modified-Since字段一样，都是用来表示资源文件是否是最新的。只不过If-Modified-Since的值为文件的最后修改时间，而该值为<strong>资源实体的哈希值，同样是由服务器生成的</strong>。<br>从上面的截图中我们可以看到：<br>第一次请求时，服务器的响应报文中有字段<strong>Etag</strong>，这就是实体的哈希值，浏览器会缓存文件并记录该值。<br>第二次请求时，请求头字段中就有<strong>If-None-Match</strong>，值为Etag的值，而服务器会判断该值与服务器中文件的哈希值是否相同，如果相同，就返回304，让浏览器读取缓存；否则会返回新的资源文件，并在响应头中设置新的Etag值。</p>
 <p>Last-Modified/If-Modified-Since 和 Etag/If-None-Match这两对头字段都是来标记缓存资源的，但是后者的优先级要高于前者。</p>
-<h2 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control:"></a><strong>Cache-Control:</strong></h2><p>例：<br>Cache-Control:no-cache<br>字段的字面意思为“缓存-控制”，前面我们将了几个字段表面客户端/服务器如何使用缓存机制，而这个字段就是<strong>用来控制缓存</strong>的。</p>
+<h2 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control:"></a>Cache-Control:</h2><p>（了解为主）例：</p>
+<p>Cache-Control:no-cache<br>字段的字面意思为“缓存-控制”，前面我们将了几个字段表面客户端/服务器如何使用缓存机制，而这个字段就是<strong>用来控制缓存</strong>的。</p>
 <p>Cache-Control在请求/响应报文头中均可设置，分别表明不同的意思，下面我们以响应报文为例：cache-control在响应报文的的取值可以为：public、private、no-cache、no- store、no-transform、must-revalidate、proxy-revalidate、max-age。</p>
 <p>其中，no-cache、no-store、max-age为常用的取值。<br>比如，服务器在响应报文中添加Cache-Control：no-store，表示浏览器或各级代理，不要缓存本次的相应内容（即使响应报文中有Etag和Last-Modified）;</p>
 <p>比如，响应报文中有Cache-Control：no-cache，表示浏览器可以缓存响应文件，但是在使用缓存之前，必须通过令牌（Etag）来与服务器进行沟通确认缓存有效。</p>
@@ -367,11 +372,9 @@
 <p>比如，请求报文头中有cache-control：no-cache，那就表示，代理如果返回给我缓存文件时，需要到服务器端进行确认，缓存是不是最新的。</p>
 <p>比如，请求报文头中有cache-control：no-store，那就表示，我不需要代理中的缓存文件，我需要直接请求服务器。</p>
 <p>所以我们可以看到，cache-control就是用来控制缓存使用的，如是否缓存，是否使用缓存，缓存到期时间等，而Last-Modified/If-Modified-Since 和 Etag/If-None-Match是标识C/S之间怎么使用缓存。<br>缓存的使用都是服务器和客户端的默认行为，对用户和程序员的透明的，当然我们可以通过配置文件或程序修改他们的行为规则。<br>附：<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html#sec13.2.6" target="_blank" rel="noopener">http协议中对缓存的说明</a></p>
-<h2 id="User-Agent"><a href="#User-Agent" class="headerlink" title="User-Agent:"></a><strong>User-Agent:</strong></h2><p>例：<br>User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36<br>表示客户端的软件环境。如上可以看出使用的是Window10 64位操作系统，Chrome浏览器等信息。服务器可以根据该字段评估客户端的环境从而给出不同的响应。（比如根据请求是从手机端或是电脑端发起的，返回不同版本的页面）</p>
-<h2 id="Host："><a href="#Host：" class="headerlink" title="Host："></a><strong>Host：</strong></h2><p>例：<br>Host:localhost:8080<br>表示请求者的主机地址（IP地址）和端口号。<br>服务器端可以根据该字段进行ip过滤等操作。</p>
-<h1 id="响应头"><a href="#响应头" class="headerlink" title="响应头"></a><strong>响应头</strong></h1><p>Etag、Last-Modified、cache-control在前文中已经说明。</p>
-<h2 id="Content-Length"><a href="#Content-Length" class="headerlink" title="Content-Length:"></a><strong>Content-Length:</strong></h2><p>例：<br>Content-Length:607<br>表示接收到的响应报文的总长度为607。<br>根据这个长度，客户端可以更准确的接收和解析报文内容。或者可以根据当前接收/解析的长度占总长度的百分比，做出进度条的效果。</p>
-<h2 id="Accept-Ranges"><a href="#Accept-Ranges" class="headerlink" title="Accept-Ranges:"></a><strong>Accept-Ranges:</strong></h2><p>例：<br>Accept-Ranges:bytes<br>表示服务器支持http中的Range功能，能够分段请求客户端能够分段请求服务器。<br>我们上网时常用的<strong>“断点续传”</strong>，或者服务器所谓的<strong>“多线程下载”</strong>就是靠的服务器端的Range技术。</p>
+<h1 id="响应头"><a href="#响应头" class="headerlink" title="响应头"></a>响应头</h1><p>Etag、Last-Modified（资源最后修改时间）、cache-control在前文中已经说明。</p>
+<h2 id="Content-Length"><a href="#Content-Length" class="headerlink" title="Content-Length:"></a>Content-Length:</h2><p>例：<br>Content-Length:607<br>表示接收到的响应报文的总长度为607。<br>根据这个长度，客户端可以更准确的接收和解析报文内容。或者可以根据当前接收/解析的长度占总长度的百分比，做出进度条的效果。</p>
+<h2 id="Accept-Ranges"><a href="#Accept-Ranges" class="headerlink" title="Accept-Ranges:"></a>Accept-Ranges:</h2><p>例：<br>Accept-Ranges:bytes<br>表示服务器支持http中的Range功能，能够分段请求客户端能够分段请求服务器。<br>我们上网时常用的<strong>“断点续传”</strong>，或者服务器所谓的<strong>“多线程下载”</strong>就是靠的服务器端的Range技术。</p>
 <p>Range功能的请求-响应流程如此：<br>客户端发起带range的请求：</p>
 <pre><code class="http">GET  /test.rar  HTTP/1.1
 Connection:  close
@@ -392,7 +395,10 @@ Date: Wed, 18 Feb 2009 07:55:26 GMT
 </code></pre>
 <p>响应报文中有Content-Range字段，表示响应的报文片段内容范围，已经总的数据大小。<br>同时Range请求的正常的返回码是<strong>206</strong>，不是200。</p>
 <p>而即使我们请求的不是Range功能请求，那么服务器的返回字段中会有Accept-Range，表示服务器支持Range功能。</p>
-<h2 id="Server"><a href="#Server" class="headerlink" title="Server:"></a><strong>Server:</strong></h2><p>例：<br>Server: Apache/2.4.1 (Unix)<br>表示服务器的名称，是Unix下的Apache服务器</p>
+<h2 id="Server"><a href="#Server" class="headerlink" title="Server:"></a>Server:</h2><p>例：<br>Server: Apache/2.4.1 (Unix)<br>表示服务器的名称，是Unix下的Apache服务器</p>
+<h2 id="Set-Cookie："><a href="#Set-Cookie：" class="headerlink" title="Set-Cookie："></a>Set-Cookie：</h2><p>向客户端设置cookie，通过查看此头，可以清楚看到服务器向客户端发送的cookie信息。</p>
+<h2 id="Location"><a href="#Location" class="headerlink" title="Location"></a>Location</h2><p>服务器通过通过这个头告诉浏览器去访问那个页面，浏览器收到这个请求之后，通常会立刻访问location头所指向的页面。这个头通常配合302状态码使用。</p>
+<h2 id="Refresh："><a href="#Refresh：" class="headerlink" title="Refresh："></a>Refresh：</h2><p>服务器通过该头告诉浏览器定时刷新浏览器。</p>
 <p>转载 Boboma_dut 的CSDN 博客 ，全文地址请点击：<a href="https://blog.csdn.net/Boboma_dut/article/details/79741162?utm_source=copy" target="_blank" rel="noopener">https://blog.csdn.net/Boboma_dut/article/details/79741162?utm_source=copy</a></p>
 
         </div>

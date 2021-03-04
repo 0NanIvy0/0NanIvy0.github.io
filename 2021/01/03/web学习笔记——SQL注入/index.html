@@ -344,12 +344,12 @@
           <h1 id="SQL产生原理"><a href="#SQL产生原理" class="headerlink" title="SQL产生原理"></a>SQL产生原理</h1><p>​        所谓SQL注入，就是通过把SQL命令插入到Web表单递交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令。当应用程序使用输入内容来构造动态sql语句以访问数据库时，会发生sql注入攻击。如果代码使用存储过程，而这些存储过程作为包含未筛选的用户输入的字符串来传递，也会发生sql注入。 黑客通过SQL注入攻击可以拿到网站数据库的访问权限，之后他们就可以拿到网站数据库中所有的数据，恶意的黑客可以通过SQL注入功能篡改数据库中的数据甚至会把数据库中的数据毁坏掉</p>
 <p>​        通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。</p>
 <p>​        根据相关技术原理，SQL注入可以分为平台层注入和代码层注入。前者由不安全的数据库配置或数据库平台的漏洞所致；后者主要是由于程序员对输入未进行细致地过滤，从而执行了非法的数据查询。基于此，SQL注入的产生原因通常表现在以下几方面：①不当的类型处理；②不安全的数据库配置；③不合理的查询集处理；④不当的错误处理；⑤转义字符处理不合适；⑥多个提交处理不当。</p>
-<h1 id="SQL注入方法理解"><a href="#SQL注入方法理解" class="headerlink" title="SQL注入方法理解"></a>SQL注入方法理解</h1><h2 id="1-数字注入"><a href="#1-数字注入" class="headerlink" title="1.数字注入"></a><strong>1.数字注入</strong></h2><p>  在浏览器地址栏输入：learn.me/sql/article.php?id=1，这是一个<strong>get型接口</strong>，发送这个请求相当于调用一个查询语句：</p>
+<h1 id="SQL注入方法理解"><a href="#SQL注入方法理解" class="headerlink" title="SQL注入方法理解"></a>SQL注入方法理解</h1><h2 id="1-数字注入"><a href="#1-数字注入" class="headerlink" title="1.数字注入"></a>1.数字注入</h2><p>  在浏览器地址栏输入：learn.me/sql/article.php?id=1，这是一个<strong>get型接口</strong>，发送这个请求相当于调用一个查询语句：</p>
 <pre><code class="sql">$sql = &quot;SELECT * FROM article WHERE id =&quot;,$id
 </code></pre>
 <p>  正常情况下，应该返回一个id=1的文章信息。那么，如果在浏览器地址栏输入：<strong>learn.me/sql/article.php?id=-1 OR 1 =1</strong>，这就是一个SQL注入攻击了，可能会返回所有文章的相关信息。为什么会这样呢？</p>
 <p>  这是因为，id = -1永远是false，1=1永远是true，所有整个where语句永远是ture，所以where条件相当于没有加where条件，那么查询的结果相当于整张表的内容。（危）</p>
-<h2 id="2-字符串注入"><a href="#2-字符串注入" class="headerlink" title="2.字符串注入"></a><strong>2.字符串注入</strong></h2><p>  有这样一个用户登录场景：登录界面包括用户名和密码输入框，以及提交按钮。输入用户名和密码，提交。</p>
+<h2 id="2-字符串注入"><a href="#2-字符串注入" class="headerlink" title="2.字符串注入"></a>2.字符串注入</h2><p>  有这样一个用户登录场景：登录界面包括用户名和密码输入框，以及提交按钮。输入用户名和密码，提交。</p>
 <p>  这是一个post请求，登录时调用接口learn.me/sql/login.html，首先连接数据库，然后后台对post请求参数中携带的用户名、密码进行参数校验，即sql的查询过程。假设正确的用户名和密码为user和pwd123，输入正确的用户名和密码、提交，相当于调用了以下的SQL语句：</p>
 <pre><code class="sql">SELECT * FROM user WHERE username = &#39;user&#39; ADN password = &#39;pwd123&#39;
 </code></pre>
