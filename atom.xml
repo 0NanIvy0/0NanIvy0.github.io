@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2021-03-04T09:38:44.725Z</updated>
+  <updated>2021-03-04T11:22:04.266Z</updated>
   <id>/</id>
   
   <author>
@@ -15,28 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Hgame2021及xctf新手区总结及wp</title>
-    <link href="/2021/03/03/wp/"/>
-    <id>/2021/03/03/wp/</id>
-    <published>2021-03-03T09:45:12.000Z</published>
-    <updated>2021-03-04T09:38:44.725Z</updated>
-    
-    <summary type="html">
-    
-      部分简单题的wp
-    
-    </summary>
-    
-      <category term="生活" scheme="/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="学习" scheme="/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="CTF" scheme="/tags/CTF/"/>
-    
-  </entry>
   
   <entry>
     <title>web学习笔记——CSRF</title>
@@ -60,9 +38,9 @@
       <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="CSRF漏洞" scheme="/tags/CSRF%E6%BC%8F%E6%B4%9E/"/>
-    
       <category term="学习" scheme="/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="CSRF漏洞" scheme="/tags/CSRF%E6%BC%8F%E6%B4%9E/"/>
     
   </entry>
   
@@ -146,9 +124,9 @@
       <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="学习" scheme="/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="SQL注入漏洞" scheme="/tags/SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/"/>
+    
+      <category term="学习" scheme="/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
