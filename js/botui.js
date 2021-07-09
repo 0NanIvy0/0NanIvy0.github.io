@@ -65,11 +65,11 @@ function bot_ui_ini() {
         secondpart = function () {
             botui.message.add({
                 delay: 1500,
-                content: "目前就读于成都信息工程大学"
+                content: "主页一看就知道我是个死萝莉控=。="
             }).then(function () {
                 botui.message.add({
                     delay: 1500,
-                    content: "向往技术却啥都学不会"
+                    content: "虽然向往技术，但啥都学不会"
                 }).then(function () {
                     botui.message.add({
                         delay: 1200,
@@ -77,20 +77,20 @@ function bot_ui_ini() {
                     }).then(function () {
                         botui.message.add({
                             delay: 1500,
-                            content: "现在在学信息安全，想要守护美好的二次元"
+                            content: "打游戏，人菜瘾大，爱玩手游"
                         }).then(function () {
                             botui.message.add({
                                 delay: 1500,
-                                content: "研究的方向，是WEB安全的说，不过也想过iot硬件安全"
+                                content: "梦想，是在二次元文化公司用纸片人做WEB前端。"
                             }).then(function () {
                                 botui.message.add({
                                     delay: 1800,
-                                    content: "喜欢夕阳的余晖带给人的温馨感"
+                                    content: "最喜欢萝莉配星空，夕阳配少女，大海配泳装！！！！"
                                 }).then(function () {
                                     botui.action.button({
                                         delay: 1100,
                                         action: [{
-                                            text: "为什么叫NanIvy呢？ 🤔",
+                                            text: "那你一定有一堆纸片人老婆吧？ 🤔",
                                             value: "why-mashiro"
                                         }]
                                     }).then(function (a) {
@@ -106,12 +106,12 @@ function bot_ui_ini() {
         thirdpart = function () {
             botui.message.add({
                 delay: 1E3,
-                content: "感受着南方的春夏秋冬，观望着常春藤四季如春"
+                content: "对…………不对，我很专一的！"
             }).then(function () {
                 botui.action.button({
                     delay: 1500,
                     action: [{
-                        text: "那为什么会喜欢二次元呢 🤔",
+                        text: "噢，那你老婆是谁呢？🤔",
                         value: "why-cat"
                     }]
                 }).then(function (a) {
@@ -122,16 +122,16 @@ function bot_ui_ini() {
         fourthpart = function () {
             botui.message.add({
                 delay: 1E3,
-                content: "别问，问就是纸片人万岁！ "
+                content: "碧蓝航线的绫波，星空列车的诺瓦，ATRI的亚托莉，魂器学院的梅洛迪，还有…… "
             }).then(function () {
                 botui.message.add({
                     delay: 1100,
-                    content: "我可不是死肥宅呐！"
+                    content: "还有……emmm……我看你有话要说？"
                 }).then(function () {
                     botui.action.button({
                         delay: 1500,
                         action: [{
-                            text: "肥宅加油吧~",
+                            text: "谢谢你，重新定义专一！",
                             value: "why-domain"
                         }]
                     }).then(function (a) {
@@ -143,11 +143,11 @@ function bot_ui_ini() {
         fifthpart = function () {
             botui.message.add({
                 delay: 1E3,
-                content: "说了不是肥宅啦！"
+                content: "只要在一个游戏/番剧里，只带走一个老婆，我就是专一的！（确信）"
             }).then(function () {
                 botui.message.add({
                     delay: 1600,
-                    content: "（114514）哼~哼~啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"
+                    content: "（rua）哼~哼~啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"
                 })
             })
         } 
