@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2021-03-04T11:22:04.266Z</updated>
+  <updated>2021-07-12T07:29:55.433Z</updated>
   <id>/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>近期自我总结</title>
+    <link href="/2021/07/01/%E8%BF%91%E6%9C%9F%E8%87%AA%E6%88%91%E6%80%BB%E7%BB%93/"/>
+    <id>/2021/07/01/近期自我总结/</id>
+    <published>2021-07-01T07:10:02.000Z</published>
+    <updated>2021-07-12T07:29:55.433Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;​    最近自己也摸鱼完一段时间了，总结自己走过来的学安全的日子，难以形容的摸鱼。&lt;/p&gt;
+&lt;p&gt;​    但是 自己也确实该真正去尝试去做点事情了，大学已经成功鬼混一年了，什么都没学会，安全连皮毛都没学进去，于是自己静下心，细想了自己，果然更适合一些创造
+        
+      
+    
+    </summary>
+    
+      <category term="生活" scheme="/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="悦读" scheme="/tags/%E6%82%A6%E8%AF%BB/"/>
+    
+      <category term="随想" scheme="/tags/%E9%9A%8F%E6%83%B3/"/>
+    
+  </entry>
+  
+  <entry>
     <title>web学习笔记——CSRF</title>
     <link href="/2021/02/25/web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94CSRF/"/>
     <id>/2021/02/25/web学习笔记——CSRF/</id>
     <published>2021-02-25T06:22:33.000Z</published>
-    <updated>2021-03-04T11:22:04.266Z</updated>
+    <updated>2021-07-12T07:14:20.083Z</updated>
     
     <summary type="html">
     
@@ -38,9 +67,9 @@
       <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="学习" scheme="/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="CSRF漏洞" scheme="/tags/CSRF%E6%BC%8F%E6%B4%9E/"/>
+    
+      <category term="学习" scheme="/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -49,7 +78,7 @@
     <link href="/2021/02/09/web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94http%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/"/>
     <id>/2021/02/09/web学习笔记——http请求响应/</id>
     <published>2021-02-09T15:21:19.000Z</published>
-    <updated>2021-03-04T11:37:56.457Z</updated>
+    <updated>2021-07-12T07:14:35.715Z</updated>
     
     <summary type="html">
     
@@ -78,7 +107,7 @@
     <link href="/2021/01/29/web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
     <id>/2021/01/29/web学习笔记——文件上传/</id>
     <published>2021-01-29T00:29:22.000Z</published>
-    <updated>2021-03-08T08:21:14.726Z</updated>
+    <updated>2021-07-12T07:14:08.798Z</updated>
     
     <summary type="html">
     
@@ -107,7 +136,7 @@
     <link href="/2021/01/03/web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94SQL%E6%B3%A8%E5%85%A5/"/>
     <id>/2021/01/03/web学习笔记——SQL注入/</id>
     <published>2021-01-03T02:57:32.000Z</published>
-    <updated>2021-03-04T11:23:52.064Z</updated>
+    <updated>2021-07-12T07:14:50.355Z</updated>
     
     <summary type="html">
     
@@ -124,18 +153,18 @@
       <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="SQL注入漏洞" scheme="/tags/SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/"/>
-    
       <category term="学习" scheme="/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="SQL注入漏洞" scheme="/tags/SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/"/>
     
   </entry>
   
   <entry>
     <title>随手写写</title>
-    <link href="/2020/10/31/%E9%9A%8F%E6%89%8B%E5%86%99%E5%86%99/"/>
-    <id>/2020/10/31/随手写写/</id>
-    <published>2020-10-31T07:10:02.000Z</published>
-    <updated>2021-03-04T10:36:36.806Z</updated>
+    <link href="/2020/12/31/%E9%9A%8F%E6%89%8B%E5%86%99%E5%86%99/"/>
+    <id>/2020/12/31/随手写写/</id>
+    <published>2020-12-31T07:10:02.000Z</published>
+    <updated>2021-07-12T07:29:50.570Z</updated>
     
     <summary type="html">
     
@@ -143,7 +172,8 @@
       
         
         
-          &lt;p&gt;写啥呢&lt;/p&gt;
+          &lt;p&gt;刚刚建好不久的空网站，空空的&lt;/p&gt;
+&lt;p&gt;写点啥呢&lt;/p&gt;
 
         
       
@@ -152,6 +182,8 @@
     
       <category term="随想" scheme="/categories/%E9%9A%8F%E6%83%B3/"/>
     
+    
+      <category term="悦读" scheme="/tags/%E6%82%A6%E8%AF%BB/"/>
     
       <category term="随想" scheme="/tags/%E9%9A%8F%E6%83%B3/"/>
     
