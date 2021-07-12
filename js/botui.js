@@ -143,11 +143,11 @@ function bot_ui_ini() {
         fifthpart = function () {
             botui.message.add({
                 delay: 1E3,
-                content: "只要在一个游戏/番剧里，只带走一个老婆，我就是专一的！（确信）"
+                content: "只要在一部作品里，只带走一个老婆，这何尝不是一种专一呢！（确信）"
             }).then(function () {
                 botui.message.add({
                     delay: 1600,
-                    content: "（rua）哼~哼~啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"
+                    content: "嘿嘿~"
                 })
             })
         } 
