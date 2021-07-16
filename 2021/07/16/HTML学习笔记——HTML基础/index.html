@@ -408,8 +408,12 @@
 
  &lt;/body&gt; 
 </code></pre>
-<h2 id="段落标签"><a href="#段落标签" class="headerlink" title="段落标签"></a>段落标签</h2><p>段落标签</p><p></p><p></p>
-<p>换行标签<br></p>
+<h2 id="段落标签"><a href="#段落标签" class="headerlink" title="段落标签"></a>段落标签</h2><p>段落标签</p>
+<pre><code class="html">&lt;p&gt;&lt;/p&gt;
+</code></pre>
+<p>换行标签</p>
+<pre><code class="html">&lt;br/&gt;
+</code></pre>
 <h2 id="文本标签"><a href="#文本标签" class="headerlink" title="文本标签"></a>文本标签</h2><ul>
 <li>（1）粗体标签：<strong>strong</strong>、b</li>
 </ul>
@@ -478,7 +482,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="水平线标签"><a href="#水平线标签" class="headerlink" title="水平线标签"></a>水平线标签</h2><p>是<hr></p>
+<h2 id="水平线标签"><a href="#水平线标签" class="headerlink" title="水平线标签"></a>水平线标签</h2><p>是</p>
+<pre><code class="html">&lt;hr/&gt;
+</code></pre>
 <hr>
 
 
@@ -560,7 +566,7 @@
 <p>（2）行内元素内部可以容纳其他行内元素，但不可以容纳块元素。</p>
 <h2 id="特殊符号"><a href="#特殊符号" class="headerlink" title="特殊符号"></a>特殊符号</h2><p><strong>空格： &amp;nbsp   ;</strong>     敲黑板</p>
 <p>其他随便了解就行  不一定非要代码 可以直接输入。</p>
-<h1 id="HTML列表"><a href="#HTML列表" class="headerlink" title="HTML列表"></a>HTML列表</h1><h2 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h2><p>在HTML中，有序列表中的各个列表项是有顺序的。有序列表从<ol>开始，到</ol>结束。有序列表的列表项是有先后顺序的，一般采用数字或字母作为顺序，默认是采用数字顺序。</p>
+<h1 id="HTML列表"><a href="#HTML列表" class="headerlink" title="HTML列表"></a>HTML列表</h1><h2 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h2><p>在HTML中，有序列表中的各个列表项是有顺序的。<strong>有序列表从 ol 开始，到 /ol 结束</strong>。有序列表的列表项是有先后顺序的，一般采用数字或字母作为顺序，默认是采用数字顺序。</p>
 <pre><code class="html">&lt;ol&gt;  
     &lt;li&gt;列表项&lt;/li&gt;   
     &lt;li&gt;列表项&lt;/li&gt; 
@@ -601,10 +607,12 @@
 </table>
 <p>对于有序列表的列表项符号，等学了CSS之后，我们可以放弃type属性，而使用list-style-type属性。</p>
 <h2 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h2><p>无序列表，很好理解，有序列表的列表项是有一定顺序的，而无序列表的列表项是没有顺序的。默认情况下，无序列表的列表项符号是●，不过可以通过type属性来改变其样式。</p>
-<ul>    <li>列表项</li>    <li>列表项</li>    <li>列表项</li> </ul>
-
-
-
+<pre><code class="html">&lt;ul&gt;  
+    &lt;li&gt;列表项&lt;/li&gt; 
+    &lt;li&gt;列表项&lt;/li&gt;
+    &lt;li&gt;列表项&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
 <p>ul，即unordered list（无序列表）。li，即list（列表项）。</p>
 <p>在无序列表中，type属性取值如下表所示。</p>
 <table>
@@ -652,40 +660,100 @@
 <li><p>（3）单元格：td标签</p>
 </li>
 <li><p>tr，指的是table row（表格行）；td，指的是table data cell（表格单元格）。</p>
-<p>由<table>和</table>表示整个表格的开始和结束，<tr>和</tr>表示行的开始和结束，而<td>和</td>表示单元格的开始和结束。</p>
-<p>在表格中，有多少组“<tr></tr>”，就表示有多少行。</p>
+<p>由<strong>table和/table</strong>表示整个表格的开始和结束，<strong>tr和/tr</strong>表示行的开始和结束，而<strong>td和/td</strong>表示单元格的开始和结束。</p>
+<p>在表格中，有多少组<strong>“tr  /tr”</strong>，就表示有多少行。</p>
 </li>
 </ul>
-<table><br>    <tr><br>        <td>单元格1</td><br>        <td>单元格2</td><br>    </tr><br>    <tr><br>        <td>单元格3</td><br>        <td>单元格4</td><br>    </tr> </table>
-
-
-
+<pre><code class="html">&lt;table&gt;     
+    &lt;tr&gt;        
+        &lt;td&gt;单元格1&lt;/td&gt;     
+        &lt;td&gt;单元格2&lt;/td&gt;   
+    &lt;/tr&gt;   
+    &lt;tr&gt;       
+        &lt;td&gt;单元格3&lt;/td&gt;    
+        &lt;td&gt;单元格4&lt;/td&gt;     
+    &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+<table><br>    <tr><br>        <td>单元格1</td><br>        <td>单元格2</td><br>    </tr><br>    <tr><br>        <td>单元格3</td><br>        <td>单元格4</td><br>    </tr><br></table>
 
 <h2 id="表格标题：caption"><a href="#表格标题：caption" class="headerlink" title="表格标题：caption"></a>表格标题：caption</h2><p>一个表格只能有一个标题，也就是只能有一个caption标签。在默认情况下，标题都是位于整个表格内的第一行。</p>
-<p>如：<table>     <caption>表格标题</caption>。。。。。。。</table></p>
+<p>如：</p>
+<pre><code class="html">&lt;table&gt;     &lt;caption&gt;表格标题&lt;/caption&gt;。。。。。。。&lt;/table&gt;
+</code></pre>
 <h2 id="表头单元格：th"><a href="#表头单元格：th" class="headerlink" title="表头单元格：th"></a>表头单元格：th</h2><p>在HTML中，单元格其实有两种：表头单元格，使用th标签；表行单元格，使用td标签。</p>
 <p>th，指的是table header cell（表头单元格）。td，指的是table data cell（表行单元格）。</p>
 <p>th和td在本质上都是单元格，但是并不代表两者可以互换，两者具有以下两种区别。</p>
 <p>当然，对于表头单元格，可能会使用td来代替th，但是不建议这样做。学习HTML的目的就是，在需要的地方用到正确的标签（也就是语义化）。</p>
-<p>&lt;!DOCTYPE html&gt;</p>
-<html><br>    <head><meta name="generator" content="Hexo 3.9.0"><br>        <meta charset="utf-8"><br>        <title>表头单元格</title><br>        <!--这里使用CSS为表格加上边框--><br>        <style type="text/css"><br>            table,tr,td,th{border:1px solid silver;}<br>        </style><br>    </head><br>    <body><br>        <table><br>            <caption>考试成绩表</caption><br>            <tr><br>                <th>姓名</th><br>                <th>语文</th><br>                <th>英语</th>             <th>数学</th>         </tr>         <tr>             <td>小明</td>             <td>80</td>             <td>80</td>             <td>80</td>         </tr>         <tr>             <td>小红</td>             <td>90</td>             <td>90</td>             <td>90</td>         </tr>         <tr>             <td>小杰</td>             <td>100</td>             <td>100</td>             <td>100</td>         </tr>     </table> </body> </html>
-
-
-
-
+<pre><code class="html">  &lt;body&gt;  
+        &lt;table&gt; 
+            &lt;caption&gt;考试成绩表&lt;/caption&gt;     
+            &lt;tr&gt;            
+                &lt;th&gt;姓名&lt;/th&gt;    
+                &lt;th&gt;语文&lt;/th&gt;      
+                &lt;th&gt;英语&lt;/th&gt;     
+                &lt;th&gt;数学&lt;/th&gt;    
+            &lt;/tr&gt;      
+            &lt;tr&gt;       
+                &lt;td&gt;小明&lt;/td&gt;   
+                &lt;td&gt;80&lt;/td&gt;     
+                &lt;td&gt;80&lt;/td&gt;     
+                &lt;td&gt;80&lt;/td&gt;    
+            &lt;/tr&gt;       
+            &lt;tr&gt;       
+                &lt;td&gt;小红&lt;/td&gt;       
+                &lt;td&gt;90&lt;/td&gt;       
+                &lt;td&gt;90&lt;/td&gt;         
+                &lt;td&gt;90&lt;/td&gt;      
+            &lt;/tr&gt;       
+            &lt;tr&gt;        
+                &lt;td&gt;小杰&lt;/td&gt;      
+                &lt;td&gt;100&lt;/td&gt;     
+                &lt;td&gt;100&lt;/td&gt;     
+                &lt;td&gt;100&lt;/td&gt;       
+            &lt;/tr&gt;    
+        &lt;/table&gt; 
+</code></pre>
 <h2 id="表格语义化"><a href="#表格语义化" class="headerlink" title="表格语义化"></a>表格语义化</h2><p>一个完整的表格包含：table、caption、tr、th、td。为了更深一地对表格进行语义化，HTML引入了thead、tbody和tfoot标签。</p>
 <p>thead、tbody和tfoot把表格划分为3部分：表头、表身、表脚。有了这些标签，表格语义更加良好，结构更加清晰，也更具有可读性和可维护性。</p>
-<table><br>    <caption>表格标题</caption><br>    <!--表头--><br>    <thead><br>        <tr><br>            <th>表头单元格1</th><br>            <th>表头单元格2</th><br>        </tr><br>    </thead><br>    <!--表身--><br>    <tbody><br>        <tr><br>            <td>表行单元格1</td><br>            <td>表行单元格2</td><br>        </tr><br>        <tr><br>        <td>表行单元格3</td><br>            <td>表行单元格4</td><br>        </tr><br>    </tbody><br>    <!--表脚--><br>    <tfoot><br>        <tr><br>            <td>标准单元格5</td><br>            <td>标准单元格6</td><br>        </tr><br>    </tfoot><br></table>
-
-
+<pre><code class="html">&lt;table&gt;  
+    &lt;caption&gt;表格标题&lt;/caption&gt;   
+    &lt;!--表头--&gt;  
+    &lt;thead&gt;    
+        &lt;tr&gt;     
+            &lt;th&gt;表头单元格1&lt;/th&gt;      
+            &lt;th&gt;表头单元格2&lt;/th&gt;     
+        &lt;/tr&gt;    
+    &lt;/thead&gt;   
+    &lt;!--表身--&gt;    
+    &lt;tbody&gt;       
+        &lt;tr&gt;          
+            &lt;td&gt;表行单元格1&lt;/td&gt;   
+            &lt;td&gt;表行单元格2&lt;/td&gt;      
+        &lt;/tr&gt;      
+        &lt;tr&gt;          
+        &lt;td&gt;表行单元格3&lt;/td&gt;        
+            &lt;td&gt;表行单元格4&lt;/td&gt;     
+        &lt;/tr&gt;  
+    &lt;/tbody&gt; 
+    &lt;!--表脚--&gt; 
+    &lt;tfoot&gt;    
+        &lt;tr&gt;         
+            &lt;td&gt;标准单元格5&lt;/td&gt;          
+            &lt;td&gt;标准单元格6&lt;/td&gt;       
+        &lt;/tr&gt;    
+    &lt;/tfoot&gt; 
+&lt;/table&gt;
+</code></pre>
 <p>表脚（tfoot）往往用于统计数据的。对于thead、tbody和tfoot标签，不一定全部都上，例如tfoot就很少用。一般情况下，我们都是根据实际需要来使用这些标签。</p>
 <p>thead、tbody和tfoot标签也是表格中非常重要的标签，它从语义上区分了表头、表身和表脚，很多人容易忽略它们。</p>
 <p><strong>此外，thead、tbody和tfoot除了使得代码更具有语义之外，还有另外一个重要作用：方便分块来控制表格的CSS样式。</strong></p>
 <h2 id="合并行：rowspan"><a href="#合并行：rowspan" class="headerlink" title="合并行：rowspan"></a>合并行：rowspan</h2><p>在设计表格时，有时我们需要将“横向的N个单元格”或者“纵向的N个单元格”合并成一个单元格（类似word的表格合并），这个时候就需要用到“合并行”或“合并列”。这一节，我们先来介绍一下合并行。</p>
 <p>在HTML中，我们可以使用rowspan属性来合并行。所谓的合并行，指的是将“纵向的N个单元格”合并。</p>
-<p>语法：<td rowspan="跨越的行数"></td></p>
-  <table><br>      <tr><br><br><br><code>html
-&lt;table&gt;
+<p>语法：</p>
+<pre><code class="html">&lt;td rowspan = &quot;跨越的行数&quot;&gt;&lt;/td&gt;
+</code></pre>
+<pre><code class="html">&lt;table&gt;
   &lt;tr&gt;
      &lt;td&gt;姓名:&lt;/td&gt;    
      &lt;td&gt;小明&lt;/td&gt; 
@@ -697,9 +765,26 @@
   &lt;tr&gt;           
       &lt;td&gt;香蕉&lt;/td&gt;     
   &lt;/tr&gt;   
-&lt;/table&gt;</code><br><br><br><br><br>## 合并列：colspan<br><br>在HTML中，我们可以使用colspan属性来合并列。所谓的合并列，指的是将“横向的N个单元格”合并。<br><br> 语法<td colspan="跨越的列数"></td><br><br><table><br>    <tr><br>        <td colspan="2">前端开发</td><br>    </tr><br>    <tr><br>        <td>HTML</td><br>        <td>CSS</td><br>        </tr><br>    <tr><br>        <td>JavaScript</td><br>        <td>jQuery</td><br>    </tr><br></table>
-
-
+&lt;/table&gt;
+</code></pre>
+<h2 id="合并列：colspan"><a href="#合并列：colspan" class="headerlink" title="合并列：colspan"></a>合并列：colspan</h2><p>在HTML中，我们可以使用colspan属性来合并列。所谓的合并列，指的是将“横向的N个单元格”合并。</p>
+<p> 语法</p>
+<pre><code class="html">&lt;td colspan = &quot;跨越的列数&quot;&gt;&lt;/td&gt;
+</code></pre>
+<pre><code class="html">&lt;table&gt;       
+    &lt;tr&gt;          
+        &lt;td colspan=&quot;2&quot;&gt;前端开发&lt;/td&gt;  
+    &lt;/tr&gt;      
+    &lt;tr&gt;         
+        &lt;td&gt;HTML&lt;/td&gt;        
+        &lt;td&gt;CSS&lt;/td&gt;    
+        &lt;/tr&gt;    
+    &lt;tr&gt;     
+        &lt;td&gt;JavaScript&lt;/td&gt;    
+        &lt;td&gt;jQuery&lt;/td&gt;     
+    &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
 <p>​    </p>
 <h1 id="HTML图片"><a href="#HTML图片" class="headerlink" title="HTML图片"></a>HTML图片</h1><h2 id="图片标签"><a href="#图片标签" class="headerlink" title="图片标签"></a>图片标签</h2><p>任何网页都少不了图片，一个图文并茂的页面，可以使得用户体验更好。如果想让网站获得更多的流量，也需要从“图文并茂”这个角度挖掘一下。</p>
 <p>在HTML中，我们可以使用img标签来显示一张图片。对于img标签，只需要掌握它的3个属性：src、alt和title。</p>
@@ -1166,7 +1251,7 @@
 &lt;/body&gt;
 </code></pre>
 <p>还有什么frameset、frame标签，事实上这几个标签在HTML5标准中已经被废弃了。对于框架，我们只需要掌握iframe这一个标签就可以了。    </p>
-</tr></table>
+
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
