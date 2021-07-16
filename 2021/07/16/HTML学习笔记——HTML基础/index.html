@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">HTML学习笔记——HTML基础 | NanIvy</title>
+  
+    <link rel="shortcut icon" href="/ico/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "ロリが好きなのNanIvy";
+  mashiro_option.author_name = "NanIvy";
+  mashiro_option.site_url = "https://github.com/0NanIvy0";
+  mashiro_option.v_appId = "A4UqsWsXYTvl3ILey3Nis8hs-gzGzoHsz";
+  mashiro_option.v_appKey = "s2r99t5u9k6DkKd3O6JbRauV";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/070921020824_789484946.jpg,https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/070921020824_989645004.jpg".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+</head>
+</html>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dim">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://github.com/0NanIvy0">
+          <img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/ico/tx.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>淡淡无名，月下起舞。</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="https://github.com/0NanIvy0" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/ico/120.jpg">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://space.bilibili.com/21128145" target="_blank" class="social-github" title="bilibili">
+                    <img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/ico/3.jpg">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://user.qzone.qq.com/1356775082/infocenter" target="_blank" class="social-github" title="QQ=1356775082">
+                    <img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/ico/link.jpg">
+                  </a>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">ロリが好きなの</span>
+            <span class="shironeko">NanIvy</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/技术/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/生活/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/随想/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          随想
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/悦读/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          书单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/">
+                          <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                          主题
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/lab/">
+                          <i class="fa fa-cogs" aria-hidden="true"></i>
+                          Lab
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/91057442_0.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/91057442_0.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      HTML学习笔记——HTML基础</h1>
+      <p class="entry-census">
+        <span>
+          <a href="https://nanivy.space/">
+            <img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.1/qq_pic_merged_1602861906220.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="https://nanivy.space/">NanIvy</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2021-7-16<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="HTML基本标签"><a href="#HTML基本标签" class="headerlink" title="HTML基本标签"></a>HTML基本标签</h1><h2 id="head标签"><a href="#head标签" class="headerlink" title="head标签"></a>head标签</h2><p>在HTML中，一般来说，只有6个标签能放在head标签内。</p>
+<h3 id="①title标签"><a href="#①title标签" class="headerlink" title="①title标签"></a>①title标签</h3><p>​    在HTML中，title标签唯一的作用就是定义网页的标题。</p>
+<h3 id="②meta标签"><a href="#②meta标签" class="headerlink" title="②meta标签"></a>②meta标签</h3><p>关键词，给搜索引擎。</p>
+<p>在HTML中，meta标签有两个重要的属性：<strong>name</strong>和<strong>http-equiv。</strong></p>
+<h4 id="name属性"><a href="#name属性" class="headerlink" title="name属性"></a><strong>name属性</strong></h4><table>
+<thead>
+<tr>
+<th style="text-align:left">属性值</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">keywords</td>
+<td style="text-align:left">网页的关键字，可以是多个，而不仅仅是一个</td>
+</tr>
+<tr>
+<td style="text-align:left">description</td>
+<td style="text-align:left">网页的描述</td>
+</tr>
+<tr>
+<td style="text-align:left">author</td>
+<td style="text-align:left">author</td>
+</tr>
+<tr>
+<td style="text-align:left">copyright</td>
+<td style="text-align:left">版权信息</td>
+</tr>
+</tbody>
+</table>
+<p> <meta name="keywords" content="kw1，kw2，kw3">     <!--网页描述-->   </p>
+<meta name="description" content="xxx是最好的语言">
+
+<p>重点记住keywords，description。</p>
+<h4 id="http-equiv属性"><a href="#http-equiv属性" class="headerlink" title="http-equiv属性"></a><strong>http-equiv属性</strong></h4><p>在HTML中，meta标签的http-equiv属性只有两个重要作用：定义网页所使用的编码；定义网页自动刷新跳转。</p>
+<p><strong>（1）定义网页所使用的编码</strong></p>
+<p>语法：</p>
+<pre><code class="html">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;/&gt;
+</code></pre>
+<p>说明：</p>
+<p>这段代码告诉浏览器该页面所使用的编码是utf-8。不过在HTML5标准中，上面这句代码可以简写为：</p>
+<pre><code class="html">&lt;meta charset=&quot;utf-8&quot; /&gt;
+</code></pre>
+<p>如果你发现页面打开是乱码，很可能就是没有加上这一句代码。在实际开发中，为了确保不出现乱码，我们必须要在每一个页面中加上。</p>
+<p><strong>（2）定义网页自动刷新跳转</strong></p>
+<p>语法：</p>
+<pre><code class="html">&lt;meta  http-equiv=&quot;refresh&quot; content=&quot;6;url=http://www.baidu.com&quot;/&gt;
+</code></pre>
+<p>说明：</p>
+<p>这段代码表示当前页面在6秒后会自动跳转到<a href="http://www.baidu.com这个页面。实际上，很多“小广告”网站就是用这个来实现页面定时跳转的。" target="_blank" rel="noopener">http://www.baidu.com这个页面。实际上，很多“小广告”网站就是用这个来实现页面定时跳转的。</a></p>
+<h3 id="③link标签"><a href="#③link标签" class="headerlink" title="③link标签"></a>③link标签</h3><p>在HTML中，link标签用于引入外部样式文件（CSS文件）。这也是属于CSS部分的内容，这里不需要深究。</p>
+<h3 id="④style标签"><a href="#④style标签" class="headerlink" title="④style标签"></a>④style标签</h3><p>在HTML中，style标签用于定义元素的CSS样式，在HTML中不需要深入研究。</p>
+<h3 id="⑤script标签"><a href="#⑤script标签" class="headerlink" title="⑤script标签"></a>⑤script标签</h3><p>在HTML中，script标签用于定义页面的JavaScript代码，也可以引入外部JavaScript文件。在JavaScript部分详细学习，这里不需要深究。</p>
+<h3 id="⑥base标签"><a href="#⑥base标签" class="headerlink" title="⑥base标签"></a>⑥base标签</h3><p>这个标签一点意义都没有，可以直接忽略，知道有这么一个标签就行了。</p>
+<h1 id="HTML文本"><a href="#HTML文本" class="headerlink" title="HTML文本"></a>HTML文本</h1><h2 id="标签标题"><a href="#标签标题" class="headerlink" title="标签标题"></a>标签标题</h2><p>h1~6</p>
+<p>这里要注意一下，一个页面一般只能有一个h1标签，而h2到h6标签可以有多个。其中，h1表示的是这个页面的大标题。</p>
+<pre><code class="html"> &lt;body&gt;   
+
+&lt;h1&gt;这是一级标题&lt;/h1&gt;  
+&lt;h2&gt;这是二级标题&lt;/h2&gt;    
+&lt;h3&gt;这是三级标题&lt;/h3&gt;   
+&lt;h4&gt;这是四级标题&lt;/h4&gt;     
+&lt;h5&gt;这是五级标题&lt;/h5&gt;    
+&lt;h6&gt;这是六级标题&lt;/h6&gt;
+
+ &lt;/body&gt; 
+</code></pre>
+<h2 id="段落标签"><a href="#段落标签" class="headerlink" title="段落标签"></a>段落标签</h2><p>段落标签</p><p></p><p></p>
+<p>换行标签<br></p>
+<h2 id="文本标签"><a href="#文本标签" class="headerlink" title="文本标签"></a>文本标签</h2><ul>
+<li>（1）粗体标签：<strong>strong</strong>、b</li>
+</ul>
+<p>  strong标签和b标签的加粗效果是一样的。不过在实际开发中，如果想要对文本实现加粗效果，尽量使用strong标签，而不要使用b标签。这是因为strong标签比b标签更具有语义性。</p>
+<ul>
+<li>（2）斜体标签：i、<strong>em</strong>、cite</li>
+</ul>
+<p>在实际开发中，如果想要实现文本的斜体效果，尽量使用em标签，而不是i标签或cite标签。这也是因为em标签比其他两个标签的语义性更好。</p>
+<ul>
+<li>（3）上标标签：sup</li>
+</ul>
+<p>如果你想要将某个数字或某些文字变成上标效果，只要把这个数字或文字放在标签内就可以了。</p>
+<pre><code class="html"> 如：&lt;p&gt;(a+b)&lt;sup&gt;2&lt;/sup&gt;=a&lt;sup&gt;2&lt;/sup&gt;+b&lt;sup&gt;2&lt;/sup&gt;+2ab&lt;/p&gt;
+</code></pre>
+<ul>
+<li>（4）下标标签：sub</li>
+</ul>
+<p>同理。</p>
+<ul>
+<li>（5）中划线标签：s</li>
+</ul>
+<p>  中划线效果一般用于显示那些不正确或者不相关的内容，常用于商品促销的标价中。大家在电商网站购物时肯定经常见到这种效果。</p>
+<p>  不过等学了CSS之后，对于删除线效果，一般用CSS来实现，几乎不会用s标签来实现。</p>
+<pre><code class="html">    &lt;p&gt;&lt;s&gt;原价:￥6.50/kg&lt;/s&gt;&lt;/p&gt;
+</code></pre>
+<ul>
+<li>（6）下划线标签：u</li>
+</ul>
+<p>等学了CSS之后，对于下划线效果，一般用CSS来实现，几乎不会用u标签来实现。</p>
+<pre><code class="html">  &lt;p&gt;&lt;u&gt;啊啊啊&lt;/u&gt;Web技术学习&lt;/p&gt;
+</code></pre>
+<ul>
+<li><p>（7）大字号标签：big</p>
+</li>
+<li><p>（8）小字号标签：small</p>
+</li>
+</ul>
+<h5 id="重要的文本标签"><a href="#重要的文本标签" class="headerlink" title="重要的文本标签"></a>重要的文本标签</h5><table>
+<thead>
+<tr>
+<th style="text-align:left">标签</th>
+<th style="text-align:left">语义</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">strong</td>
+<td style="text-align:left">strong（强调）</td>
+<td style="text-align:left">粗体</td>
+</tr>
+<tr>
+<td style="text-align:left">em</td>
+<td style="text-align:left">emphasized（强调）</td>
+<td style="text-align:left">斜体</td>
+</tr>
+<tr>
+<td style="text-align:left">sup</td>
+<td style="text-align:left">superscripted（上标）</td>
+<td style="text-align:left">上标</td>
+</tr>
+<tr>
+<td style="text-align:left">sub</td>
+<td style="text-align:left">subscripted（下标）</td>
+<td style="text-align:left">下标</td>
+</tr>
+</tbody>
+</table>
+<h2 id="水平线标签"><a href="#水平线标签" class="headerlink" title="水平线标签"></a>水平线标签</h2><p>是<hr></p>
+<hr>
+
+
+
+<h2 id="div标签"><a href="#div标签" class="headerlink" title="div标签"></a>div标签</h2><p>在HTML中，我们可以使用“div标签”来划分HTML结构，从而配合CSS来整体控制某一块的样式。div标签最重要的用途是划分区域，然后结合CSS针对该区域进行样式控制，这一点我们学了CSS才会知道。</p>
+<h2 id="块元素和行内元素"><a href="#块元素和行内元素" class="headerlink" title="块元素和行内元素"></a>块元素和行内元素</h2><p>标签，也叫“元素”，例如p标签又叫p元素。叫法不同，意思相同。</p>
+<p>在HTML中，根据元素的表现形式，一般可以分为两类（暂时不考虑inline-block）。</p>
+<ul>
+<li><strong>（1）块元素（block）</strong></li>
+</ul>
+<p>在HTML中，块元素在浏览器显示状态下将占据整一行，并且排斥其他元素与其位于同一行。此外，一般情况下，块元素内部可以容纳其他块元素和行内元素。(非全部)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">块元素</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">h1~h6</td>
+<td style="text-align:left">标题元素</td>
+</tr>
+<tr>
+<td style="text-align:left">p</td>
+<td style="text-align:left">段落元素</td>
+</tr>
+<tr>
+<td style="text-align:left">div</td>
+<td style="text-align:left">div元素</td>
+</tr>
+<tr>
+<td style="text-align:left">hr</td>
+<td style="text-align:left">水平线</td>
+</tr>
+<tr>
+<td style="text-align:left">ol</td>
+<td style="text-align:left">有序列表</td>
+</tr>
+<tr>
+<td style="text-align:left">ul</td>
+<td style="text-align:left">无序列表</td>
+</tr>
+</tbody>
+</table>
+<p>（1）块元素独占一行，排斥其他元素（包括块元素和行内元素）与其位于同一行。</p>
+<p>（2）块元素内部可以容纳其他块元素和行内元素。</p>
+<ul>
+<li><strong>（2）行内元素（inline）</strong></li>
+</ul>
+<p>在HTML中，行内元素跟块元素恰恰相反，行内元素是可以与其他行内元素位于同一行的。此外，行内元素内部（标签内部）只可以容纳其他行内元素，不可以容纳块元素。(常见)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">行内元素</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">strong</td>
+<td style="text-align:left">粗体元素</td>
+</tr>
+<tr>
+<td style="text-align:left">em</td>
+<td style="text-align:left">斜体元素</td>
+</tr>
+<tr>
+<td style="text-align:left">a</td>
+<td style="text-align:left">超链接</td>
+</tr>
+<tr>
+<td style="text-align:left">span</td>
+<td style="text-align:left">常用行内元素，结合CSS定义样式</td>
+</tr>
+</tbody>
+</table>
+<p>（1）行内元素可以与其他行内元素位于同一行。</p>
+<p>（2）行内元素内部可以容纳其他行内元素，但不可以容纳块元素。</p>
+<h2 id="特殊符号"><a href="#特殊符号" class="headerlink" title="特殊符号"></a>特殊符号</h2><p><strong>空格： &amp;nbsp   ;</strong>     敲黑板</p>
+<p>其他随便了解就行  不一定非要代码 可以直接输入。</p>
+<h1 id="HTML列表"><a href="#HTML列表" class="headerlink" title="HTML列表"></a>HTML列表</h1><h2 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h2><p>在HTML中，有序列表中的各个列表项是有顺序的。有序列表从<ol>开始，到</ol>结束。有序列表的列表项是有先后顺序的，一般采用数字或字母作为顺序，默认是采用数字顺序。</p>
+<pre><code class="html">&lt;ol&gt;  
+    &lt;li&gt;列表项&lt;/li&gt;   
+    &lt;li&gt;列表项&lt;/li&gt; 
+    &lt;li&gt;列表项&lt;/li&gt;
+&lt;/ol&gt;
+</code></pre>
+<p>ol，即ordered list（有序列表）；li，即list（列表项）。</p>
+<p>在HTML中，我们可以使用type属性来改变列表项符号。默认情况下，有序列表使用数字作为列表项符号。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性值</th>
+<th style="text-align:left">列表项符号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">阿拉伯数字：1、2、3……</td>
+</tr>
+<tr>
+<td style="text-align:left">a</td>
+<td style="text-align:left">小写英文字母：a、b、c……</td>
+</tr>
+<tr>
+<td style="text-align:left">A</td>
+<td style="text-align:left">大写英文字母：A、B、C……</td>
+</tr>
+<tr>
+<td style="text-align:left">i</td>
+<td style="text-align:left">小写罗马数字：i、ii、iii……</td>
+</tr>
+<tr>
+<td style="text-align:left">I</td>
+<td style="text-align:left">大写罗马数字：I、II、III……</td>
+</tr>
+</tbody>
+</table>
+<p>对于有序列表的列表项符号，等学了CSS之后，我们可以放弃type属性，而使用list-style-type属性。</p>
+<h2 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h2><p>无序列表，很好理解，有序列表的列表项是有一定顺序的，而无序列表的列表项是没有顺序的。默认情况下，无序列表的列表项符号是●，不过可以通过type属性来改变其样式。</p>
+<ul>    <li>列表项</li>    <li>列表项</li>    <li>列表项</li> </ul>
+
+
+
+<p>ul，即unordered list（无序列表）。li，即list（列表项）。</p>
+<p>在无序列表中，type属性取值如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性值</th>
+<th style="text-align:left">列表项符号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">disc</td>
+<td style="text-align:left">实心圆●（默认值）</td>
+</tr>
+<tr>
+<td style="text-align:left">circle</td>
+<td style="text-align:left">空心圆○</td>
+</tr>
+<tr>
+<td style="text-align:left">square</td>
+<td style="text-align:left">正方形■</td>
+</tr>
+</tbody>
+</table>
+<p>跟有序列表一样，对于无序列表的列表项符号，等学了CSS之后，可以放弃type属性，而使用list-style-type属性。</p>
+<p>此外，对于无序列表来说，还有以下两点要注意：</p>
+<ul>
+<li>（1）ul元素的子元素只能是li，不能是其他元素。</li>
+<li>（2）ul元素内部的文本，只能在li元素内部添加，不能在li元素外部添加。</li>
+</ul>
+<h2 id="定义列表"><a href="#定义列表" class="headerlink" title="定义列表"></a>定义列表</h2><p>在HTML中，定义列表由两部分组成：名词和描述。</p>
+<pre><code class="html">&lt;dl&gt;  
+    &lt;dt&gt;名词&lt;/dt&gt;    
+    &lt;dd&gt;描述&lt;/dd&gt;  
+    …… &lt;/dl&gt;
+</code></pre>
+<p>dl即definition list（定义列表）；dt即definition term（定义名词）；而dd即definition description（定义描述）。</p>
+<p>在实际开发中，定义列表虽然用得比较少，但是在某些高级效果（如自定义表单）中也会用到。在HTML入门阶段，了解一下就行。</p>
+<h1 id="HTML表格"><a href="#HTML表格" class="headerlink" title="HTML表格"></a>HTML表格</h1><h2 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h2><p>在HTML中，一个表格一般会由以下3个部分组成。</p>
+<ul>
+<li><p>（1）表格：table标签</p>
+</li>
+<li><p>（2）行：tr标签</p>
+</li>
+<li><p>（3）单元格：td标签</p>
+</li>
+<li><p>tr，指的是table row（表格行）；td，指的是table data cell（表格单元格）。</p>
+<p>由<table>和</table>表示整个表格的开始和结束，<tr>和</tr>表示行的开始和结束，而<td>和</td>表示单元格的开始和结束。</p>
+<p>在表格中，有多少组“<tr></tr>”，就表示有多少行。</p>
+</li>
+</ul>
+<table><br>    <tr><br>        <td>单元格1</td><br>        <td>单元格2</td><br>    </tr><br>    <tr><br>        <td>单元格3</td><br>        <td>单元格4</td><br>    </tr> </table>
+
+
+
+
+<h2 id="表格标题：caption"><a href="#表格标题：caption" class="headerlink" title="表格标题：caption"></a>表格标题：caption</h2><p>一个表格只能有一个标题，也就是只能有一个caption标签。在默认情况下，标题都是位于整个表格内的第一行。</p>
+<p>如：<table>     <caption>表格标题</caption>。。。。。。。</table></p>
+<h2 id="表头单元格：th"><a href="#表头单元格：th" class="headerlink" title="表头单元格：th"></a>表头单元格：th</h2><p>在HTML中，单元格其实有两种：表头单元格，使用th标签；表行单元格，使用td标签。</p>
+<p>th，指的是table header cell（表头单元格）。td，指的是table data cell（表行单元格）。</p>
+<p>th和td在本质上都是单元格，但是并不代表两者可以互换，两者具有以下两种区别。</p>
+<p>当然，对于表头单元格，可能会使用td来代替th，但是不建议这样做。学习HTML的目的就是，在需要的地方用到正确的标签（也就是语义化）。</p>
+<p>&lt;!DOCTYPE html&gt;</p>
+<html><br>    <head><meta name="generator" content="Hexo 3.9.0"><br>        <meta charset="utf-8"><br>        <title>表头单元格</title><br>        <!--这里使用CSS为表格加上边框--><br>        <style type="text/css"><br>            table,tr,td,th{border:1px solid silver;}<br>        </style><br>    </head><br>    <body><br>        <table><br>            <caption>考试成绩表</caption><br>            <tr><br>                <th>姓名</th><br>                <th>语文</th><br>                <th>英语</th>             <th>数学</th>         </tr>         <tr>             <td>小明</td>             <td>80</td>             <td>80</td>             <td>80</td>         </tr>         <tr>             <td>小红</td>             <td>90</td>             <td>90</td>             <td>90</td>         </tr>         <tr>             <td>小杰</td>             <td>100</td>             <td>100</td>             <td>100</td>         </tr>     </table> </body> </html>
+
+
+
+
+<h2 id="表格语义化"><a href="#表格语义化" class="headerlink" title="表格语义化"></a>表格语义化</h2><p>一个完整的表格包含：table、caption、tr、th、td。为了更深一地对表格进行语义化，HTML引入了thead、tbody和tfoot标签。</p>
+<p>thead、tbody和tfoot把表格划分为3部分：表头、表身、表脚。有了这些标签，表格语义更加良好，结构更加清晰，也更具有可读性和可维护性。</p>
+<table><br>    <caption>表格标题</caption><br>    <!--表头--><br>    <thead><br>        <tr><br>            <th>表头单元格1</th><br>            <th>表头单元格2</th><br>        </tr><br>    </thead><br>    <!--表身--><br>    <tbody><br>        <tr><br>            <td>表行单元格1</td><br>            <td>表行单元格2</td><br>        </tr><br>        <tr><br>        <td>表行单元格3</td><br>            <td>表行单元格4</td><br>        </tr><br>    </tbody><br>    <!--表脚--><br>    <tfoot><br>        <tr><br>            <td>标准单元格5</td><br>            <td>标准单元格6</td><br>        </tr><br>    </tfoot><br></table>
+
+
+<p>表脚（tfoot）往往用于统计数据的。对于thead、tbody和tfoot标签，不一定全部都上，例如tfoot就很少用。一般情况下，我们都是根据实际需要来使用这些标签。</p>
+<p>thead、tbody和tfoot标签也是表格中非常重要的标签，它从语义上区分了表头、表身和表脚，很多人容易忽略它们。</p>
+<p><strong>此外，thead、tbody和tfoot除了使得代码更具有语义之外，还有另外一个重要作用：方便分块来控制表格的CSS样式。</strong></p>
+<h2 id="合并行：rowspan"><a href="#合并行：rowspan" class="headerlink" title="合并行：rowspan"></a>合并行：rowspan</h2><p>在设计表格时，有时我们需要将“横向的N个单元格”或者“纵向的N个单元格”合并成一个单元格（类似word的表格合并），这个时候就需要用到“合并行”或“合并列”。这一节，我们先来介绍一下合并行。</p>
+<p>在HTML中，我们可以使用rowspan属性来合并行。所谓的合并行，指的是将“纵向的N个单元格”合并。</p>
+<p>语法：<td rowspan="跨越的行数"></td></p>
+  <table><br>      <tr><br><br><br><code>html
+&lt;table&gt;
+  &lt;tr&gt;
+     &lt;td&gt;姓名:&lt;/td&gt;    
+     &lt;td&gt;小明&lt;/td&gt; 
+  &lt;/tr&gt;     
+  &lt;tr&gt;      
+      &lt;td rowspan=&quot;2&quot;&gt;喜欢水果:&lt;/td&gt;   
+      &lt;td&gt;苹果&lt;/td&gt;
+  &lt;/tr&gt;      
+  &lt;tr&gt;           
+      &lt;td&gt;香蕉&lt;/td&gt;     
+  &lt;/tr&gt;   
+&lt;/table&gt;</code><br><br><br><br><br>## 合并列：colspan<br><br>在HTML中，我们可以使用colspan属性来合并列。所谓的合并列，指的是将“横向的N个单元格”合并。<br><br> 语法<td colspan="跨越的列数"></td><br><br><table><br>    <tr><br>        <td colspan="2">前端开发</td><br>    </tr><br>    <tr><br>        <td>HTML</td><br>        <td>CSS</td><br>        </tr><br>    <tr><br>        <td>JavaScript</td><br>        <td>jQuery</td><br>    </tr><br></table>
+
+
+<p>​    </p>
+<h1 id="HTML图片"><a href="#HTML图片" class="headerlink" title="HTML图片"></a>HTML图片</h1><h2 id="图片标签"><a href="#图片标签" class="headerlink" title="图片标签"></a>图片标签</h2><p>任何网页都少不了图片，一个图文并茂的页面，可以使得用户体验更好。如果想让网站获得更多的流量，也需要从“图文并茂”这个角度挖掘一下。</p>
+<p>在HTML中，我们可以使用img标签来显示一张图片。对于img标签，只需要掌握它的3个属性：src、alt和title。</p>
+<p>语法</p>
+<pre><code class="html">&lt;img src=&quot;&quot; alt=&quot;&quot; title=&quot;&quot; /&gt;
+</code></pre>
+<h2 id="src属性"><a href="#src属性" class="headerlink" title="src属性"></a>src属性</h2><p>src用于指定这个图片所在的路径，这个路径可以是相对路径，也可以是绝对路径。</p>
+<p>任何一个图片必须指定src属性才可以显示。也就是说，src是img标签必不可少的属性。</p>
+<h2 id="alt属性和title属性"><a href="#alt属性和title属性" class="headerlink" title="alt属性和title属性"></a>alt属性和title属性</h2><p>alt和title都是用于指定图片的提示文字。一般情况下，alt和title的值是相同的。不过两者也有很大的不同。</p>
+<h3 id="alt："><a href="#alt：" class="headerlink" title="alt："></a>alt：</h3><p>&lt;!DOCTYPE html&gt;  <html> <head><meta name="generator" content="Hexo 3.9.0">    <meta charset="utf-8">    <title></title> </head> <body>    <img src="img/xxx.png" alt="例子1"> </body> </html></p>
+<p>实际上，当我们把“img/xxx.png”去掉（也就是图片无法显示）后，此时可以看到浏览器会显示alt的提示文字，如下图所示。如果没有加上alt属性值，图片不显示时，就不会有提示文字。</p>
+<h3 id="title："><a href="#title：" class="headerlink" title="title："></a>title：</h3><p>当我们把鼠标移到图片上时，就会显示title中的提示文字，如下所示。</p>
+<p>&lt;!DOCTYPE html&gt;  <html> <head><meta name="generator" content="Hexo 3.9.0">    <meta charset="utf-8">    <title></title> </head> <body>    <img src="img/xxx.png" title="例子2"> </body> </html></p>
+<p><strong>在实际开发中，对于img标签，src和alt这两个是必选属性，一定要添加；而title是可选属性，可加可不加。</strong></p>
+<p><strong>alt属性的内容是提供给搜索引擎看的，title属性的内容是提供给用户看的</strong></p>
+<h2 id="图片路径"><a href="#图片路径" class="headerlink" title="图片路径"></a>图片路径</h2><p>相对路径：<img src="../../xxx.png"></p>
+<p>绝对路径：<img src="D:/website/img/haizei.png"></p>
+<p><strong>在实际开发中，站内文件不管是图片还是超链接等,都是使用相对路径，几乎不会使用绝对路径。</strong></p>
+<p><strong>这是因为如果采用绝对路径，网站文件一旦移动，则所有的路径都可能会失效。因此，只需要掌握相对路径，而绝对路径了解一下就行。</strong></p>
+<h2 id="图片格式"><a href="#图片格式" class="headerlink" title="图片格式"></a>图片格式</h2><p>在网页中，图片格式有两种：一种是“位图”；另外一种是“矢量图”。</p>
+<h3 id="位图"><a href="#位图" class="headerlink" title="位图"></a>位图</h3><p>位图，又叫做“像素图”，它是由像素点组成的图片。对于位图来说，放大图片后，图片会失真；缩小图片后，图片同样也会失真。</p>
+<p>在实际开发中，最常见位图的图片格式有3种（可以从图片后缀名看出来）：<strong>jpg（或jpeg）、png、gif</strong>。深入理解3种图片适合在哪种情况下使用，在前端开发中是非常重要的。</p>
+<ul>
+<li>（1）<strong>jpg</strong>可以很好地处理大面积色调的图片，适合存储颜色丰富的复杂图片，如照片、高清图片等。此外，jpg体积较大，并且不支持透明。</li>
+<li>（2）<strong>png</strong>是一种无损格式，可以无损压缩以保证页面打开速度。此外，png体积较小，并且支持透明，不过不适合存储颜色丰富的图片。</li>
+<li>（3）<strong>gif</strong>图片效果最差，不过它适合制作动画。实际上，小伙伴们经常在QQ或微信上发的动图都是gif格式的。</li>
+</ul>
+<p>这里来总结一下：如果想要展示色彩丰富而高品质图片，可以使用jpg格式；如果是一般图片，为了减少体积或者想要透明效果，可以使用png格式；如果是动画图片，可以使用gif格式。</p>
+<h3 id="矢量图"><a href="#矢量图" class="headerlink" title="矢量图"></a>矢量图</h3><p>矢量图，又叫做“向量图”，它是用计算机图形学中点、直线或多边形等表示出来的几何图像。</p>
+<p>矢量图是以一种数学描述的方式来记录内容的图片格式。举个例子，可以使用y=kx来绘制一条直线，当k取不同值时就会绘制不同角度的直线，这就是矢量图的构图原理。</p>
+<p>矢量图最大的优点是：图片无论放大、缩小或旋转等都不会失真。最大的缺点是：难以表现色彩丰富的图片效果（非常差）。</p>
+<p>矢量图常见格式有：“.ai”、“.cdf”、“.fh”、“.swf”。其中“.swf”格式比较常见，它指的是Flash动画，其他几种格式的矢量图比较少见，可以忽略。对于矢量图，我们可以使用illustrator或者CorelDRAW这两款软件来处理。</p>
+<p>在网页中，很少用到矢量图，除非是一些字体图标（iconfont）。不过作为初学者，只需简单了解一下即可。</p>
+<p>对于位图和矢量图的区别，我们总结有以下4点。</p>
+<ul>
+<li><strong>（1）位图适用于展示色彩丰富的图片，而矢量图不适用于展示色彩丰富的图片。</strong></li>
+<li><strong>（2）位图组成单位是“像素”，而矢量图组成单位是“数学向量”。</strong></li>
+<li><strong>（3）位图受分辨率影响，当图片放大时会失真；而矢量图不受分辨率影响，当图片放大时不会失真。</strong></li>
+<li><strong>（4）网页中的图片绝大多数都是位图，而不是矢量图。</strong></li>
+</ul>
+<h1 id="HTML超链接"><a href="#HTML超链接" class="headerlink" title="HTML超链接"></a>HTML超链接</h1><h2 id="a标签"><a href="#a标签" class="headerlink" title="a标签"></a>a标签</h2><p>语法：</p>
+<pre><code class="html">&lt;a href=&quot;链接地址&quot;&gt;文本或图片&lt;/a&gt;
+</code></pre>
+<p>href表示你想要跳转到那个页面的路径（也就是地址），可以是相对路径，也可以是绝对路径。</p>
+<p>超链接的范围非常广，可以将文本设置为超链接，这个叫做“文本超链接”。也可以将图片设置为超链接，这个叫做“图片超链接”。</p>
+<p><strong>target属性</strong></p>
+<p>默认情况下，超链接都是在当前浏览器窗口打开新页面的。在HTML中，我们可以使用target属性来定义超链接打开窗口的方式。</p>
+<p>语法：</p>
+<pre><code class="html">&lt;a href=&quot;链接地址&quot; target=&quot;打开方式&quot;&gt;&lt;/a&gt;
+</code></pre>
+<p>a标签的target属性取值有4种，如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性值</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">_self</td>
+<td style="text-align:left">默认值，在原来窗口打开链接</td>
+</tr>
+<tr>
+<td style="text-align:left">_blank</td>
+<td style="text-align:left">在新窗口打开链接</td>
+</tr>
+<tr>
+<td style="text-align:left">_parent</td>
+<td style="text-align:left">在父窗口打开链接</td>
+</tr>
+<tr>
+<td style="text-align:left">_top</td>
+<td style="text-align:left">在顶层窗口打开超链接</td>
+</tr>
+</tbody>
+</table>
+<p><strong>一般情况下，只会用到_blank这一个值，也只要记住这一个就够了，</strong>其他三个值不需要去深究。默认的self，可加可不加。</p>
+<h2 id="锚点链接"><a href="#锚点链接" class="headerlink" title="锚点链接"></a>锚点链接</h2><p>有些页面内容比较多，导致页面过长，此时用户需要不停拖动浏览器上的滚动条才可以看到下面的内容。为了方便用户操作，可以使用锚点链接来优化用户体验。</p>
+<p>在HTML中，锚点链接其实是内部链接的一种，它链接地址（也就是href）指向的是当前页面的某个部分。所谓的锚点链接，简单来说，就是点击某一个超链接，然后它就会跳到当前页面的某一部分。</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div&gt;
+        &lt;a href=&quot;#article&quot;&gt;推荐文章&lt;/a&gt;&lt;br /&gt;
+        &lt;a href=&quot;#music&quot;&gt;推荐音乐&lt;/a&gt;&lt;br /&gt;
+        &lt;a href=&quot;#movie&quot;&gt;推荐电影&lt;/a&gt;&lt;br /&gt;
+    &lt;/div&gt;
+    ……&lt;br /&gt;
+    ……&lt;br /&gt;
+    ……&lt;br /&gt;
+    ……&lt;br /&gt;
+    ……&lt;br /&gt;
+    ……&lt;br /&gt;
+    ……&lt;br /&gt;
+    ……&lt;br /&gt;
+    &lt;div id=&quot;article&quot;&gt;
+        &lt;h3&gt;推荐文章&lt;/h3&gt;
+        &lt;ul&gt;
+            &lt;li&gt;朱自清-荷塘月色&lt;/li&gt;
+            &lt;li&gt;余光中-乡愁&lt;/li&gt;
+            &lt;li&gt;鲁迅-阿Q正传&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    ……&lt;br /&gt;
+    ……&lt;br /&gt;
+    ……&lt;br /&gt;
+    ……&lt;br /&gt;
+    ……&lt;br /&gt;
+    ……&lt;br /&gt;
+    ……&lt;br /&gt;
+    ……&lt;br /&gt;
+    &lt;div id=&quot;music&quot;&gt;
+        &lt;h3&gt;推荐音乐&lt;/h3&gt;
+        &lt;ul&gt;
+            &lt;li&gt;林俊杰-被风吹过的夏天&lt;/li&gt;
+            &lt;li&gt;曲婉婷-在我的歌声里&lt;/li&gt;
+            &lt;li&gt;许嵩-灰色头像&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    ……&lt;br /&gt;
+    ……&lt;br /&gt;
+    ……&lt;br /&gt;
+    ……&lt;br /&gt;
+    ……&lt;br /&gt;
+    ……&lt;br /&gt;
+    ……&lt;br /&gt;
+    ……&lt;br /&gt;
+    &lt;div id=&quot;movie&quot;&gt;
+        &lt;h3&gt;推荐电影&lt;/h3&gt;
+        &lt;ul&gt;
+            &lt;li&gt;蜘蛛侠系列&lt;/li&gt;
+            &lt;li&gt;钢铁侠系统&lt;/li&gt;
+            &lt;li&gt;复仇者联盟&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>当点击“推荐文章”“推荐音乐”“推荐电影”这3个超链接后，页面就会自动滚动到相应的部分。仔细观察这个例子就可以知道，想要实现锚点链接，需要定义以下2个参数。</p>
+<p>其中，id属性就是元素的名称，这个id名是随便起的（一般是英文）。不过在同一个页面中，id是唯一的，也就是说一个页面不允许出现相同的id。</p>
+<p>最后要注意一点，a标签的href属性取值时，需要在id前面加上“#”（井号），以表示这是一个锚点链接。</p>
+<h1 id="HTML表单"><a href="#HTML表单" class="headerlink" title="HTML表单"></a>HTML表单</h1><h2 id="表单介绍"><a href="#表单介绍" class="headerlink" title="表单介绍"></a>表单介绍</h2><p>表单标签：（5种）</p>
+<p>form、input、textarea、select和option</p>
+<p>从外观上来划分，表单可以分为以下8种。</p>
+<ul>
+<li>（1）单行文本框</li>
+<li>（2）密码文本框</li>
+<li>（3）单选框</li>
+<li>（4）复选框</li>
+<li>（5）按钮</li>
+<li>（6）文件上传</li>
+<li>（7）多行文本框</li>
+<li>（8）下拉列表</li>
+</ul>
+<h2 id="form标签"><a href="#form标签" class="headerlink" title="form标签"></a>form标签</h2><p>在HTML中，我们都知道表格的行（tr）、单元格（th、td）等都必须放在table标签内部。创建一个表单，跟创建一个表格一样，也必须要把所有表单标签放在form标签内部。</p>
+<p>表单跟表格，这是两个完全不一样的概念。记住，常说的表单，指的是文本框、按钮、单选框、复选框、下拉列表等的统称。</p>
+<p>语法：</p>
+<pre><code class="html">&lt;form&gt;
+    //各种表单标签
+&lt;/form&gt;
+</code></pre>
+<p> 例：</p>
+<pre><code class="html">&lt;body&gt;
+    &lt;form&gt;
+        &lt;input type=&quot;text&quot; value=&quot;这是一个单行文本框&quot;/&gt;&lt;br/&gt;
+
+        &lt;textarea&gt;这是一个多行文本框&lt;/textarea&gt;&lt;br/&gt;
+
+        &lt;select&gt;
+            &lt;option&gt;HTML&lt;/option&gt;
+            &lt;option&gt;CSS&lt;/option&gt;
+            &lt;option&gt;JavaScript&lt;/option&gt;
+        &lt;/select&gt;
+
+    &lt;/form&gt;
+&lt;/body&gt;
+</code></pre>
+<p><strong>form标签属性</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">表单名称</td>
+</tr>
+<tr>
+<td style="text-align:left">method</td>
+<td style="text-align:left">提交方式</td>
+</tr>
+<tr>
+<td style="text-align:left">action</td>
+<td style="text-align:left">提交地址</td>
+</tr>
+<tr>
+<td style="text-align:left">target</td>
+<td style="text-align:left">打开方式</td>
+</tr>
+<tr>
+<td style="text-align:left">enctype</td>
+<td style="text-align:left">编码方式</td>
+</tr>
+</tbody>
+</table>
+<p><strong>name属性：</strong></p>
+<p>在一个页面中，表单可能不止一个，每一个form标签就是一个表单。为了区分这些表单，可以使用name属性来给表单进行命名。</p>
+<p>例：</p>
+<pre><code class="html">&lt;form name=&quot;myForm&quot;&gt;&lt;/form&gt;
+</code></pre>
+<p><strong>method属性</strong>：</p>
+<p>在form标签中，method属性用于指定表单数据使用哪一种http提交方法。method属性取值有两个：一个是<strong>“get”</strong>，另外一个是<strong>“post”</strong>。</p>
+<p>get的安全性较差，而post的安全性较好。所以在实际开发中，使用post比较多。</p>
+<p>举例：</p>
+<pre><code class="html">&lt;form method=&quot;post&quot;&gt;&lt;/form&gt;
+</code></pre>
+<p><strong>action属性：</strong></p>
+<p>在form标签中，action属性用于指定表单数据提交到哪一个地址进行处理。</p>
+<p>举例：</p>
+<pre><code class="html">&lt;form action=&quot;index.php&quot;&gt;&lt;/form&gt;
+</code></pre>
+<p><strong>target属性</strong>：</p>
+<p>form标签的target属性跟a标签的target属性是一样的，都是用来指定窗口的打开方式。一般情况下，只会用到“_blank”这一个属性值。</p>
+<p>举例：</p>
+<pre><code class="html">&lt;form target=&quot;_blank&quot;&gt;&lt;/form&gt;
+</code></pre>
+<p><strong>enctype属性</strong>：</p>
+<p>在form标签中，enctype属性用于指定表单数据提交的编码方式。一般情况下，不需要设置，除非用到<strong>上传文件</strong>功能。</p>
+<h2 id="input标签"><a href="#input标签" class="headerlink" title="input标签"></a>input标签</h2><p>在HTML中，大多数表单都是使用input标签来实现的。</p>
+<p>语法：</p>
+<pre><code class="html">&lt;input type=&quot;表单类型&quot; /&gt;
+</code></pre>
+<p>input是自闭合标签，它是没有结束符号的。其中type属性取值：</p>
+<p><strong>text-</strong>单行文本框</p>
+<p><strong>password</strong>-密码文本框</p>
+<p><strong>radio-</strong>单选框</p>
+<p><strong>checkbox</strong>-多选框</p>
+<p><strong>button/submit/reset</strong>-按钮<br><strong>file</strong>-文件上传</p>
+<p>不同属性对应不同的效果。</p>
+<h3 id="input-text：单行文本框"><a href="#input-text：单行文本框" class="headerlink" title="input-text：单行文本框"></a><strong>input-text：单行文本框</strong></h3><p>语法：</p>
+<pre><code class="html">&lt;input type=&quot;text&quot; /&gt;
+
+
+&lt;form method=&quot;post&quot;&gt;
+        姓名：&lt;input type=&quot;text&quot; /&gt;
+    &lt;/form&gt;
+</code></pre>
+<p><strong>单行文本框属性：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">value</td>
+<td style="text-align:left">设置文本框的默认值，也就是默认情况下文本框</td>
+</tr>
+<tr>
+<td style="text-align:left">size</td>
+<td style="text-align:left">设置文本框的长度</td>
+</tr>
+<tr>
+<td style="text-align:left">maxlength</td>
+<td style="text-align:left">设置文本框中最多可以输入的字符数</td>
+</tr>
+</tbody>
+</table>
+<p>value属性用于设置单行文本框中默认的文本，如果没有设置，就是空白。</p>
+<p>size属性可以用来设置单行文本框的长度，不过在实际开发中，我们一般不会用到这个属性，而是使用CSS来控制。</p>
+<p>外观上看不出maxlength加上与不加上有什么区别，不过当输入内容后，发现设置maxlength=”5”的单行文本框最多只能输入5个字符、</p>
+<h3 id="input-password密码文本框："><a href="#input-password密码文本框：" class="headerlink" title="input-password密码文本框："></a>input-password密码文本框：</h3><p>密码文本框在外观上与单行文本框相似，两者拥有相同的属性（value、size、maxlength等）。不过它们是有着本质上的区别的：<strong>在单行文本框中输入的字符是可见的，而在密码文本框中输入的字符不可见</strong>。</p>
+<p>语法：</p>
+<pre><code class="html">&lt;input type=&quot;password&quot; /&gt;
+
+&lt;form method=&quot;post&quot;&gt;
+        账号：&lt;input type=&quot;text&quot; /&gt;&lt;br /&gt;
+        密码：&lt;input type=&quot;password&quot; /&gt;
+    &lt;/form&gt;
+</code></pre>
+<p>属性同上text单行文本框。</p>
+<h3 id="input-radio单选框："><a href="#input-radio单选框：" class="headerlink" title="input-radio单选框："></a>input-radio单选框：</h3><p>在HTML中，单选框也是使用input标签来实现的，其中type属性取值为“radio”。</p>
+<p>语法：</p>
+<pre><code class="html">&lt;input type=&quot;radio&quot; name=&quot;组名&quot; value=&quot;取值&quot; /&gt;
+
+&lt;form method=&quot;post&quot;&gt;
+        性别:
+        &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;男&quot; /&gt;男
+        &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;女&quot; /&gt;女
+    &lt;/form&gt;
+</code></pre>
+<p><strong>name属性表示单选按钮所在的组名，而value表示单选按钮的取值，这两个属性必须要设置。</strong></p>
+<p><strong>checked属性</strong>：</p>
+<p>在默认情况下，让第一个单选框选中，可以使用checked属性来实现。</p>
+<p>可能看到checked属性没有属性值，这是HTML5的最新写法。下面两句代码其实是等价的，不过一般都是采用缩写形式。</p>
+<pre><code class="html"> &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;男&quot; checked /&gt;男
+ &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;女&quot; /&gt;女
+
+
+ &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;男&quot; checked /&gt;男
+&lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;男&quot; checked=&quot;checked&quot; /&gt;男
+</code></pre>
+<p><strong>重点：name属性容易遗忘，若不添加name属性，或者同一组单选框选项的name不同，则可导致一组内的单选框都可被选中，所以name属性很重要。只有同一name下的一组数据才能使单选框选项互斥。</strong></p>
+<p>语义化规范：为了更好地语义化，<strong>表单元素与后面的文本一般都需要借助label标签关联起来</strong>。如：</p>
+<pre><code class="html">&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;男&quot; /&gt;男&lt;/label&gt;
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;女&quot; /&gt;女&lt;/label&gt;
+</code></pre>
+<h3 id="input-checkbox复选框："><a href="#input-checkbox复选框：" class="headerlink" title="input-checkbox复选框："></a>input-checkbox复选框：</h3><p>在HTML中，复选框也是使用input标签来实现的，其中type属性取值为“checkbox”。单选框只能选择一项，而复选框可以选择多项。</p>
+<p>语法：</p>
+<pre><code class="html">&lt;input type=&quot;checkbox&quot; name=&quot;组名&quot; value=&quot;取值&quot; /&gt;
+
+ &lt;form method=&quot;post&quot;&gt;
+        你喜欢的水果：&lt;br/&gt;
+        &lt;input type=&quot;checkbox&quot; name=&quot;fruit&quot; value=&quot;苹果&quot;/&gt;苹果
+        &lt;input type=&quot;checkbox&quot; name=&quot;fruit&quot; value=&quot;香蕉&quot;/&gt;香蕉
+        &lt;input type=&quot;checkbox&quot; name=&quot;fruit&quot; value=&quot;西瓜&quot;/&gt;西瓜
+        &lt;input type=&quot;checkbox&quot; name=&quot;fruit&quot; value=&quot;李子&quot;/&gt;李子
+    &lt;/form&gt;
+</code></pre>
+<p>name和value属性同上单选框，务必要设置。</p>
+<h3 id="input-button普通按钮"><a href="#input-button普通按钮" class="headerlink" title="input-button普通按钮"></a>input-button普通按钮</h3><p>在HTML中，普通按钮一般情况下都是配合JavaScript来进行各种操作的。</p>
+<p>语法：</p>
+<pre><code class="html">&lt;input type=&quot;button&quot; value=&quot;取值&quot; /&gt;
+
+  &lt;form method=&quot;post&quot;&gt;
+        &lt;input type=&quot;button&quot; value=&quot;起飞&quot;/&gt;
+    &lt;/form&gt;
+</code></pre>
+<p>value的取值就是按钮上的文字。</p>
+<h3 id="input-submit提交按钮"><a href="#input-submit提交按钮" class="headerlink" title="input-submit提交按钮"></a>input-submit提交按钮</h3><p>在HTML中，提交按钮一般都是用<strong>来给服务器提交数据的</strong>。我们可以把提交按钮看成是一种<strong>特殊功能的普通按钮。</strong></p>
+<p>语法：</p>
+<pre><code class="html"> &lt;input type=&quot;submit&quot; value=&quot;取值&quot;/&gt;
+</code></pre>
+<p><strong>提交按钮只能提交它“所在form标签”内表单中的内容</strong></p>
+<h3 id="input-reset重置按钮"><a href="#input-reset重置按钮" class="headerlink" title="input-reset重置按钮"></a>input-reset重置按钮</h3><p>在HTML中，重置按钮一般用来清除用户在表单中输入的内容。重置按钮也可以看成是具有特殊功能的普通按钮。</p>
+<p>语法：</p>
+<pre><code class="html">&lt;input type=&quot;reset&quot; value=&quot;取值&quot; /&gt;
+</code></pre>
+<p><strong>重置按钮只能清空它“所在form标签”内表单中的内容，对于当前所在form标签之外的表单清除是无效的。</strong></p>
+<h3 id="button标签"><a href="#button标签" class="headerlink" title="button标签"></a>button标签</h3><p>普通按钮、提交按钮以及重置按钮这3种按钮都是使用input标签来实现的。其实还有一种按钮是使用button标签来实现的。</p>
+<p>语法：</p>
+<pre><code class="html">&lt;button&gt;&lt;/button&gt;
+</code></pre>
+<p>在实际开发中，比较少用到button标签。</p>
+<h3 id="input-file文件上传"><a href="#input-file文件上传" class="headerlink" title="input-file文件上传"></a>input-file文件上传</h3><p>文件上传功能的实现需要用到后端技术，文件上传功能经常用到。</p>
+<p>在HTML中，文件上传也是使用input标签来实现的，其中type属性取值为file。</p>
+<p>语法：</p>
+<pre><code class="html">&lt;input type=&quot;file&quot; /&gt;
+</code></pre>
+<h2 id="textarea标签：多行文本框"><a href="#textarea标签：多行文本框" class="headerlink" title="textarea标签：多行文本框"></a>textarea标签：多行文本框</h2><p>单行文本框只能输入一行文本，而多行文本框却可以输入多行文本。在HTML中，多行文本框使用的是textarea标签，而不是input标签。</p>
+<p>语法：</p>
+<pre><code class="html">&lt;textarea rows=&quot;行数&quot; cols=&quot;列数&quot; value=&quot;取值&quot;&gt;默认内容&lt;/textarea&gt;
+</code></pre>
+<p>多行文本框的默认显示文本是在标签对内部设置，而不是在value属性中设置的。一般情况下，不需要设置默认显示文本。</p>
+<h2 id="文本框总结"><a href="#文本框总结" class="headerlink" title="文本框总结"></a>文本框总结</h2><p>对于文本框，现在我们可以总结出以下2点。</p>
+<ul>
+<li>（1）HTML有3种文本框：单行文本框、密码文本框、多行文本框。</li>
+<li>（2）单行文本框和密码文本框使用的都是input标签，多行文本框使用的是textarea标签。</li>
+</ul>
+<h2 id="select标签：下拉列表"><a href="#select标签：下拉列表" class="headerlink" title="select标签：下拉列表"></a>select标签：下拉列表</h2><p>在HTML中，下拉列表由select和option这两个标签配合使用来表示的。这一点跟无序列表很像，其中无序列表是由ul和li这两个标签配合使用来表示。为了更好地理解，可以把下拉列表看成是一种“特殊的无序列表”。</p>
+<p>语法：</p>
+<pre><code class="html">&lt;select&gt;
+    &lt;option&gt;选项内容&lt;/option&gt;
+    ……
+    &lt;option&gt;选项内容&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+<h3 id="select标签属性"><a href="#select标签属性" class="headerlink" title="select标签属性"></a>select标签属性</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">multiple</td>
+<td style="text-align:left">设置下拉列表可以选择多项</td>
+</tr>
+<tr>
+<td style="text-align:left">size</td>
+<td style="text-align:left">设置下拉列表显示几个列表项，取值为整数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>multiple属性：</strong></p>
+<p>下拉列表的multiple属性没有属性值，这是HTML5的最新写法。</p>
+<p>默认情况下，下拉列表只能选择一项，我们可以通过multiple属性设置下拉列表可以选择多项。想要选取多项，可以使用“Ctrl+鼠标左键”来选取。</p>
+<pre><code class="html"> &lt;select multiple&gt;
+            &lt;option&gt;HTML&lt;/option&gt;
+            &lt;option&gt;CSS&lt;/option&gt;
+            &lt;option&gt;jQuery&lt;/option&gt;
+            &lt;option&gt;JavaScript&lt;/option&gt;
+            &lt;option&gt;Vue.js&lt;/option&gt;
+            &lt;option&gt;HTML5&lt;/option&gt;
+            &lt;option&gt;CSS3&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+<p><strong>size属性：</strong></p>
+<p>设置下拉列表显示几个列表项，取值为整数。</p>
+<p>有些小伙伴将size取值为1、2、3时，会发现Chrome浏览器无效。这是因为Chrome浏览器最低是4个选项，我们只能选取4及以上数字。</p>
+<pre><code class="html">  &lt;select size=&quot;5&quot;&gt;
+            &lt;option&gt;HTML&lt;/option&gt;
+            &lt;option&gt;CSS&lt;/option&gt;
+        &lt;/select&gt;
+</code></pre>
+<h3 id="option标签属性"><a href="#option标签属性" class="headerlink" title="option标签属性"></a>option标签属性</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">selected</td>
+<td style="text-align:left">是否选中</td>
+</tr>
+<tr>
+<td style="text-align:left">value</td>
+<td style="text-align:left">选项值</td>
+</tr>
+</tbody>
+</table>
+<p><strong>selected属性：</strong></p>
+<pre><code class="html"> &lt;select size=&quot;5&quot;&gt;
+            &lt;option&gt;HTML&lt;/option&gt;
+            &lt;option&gt;CSS&lt;/option&gt;
+            &lt;option selected&gt;jQuery&lt;/option&gt;
+        &lt;/select&gt;
+</code></pre>
+<p>selected属性表示列表项是否被选中，它是没有属性值的，这也是HTML5的最新写法，这个跟单选框中的checked属性也是一样的。</p>
+<p><strong>value属性：</strong></p>
+<p>对于value属性，不多说，几乎所有表单元素都有value属性，这个属性是配合JavaScript以及服务器进行操作的。</p>
+<p>语法：</p>
+<pre><code class="html"> &lt;select size=&quot;5&quot;&gt;
+            &lt;option value=&quot;HTML&quot;&gt;HTML&lt;/option&gt;
+            &lt;option value=&quot;CSS&quot;&gt;CSS&lt;/option&gt;
+        &lt;/select&gt;
+
+</code></pre>
+<h2 id="表单注意事项："><a href="#表单注意事项：" class="headerlink" title="表单注意事项："></a>表单注意事项：</h2><p><strong>1、表单元素那么多，而且每一种自己还有好几个属性，应该怎么记忆呢？</strong></p>
+<p>对于初学者来说，表单记忆是最关心也是最为头疼的一件事。在HTML入门时，我们不需要花太多时间去记忆这些标签或属性，只需要感性认知即可。忘了的时候，就回来翻一下。此外，编辑器一般也会有代码提示，写多了自然就会记住了。</p>
+<p><strong>2、表单元素是否一定要放在form标签内呢？</strong></p>
+<p>表单元素不一定都要放在form标签内。对于要与服务器进行交互的表单元素就必须放在form标签内才有效。如果表单元素不需要跟服务器进行交互，那就没必要放在form标签内。  </p>
+<h1 id="HTML框架"><a href="#HTML框架" class="headerlink" title="HTML框架"></a>HTML框架</h1><h2 id="iframe标签"><a href="#iframe标签" class="headerlink" title="iframe标签"></a>iframe标签</h2><p>在HTML中，我们可以使用iframe标签来实现一个内嵌框架。内嵌框架，说白了，就是在当前页面再嵌入另外一个网页。</p>
+<p>语法：</p>
+<pre><code class="html">&lt;iframe src=&quot;链接地址&quot; width=&quot;数值&quot; height=&quot;数值&quot;&gt;&lt;/iframe&gt;
+</code></pre>
+<p>src是必选的，用于定义链接页面的地址。width和height这两个属性是可选的，分别用于定义框架的宽度和高度。</p>
+<p>iframe实际上就是在当前页面嵌入了另外一个页面，我们也可以同时嵌入多个页面。</p>
+<pre><code class="html">&lt;body&gt;
+    &lt;iframe src=&quot;http://nanivy.space&quot; width=&quot;200&quot; height=&quot;150&quot;&gt;&lt;/iframe&gt;
+&lt;/body&gt;
+</code></pre>
+<p>还有什么frameset、frame标签，事实上这几个标签在HTML5标准中已经被废弃了。对于框架，我们只需要掌握iframe这一个标签就可以了。    </p>
+</tr></table>
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3null"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3null"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2021/07/01/近期自我总结/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/070920585858_1186047769.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/070920585858_1186047769.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                近期自我总结</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "A4UqsWsXYTvl3ILey3Nis8hs-gzGzoHsz",
+        appKey: "s2r99t5u9k6DkKd3O6JbRauV",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="https://nanivy.space/" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.1/qq_pic_merged_1602861906220.jpg" itemprop="image" alt="NanIvy" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="https://nanivy.space/" itemprop="url" rel="author">NanIvy</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>菜菜子新人</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+   <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/xuehua.js"></script>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 NanIvy<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2020</p>
+    </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "","name":"","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "","name":"","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@l1/live2d/live2d/autoload.js"></script>
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/ico/tx.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">ロリが好きなのNanIvy</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="https://github.com/0NanIvy0" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/技术/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/生活/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/随想/">
+                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                  随想
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags/悦读/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  书单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/bangumi/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  番组
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+              <li>
+                <a href="/theme-sakura/">
+                  <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                  主题
+                </a>
+              </li>
+            
+              <li>
+                <a href="/lab/">
+                  <i class="fa fa-cogs" aria-hidden="true"></i>
+                  Lab
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="749401279"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+</body>
+</html>
