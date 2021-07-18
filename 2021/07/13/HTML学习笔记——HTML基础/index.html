@@ -1098,10 +1098,6 @@
 &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;男&quot; checked=&quot;checked&quot; /&gt;男
 </code></pre>
 <p><strong>重点：name属性容易遗忘，若不添加name属性，或者同一组单选框选项的name不同，则可导致一组内的单选框都可被选中，所以name属性很重要。只有同一name下的一组数据才能使单选框选项互斥。</strong></p>
-<p>语义化规范：为了更好地语义化，<strong>表单元素与后面的文本一般都需要借助label标签关联起来</strong>。如：</p>
-<pre><code class="html">&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;男&quot; /&gt;男&lt;/label&gt;
-&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;女&quot; /&gt;女&lt;/label&gt;
-</code></pre>
 <h3 id="input-checkbox复选框："><a href="#input-checkbox复选框：" class="headerlink" title="input-checkbox复选框："></a>input-checkbox复选框：</h3><p>在HTML中，复选框也是使用input标签来实现的，其中type属性取值为“checkbox”。单选框只能选择一项，而复选框可以选择多项。</p>
 <p>语法：</p>
 <pre><code class="html">&lt;input type=&quot;checkbox&quot; name=&quot;组名&quot; value=&quot;取值&quot; /&gt;
@@ -1235,6 +1231,12 @@
             &lt;option value=&quot;CSS&quot;&gt;CSS&lt;/option&gt;
         &lt;/select&gt;
 
+</code></pre>
+<h2 id="敲黑板：标签label"><a href="#敲黑板：标签label" class="headerlink" title="敲黑板：标签label"></a>敲黑板：标签label</h2><p>语义化规范：为了更好地语义化，<strong>表单元素与后面的文本一般都需要借助label标签关联起来</strong>。</p>
+<p>同时还能增加用户体验。</p>
+<p>如：（除了选项同时也适用于文本框）</p>
+<pre><code class="html">&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;男&quot; /&gt;男&lt;/label&gt;
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;女&quot; /&gt;女&lt;/label&gt;
 </code></pre>
 <h2 id="表单注意事项："><a href="#表单注意事项：" class="headerlink" title="表单注意事项："></a>表单注意事项：</h2><p><strong>1、表单元素那么多，而且每一种自己还有好几个属性，应该怎么记忆呢？</strong></p>
 <p>对于初学者来说，表单记忆是最关心也是最为头疼的一件事。在HTML入门时，我们不需要花太多时间去记忆这些标签或属性，只需要感性认知即可。忘了的时候，就回来翻一下。此外，编辑器一般也会有代码提示，写多了自然就会记住了。</p>
