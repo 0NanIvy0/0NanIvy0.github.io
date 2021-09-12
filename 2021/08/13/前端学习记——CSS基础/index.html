@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">前端学习笔记——CSS基础 | NanIvy</title>
+ <link rel="shortcut icon" href="images/favicon.ico">
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "ロリが好きなのNanIvy";
+  mashiro_option.author_name = "NanIvy";
+  mashiro_option.site_url = "https://github.com/0NanIvy0";
+  mashiro_option.v_appId = "A4UqsWsXYTvl3ILey3Nis8hs-gzGzoHsz";
+  mashiro_option.v_appKey = "s2r99t5u9k6DkKd3O6JbRauV";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/070921020824_789484946.jpg,https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/070921020824_989645004.jpg".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+</head>
+</html>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dim">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://github.com/0NanIvy0">
+          <img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/ico/tx.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>淡淡无名，月下起舞。</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="https://github.com/0NanIvy0" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/ico/120.jpg">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://space.bilibili.com/21128145" target="_blank" class="social-github" title="bilibili">
+                    <img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/ico/3.jpg">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://user.qzone.qq.com/1356775082/infocenter" target="_blank" class="social-github" title="QQ=1356775082">
+                    <img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/ico/link.jpg">
+                  </a>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">ロリが好きなの</span>
+            <span class="shironeko">NanIvy</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/技术/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/生活/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/随想/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          随想
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/">
+                          <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                          主题
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/lab/">
+                          <i class="fa fa-cogs" aria-hidden="true"></i>
+                          Lab
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/88866964.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/88866964.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      前端学习笔记——CSS基础</h1>
+      <p class="entry-census">
+        <span>
+          <a href="https://nanivy.space/">
+            <img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.1/qq_pic_merged_1602861906220.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="https://nanivy.space/">NanIvy</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2021-8-13<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <p>参考学习路线：<a href="https://zhuanlan.zhihu.com/p/324351537" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/324351537</a></p>
+<p>对前端初恋的感觉——绿叶学习网：<a href="http://www.lvyestudy.com/" target="_blank" rel="noopener">http://www.lvyestudy.com/</a></p>
+<h2 id="CSS基础补充DLC（持续更新）"><a href="#CSS基础补充DLC（持续更新）" class="headerlink" title="CSS基础补充DLC（持续更新）"></a>CSS基础补充DLC（持续更新）</h2><h3 id="display常见三种及特点"><a href="#display常见三种及特点" class="headerlink" title="display常见三种及特点"></a>display常见三种及特点</h3><p><strong>display:block(块级元素)：</strong></p>
+<p>会独占一行</p>
+<p>可设其宽、高、margin、padding属性</p>
+<p>可容纳内联元素与其他块元素</p>
+<p><strong>display：inline(行内元素)：</strong></p>
+<p>inline元素不会独占一行，多个相邻的行内元素会排列在同一行里，直到一行排列不下，才会新换一行，其宽度随元素的内容而变化。<br>inline元素设置width,height属性无效。<br>inline元素的margin和padding属性，水平方向的padding-left, padding-right, margin-left, margin-right都产生边距效果；但竖直方向的padding-top, padding-bottom, margin-top, margin-bottom不会产生边距效果。</p>
+<p><strong>display：inline-block（行内块元素）：</strong></p>
+<p>既可设置宽、高，又默认不换行</p>
+<p>可设置vertical-align属性</p>
+<p>在字体大小不为零的情况下，会产生元素间的空隙，可在父元素设置 font-size：0 ，也可用letter-spacing设为负值 去除此空隙</p>
+<p>浮动是用display：inline-block(即 将块元素套在内联元素里，对内联元素进行浮动)</p>
+<p>inline-block对布局的理解：<a href="https://www.cnblogs.com/Ry-yuan/p/6848197.html" target="_blank" rel="noopener">https://www.cnblogs.com/Ry-yuan/p/6848197.html</a></p>
+<h2 id="对CSS的认识"><a href="#对CSS的认识" class="headerlink" title="对CSS的认识"></a>对CSS的认识</h2><p>CSS，指的是Cascading Style Sheet（层叠样式表），是用来控制网页外观的一门技术。我们知道，前端最核心的3个技术是：HTML、CSS、JavaScript，三者的关系：</p>
+<p><strong>HTML用于控制网页的结构，CSS用于控制网页的外观，JavaScript控制的是网页的行为。</strong></p>
+<h2 id="css引入方式"><a href="#css引入方式" class="headerlink" title="css引入方式"></a>css引入方式</h2><p>在一个页面引入CSS，有以下3种方式。（忽略@import）</p>
+<ul>
+<li>（1）外部样式表</li>
+<li>（2）内部样式表</li>
+<li>（3）行内样式表</li>
+</ul>
+<h3 id="外部样式表"><a href="#外部样式表" class="headerlink" title="外部样式表"></a>外部样式表</h3><p>外部样式表是最理想的CSS引入方式。在实际开发中，为了提升网站的性能速度和可维护性，一般都是使用外部样式表。所谓的外部样式表，指的是把CSS代码和HTML代码都单独放在不同文件中，然后在HTML文档中使用link标签来引用CSS样式表。</p>
+<p>当样式需要被应用到多个页面时，外部样式表是最理想的选择。使用外部样式表，就可以通过更改一个CSS文件来改变整个网站的外观。</p>
+<p>外部样式表在单独文件中定义，然后在HTML文件的标签对中使用link标签来引用：</p>
+<pre><code class="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;文件路径&quot; /&gt;
+</code></pre>
+<p>rel即relative的缩写，它的取值是固定的，即stylesheet，表示引入的是一个样式表文件（即CSS文件）。</p>
+<p>type属性取值也是固定的，即<code>&quot;text/css&quot;</code>，表示这是标准的CSS。</p>
+<p>href属性表示CSS文件的路径。</p>
+<p>例子：</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/index.css&quot; /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>外部样式表，使用link标签来引入，而link标签是放在head标签内。</p>
+<h3 id="内部样式表"><a href="#内部样式表" class="headerlink" title="内部样式表"></a>内部样式表</h3><p>内部样式表，指的是把HTML代码和CSS代码放到同一个HTML文件中。其中，CSS代码放在style标签内，并且style标签是放在head标签内部的。</p>
+<pre><code class="html">&lt;style type=&quot;text/css&quot;&gt;
+    ……
+&lt;/style&gt;
+
+
+如：
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;/&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        div{color:red;}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div&gt;好好学习。&lt;/div&gt;
+    &lt;div&gt;天天向上。&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>内部样式表，CSS样式必须在style标签内定义，style标签是放在head标签内的。</p>
+<h3 id="行内样式表"><a href="#行内样式表" class="headerlink" title="行内样式表"></a>行内样式表</h3><p>行内样式表跟内部样式表类似，也是把HTML代码和CSS代码放到同一个HTML文件。但是两者有着本质的区别：<strong>内部样式表的CSS是在“style标签”内定义的，而行内样式表的CSS是在“标签的style属性”中定义的。</strong></p>
+<pre><code>&lt;body&gt;
+    &lt;div style=&quot;color:red;&quot;&gt;好好学习天天向上。&lt;/div&gt;
+&lt;/body&gt;
+</code></pre><h3 id="三种引用方式："><a href="#三种引用方式：" class="headerlink" title="三种引用方式："></a>三种引用方式：</h3><p>如果使用内部样式表，样式只需要写一遍；但是如果使用行内样式，则每个元素要单独写一遍。</p>
+<p>行内样式是在每一个元素内部定义的，冗余代码非常多，并且每次改动CSS的时候，必须到元素中一个个去改，这样会导致网站的可读性和可维护性非常差。</p>
+<p>对于这三种样式表，在实际开发中，一般都是使用外部样式表。</p>
+<h2 id="CSS选择器"><a href="#CSS选择器" class="headerlink" title="CSS选择器"></a>CSS选择器</h2><h3 id="元素的id和class属性"><a href="#元素的id和class属性" class="headerlink" title="元素的id和class属性"></a>元素的id和class属性</h3><p>在HTML中，id和class是元素最基本的两个属性。一般，id和class都是用来选择元素，以便进行CSS操作或者JavaScript操作。</p>
+<h3 id="id属性"><a href="#id属性" class="headerlink" title="id属性"></a>id属性</h3><p>id属性具有唯一性，也就是说在一个页面中相同的id只能出现一次。如果出现了多个相同的id，那么CSS或者JavaScript就无法识别这个id对应的是哪一个元素。</p>
+<p>如：</p>
+<pre><code class="html">&lt;div id=&quot;2233&quot; &gt;test&lt;/div&gt;
+</code></pre>
+<p>同一个页面中，不允许出现两个相同id的元素。在不同页面中，可以出现两个id相同的元素。</p>
+<h3 id="class属性"><a href="#class属性" class="headerlink" title="class属性"></a>class属性</h3><p>class，”类“。为同一个页面的相同元素或者不同元素设置相同的class，然后使得相同class的元素具有相同的CSS样式。</p>
+<pre><code class="html">&lt;p class=&quot;6666&quot;&gt;test&lt;/p&gt;
+</code></pre>
+<p>在同一个页面中，允许出现两个相同class的元素。可以对具有相同class的多个元素，定义相同的CSS样式。</p>
+<h3 id="css选择器"><a href="#css选择器" class="headerlink" title="css选择器"></a>css选择器</h3><p>入门：5种实用的选择器：</p>
+<p><strong>（1）元素选择器（2）id选择器（3）class选择器（4）后代选择器（5）群组选择器</strong></p>
+<h3 id="元素选择器"><a href="#元素选择器" class="headerlink" title="元素选择器"></a>元素选择器</h3><p>元素选择器，就是选中相同的元素，然后对相同的元素定义同一个CSS样式。</p>
+<p>语法：</p>
+<pre><code class="html">div{colr:blue;width:100px}
+元素符号{属性：属性值；}
+
+
+
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;/&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        div{color:blue;}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div&gt;南翊&lt;/div&gt;
+    &lt;p&gt;南翊&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>div{color:blue;}表示把页面中所有的div元素选中，然后定义它们文本颜色为蓝色。</p>
+<p>元素选择器就是选择指定的相同的元素，而不会选择其他元素。上面例子中的p元素没有被选中，因此这两个元素文本颜色就没有变蓝。</p>
+<h3 id="id选择器"><a href="#id选择器" class="headerlink" title="id选择器"></a>id选择器</h3><p>为元素设置一个id属性，然后针对设置了这个id的元素定义CSS样式，这就是id选择器。在同一个页面中，是不允许出现两个相同的id的。</p>
+<p>对于id选择器，id名前面必须要加上前缀“#”，否则该选择器无法生效。id名前面加上“#”，表示这是一个id选择器。</p>
+<p>语法示例：</p>
+<pre><code class="HTML">&lt;style type=&quot;text/css&quot;&gt;
+        #NANIVY{color:red;}
+    &lt;/style&gt;
+
+
+
+&lt;div id=&quot;NANIVY&quot;&gt;TEST &lt;/div&gt;
+</code></pre>
+<p>选中id为NANIVY的元素并定义文本为红色。</p>
+<h3 id="class选择器"><a href="#class选择器" class="headerlink" title="class选择器 ."></a>class选择器 .</h3><p>类选择器。对“相同的元素”或者“不同的元素”定义相同的class属性，然后针对拥有同一个class的元素进行CSS样式操作。</p>
+<p>class名前面必须要加上前缀英句号（.），否则该选择器无法生效。类名前面加上英文句号，表明这是一个class选择器。</p>
+<pre><code class="html"> &lt;style type=&quot;text/css&quot;&gt;
+        .ivy{color:red;}
+
+  &lt;div class=&quot;lvy&quot;&gt;绿叶学习网&lt;/div&gt;
+  &lt;div class=&quot;lvy&quot;&gt;绿叶学习网&lt;/div&gt;
+</code></pre>
+<p>要为两个或多个元素定义相同的样式，建议使用class选择器，因为这样可以减少大量重复代码。</p>
+<h3 id="后代选择器"><a href="#后代选择器" class="headerlink" title="后代选择器"></a>后代选择器</h3><p>后代选择器，就是选择元素内部中所有的某一种元素，包括子元素和其他后代元素</p>
+<p>父元素和后代元素必须要用空格隔开，从而表示选中某个元素内部的后代元素。</p>
+<pre><code class="html">&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;&lt;/title&gt;
+
+    &lt;style type=&quot;text/css&quot;&gt;
+        #father span{color:blue;}
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div id=&quot;father&quot;&gt;
+        &lt;p&gt;test&lt;/p&gt;
+        &lt;p&gt;test&lt;/p&gt;
+        &lt;span&gt;test&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+<p>#father span{ color:blue;}表示选择“id为father的元素”下的所有span元素，然后定义它们文本颜色为蓝色。</p>
+<p>用”类“语法同理如：</p>
+<p>.sks span{color:green;}   ——sks类下的span全部绿色。</p>
+<h3 id="群组选择器"><a href="#群组选择器" class="headerlink" title="群组选择器"></a>群组选择器</h3><p>群组选择器，指的是同时对几个选择器进行相同的操作。对于群组选择器，两个选择器之间必须要用英文逗号（,）隔开，不然群组选择器就无法生效。</p>
+<pre><code class="html">&lt;style type=&quot;text/css&quot;&gt;
+    h3,p,span{color:red;}
+&lt;/style&gt;
+
+等价于
+&lt;style type=&quot;text/css&quot;&gt;
+    h3{color:red;}
+    p{color:red;}
+    span{color:red;}
+&lt;/style&gt;
+</code></pre>
+<p>群组选择器中加入#.等选择器同样适用。</p>
+<h2 id="CSS字体"><a href="#CSS字体" class="headerlink" title="CSS字体"></a>CSS字体</h2><p>字体相关css属性</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">font-family</td>
+<td style="text-align:left">字体类型</td>
+</tr>
+<tr>
+<td style="text-align:left">font-size</td>
+<td style="text-align:left">字体大小</td>
+</tr>
+<tr>
+<td style="text-align:left">font-weight</td>
+<td style="text-align:left">字体粗细</td>
+</tr>
+<tr>
+<td style="text-align:left">font-style</td>
+<td style="text-align:left">字体风格</td>
+</tr>
+<tr>
+<td style="text-align:left">color</td>
+<td style="text-align:left">字体颜色</td>
+</tr>
+</tbody>
+</table>
+<p>font就是字体的意思：理解性记忆，根据英文理解，事半功倍。</p>
+<h3 id="font-family：字体类型"><a href="#font-family：字体类型" class="headerlink" title="font-family：字体类型"></a>font-family：字体类型</h3><pre><code class="html">font-family: 字体1,字体2,……字体n;
+</code></pre>
+<p>一般浏览器默认”宋体“；还有微软雅黑啊什么的，，，，</p>
+<p>对于font-family属性，如果字体类型只有一个英文单词，则不需要加上双引号；如果字体类型是多个英文单词或者中文的，则需要加上双引号。</p>
+<p>比如：    “微软雅黑”、 “Times New Roman”或是Georgia、Arial这样就不用引号。</p>
+<p>另外： p{font-family:A,B,C;}</p>
+<p>p元素优先使用“A字体”来显示，如果电脑没有装“A字体”，那就接着考虑“B字体”。……以此类推。如果都没有安装，那么p元素就会以默认字体（即宋体）来显示。</p>
+<p>实际开发，比较美观的中文字体有<strong>微软雅黑、苹方</strong>，英文字体有<strong>Times New Roman 、Arial和Verdana。</strong></p>
+<h3 id="font-size：字体大小"><a href="#font-size：字体大小" class="headerlink" title="font-size：字体大小"></a>font-size：字体大小</h3><pre><code class="html">font-size: 像素值;
+</code></pre>
+<p>font-size属性取值有两种：</p>
+<p><strong>①“关键字”</strong>，如small、medium、large等；</p>
+<p><strong>②“像素值”</strong>，如10px、16px、20px等。（谷歌默认16px）</p>
+<p>px即像素（pixel），一般采用像素作为单位。还有em、百分比了解下就行。</p>
+<h3 id="font-weight：字体粗细"><a href="#font-weight：字体粗细" class="headerlink" title="font-weight：字体粗细"></a>font-weight：字体粗细</h3><pre><code class="html">font-weight: 取值;
+</code></pre>
+<p>同上，也是有两种取值，关键字和数值：</p>
+<p><strong>关键字</strong>如：normal（正常）、lighter（较细）、bold（较粗）、bolder（很粗）。常用 bold（较粗）。</p>
+<p><strong>数值</strong>：100-900的取值（400-100-700-900）和上关键词依次对应。</p>
+<h3 id="font-style：字体风格"><a href="#font-style：字体风格" class="headerlink" title="font-style：字体风格"></a>font-style：字体风格</h3><pre><code class="html">font-style: 取值;
+</code></pre>
+<p>取值：</p>
+<p>normal（正常）、italic（斜体）、oblique（斜体）</p>
+<p> 两个斜体效果几乎一样，只不过两者的区别是对字体的支持不一样；有些没有italic属性，这时就能通过oblique让没有italic属性的字体也能够有斜体效果。</p>
+<h3 id="color：字体颜色"><a href="#color：字体颜色" class="headerlink" title="color：字体颜色"></a>color：字体颜色</h3><pre><code class="html">color: 颜色值;
+</code></pre>
+<p>入门的两种取值：关键字、16进制RGB</p>
+<p><strong>关键字：</strong>就是英文单词red，blue，pink等等，vscode有代码提示。</p>
+<p><strong>RGB值</strong>：如#000000、#FFFFFF等形式的取值 ，可自行了解</p>
+<p><strong>tips：浏览器解析css是按一定顺序来，后来的可能会覆盖前面的</strong></p>
+<h2 id="CSS文本样式"><a href="#CSS文本样式" class="headerlink" title="CSS文本样式"></a>CSS文本样式</h2><p>文本是文本，文字是文字。</p>
+<p>常见文本样式：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">text-indent</td>
+<td style="text-align:left">首行缩进</td>
+</tr>
+<tr>
+<td style="text-align:left">text-align</td>
+<td style="text-align:left">水平对齐</td>
+</tr>
+<tr>
+<td style="text-align:left">text-decoration</td>
+<td style="text-align:left">文本修饰</td>
+</tr>
+<tr>
+<td style="text-align:left">text-transform</td>
+<td style="text-align:left">大小写转换</td>
+</tr>
+<tr>
+<td style="text-align:left">line-height</td>
+<td style="text-align:left">行高</td>
+</tr>
+<tr>
+<td style="text-align:left">letter-spacing</td>
+<td style="text-align:left">字母间距</td>
+</tr>
+<tr>
+<td style="text-align:left">word-spacing</td>
+<td style="text-align:left">词间距</td>
+</tr>
+</tbody>
+</table>
+<h3 id="text-indent：首行缩进"><a href="#text-indent：首行缩进" class="headerlink" title="text-indent：首行缩进"></a>text-indent：首行缩进</h3><p>为了替代之前说的p标签的六个&amp; nbsp;来进行首行缩进。使用css中的text-indent属性来定义p元素的首行缩进。</p>
+<pre><code>text-indent: 取值;
+</code></pre><p>取值有多种单位，入是推荐使用像素px作为单位；按照设定的字体大小，即font-size的两倍，即开头空两个字了。</p>
+<h3 id="text-align：水平对齐"><a href="#text-align：水平对齐" class="headerlink" title="text-align：水平对齐"></a>text-align：水平对齐</h3><pre><code>text-align: 取值;
+</code></pre><p>该属性用于控制文本水平方向上的对齐方式。</p>
+<p>入门学习取值： left（左对齐，默认属性）、<strong>center（居中对齐）</strong>、right<br>（右对齐）。该属性对图片（img）也有效。</p>
+<h3 id="text-decoration：文本修饰"><a href="#text-decoration：文本修饰" class="headerlink" title="text-decoration：文本修饰"></a>text-decoration：文本修饰</h3><p>入门学习</p>
+<pre><code>text-decoration: 取值;
+</code></pre><p>取值：<strong>underline（下划线</strong>）、<strong>line-through（中划线）、</strong>overline（顶划线，不常见）、<strong>none（默认，无划线）</strong></p>
+<p>虽然可以使用s、u等标签，但还是尽量把结构和样式分开好。</p>
+<p>同时可以使用none去掉超链接的下划线，如：</p>
+<pre><code> a{text-decoration:none;}
+</code></pre><h3 id="text-transform：大小写转换"><a href="#text-transform：大小写转换" class="headerlink" title="text-transform：大小写转换"></a>text-transform：大小写转换</h3><pre><code>text-transform: 取值;
+</code></pre><p>取值：</p>
+<p>none（默认，无），uppercase（转换为大写），lowercase（转换为小写），<strong>capitalize（只把每个英文单词首字母大写）。</strong></p>
+<h3 id="line-height：行高（行间距）"><a href="#line-height：行高（行间距）" class="headerlink" title="line-height：行高（行间距）"></a>line-height：行高（行间距）</h3><pre><code>line-height: 像素值;
+</code></pre><p>取值，10px、20px等等。</p>
+<h3 id="letter-spacing：字间距"><a href="#letter-spacing：字间距" class="headerlink" title="letter-spacing：字间距"></a>letter-spacing：字间距</h3><pre><code>letter-spacing: 像素值;
+</code></pre><p>取值，2px、5px等等。</p>
+<p>调整每个字之间的间距，一个字母算一个字。</p>
+<h3 id="word-spacing：词间距"><a href="#word-spacing：词间距" class="headerlink" title="word-spacing：词间距"></a>word-spacing：词间距</h3><pre><code>word-spacing: 像素值;
+</code></pre><p>单词间距，针对英语单词的间距。</p>
+<h2 id="CSS边框样式"><a href="#CSS边框样式" class="headerlink" title="CSS边框样式"></a>CSS边框样式</h2><p>几乎所有的元素都可以定义边框。</p>
+<p>div元素可以定义边框，img元素可以定义边框，table元素可以定义边框，span元素同样也可以定义边框等等……</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">border-width</td>
+<td style="text-align:left">边框的宽度</td>
+</tr>
+<tr>
+<td style="text-align:left">border-style</td>
+<td style="text-align:left">边框的外观</td>
+</tr>
+<tr>
+<td style="text-align:left">border-color</td>
+<td style="text-align:left">边框的颜色</td>
+</tr>
+</tbody>
+</table>
+<p>想要为一个元素定义边框样式，必须要同时设置border-width、border-style、border-color属性才会有效果。</p>
+<h3 id="border-width：边框的宽度"><a href="#border-width：边框的宽度" class="headerlink" title="border-width：边框的宽度"></a>border-width：边框的宽度</h3><p>border-width属性用于定义边框的宽度，取值是像素值。</p>
+<h3 id="border-style：边框的外观"><a href="#border-style：边框的外观" class="headerlink" title="border-style：边框的外观"></a>border-style：边框的外观</h3><p>入门取值：none（无）、dashed（虚线）、solid（实线）</p>
+<h3 id="border-color：边框的颜色"><a href="#border-color：边框的颜色" class="headerlink" title="border-color：边框的颜色"></a>border-color：边框的颜色</h3><p>border-color属性用于定义边框的颜色，取值可以是“关键字”或“16进制RGB值”。</p>
+<h3 id="示例-amp-简写："><a href="#示例-amp-简写：" class="headerlink" title="示例&amp;简写："></a>示例&amp;简写：</h3><pre><code> div{
+            border-width:1px;
+            border-style:solid;
+            border-color:red;
+    }
+</code></pre><p>简写形式：</p>
+<pre><code>img{border: 1px solid red;}
+</code></pre><h3 id="局部样式边框"><a href="#局部样式边框" class="headerlink" title="局部样式边框"></a>局部样式边框</h3><p>如：</p>
+<p>上边框：border-top</p>
+<pre><code class="html">border-top-width: 1px;
+border-top-style: solid;
+border-top-color: red;
+
+简写：
+border-top: 1px solid red;
+</code></pre>
+<p><strong>上边框border-top、下边框border-bottom、左边框border-left、右边框border-right</strong></p>
+<p>混合使用：</p>
+<pre><code>div
+{
+border:2px solid green;
+border-bottom:10px dashed red;
+border-top:0px;
+}
+</code></pre><p>左右绿色实线，下红色虚线,上线取消</p>
+<p>关于取消单边的线：border-bottom:0px;、border-bottom:0;和border-bottom:none;是等价的。  </p>
+<h2 id="CSS列表样式"><a href="#CSS列表样式" class="headerlink" title="CSS列表样式"></a>CSS列表样式</h2><h3 id="list-style-type"><a href="#list-style-type" class="headerlink" title="list-style-type"></a>list-style-type</h3><pre><code class="HTML">list-style-type: 取值;
+
+
+例子：
+ &lt;style type=&quot;text/css&quot;&gt;
+        ol{list-style-type:lower-roman;}
+    &lt;/style&gt;
+</code></pre>
+<p>不管有序列表还是无序列表都能用这个；（针对ol/ul元素）</p>
+<p><strong>一般ol（有序列表）取值：</strong></p>
+<p><strong>decimal</strong>（默认，阿拉伯数1，2，3.。。）</p>
+<p><strong>lower-roman/upper-roman</strong>（小写/大写罗马：i、ii、iii…/I、II、III…）</p>
+<p><strong>lower-alpha/lower-alpha</strong>( 小写/大写英文字母)</p>
+<p><strong>none（</strong>无，去掉）</p>
+<p><strong>ul（无序列表）取值：</strong></p>
+<p><strong>disc</strong>（ 实心圆●，默认值）</p>
+<p><strong>circle</strong>（空心圆○）</p>
+<p><strong>square</strong>（正方形■）</p>
+<p><strong>none</strong>（无，去掉）</p>
+<p>例子（有序，大写罗马）：</p>
+  <ol style="list-style-type:upper-roman;">        <li>one</li>        <li>two</li>        <li>three</li>    </ol>
+
+<pre><code class="html">  &lt;ol style=&quot;list-style-type:upper-roman;&quot;&gt;        &lt;li&gt;one&lt;/li&gt;   
+  &lt;li&gt;two&lt;/li&gt;   
+  &lt;li&gt;three&lt;/li&gt;  
+  &lt;/ol&gt;
+</code></pre>
+<h3 id="list-style-image"><a href="#list-style-image" class="headerlink" title="list-style-image"></a>list-style-image</h3><pre><code>list-style-image: url(图片路径);
+</code></pre><p>使用图片代替列表项符号；如：</p>
+ <ul style="list-style-image:url(https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/ico/favicon.ico);">        <li>one</li>        <li>two</li>            </ul>
+
+<pre><code class="html"> &lt;ul style=&quot;list-style-image:url(https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/ico/favicon.ico);&quot;&gt; 
+ &lt;li&gt;one&lt;/li&gt;    
+ &lt;li&gt;two&lt;/li&gt;        
+ &lt;/ul&gt;
+</code></pre>
+<h2 id="CSS表格样式"><a href="#CSS表格样式" class="headerlink" title="CSS表格样式"></a>CSS表格样式</h2><h3 id="caption-side：表格标题位置"><a href="#caption-side：表格标题位置" class="headerlink" title="caption-side：表格标题位置"></a>caption-side：表格标题位置</h3><pre><code>caption-side: 取值;
+例子：
+ table{caption-side:bottom;}
+           ^
+           |
+ &lt;caption&gt;表格标题&lt;/caption&gt;   标题会在底部
+</code></pre><p><strong>取值：top（标题在顶部，默认） bottom（标题在底部）</strong></p>
+<p>在table或caption这两个元素的CSS中定义caption-side属性，效果是一样的。</p>
+<h3 id="border-collapse：表格边框合并"><a href="#border-collapse：表格边框合并" class="headerlink" title="border-collapse：表格边框合并"></a>border-collapse：表格边框合并</h3><pre><code>border-collapse: 取值;
+</code></pre><p>border-collapse属性是在table元素中定义的。</p>
+<p>取值：</p>
+<p>separate（默认，边框分开）</p>
+<p>collapse（边框合并，无空隙）</p>
+<h3 id="border-spacing：表格边框间距"><a href="#border-spacing：表格边框间距" class="headerlink" title="border-spacing：表格边框间距"></a>border-spacing：表格边框间距</h3><pre><code>border-spacing: 像素值;
+</code></pre><p>border-spacing属性是在table元素中定义的。</p>
+<p>在不合并边框的情况下来控制边框间距.</p>
+<h2 id="CSS图片样式"><a href="#CSS图片样式" class="headerlink" title="CSS图片样式"></a>CSS图片样式</h2><h3 id="定义图片大小"><a href="#定义图片大小" class="headerlink" title="定义图片大小"></a>定义图片大小</h3><pre><code>width: 像素值;
+height: 像素值;
+
+
+img
+        {width: 20px;height: 30px;}
+</code></pre><h3 id="图片边框"><a href="#图片边框" class="headerlink" title="图片边框"></a>图片边框</h3><pre><code>border: 1px solid red;
+
+img{border: 1px solid red;}
+</code></pre><p>参考css边框样式，同理。</p>
+<h3 id="对齐方式"><a href="#对齐方式" class="headerlink" title="对齐方式"></a>对齐方式</h3><h4 id="水平对齐："><a href="#水平对齐：" class="headerlink" title="水平对齐："></a>水平对齐：</h4><pre><code>text-align: 取值;
+</code></pre><p>取值：left,center,right</p>
+<p><strong>图片对齐不在img中，而在父元素中进行：</strong></p>
+<pre><code> #duiqi{ text-align: center; }
+
+ &lt;div id=&quot;duiqi&quot;&gt;
+        &lt;img src=&quot; img/girl.gif&quot; alt=&quot;&quot;/&gt;
+    &lt;/div&gt;
+</code></pre><h4 id="垂直对齐："><a href="#垂直对齐：" class="headerlink" title="垂直对齐："></a>垂直对齐：</h4><pre><code>vertical-align: 取值;            vertical（垂直的）
+</code></pre><p>取值：</p>
+<p>top（顶部），middle（中部），bottom（底部）,baseline（基线）</p>
+<p>四种对齐方式展示：</p>
+<p>bilibili哔哩哔哩<img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/ico/3.jpg" style="vertical-align: top;">干杯！~~~</p>
+<p>bilibili哔哩哔哩<img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/ico/3.jpg" style="vertical-align: middle;">干杯！~~~</p>
+<p>bilibili哔哩哔哩<img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/ico/3.jpg" style="vertical-align: bottom;">干杯！~~~</p>
+<p>bilibili哔哩哔哩<img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/ico/3.jpg" style="vertical-align: baseline;">干杯！~~~</p>
+<h3 id="图片文字环绕"><a href="#图片文字环绕" class="headerlink" title="图片文字环绕"></a>图片文字环绕</h3><pre><code>float: 取值;
+</code></pre><p>取值：left（图片靠左浮动），right（图片靠右浮动）</p>
+<p>在img元素中定义。</p>
+<h2 id="CSS背景样式"><a href="#CSS背景样式" class="headerlink" title="CSS背景样式"></a>CSS背景样式</h2><h3 id="background-color：-背景颜色"><a href="#background-color：-背景颜色" class="headerlink" title="background-color： 背景颜色"></a>background-color： 背景颜色</h3><p>定义元素的背景颜色</p>
+<pre><code>background-color: 颜色值;
+
+ div{background-color: pink;}
+</code></pre><p>关键字/16RBG等等……</p>
+<p>可以给文本加背景色，就像书本上被荧光笔标记了一样（加上的效果类似于被选中的感觉）如：</p>
+<p style="background-color:greenyellow;">黄绿色背景</p>
+
+<p style="background-color:pink;">猛男色背景</p>
+
+<h3 id="background-image：背景图片样式"><a href="#background-image：背景图片样式" class="headerlink" title="background-image：背景图片样式"></a>background-image：背景图片样式</h3><pre><code>background-image: url(图片路径);
+
+ div{background-image: url(xxx.XXX.XXX);}
+
+ 引入图片后也要设置width和height才会显示背景图片。
+ 即：
+ div{width:233px;height:233px;background-image: url(xxx);}
+ 或者
+  body
+        {
+            background-image:url(xxx);
+        }
+</code></pre><p>效果：</p>
+<div style="width:100px;height:80px;background-image: url(https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/ico/3.jpg);color:pink;">哔哩哔哩干杯！</div>
+
+<h3 id="background-repeat：背景图片重复"><a href="#background-repeat：背景图片重复" class="headerlink" title="background-repeat：背景图片重复"></a>background-repeat：背景图片重复</h3><pre><code>background-repeat: 取值;
+</code></pre><p>取值：</p>
+<p><strong>repeat</strong>（默认：水平，垂直方向都平铺）</p>
+<p><strong>repeat-x</strong>（只在水平（x轴），平铺）</p>
+<p><strong>repeat-y</strong>（垂直平铺）</p>
+<p><strong>no-repeat</strong>（不平铺）</p>
+<p>元素的宽度和高度必须大于背景图片的宽度和高度，才会有重复效果。如：300*150px只在水平平铺</p>
+<div style="width:300px;height:150px;background-image: url(https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/ico/3.jpg);color:pink;background-repeat:repeat-x;border:1px solid red;">哔哩哔哩干杯！</div>
+
+<h3 id="background-position：背景图片位置"><a href="#background-position：背景图片位置" class="headerlink" title="background-position：背景图片位置"></a>background-position：背景图片位置</h3><pre><code>background-position: 像素值/关键字;
+
+像素：background-position: 水平距离 垂直距离;
+background-position:233px 666px
+
+关键字：background-position: 水平距离（行：上中下） 垂直距离（列：左中右）; 划分为3*3格
+</code></pre><p>关键字：<strong>top ，center， bottom ，left， right</strong></p>
+<p>示例：</p>
+<div style="width:300px;height:150px;background-image: url(https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/ico/3.jpg);color:pink;background-repeat:no-repeat;border:1px solid red;background-position:100px 50px">哔哩哔哩干杯！</div>
+
+
+
+<h3 id="background-attachment：背景图片固定"><a href="#background-attachment：背景图片固定" class="headerlink" title="background-attachment：背景图片固定"></a>background-attachment：背景图片固定</h3><pre><code>background-attachment: 取值;
+</code></pre><p>取值：scroll（默认；随元素一起滚动），fixed（固定不动）</p>
+<p>会决定背景图片会不会随着元素一起滚动。</p>
+<h2 id="CSS超链接样式"><a href="#CSS超链接样式" class="headerlink" title="CSS超链接样式"></a>CSS超链接样式</h2><h3 id="超链接CSS伪类"><a href="#超链接CSS伪类" class="headerlink" title="超链接CSS伪类"></a>超链接CSS伪类</h3><p>定义超链接在鼠标点击的不同时期的样式</p>
+<pre><code>a:link{…}        定义a元素未访问时的样式
+a:visited{…}    定义a元素访问后的样式
+a:hover{…}        定义鼠标经过a元素时的样式
+a:active{…}        定义鼠标点击激活时的样式
+</code></pre><p>定义时一定要按以上顺序依次进行，不然可能浏览器会出错。</p>
+<p>如：</p>
+<pre><code class="html">&lt;style type=&quot;text/css&quot;&gt;
+        a{text-decoration:none;}
+        a:link{color:pink;}
+        a:visited{color:purple;}
+        a:hover{color:red;}
+        a:active{color:green;}
+    &lt;/style&gt;
+</code></pre>
+<p>但也不是什么时候都需要把4个都定义了</p>
+<p>未访问状态颜色也可以直接在a中定义了，如：</p>
+<pre><code class="html">    a
+        {
+            color:blue;
+            text-decoration: none;
+        }
+        a:hover
+        {
+            color:pink;
+            text-decoration:underline;
+        }
+</code></pre>
+<h3 id="：hover"><a href="#：hover" class="headerlink" title="：hover"></a>：hover</h3><p>除了用于超链接，同样适用其他标签，即鼠标经过时候的样式：</p>
+<pre><code>   div:hover
+        {
+            background-color: hotpink;
+        }
+        如经过div时出现背景色
+ img:hover
+        {
+            border:2px solid red;
+        }
+        经过图片时显示边框
+
+</code></pre><h3 id="鼠标样式"><a href="#鼠标样式" class="headerlink" title="鼠标样式"></a>鼠标样式</h3><h4 id="浏览器鼠标样式"><a href="#浏览器鼠标样式" class="headerlink" title="浏览器鼠标样式"></a>浏览器鼠标样式</h4><p>（电脑自带样式？）</p>
+<pre><code>cursor: 取值;
+
+div{cursor:pointer;}
+&lt;div&gt;珈 窝 刊 梅 洋 洋 洗 枣&lt;/div&gt;
+</code></pre><p>记住<strong>default</strong>（默认鼠标），<strong>pointer</strong>（指向鼠标，一只手点击的样子），<strong>text</strong>（选中文本的样子）就行，扩展自行百度。</p>
+<h4 id="自定义鼠标样式"><a href="#自定义鼠标样式" class="headerlink" title="自定义鼠标样式"></a>自定义鼠标样式</h4><pre><code>cursor: url(图片地址), 属性值;
+</code></pre><p>图片后缀一般为cur，属性值如上记住3个重点即可。</p>
+<h2 id="CSS盒子模型"><a href="#CSS盒子模型" class="headerlink" title="CSS盒子模型"></a>CSS盒子模型</h2><h3 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h3><p>CSS盒模型本质上是一个盒子，封装周围的HTML元素，它包括：边距，边框，填充，和实际内容。</p>
+<p>盒模型允许我们在其它元素和周围元素边框之间的空间放置元素。</p>
+<p>页面中的所有元素都可以看成一个盒子，并且占据着一定的页面空间。每个元素都看成一个盒子，盒子模型是由四个属性组成的：<strong>content（内容）、padding（内边距）、margin（外边距）和border（边框）</strong>。此外，在盒子模型中，还有宽度width和高度height两大辅助性属性。</p>
+<p><strong>记住，所有的元素都可以看成一个盒子</strong>。（body都是）</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">content</td>
+<td style="text-align:left">内容，可以是文本或图片</td>
+</tr>
+<tr>
+<td style="text-align:left">padding</td>
+<td style="text-align:left">内边距，用于定义内容与边框之间的距离</td>
+</tr>
+<tr>
+<td style="text-align:left">margin</td>
+<td style="text-align:left">外边距，用于定义当前元素与其他元素之间的距离</td>
+</tr>
+<tr>
+<td style="text-align:left">border</td>
+<td style="text-align:left">边框，用于定义元素的边框</td>
+</tr>
+</tbody>
+</table>
+<p><strong>内容区（content）</strong></p>
+<p>内容区是CSS盒子模型的中心，它呈现了盒子的主要信息内容，这些内容可以是文本、图片等多种类型。内容区是盒子模型必备的组成部分，其他3个部分都是可选的。</p>
+<p><strong>内边距（padding）</strong></p>
+<p>内边距，指的是内容区和边框之间的空间。</p>
+<p><strong>外边距（margin）</strong></p>
+<p>外边距，指的是两个盒子之间的距离，它可能是子元素与父元素之间的距离，也可能是兄弟元素之间的距离。外边距使得元素之间不必紧凑地连接在一起，是CSS布局的一个重要手段。</p>
+<p><strong>边框（border）</strong></p>
+<p>同之前学的边框。</p>
+<h3 id="内容：宽（width）高（height）"><a href="#内容：宽（width）高（height）" class="headerlink" title="内容：宽（width）高（height）"></a>内容：宽（width）高（height）</h3><p>元素的宽度和高度是针对内容而定；只有块元素才可以设置width和height，行内元素无法设置width和height。</p>
+<p>如：</p>
+<pre><code class="html">div{width:100px;height:50px;}
+</code></pre>
+<p>若想为行内元素设置宽高，可用display属性把行内元素转化为块元素，css入门先不管。、</p>
+<pre><code>display:inline-block;
+</code></pre><p>把元素转化为inline-block元素。</p>
+<h3 id="边框：border"><a href="#边框：border" class="headerlink" title="边框：border"></a>边框：border</h3><pre><code>border: 1px solid red;
+</code></pre><p>前面的笔记有详细。</p>
+<h3 id="内边距：padding"><a href="#内边距：padding" class="headerlink" title="内边距：padding"></a>内边距：padding</h3><p>又被称为“补白”，指的是内容区到边框之间的一部分。内边距都是在边框内部的。</p>
+<h4 id="padding局部样式"><a href="#padding局部样式" class="headerlink" title="padding局部样式"></a>padding局部样式</h4><p>同边框一样，可以分上下左右四个边进行分别调节：</p>
+<pre><code>padding-top: 值;
+padding-right: 值;
+padding-bottom: 值;
+padding-left: 值;
+</code></pre><h4 id="padding的简写"><a href="#padding的简写" class="headerlink" title="padding的简写"></a>padding的简写</h4><p>有三种简写方式：</p>
+<pre><code>padding: 值;
+padding: 值1 值2;
+padding: 值1 值2 值3 值4;
+</code></pre><p>第一种，即4个方向都是一个值。取值前期还是考虑像素px。</p>
+<p>第二种，表示上下为值1，左右为值2。</p>
+<p>第三种，表示从上开始顺时针方向：上右底左依次是1234对应值。</p>
+<h3 id="外边距：margin"><a href="#外边距：margin" class="headerlink" title="外边距：margin"></a>外边距：margin</h3><p>边框到“父元素”或“兄弟元素”之间的那一部分。外边距是在元素边框的外部的。</p>
+<h4 id="margin局部样式"><a href="#margin局部样式" class="headerlink" title="margin局部样式"></a>margin局部样式</h4><p>同内边距，分为上下左右四个部分。</p>
+<pre><code>margin-top: 值;
+margin-right: 值;
+margin-bottom: 值;
+margin-left: 值;
+</code></pre><h4 id="margin简写形式"><a href="#margin简写形式" class="headerlink" title="margin简写形式"></a>margin简写形式</h4><pre><code>margin: 值;
+margin: 值1 值2;
+margin: 值1 值2 值3 值4;
+</code></pre><p>介绍同上padding</p>
+<h2 id="CSS浮动布局"><a href="#CSS浮动布局" class="headerlink" title="CSS浮动布局"></a>CSS浮动布局</h2><h3 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h3><p>在之前<strong>图片样式</strong>里面已经提到过“<strong>环绕-float了</strong>”。</p>
+<p>浮动是CSS布局的利器，通过浮动来灵活地定位页面元素，以达到布局网页的目的。</p>
+<p>如我们可以通过设置float属性让元素向左浮动或者向右浮动，以便让周围的元素或文本环绕着这个元素。</p>
+<pre><code>float: 取值;
+</code></pre><p>取值：left，right。</p>
+<p>如：将div设置为浮动元素，则其对应的宽度将不在延申，而是由内容决定宽度，同时会相邻的下一个div会紧贴该元素，这就是浮动二引起的效果。</p>
+<h3 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h3><p>浮动会影响周围元素，并且还会引发很多预想不到的问题。在CSS中，可以使用clear属性来清除浮动带来的影响。</p>
+<pre><code>clear: 取值;
+</code></pre><p>取值：left，right，both（去除左，右，同时去掉浮动）</p>
+<p>一般直接简单除暴clear：both清除该元素的兄弟元素浮动之后带来的影响。</p>
+<pre><code class="html">&lt;div&gt;
+       &lt;div id=&quot;box1&quot;&gt;box1&lt;/div&gt;
+    &lt;div id=&quot;box2&quot;&gt;box2&lt;/div&gt;
+    &lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>一般增加一个空元素来专门clear.除了clear还有其他方式，这里入门先接触一个。</p>
+<h2 id="CSS定位布局"><a href="#CSS定位布局" class="headerlink" title="CSS定位布局"></a>CSS定位布局</h2><p>定位布局可以将一个元素精确地放在页面上指定的地方。联合使用定位和浮动，能够创建多种高级而精确地布局。定位布局共有4种方式。</p>
+<h3 id="固定定位：fixed"><a href="#固定定位：fixed" class="headerlink" title="固定定位：fixed"></a>固定定位：fixed</h3><p>所谓的固定定位，指的是被固定的元素不会随着滚动条的拖动而改变位置。用来做”回到顶部“挺好。</p>
+<pre><code>position: fixed;
+top: 值;
+bottom: 值;
+left: 值;
+right: 值;
+</code></pre><p>position:fixed;是结合top、bottom、left和right这4个属性一起使用的。其中，position:fixed使得元素成为固定定位元素，接着使用top、bottom、left和right这4个属性来设置元素相对浏览器的位置。一般不会四个都用。</p>
+<p>比如left：40px就是在距浏览器左部的40px；top：400px就是离顶部400px的位置。</p>
+<h3 id="相对定位：relative"><a href="#相对定位：relative" class="headerlink" title="相对定位：relative"></a>相对定位：relative</h3><p>相对定位，指该元素的位置是相对于它的原始位置计算而来的。</p>
+<pre><code>position: relative;
+top: 值;
+bottom: 值;
+left: 值;
+right: 值;
+</code></pre><h3 id="绝对定位：absolute"><a href="#绝对定位：absolute" class="headerlink" title="绝对定位：absolute"></a>绝对定位：absolute</h3><p>一个元素变成了绝对定位元素，这个元素就完全脱离文档流了，绝对定位元素的前面或后面的元素会认为这个元素并不存在，此时这个元素浮于其他元素上面，已经完全独立出来了。</p>
+<pre><code>position: absolute;
+top: 值;
+bottom: 值;
+left: 值;
+right: 值;
+</code></pre><p>取值同固定定位，但会随滚动条滚动。</p>
+<h3 id="静态定位：static"><a href="#静态定位：static" class="headerlink" title="静态定位：static"></a>静态定位：static</h3><p>在默认情况下，元素没有指定position属性时，这个元素就是静态定位的。也就是说，元素position属性的默认值是static。</p>
+<p>一般情况下我们使用不到position:static的，不过在使用JavaScript来控制元素定位时，如果想要使得元素从其他定位方式变成静态定位，就需要使用position:static来实现。</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3null"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3null"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2021/09/02/前端学习笔记——JavaScript基础/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/070921082586_8IMG_20210223_115551.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/070921082586_8IMG_20210223_115551.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                前端学习笔记——JavaScript基础</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2021/07/13/HTML学习笔记——HTML基础/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/91057442_0.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/91057442_0.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                HTML学习笔记——HTML基础</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "A4UqsWsXYTvl3ILey3Nis8hs-gzGzoHsz",
+        appKey: "s2r99t5u9k6DkKd3O6JbRauV",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="https://nanivy.space/" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.1/qq_pic_merged_1602861906220.jpg" itemprop="image" alt="NanIvy" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="https://nanivy.space/" itemprop="url" rel="author">NanIvy</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>菜菜子新人</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+   <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/xuehua.js"></script>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 NanIvy<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2020</p>
+    </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "","name":"","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "","name":"","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@l1/live2d/live2d/autoload.js"></script>
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/ico/tx.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">ロリが好きなのNanIvy</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="https://github.com/0NanIvy0" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/技术/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/生活/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/随想/">
+                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                  随想
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/bangumi/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  番组
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+              <li>
+                <a href="/theme-sakura/">
+                  <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                  主题
+                </a>
+              </li>
+            
+              <li>
+                <a href="/lab/">
+                  <i class="fa fa-cogs" aria-hidden="true"></i>
+                  Lab
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="749401279"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+</body>
+</html>

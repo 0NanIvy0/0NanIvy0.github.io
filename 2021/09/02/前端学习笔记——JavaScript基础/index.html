@@ -1,0 +1,2410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">前端学习笔记——JavaScript基础 | NanIvy</title>
+ <link rel="shortcut icon" href="images/favicon.ico">
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "ロリが好きなのNanIvy";
+  mashiro_option.author_name = "NanIvy";
+  mashiro_option.site_url = "https://github.com/0NanIvy0";
+  mashiro_option.v_appId = "A4UqsWsXYTvl3ILey3Nis8hs-gzGzoHsz";
+  mashiro_option.v_appKey = "s2r99t5u9k6DkKd3O6JbRauV";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/070921020824_789484946.jpg,https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/070921020824_989645004.jpg".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+</head>
+</html>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dim">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://github.com/0NanIvy0">
+          <img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/ico/tx.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>淡淡无名，月下起舞。</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="https://github.com/0NanIvy0" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/ico/120.jpg">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://space.bilibili.com/21128145" target="_blank" class="social-github" title="bilibili">
+                    <img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/ico/3.jpg">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://user.qzone.qq.com/1356775082/infocenter" target="_blank" class="social-github" title="QQ=1356775082">
+                    <img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/ico/link.jpg">
+                  </a>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">ロリが好きなの</span>
+            <span class="shironeko">NanIvy</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/技术/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/生活/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/随想/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          随想
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/">
+                          <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                          主题
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/lab/">
+                          <i class="fa fa-cogs" aria-hidden="true"></i>
+                          Lab
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/070921082586_8IMG_20210223_115551.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/070921082586_8IMG_20210223_115551.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      前端学习笔记——JavaScript基础</h1>
+      <p class="entry-census">
+        <span>
+          <a href="https://nanivy.space/">
+            <img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.1/qq_pic_merged_1602861906220.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="https://nanivy.space/">NanIvy</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2021-9-2<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <p>参考学习路线：<a href="https://zhuanlan.zhihu.com/p/324351537" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/324351537</a></p>
+<p>对前端初恋的感觉——绿叶学习网：<a href="http://www.lvyestudy.com/" target="_blank" rel="noopener">http://www.lvyestudy.com/</a></p>
+<h2 id="常见内置对象"><a href="#常见内置对象" class="headerlink" title="常见内置对象"></a>常见内置对象</h2><h3 id="字符串对象"><a href="#字符串对象" class="headerlink" title="字符串对象"></a>字符串对象</h3><h5 id="获取字符串长度："><a href="#获取字符串长度：" class="headerlink" title="获取字符串长度："></a>获取字符串长度：</h5><p>在JavaScript中，使用length属性来获取字符串的长度。</p>
+<p>语法：</p>
+<pre><code>字符串名.length
+
+如： str=“ahujdhiahfiuahgiuha”
+str.length即可获取长度
+</code></pre><h5 id="大小写转换："><a href="#大小写转换：" class="headerlink" title="大小写转换："></a>大小写转换：</h5><p>JavaScript中，toLowerCase()方法将大写字符串转化为小写字符串，toUpperCase()方法将小写字符串转化为大写字符串。</p>
+<p>语法：</p>
+<pre><code>字符串名.toLowerCase()
+字符串名.toUpperCase()
+</code></pre><h5 id="获取某个字符："><a href="#获取某个字符：" class="headerlink" title="获取某个字符："></a>获取某个字符：</h5><p>在JavaScript中，harAt()方法来获取字符串中的某一个字符。</p>
+<p>语法：</p>
+<pre><code>字符串名.charAt(x)
+</code></pre><p>获取字符串中第x+1个字符。</p>
+<h5 id="截取字符串："><a href="#截取字符串：" class="headerlink" title="截取字符串："></a>截取字符串：</h5><p>在JavaScript中，substring()方法来截取字符串的某一部分。</p>
+<p>语法：</p>
+<pre><code>字符串名.substring(start, end)
+</code></pre><p>start,end为数字，下标都是从0开始，如（n,x）就是截取第n+1到x+1的字符串。</p>
+<p>同时 可以去掉end，，则会截取从start后的所有字符串。</p>
+<h5 id="替换字符串："><a href="#替换字符串：" class="headerlink" title="替换字符串："></a>替换字符串：</h5><p>在JavaScript中，replace()方法来用一个字符串替换另外一个字符串的某一部分。</p>
+<p>语法：</p>
+<pre><code>字符串名.replace(原字符串, 替换字符串)
+字符串名.replace(正则表达式, 替换字符串)
+</code></pre><h5 id="分割字符串："><a href="#分割字符串：" class="headerlink" title="分割字符串："></a>分割字符串：</h5><p>在JavaScript中，split()方法把一个字符串分割成一个数组，这个数组存放的是原来字符串的所有字符片段。有多少个片段，数组元素个数就是多少。</p>
+<p>语法：</p>
+<pre><code>字符串名.split(&quot;分割符&quot;)
+
+如：
+ var str = &quot;HTML,CSS,JavaScript&quot;;
+        var arr = str.split(&quot;,&quot;);
+        document.write(&quot;数组第1个元素是：&quot; + arr[0] + &quot;&lt;br/&gt;&quot;);
+        document.write(&quot;数组第2个元素是：&quot; + arr[1] + &quot;&lt;br/&gt;&quot;);
+        document.write(&quot;数组第3个元素是：&quot; + arr[2]);
+</code></pre><p>​        <code>split(&quot; &quot;)</code>和<code>split(&quot;&quot;)</code>是不一样的！前者两个引号之间是有空格，所以表示用空格作为分割符来分割。后者两个引号之间是没有空格，可以用来分割字符串每一个字符。</p>
+<p>​        split()方法有两个参数：第1个参数表示分割符；第2个参数表示获取分割之后截取的前n个元素。（不常用）</p>
+<p>如：var arr = str.split(“~”, 3);</p>
+<p>bili~nico~ytb~youku~aqiyi               得到结果 bili，nico，ytb。</p>
+<h5 id="检索字符串位置："><a href="#检索字符串位置：" class="headerlink" title="检索字符串位置："></a>检索字符串位置：</h5><p>在JavaScript中，indexOf()方法来找出“某个指定字符串”在字符串中<strong>首次出现</strong>的下标位置，也可以使用lastIndexOf()来找出“某个指定字符串”在字符串中<strong>最后出现</strong>的下标位置。</p>
+<p>语法：</p>
+<pre><code>字符串名.indexOf(指定字符串)
+字符串名.lastIndexOf(指定字符串)
+</code></pre><p>如果字符串中包含“指定字符串”，indexOf()就会返回指定字符串首次出现的下标，而lastIndexOf()就会返回指定字符串最后出现的下标；如果字符串中不包含“指定字符串”，indexOf()或lastIndexOf()就会返回-1。</p>
+<h3 id="数组对象"><a href="#数组对象" class="headerlink" title="数组对象"></a>数组对象</h3><h5 id="数组的创建："><a href="#数组的创建：" class="headerlink" title="数组的创建："></a>数组的创建：</h5><p>在JavaScript中，new关键字来创建一个数组。创建数组，常见的有两种形式：一种是“完整形式”；另外一种是“简写形式”。</p>
+<p>语法：</p>
+<pre><code>var 数组名 = new Array(元素1, 元素2, ……, 元素n);    //完整形式
+var 数组名 = [元素1, 元素2, ……, 元素n];             //简写形式
+
+调用  arr[2] 同c语言。
+</code></pre><h5 id="获取数组长度："><a href="#获取数组长度：" class="headerlink" title="获取数组长度："></a>获取数组长度：</h5><p>在JavaScript中，length属性来获取数组的长度。</p>
+<p>语法：</p>
+<pre><code>数组名.length     arr.length
+</code></pre><p>数组有几个元素，长度就为多少。</p>
+<h5 id="截取数组部分："><a href="#截取数组部分：" class="headerlink" title="截取数组部分："></a>截取数组部分：</h5><p>在JavaScript中，slice()方法来获取数组的某一部分。slice，就是“切片”的意思。</p>
+<p>语法：</p>
+<pre><code>数组名.slice(start, end);
+</code></pre><p>start，end为下标， 且[start,end）</p>
+<h5 id="添加数组元素："><a href="#添加数组元素：" class="headerlink" title="添加数组元素："></a>添加数组元素：</h5><h6 id="在数组开头添加元素：unshift"><a href="#在数组开头添加元素：unshift" class="headerlink" title="在数组开头添加元素：unshift()"></a>在数组开头添加元素：unshift()</h6><p>在JavaScript中，使用unshift()方法在数组开头添加新元素，并且可以得到一个新的数组（也就是原数组变了）。</p>
+<p>语法：</p>
+<pre><code>数组名.unshift(新元素1, 新元素2, ……, 新元素n)
+</code></pre><h6 id="在数组结尾添加元素：push"><a href="#在数组结尾添加元素：push" class="headerlink" title="在数组结尾添加元素：push()"></a>在数组结尾添加元素：push()</h6><p>在JavaScript中，使用push()方法在数组结尾添加新元素，并且可以得到一个新的数组（也就是原数组变了）。</p>
+<p>语法：</p>
+<pre><code>数组名.push(新元素1, 新元素2, ……, 新元素n)
+</code></pre><h5 id="删除数组元素："><a href="#删除数组元素：" class="headerlink" title="删除数组元素："></a>删除数组元素：</h5><h6 id="删除数组中第一个元素：shift"><a href="#删除数组中第一个元素：shift" class="headerlink" title="删除数组中第一个元素：shift()"></a>删除数组中第一个元素：shift()</h6><p>在JavaScript中，使用shift()方法来删除数组中的第一个元素，并且可以得到一个新的数组（也就是原数组变了）。</p>
+<p>语法：</p>
+<pre><code>数组名.shift()
+</code></pre><h6 id="删除数组最后一个元素：pop"><a href="#删除数组最后一个元素：pop" class="headerlink" title="删除数组最后一个元素：pop()"></a>删除数组最后一个元素：pop()</h6><p>在JavaScript中，使用pop()方法来删除数组的最后一个元素，并且可以得到一个新数组（也就是原数组变了）。</p>
+<p>语法：</p>
+<pre><code>数组名.pop()
+</code></pre><h5 id="数组大小比较："><a href="#数组大小比较：" class="headerlink" title="数组大小比较："></a>数组大小比较：</h5><p>在JavaScript中，我们可以使用sort()方法来对数组中所有元素进行大小比较，然后按从大到小或者从小到大进行排序。</p>
+<p>语法：</p>
+<pre><code>数组名.sort(函数名)
+</code></pre><p>“函数名”是定义数组元素排序的函数的名字。</p>
+<pre><code>  //定义一个升序函数
+        function up(a, b) 
+        {
+            return a - b;
+        }
+        //定义一个降序函数
+        function down(a, b) 
+        {
+            return b - a;
+        }
+        //定义数组
+        var arr = [3, 9, 1, 12, 50, 21];
+        arr.sort(up);
+        document.write(&quot;升序：&quot; + arr.join(&quot;、&quot;) + &quot;&lt;br/&gt;&quot;);
+        arr.sort(down);
+        document.write(&quot;降序：&quot; + arr.join(&quot;、&quot;));
+</code></pre><h5 id="数组颠倒顺序"><a href="#数组颠倒顺序" class="headerlink" title="数组颠倒顺序"></a>数组颠倒顺序</h5><p>在JavaScript中，使用reverse()方法来实现数组中所有元素的反向排列，也就是颠倒数组元素的顺序。reverse，就是“反向”的意思。</p>
+<p>语法：</p>
+<pre><code>数组名.reverse();
+</code></pre><h5 id="将数组连接成字符串："><a href="#将数组连接成字符串：" class="headerlink" title="将数组连接成字符串："></a>将数组连接成字符串：</h5><p>在JavaScript中，使用join()方法来将数组中的所有元素连接成一个字符串。</p>
+<p>语法：</p>
+<pre><code>数组名.join(&quot;连接符&quot;);
+</code></pre><p>不写连接符的话，默认为英文的逗号：,。</p>
+<h3 id="时间对象"><a href="#时间对象" class="headerlink" title="时间对象"></a>时间对象</h3><p>语法：</p>
+<pre><code>var 日期对象名 = new Date();
+</code></pre><p>创建一个日期对象，必须使用new关键字。其中Date对象的方法有很多，主要分为两大类：getXxx()和setXxx()。getXxx()用于获取时间，setXxx()用于设置时间。</p>
+<p><strong>用于获取时间的getXxx()</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">getFullYear()</td>
+<td style="text-align:left">获取年份，取值为4位数字</td>
+</tr>
+<tr>
+<td style="text-align:left">getMonth()</td>
+<td style="text-align:left">获取月份，取值为0（一月）到11（十二月）之间的整数</td>
+</tr>
+<tr>
+<td style="text-align:left">getDate()</td>
+<td style="text-align:left">获取日数，取值为1~31之间的整数</td>
+</tr>
+<tr>
+<td style="text-align:left">getHours()</td>
+<td style="text-align:left">获取小时数，取值为0~23之间的整数</td>
+</tr>
+<tr>
+<td style="text-align:left">getMinutes()</td>
+<td style="text-align:left">获取分钟数，取值为0~59之间的整数</td>
+</tr>
+<tr>
+<td style="text-align:left">getSeconds()</td>
+<td style="text-align:left">获取秒数，取值为0~59之间的整数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>用于设置时间的setXxx()</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">setFullYear()</td>
+<td style="text-align:left">可以设置年、月、日</td>
+</tr>
+<tr>
+<td style="text-align:left">setMonth()</td>
+<td style="text-align:left">可以设置月、日</td>
+</tr>
+<tr>
+<td style="text-align:left">setDate()</td>
+<td style="text-align:left">可以设置日</td>
+</tr>
+<tr>
+<td style="text-align:left">setHours()</td>
+<td style="text-align:left">可以设置时、分、秒、毫秒</td>
+</tr>
+<tr>
+<td style="text-align:left">setMinutes()</td>
+<td style="text-align:left">可以设置分、秒、毫秒</td>
+</tr>
+<tr>
+<td style="text-align:left">setSeconds()</td>
+<td style="text-align:left">可以设置秒、毫秒</td>
+</tr>
+</tbody>
+</table>
+<h3 id="数学对象"><a href="#数学对象" class="headerlink" title="数学对象"></a>数学对象</h3><p>Math对象跟其他对象不一样，我们不需要使用new关键字来创造，而是直接使用它的属性和方法就行。</p>
+<p>语法：</p>
+<pre><code>Math.属性
+Math.方法
+</code></pre><h5 id="Math对象的属性"><a href="#Math对象的属性" class="headerlink" title="Math对象的属性"></a>Math对象的属性</h5><p>常见</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">对应的数学形式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">PI</td>
+<td style="text-align:left">圆周率</td>
+<td style="text-align:left">π</td>
+</tr>
+<tr>
+<td style="text-align:left">LN2</td>
+<td style="text-align:left">2的自然对数</td>
+<td style="text-align:left">ln(2)</td>
+</tr>
+<tr>
+<td style="text-align:left">LN10</td>
+<td style="text-align:left">10的自然对数</td>
+<td style="text-align:left">ln(10)</td>
+</tr>
+<tr>
+<td style="text-align:left">LOG2E</td>
+<td style="text-align:left">以2为底的e的对数</td>
+<td style="text-align:left">log2e</td>
+</tr>
+<tr>
+<td style="text-align:left">LOG10E</td>
+<td style="text-align:left">以10为底的e的对数</td>
+<td style="text-align:left">log10e</td>
+</tr>
+<tr>
+<td style="text-align:left">SQRT2</td>
+<td style="text-align:left">2的平方根</td>
+<td style="text-align:left">√2</td>
+</tr>
+<tr>
+<td style="text-align:left">SQRT1_2</td>
+<td style="text-align:left">2的平方根的倒数</td>
+<td style="text-align:left">1/√2</td>
+</tr>
+</tbody>
+</table>
+<p>在实际开发中，所有角度都是以“弧度”为单位的，例如180°就应该写成Math.PI，而360°就应该写成Math.PI<em>2，以此类推。对于角度，在实际开发中推荐这种写法：“**度数 \</em> Math.PI/180**”，因为这种写法可以让我们一眼就能看出角度是多少，例如：</p>
+<pre><code>120*Math.PI/180   //120°
+150*Math.PI/180   //150°
+
+ document.write(&quot;圆周率为：&quot; + Math.PI);
+</code></pre><h5 id="Math对象的方法"><a href="#Math对象的方法" class="headerlink" title="Math对象的方法"></a>Math对象的方法</h5><p>常见</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">max(a,b,…,n)</td>
+<td style="text-align:left">返回一组数中的最大值</td>
+</tr>
+<tr>
+<td style="text-align:left">min(a,b,…,n)</td>
+<td style="text-align:left">返回一组数中的最小值</td>
+</tr>
+<tr>
+<td style="text-align:left">sin(x)</td>
+<td style="text-align:left">正弦</td>
+</tr>
+<tr>
+<td style="text-align:left">cos(x)</td>
+<td style="text-align:left">余弦</td>
+</tr>
+<tr>
+<td style="text-align:left">tan(x)</td>
+<td style="text-align:left">正切</td>
+</tr>
+<tr>
+<td style="text-align:left">asin(x)</td>
+<td style="text-align:left">反正弦</td>
+</tr>
+<tr>
+<td style="text-align:left">acos(x)</td>
+<td style="text-align:left">反余弦</td>
+</tr>
+<tr>
+<td style="text-align:left">atan(x)</td>
+<td style="text-align:left">反正切</td>
+</tr>
+<tr>
+<td style="text-align:left">atan2(y, x)</td>
+<td style="text-align:left">反正切（注意y、x顺序）</td>
+</tr>
+<tr>
+<td style="text-align:left">floor(x)</td>
+<td style="text-align:left">向下取整</td>
+</tr>
+<tr>
+<td style="text-align:left">ceil(x)</td>
+<td style="text-align:left">向上取整</td>
+</tr>
+<tr>
+<td style="text-align:left">random()</td>
+<td style="text-align:left">生成随机数</td>
+</tr>
+</tbody>
+</table>
+<p> 不常用</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">abs(x)</td>
+<td style="text-align:left">返回x的绝对值</td>
+</tr>
+<tr>
+<td style="text-align:left">sqrt(x)</td>
+<td style="text-align:left">返回x的平方根</td>
+</tr>
+<tr>
+<td style="text-align:left">log(x)</td>
+<td style="text-align:left">返回x的自然对数（底为e）</td>
+</tr>
+<tr>
+<td style="text-align:left">pow(x,y)</td>
+<td style="text-align:left">返回x的y次幂</td>
+</tr>
+<tr>
+<td style="text-align:left">exp(x)</td>
+<td style="text-align:left">返回e的指数</td>
+</tr>
+</tbody>
+</table>
+<h5 id="生成随机数-random（）"><a href="#生成随机数-random（）" class="headerlink" title="生成随机数 random（）"></a>生成随机数 random（）</h5><h6 id="（1）Math-random-m"><a href="#（1）Math-random-m" class="headerlink" title="（1）Math.random()*m"></a>（1）Math.random()*m</h6><p>表示生成0~m之间的随机数，例如“Math.random()*10”表示生成0-10之间的随机数。    </p>
+<h6 id="（2）Math-random-m-n"><a href="#（2）Math-random-m-n" class="headerlink" title="（2）Math.random()*m+n"></a>（2）Math.random()*m+n</h6><p>表示生成n~m+n之间的随机数，例如“Math.random()*10+8”表示生成8-18之间的随机数。</p>
+<h6 id="（3）Math-random-m-n"><a href="#（3）Math-random-m-n" class="headerlink" title="（3）Math.random()*m-n"></a>（3）Math.random()*m-n</h6><p>表示生成-n~m-n之间的随机数，例如“Math.random()*10-8”表示生成-8-2之间的随机数。</p>
+<h6 id="（4）Math-random-m-m"><a href="#（4）Math-random-m-m" class="headerlink" title="（4）Math.random()*m-m"></a>（4）Math.random()*m-m</h6><p>表示生成-m~0之间的随机数，例如“Math.random()*10-10”表示生成-10-0之间的随机数。</p>
+<p><strong>特别注意一下，这里的0~1是只包含0不包含1的，也就是[0, 1)。</strong></p>
+<p>tips：下面也是。</p>
+<h5 id="随机数生成某个范围内的“整数”"><a href="#随机数生成某个范围内的“整数”" class="headerlink" title="随机数生成某个范围内的“整数”"></a>随机数生成某个范围内的“整数”</h5><p>对于Math.random()<em>5来说，由于floor()是向下取整，因此Math.floor(Math.random()</em>5)生成的是0~4之间的随机整数。如果你想生成0~5之间的随机整数，应该写成：</p>
+<pre><code>Math.floor(Math.random()*(5+1))
+</code></pre><p>也就是说，如果你想生成0到m之间的随机整数，应该这样写：</p>
+<pre><code>Math.floor(Math.random()*(m+1))
+</code></pre><p>如果你想生成1到m之间的随机整数（包括1和m），应该这样写：</p>
+<pre><code>Math.floor(Math.random()*m)+1
+</code></pre><p>如果你想生成n到m之间的随机整数（包括n和m），应该这样写：</p>
+<pre><code>Math.floor(Math.random()*(m-n+1))+n
+</code></pre><p>上面是用floor()来生成我们想要的随机整数，当然我们也可以使用ceil()来实现。只不过呢，我们只需要掌握2个方法中的任意一个就可以了。</p>
+<h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><h3 id="JavaScriptの三种常见节点类型"><a href="#JavaScriptの三种常见节点类型" class="headerlink" title="JavaScriptの三种常见节点类型"></a>JavaScriptの三种常见节点类型</h3><p>（1）元素节点</p>
+<p>（2）属性节点</p>
+<p>（3）文本节点</p>
+<p>不同结点的nodeType的值：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">节点类型</th>
+<th style="text-align:left">nodeType值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">元素节点</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">属性节点</td>
+<td style="text-align:left">2</td>
+</tr>
+<tr>
+<td style="text-align:left">文本节点</td>
+<td style="text-align:left">3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="获取元素——元素节点"><a href="#获取元素——元素节点" class="headerlink" title="获取元素——元素节点"></a>获取元素——元素节点</h3><ul>
+<li>（1）getElementById()</li>
+<li>（2）getElementsByTagName()</li>
+<li>（3）getElementsByClassName()</li>
+<li>（4）querySelector()和querySelectorAll()</li>
+<li>（5）getElementsByName()</li>
+<li>（6）document.title和document.body</li>
+</ul>
+<h5 id="getElementById（）"><a href="#getElementById（）" class="headerlink" title="getElementById（）"></a>getElementById（）</h5><p>get   element by id <strong>类css的id选择器 不加#  下面同理</strong></p>
+<p>语法：</p>
+<pre><code class="javascript">document.getElementById(&quot;id名&quot;)
+
+  示例： window.onload = function () 
+        {
+            var oDiv = document.getElementById(&quot;div1&quot;);
+            oDiv.style.color = &quot;red&quot;;
+        }
+</code></pre>
+<p>此外，getElementById()获取的是一个DOM对象，在给变量命名的时候，习惯性地以英文“o”开头，以便跟其他变量区分开来，一眼就看出来这是一个DOM对象。</p>
+<h5 id="getElementsByTagName"><a href="#getElementsByTagName" class="headerlink" title="getElementsByTagName()"></a>getElementsByTagName()</h5><p>get <strong>elements</strong> by tag name <strong>注意  element这次加了s  复数，类似css元素选择器</strong></p>
+<p>语法：</p>
+<pre><code>document. getElementsByTagName(&quot;标签名&quot;)
+
+ window.onload = function () 
+        {
+            var oUl = document.getElementById(&quot;list&quot;);
+            var oLi = oUl.getElementsByTagName(&quot;li&quot;);
+            oLi[2].style.color = &quot;red&quot;;
+        }
+        获取id为list的ul中的第li，并使第三个li元素文字变红色。（伪数组，只能使用下标形式和length属性。不能使用push（）等，即添加一个末尾，并返回长度。）
+
+          &lt;script&gt;
+        window.onload = function () 
+        {
+            var arr = [&quot;HTML&quot;, &quot;CSS&quot;, &quot;JavaScript&quot;, &quot;jQuery&quot;, &quot;Vue.js&quot;];
+            var oUl = document.getElementById(&quot;list&quot;);
+            var oLi = document.getElementsByTagName(&quot;li&quot;);
+            for (var i = 0; i &lt; oLi.length; i++) 
+            {
+                oLi[i].innerHTML = arr[i];
+                oLi[i].style.color = &quot;red&quot;;
+            }
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;ul id=&quot;list&quot;&gt;
+        &lt;li&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;/li&gt;
+
+</code></pre><p><strong>这样，获取了一个伪数组，调用的时候需要加上下标。</strong></p>
+<p>  var oLi = oUl.getElementsByTagName(“li”);<br>            oLi[2].style.color = “red”;</p>
+<p><strong>但如果在获取元素的时候就指定好下标，就能直接使用指定的dom对象。</strong></p>
+<p>var occ = oUl.getElementsByTagName(“li”)[1];</p>
+<p> oUl.removeChild(occ);</p>
+<h5 id="getElementsByClassName"><a href="#getElementsByClassName" class="headerlink" title="getElementsByClassName()"></a>getElementsByClassName()</h5><p>get element by classname  <strong>同理，注意s复数  类css的类选择器</strong></p>
+<p>语法：</p>
+<pre><code>document. getElementsByClassName(&quot;类名&quot;)
+
+  window.onload = function () 
+        {
+            var oLi = document.getElementsByClassName(&quot;select&quot;);
+            oLi[0].style.color = &quot;red&quot;;
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;ul id=&quot;list&quot;&gt;
+        &lt;li&gt;HTML&lt;/li&gt;
+        &lt;li&gt;CSS&lt;/li&gt;
+        &lt;li class=&quot;select&quot;&gt;JavaScript&lt;/li&gt;
+        &lt;li class=&quot;select&quot;&gt;jQuery&lt;/li&gt;
+        &lt;li class=&quot;select&quot;&gt;Vue.js&lt;/li&gt;
+</code></pre><p>getElementsByClassName()获取的也是一个“类数组”。如果我们想得到某一个元素，也是使用数组下标的形式获取的，这一点跟getElementsByTagName()很相似。</p>
+<h5 id="querySelector-和querySelectorAll"><a href="#querySelector-和querySelectorAll" class="headerlink" title="querySelector()和querySelectorAll()"></a>querySelector()和querySelectorAll()</h5><p>JavaScript新增了querySelector()和querySelectorAll()两个方法，使得我们可以使用CSS选择器的语法来获取所需要的元素。</p>
+<p>语法：</p>
+<pre><code>document.querySelector(&quot;选择器&quot;);
+document.querySelectorAll(&quot;选择器&quot;);
+</code></pre><p>说明：</p>
+<p>querySelector()表示选取满足选择条件的第1个元素，querySelectorAll()表示选取满足条件的所有元素。这两个方法都是非常简单的，它们的写法跟CSS选择器的写法是完全一样的。</p>
+<pre><code>document.querySelector(&quot;#main&quot;)
+document.querySelector(&quot;#list li:nth-child(1)&quot;)
+document.querySelectorAll(&quot;.list li&quot;)
+document.querySelectorAll(&quot;input:checkbox&quot;)
+</code></pre><p>对于id选择器来说，由于页面只有一个元素，建议大家用getElementById()，而不是用querySelector()或querySelectorAll()这两个。因为getElementById()方法效率更高，性能也更快。</p>
+<p>document.querySelector(“#list li:nth-child(3)”)表示选取id为list的元素下的第3个元素，nth-child(n)属于CSS3的选择器。</p>
+<p>也可以使用document.querySelectorAll(“#list li:nth-child(3)”)[0]来实现，两者效果是一样的。特别注意一点，querySelectorAll()方法得到的是一个类数组，即使你获取的只有一个元素，也必须使用下标[0]才可以正确获取。</p>
+<h5 id="getElementsByName"><a href="#getElementsByName" class="headerlink" title="getElementsByName()"></a>getElementsByName()</h5><p>对于表单元素来说，它有一个一般元素都没有的name属性。如果想要通过name属性来获取表单元素，我们可以使用getElementsByName()方法来实现。</p>
+<p>语法：</p>
+<pre><code>document.getElementsByName(&quot;name名&quot;)
+</code></pre><p>说明：</p>
+<p>getElementsByName()获取的也是一个类数组，如果想要准确得到某一个元素，可以使用数组下标形式来获取。</p>
+<p><strong>getElementsByName()只用于表单元素，一般只用于单选按钮和复选框。</strong></p>
+<p>​    </p>
+<h5 id="document-title和document-body"><a href="#document-title和document-body" class="headerlink" title="document.title和document.body"></a>document.title和document.body</h5><p>由于一个页面只有一个title元素和一个body元素，因此对于这两个元素的选取，JavaScript专门为我们提供了两个非常方便的方法：document.title和document.body。</p>
+<pre><code>  &lt;script&gt;
+        window.onload = function () 
+        {
+            document.title = &quot;梦想是什么？&quot;;
+            document.body.innerHTML = &quot;&lt;strong style=&#39;color:red&#39;&gt;梦想就是一种让你感到坚持就是幸福的东西。&lt;/strong&gt;&quot;;
+        }
+    &lt;/script&gt;
+</code></pre><h3 id="创建元素"><a href="#创建元素" class="headerlink" title="创建元素"></a>创建元素</h3><p>语法：</p>
+<pre><code>var e1 = document.createElement(&quot;元素名&quot;);      //创建元素节点
+var txt = document.createTextNode(&quot;文本内容&quot;);   //创建文本节点
+e1.appendChild(txt);                          //把文本节点插入元素节点中
+e2.appendChild(e1);                          //把组装好的元素插入已存在的元素中
+</code></pre><h5 id="示例-创建无属性的元素"><a href="#示例-创建无属性的元素" class="headerlink" title="示例  创建无属性的元素"></a>示例  创建无属性的元素</h5><pre><code>  window.onload = function ()
+        {
+            var oDiv = document.getElementById(&quot;xibao&quot;);
+            var oEm = document.createElement(&quot;em&quot;);
+            var oTxt = document.createTextNode(&quot;灵魂潮汐&quot;);
+
+
+            oEm.appendChild(oTxt);
+            oDiv.appendChild(oEm);
+
+        }
+
+           &lt;div id=&quot;xibao&quot;&gt;&lt;/div&gt;
+</code></pre><h5 id="示例-创建带属性的元素"><a href="#示例-创建带属性的元素" class="headerlink" title="示例  创建带属性的元素"></a>示例  创建带属性的元素</h5><pre><code>window.onload = function ()
+        {
+
+            var oPic = document.createElement(&quot;img&quot;);
+            oPic.src = &quot;xxxxxxx.xxx.webp&quot;;
+            oPic.style.border = &quot;10px solid pink&quot;;
+            oPic.className = &quot;pic&quot;;
+            document.body.appendChild(oPic);
+        }
+</code></pre><p><strong>在操作动态DOM时，设置元素class用的是className而不是class，JavaScript有很多关键字和保留字，其中class已经作为保留字。</strong></p>
+<h5 id="示例-创建动态表格："><a href="#示例-创建动态表格：" class="headerlink" title="示例 创建动态表格："></a>示例 创建动态表格：</h5><pre><code>&lt;script&gt;
+        window.onload = function () 
+        {        
+            //动态创建表格
+            var oTable = document.createElement(&quot;table&quot;);
+            for (var i = 0; i &lt; 3; i++)
+            {
+                var oTr = document.createElement(&quot;tr&quot;);
+                for (var j = 0; j &lt; 3; j++)
+                {
+                   var oTd = document.createElement(&quot;td&quot;);
+                   var oTxt = document.createTextNode(i+&quot;,&quot;+j);
+                   oTd.appendChild(oTxt);
+                   oTr.appendChild(oTd);
+                }
+                oTable.appendChild(oTr);
+            }
+            //添加到body中去
+            document.body.appendChild(oTable);
+        }
+    &lt;/script&gt;
+</code></pre><h3 id="插入元素"><a href="#插入元素" class="headerlink" title="插入元素"></a>插入元素</h3><h5 id="appendChild"><a href="#appendChild" class="headerlink" title="appendChild()"></a>appendChild()</h5><p>把一个新元素插入到父元素的内部子元素的 <strong>末尾</strong> 。</p>
+<p>语法：</p>
+<pre><code>A.appendChild(B);
+</code></pre><p>A表示父元素，B表示动态创建好的新元素。</p>
+<h5 id="insertBefore"><a href="#insertBefore" class="headerlink" title="insertBefore()"></a>insertBefore()</h5><p>使用insertBefore()方法将一个新元素插入到父元素中的某一个子元素“<strong>之前</strong>”。</p>
+<p>语法：</p>
+<pre><code>A.insertBefore(B,ref);
+</code></pre><p>说明：</p>
+<p>A表示父元素，B表示新子元素。ref表示指定子元素，在这个元素之前插入新子元素。</p>
+<h3 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h3><p>removeChild()方法来删除父元素下的某个子元素。</p>
+<p>语法：</p>
+<pre><code>A.removeChild(B);
+</code></pre><p>oUl.removeChild(oUl.lastElementChild);表示删除ul中最后一个li元素，其中oUl.lastElementChild表示ul中的最后一个子元素。如果想要删除第一个子元素，可以使用以下代码来实现：</p>
+<pre><code>oUl.removeChild(oUl.firstElementChild);
+</code></pre><h3 id="复制元素"><a href="#复制元素" class="headerlink" title="复制元素"></a>复制元素</h3><p>cloneNode()方法来实现复制元素。</p>
+<p>语法：</p>
+<pre><code>obj.cloneNode(bool)
+
+如：document.body.appendChild(oUl.cloneNode(1));   将oUl复制到body中；
+</code></pre><p>说明：</p>
+<p>参数obj表示被复制的元素，而参数bool是一个布尔值。</p>
+<h3 id="替换元素"><a href="#替换元素" class="headerlink" title="替换元素"></a>替换元素</h3><p>使用replaceChild()方法来实现替换元素。</p>
+<p>语法：</p>
+<pre><code>A.replaceChild(new,old);
+</code></pre><p>说明：</p>
+<p>A表示父元素，new表示新子元素，old表示旧子元素。</p>
+<h2 id="DOM进阶"><a href="#DOM进阶" class="headerlink" title="DOM进阶"></a>DOM进阶</h2><h3 id="HTML属性操作（对象属性）"><a href="#HTML属性操作（对象属性）" class="headerlink" title="HTML属性操作（对象属性）"></a>HTML属性操作（对象属性）</h3><h5 id="获取HTML属性值"><a href="#获取HTML属性值" class="headerlink" title="获取HTML属性值"></a>获取HTML属性值</h5><p>获取HTML元素的属性值，一般都是通过属性名，来找到该属性对应的值。</p>
+<p>语法：</p>
+<pre><code>obj.attr
+</code></pre><p>说明：</p>
+<p>obj是元素名，它一个DOM对象。所谓的DOM对象，指的是getElementById()、getElementsByTagName()等方法获取到的元素节点。</p>
+<p>attr是属性名，对于一个对象来说，当然是通过点运算符（.）来获取它的属性值。</p>
+<p>tips：常用表单获取内容：单行文字框，复选框，下拉选项，单选的值 都是通过属性value来获取：</p>
+<p>sks.value   diuren.id   qq.style.border   yyds.name  等等类似的写法。</p>
+<h5 id="设置HTML属性值"><a href="#设置HTML属性值" class="headerlink" title="设置HTML属性值"></a>设置HTML属性值</h5><p>设置HTML元素的属性值，同样也是通过属性名来设置的，非常简单。</p>
+<p>语法：</p>
+<pre><code>obj.attr = &quot;值&quot;;
+</code></pre><p>说明：</p>
+<p>obj是元素名，它一个DOM对象，attr是属性名。</p>
+<p>直接赋值就完事。</p>
+<h3 id="HTML属性操作（对象方法）"><a href="#HTML属性操作（对象方法）" class="headerlink" title="HTML属性操作（对象方法）"></a>HTML属性操作（对象方法）</h3><h5 id="getAttribute"><a href="#getAttribute" class="headerlink" title="getAttribute()"></a>getAttribute()</h5><p>使用getAttribute()方法来获取元素的某个属性的值。</p>
+<p>语法：</p>
+<pre><code>obj.getAttribute(&quot;attr&quot;)
+</code></pre><p>说明：</p>
+<p>obj元素名，attr属性名。下面两种获取属性值的形式是等价的。</p>
+<pre><code>obj.getAttribute(&quot;attr&quot;)
+obj.attr
+</code></pre><p>这两种方式都可以用来获取静态HTML的属性值以及动态DOM的属性值。</p>
+<p>差别在于前者能够获取用户的自定义属性（css3内容，非元素自带属性）；</p>
+<h5 id="setAttribute"><a href="#setAttribute" class="headerlink" title="setAttribute()"></a>setAttribute()</h5><p>使用setAttribute()方法来设置元素的某个属性的值。</p>
+<p>语法：</p>
+<pre><code>obj.setAttribute(&quot;attr&quot;,&quot;值&quot;)
+</code></pre><p>说明：</p>
+<p>obj是元素名，attr是属性名。setAttribute()方法有两个参数：第1个参数是属性名；第2个参数是你要设置的属性值。下面两种设置属性值的形式是等价的：</p>
+<pre><code>obj.setAttribute(&quot;attr&quot;,&quot;值&quot;)
+obj.attr = &quot;值&quot;;
+</code></pre><p>两者差别同上，对于自定义元素的支持不同。</p>
+<h5 id="removeAttribute"><a href="#removeAttribute" class="headerlink" title="removeAttribute()"></a>removeAttribute()</h5><p>使用removeAttribute()方法来删除元素的某个属性。</p>
+<p>语法：</p>
+<pre><code>obj.removeAttribute(&quot;attr&quot;)
+</code></pre><p>说明：</p>
+<p>想要删除元素的某个属性，我们只有removeAttribute()这一个方法。此时，使用之前“对象属性”操作那种方式就无法实现了，因为那种方式没有提供这样的方法，只能删除标签。</p>
+<h5 id="hasAttribute"><a href="#hasAttribute" class="headerlink" title="hasAttribute()"></a>hasAttribute()</h5><p>使用hasAttribute()方法来判断元素是否含有某个属性。</p>
+<p>语法：</p>
+<pre><code>obj.hasAttribute(&quot;attr&quot;)
+</code></pre><p>说明：</p>
+<p>hasAttribute()方法返回一个布尔值，如果包含该属性，则返回true。如果不包含该属性，则返回false。</p>
+<p>直接使用removeAttribute()删除元素的属性是不太正确的，比较严谨的做法是先用hasAttribute()判断这个属性是否存在，如果存在，才去删除。</p>
+<h3 id="CSS属性操作"><a href="#CSS属性操作" class="headerlink" title="CSS属性操作"></a>CSS属性操作</h3><h5 id="获取CSS属性值"><a href="#获取CSS属性值" class="headerlink" title="获取CSS属性值"></a>获取CSS属性值</h5><p>使用getComputedStyle()方法来获取一个CSS属性的取值。（获取最终样式）</p>
+<p>语法：</p>
+<pre><code>getComputedStyle(obj).attr
+</code></pre><p>obj表示DOM对象，也就是通过getElementById()、getElementsByTagName()等方法获取的元素节点。</p>
+<p>attr表示CSS属性名。</p>
+<p><strong>tips：这里的属性名使用的是“骆驼峰型”的CSS属性名。举个例子，font-size应该写成fontSize，border-bottom-width应该写成borderBottomWidth（有没有感觉像骆驼峰），以此类推。</strong></p>
+<p>getComputedStyle()方法其实有两种写法，以下两种是等价的。也就是说： getComputedStyle(obj).attr等价于</p>
+<pre><code>getComputedStyle(obj)[&quot;attr&quot;]。
+getComputedStyle(oBox).backgroundColor
+getComputedStyle(oBox)[&quot;backgroundColor&quot;]
+</code></pre><p>事实上，凡是对象的属性都有这两种写法，例如oBtn.id可以写成<code>oBtn[&quot;id&quot;]</code>，<code>document.getElementById(&quot;btn&quot;)</code>可以写成<code>document[&quot;getElementById&quot;](&quot;btn&quot;)</code>，以此类推。</p>
+<p>我们获取的文本框value值其实是字符串，也就是说变量attr和val都是字符串来的。因此是不能使用obj.style.attr这种方式来设置CSS属性的，而必须使用obj.style[“attr”]这种方式。</p>
+<h5 id="设置CSS属性"><a href="#设置CSS属性" class="headerlink" title="设置CSS属性"></a>设置CSS属性</h5><h6 id="style对象"><a href="#style对象" class="headerlink" title="style对象"></a>style对象</h6><p>使用style对象来设置一个CSS属性的值，其实就是在元素的style属性来添加样式，这个设置的是“行内样式”。</p>
+<p>语法：</p>
+<pre><code>obj.style.attr = &quot;值&quot;;
+</code></pre><p>说明：</p>
+<p>obj表示DOM对象，attr表示CSS属性名，采用的同样是“骆驼峰”型。</p>
+<p>obj.style.attr等价于obj.style[“attr”]，例如oDiv.style.width等价于oDiv.style[“width”];</p>
+<h6 id="cssText属性"><a href="#cssText属性" class="headerlink" title="cssText属性"></a>cssText属性</h6><p>使用cssText属性来同时设置多个CSS属性，这是在元素的style属性来添加的。</p>
+<p>语法：</p>
+<pre><code>obj.style.cssText = &quot;值&quot;;
+</code></pre><p>说明：</p>
+<p>obj表示DOM对象，cssText的值是一个字符串，例如：</p>
+<pre><code>oDiv.style.cssText = &quot;width:100px;height:100px;border:1px solid gray;&quot;;
+</code></pre><p>这个字符串中的属性名不再使用骆驼峰型写法，而是使用平常的CSS写法，例如background-color应该写成background-color，而不是backgroundColor。</p>
+<p><strong>使用cssText来设置CSS属性，最终也是在元素的style属性中添加的。</strong></p>
+<p><strong>tips：实际开发的时候，如果想要为一个元素同时设置多个CSS属性，少使用cssText来实现，更倾向于使用操作HTML属性的方式给元素加上一个class属性值，从而把样式整体给元素添加上。</strong></p>
+<h3 id="DOM遍历"><a href="#DOM遍历" class="headerlink" title="DOM遍历"></a>DOM遍历</h3><h5 id="查找父元素"><a href="#查找父元素" class="headerlink" title="查找父元素"></a>查找父元素</h5><p>在JavaScript中，我们可以使用parentNode属性来获得某个元素的父元素。</p>
+<p>语法：</p>
+<pre><code>obj.parentNode
+</code></pre><p>说明：</p>
+<p>obj是一个DOM对象，指的是使用getElementById()、getElementsByTagName()等方法获取的元素。</p>
+<h5 id="查找子元素"><a href="#查找子元素" class="headerlink" title="查找子元素"></a>查找子元素</h5><p>在JavaScript中，可以使用以下两组方式来获得父元素中的所有子元素或某个子元素。</p>
+<ul>
+<li>（1）childNodes、firstChild、lastChild</li>
+<li>（2）children、firstElementChild、lastElementChild</li>
+</ul>
+<p>其中，childNodes获取的是所有的子节点。注意，这个子节点是包括元素节点以及文本节点的（如：换行也算一个）。而children获取的是所有的元素节点，不包括文本节点。</p>
+<p>使用oUl.removeChild(oUl.lastElementChild);一句代码就可以轻松搞定。此外，firstElementChild获取的是第一个子元素节点，lastElementChild获取的是最后一个子元素节点。如果我们想要获取任意一个子元素节点，可以使用children[i]的方式来实现。</p>
+<h5 id="查找兄弟元素"><a href="#查找兄弟元素" class="headerlink" title="查找兄弟元素"></a>查找兄弟元素</h5><p>在JavaScript中，我们可以使用以下2组方式来获得兄弟元素。</p>
+<ul>
+<li>（1）previousSibling、nextSibling</li>
+<li>（2）previousElementSibling、nextElementSibling</li>
+</ul>
+<p>previousSibling查找前一个兄弟节点，nextSibling查找后一个兄弟节点。previousElementSibling查找前一个兄弟元素节点，nextElementSibling查找后一个兄弟元素节点。</p>
+<p> 同上 第一组可能会查到文字节点（一般是空白节点，如换行等），只希望操作元素，使用第二组。</p>
+<h3 id="innerHTML和innerText"><a href="#innerHTML和innerText" class="headerlink" title="innerHTML和innerText"></a>innerHTML和innerText</h3><p>使用innerHTML属性很方便地获取和设置一个元素的“<strong>内部元素</strong>”，也可以使用innerText属性获取和设置一个元素的“内部文本”。</p>
+<pre><code> var oImg = document.createElement(&quot;img&quot;);
+            oImg.className = &quot;pic&quot;;
+            oImg.src = &quot;images/haizei.png&quot;;
+            oImg.style.border = &quot;1px solid silver&quot;;
+            document.body.appendChild(oImg);
+使用inner方法：
+document.body.innerHTML = &#39;&lt;img class=&quot;pic&quot; src=&quot;images/haizei.png&quot; style=&quot;border:1px solid silver&quot;/&gt;&#39;;
+</code></pre><p>inner的获取：</p>
+<pre><code> window.onload = function ()
+        {
+            var oP = document.getElementById(&quot;content&quot;);
+            document.getElementById(&quot;txt1&quot;).value = oP.innerHTML;
+            document.getElementById(&quot;txt2&quot;).value = oP.innerText;
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p id=&quot;content&quot;&gt;&lt;strong style=&quot;color:hotpink;&quot;&gt;绿叶学习网&lt;/strong&gt;&lt;/p&gt;
+    innerHTML是：&lt;input id=&quot;txt1&quot; type=&quot;text&quot;&gt;&lt;br /&gt;      是&lt;strong style=&quot;color:hotpink;&quot;&gt;绿叶学习网&lt;/strong&gt;
+    innerText是：&lt;input id=&quot;txt2&quot; type=&quot;text&quot;&gt;    是绿叶学习网
+</code></pre><p>innerHTML获取的是元素内部所有的内容，而innerText获取的仅仅是文本内容。</p>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><h3 id="事件调用方式"><a href="#事件调用方式" class="headerlink" title="事件调用方式"></a>事件调用方式</h3><h5 id="①在script标签中调用"><a href="#①在script标签中调用" class="headerlink" title="①在script标签中调用"></a>①在script标签中调用</h5><p>在script标签中调用事件，指的是在&lt; script &gt;&lt; /script &gt;标签内部调用事件。</p>
+<p>语法：</p>
+<pre><code>obj.事件名 = function()
+{
+    ……
+};
+</code></pre><p>说明：</p>
+<p>obj是一个DOM对象，指的是使用getElementById()、getElementsByTagName()等方法获取到的元素节点。</p>
+<h5 id="②在元素中调用事件"><a href="#②在元素中调用事件" class="headerlink" title="②在元素中调用事件"></a>②在元素中调用事件</h5><p>在元素中调用事件，指的是直接在HTML属性中来调用事件，这个属性又叫做“事件属性”。</p>
+<p>如：</p>
+<pre><code> &lt;script&gt;
+        function alertMes()
+        {
+            alert(&quot;！&quot;);
+        }
+    &lt;/script&gt;
+
+    &lt;input type=&quot;button&quot; onclick=&quot;alertMes()&quot; value=&quot;弹出&quot; /&gt;
+</code></pre><p>等价于：</p>
+<pre><code> &lt;input type=&quot;button&quot; onclick=&quot;alert(&#39;！&#39;)&quot; value=&quot;弹出&quot; /&gt;
+</code></pre><h3 id="事件调用"><a href="#事件调用" class="headerlink" title="事件调用"></a>事件调用</h3><h5 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h5><p>常见鼠标事件</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">事件</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">onclick</td>
+<td style="text-align:left">鼠标单击事件</td>
+</tr>
+<tr>
+<td style="text-align:left">onmouseover</td>
+<td style="text-align:left">鼠标移入事件</td>
+</tr>
+<tr>
+<td style="text-align:left">onmouseout</td>
+<td style="text-align:left">鼠标移出事件</td>
+</tr>
+<tr>
+<td style="text-align:left">onmousedown</td>
+<td style="text-align:left">鼠标按下事件</td>
+</tr>
+<tr>
+<td style="text-align:left">onmouseup</td>
+<td style="text-align:left">鼠标松开事件</td>
+</tr>
+<tr>
+<td style="text-align:left">onmousemove</td>
+<td style="text-align:left">鼠标移动事件</td>
+</tr>
+</tbody>
+</table>
+<h5 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h5><p>常见键盘事件</p>
+<ul>
+<li>（1）键盘按下：onkeydown</li>
+<li>（2）键盘松开：onkeyup</li>
+</ul>
+<h5 id="表单事件"><a href="#表单事件" class="headerlink" title="表单事件"></a>表单事件</h5><p>常用的表单事件</p>
+<ul>
+<li>（1）onfocus和onblur</li>
+<li>（2）onselect</li>
+<li>（3）onchange</li>
+</ul>
+<p>还有一个onsubmit事件。一般都是结合后端技术来使用。</p>
+<h6 id="onfocus和onblur："><a href="#onfocus和onblur：" class="headerlink" title="onfocus和onblur："></a>onfocus和onblur：</h6><p>onfocus和onblur这两个事件往往都是配合一起使用的。例如用户准备在文本框中输入内容时，此时它会获得光标，就会触发onfocus事件。当文本框失去光标时，就会触发onblur事件。</p>
+<p>并不是所有的HTML元素都有焦点事件，具有“获取焦点”和“失去焦点”特点的元素只有2种。</p>
+<ul>
+<li>（1）表单元素（单选框、复选框、单行文本框、多行文本框、下拉列表）</li>
+<li>（2）超链接</li>
+</ul>
+<p>判断一个元素是否具有焦点很简单，我们打开一个页面后按Tab键，能够选中的就是具有焦点特性的元素。在实际开发中，焦点事件（onfocus和onblur）一般用于单行文本框和多行文本框这两个，其他地方比较少用。</p>
+<p><strong>补充：</strong>focus()方法，可以让dom对象获得焦点，blur（）取消焦点，如：</p>
+<pre><code>&lt;input type=&quot;button&quot; onclick=&quot;getfocus()&quot; value=&quot;获取焦点&quot;&gt;
+&lt;input type=&quot;button&quot; onclick=&quot;losefocus()&quot; value=&quot;移除焦点&quot;&gt;
+
+&lt;script&gt;
+function getfocus() {
+    document.getElementById(&quot;myAnchor&quot;).focus();
+}
+
+function losefocus() {
+    document.getElementById(&quot;myAnchor&quot;).blur();
+}
+</code></pre><p>###### </p>
+<h6 id="onselect"><a href="#onselect" class="headerlink" title="onselect"></a>onselect</h6><p>在JavaScript中，当选中“单行文本框”或“多行文本框”中的内容时，就会触发onselect事件。</p>
+<p>选中：指长按鼠标的时候，文字被选中，被蓝色围住。</p>
+<p><strong>补充：</strong>select（）方法，如下，当搜索框的文字被选择，会选取所有的文字。</p>
+<pre><code>  var oSearch = document.getElementById(&quot;search&quot;);
+            oSearch.onclick = function () 
+            {
+                this.select();
+            };
+</code></pre><h6 id="onchange"><a href="#onchange" class="headerlink" title="onchange"></a>onchange</h6><p>onchange事件常用于“具有多个选项的表单元素”。</p>
+<ul>
+<li><p>（1）单选框选择某一项时触发。</p>
+</li>
+<li><p>（2）复选框选择某一项时触发。</p>
+</li>
+<li><p>（3）下拉列表选择某一项时触发。</p>
+<p>如果被勾选，则显示你的选择是xxx。同时，采用for循环给每个对象添加onchange事件。</p>
+</li>
+</ul>
+<pre><code>  var oFruit = document.getElementsByName(&quot;fruit&quot;);
+            var oP = document.getElementById(&quot;content&quot;);
+            for (var i = 0; i &lt; oFruit.length; i++) 
+            {
+                oFruit[i].onchange = function () 
+                {
+                    if (this.checked) 
+                    {
+                        oP.innerHTML = &quot;你选择的是：&quot; + this.value;
+                    }
+                };
+            }
+</code></pre><p>示例：复选框：全选/全不选</p>
+<pre><code> oSelectAll.onchange = function () 
+            {
+                //如果选中，即this.checked返回true
+                if (this.checked) {
+                    for (var i = 0; i &lt; oFruit.length; i++) 
+                    {
+                        oFruit[i].checked = true;
+                    }
+                } else {
+                    for (var i = 0; i &lt; oFruit.length; i++) 
+                    {
+                        oFruit[i].checked = false;
+                    }
+                }
+</code></pre><p>示例：下拉菜单跳转网站：选择下拉列表的某一项时，就会触发onchange事件，然后就会在新的窗口打开对应的页面。</p>
+<pre><code>    window.onload = function () 
+        {
+            var oList = document.getElementById(&quot;list&quot;);
+            oList.onchange = function () 
+            {
+                var link = this.options[this.selectedIndex].value;
+                window.open(link);
+            };
+        }
+
+        &lt;select id=&quot;list&quot;&gt;
+        &lt;option value=&quot;http://wwww.baidu.com&quot;&gt;百度&lt;/option&gt;
+        &lt;option value=&quot;http://www.sina.com.cn&quot;&gt;新浪&lt;/option&gt;
+        &lt;option value=&quot;http://www.qq.com&quot;&gt;腾讯&lt;/option&gt;
+        &lt;option value=&quot;http://www.sohu.com&quot;&gt;搜狐&lt;/option&gt;
+    &lt;/select&gt;
+</code></pre><p><strong>注：对于select元素来说，我们可以使用obj.options[n]的方式来得到某一个列表项，这个列表项也是一个DOM对象。并且还可以使用obj.selectedIndex来获取你所选择的这个列表项的下标。这两个都是下拉列表所独有的也是经常用的方法。</strong></p>
+<h5 id="编辑事件"><a href="#编辑事件" class="headerlink" title="编辑事件"></a>编辑事件</h5><p>在JavaScript中，常用的编辑事件有3种。</p>
+<pre><code>oncopy
+onselectstart
+oncontextmenu
+</code></pre><h6 id="oncopy"><a href="#oncopy" class="headerlink" title="oncopy"></a>oncopy</h6><p>在JavaScript中，我们可以使用oncopy事件来防止页面内容被复制。</p>
+<p>语法：</p>
+<pre><code>document.body.oncopy = function () 
+{
+    return false;
+}
+</code></pre><h6 id="onselectstart"><a href="#onselectstart" class="headerlink" title="onselectstart"></a>onselectstart</h6><p>在JavaScript中，我们可以使用onselectstart事件来防止页面内容被选取。</p>
+<p>语法：</p>
+<pre><code>document.body.onselectstart=function()
+{
+    return false;
+}
+</code></pre><h6 id="oncontextmenu"><a href="#oncontextmenu" class="headerlink" title="oncontextmenu"></a>oncontextmenu</h6><p>在JavaScript中，我们可以使用oncontextmenu事件来禁止鼠标右键。</p>
+<p>语法：</p>
+<pre><code>document.oncontextmenu = function () 
+{
+    return false;
+}
+</code></pre><h5 id="页面事件"><a href="#页面事件" class="headerlink" title="页面事件"></a>页面事件</h5><h6 id="onload"><a href="#onload" class="headerlink" title="onload"></a>onload</h6><p>在JavaScript中，onload表示文档加载完成后再执行的一个事件。</p>
+<p>语法：</p>
+<pre><code>window.onload = function(){
+    ……
+}
+</code></pre><p>说明：</p>
+<p>并不是所有情况都需要用到window.onload的，一般来说，只有在想要“获取页面中某一个元素”的时候才会用到。很重要。</p>
+<p>浏览器从上到下解析到window.onload时，就会先不解析window.onload里面的代码，而是继续往下解析，直到把整个HTML文档解析完了之后才会回去执行window.onload里面的代码。</p>
+<h6 id="onunload"><a href="#onunload" class="headerlink" title="onunload"></a>onunload</h6><p>当用户未载入文档时执行的Javascript代码，极其少用。</p>
+<h6 id="onbeforeunload"><a href="#onbeforeunload" class="headerlink" title="onbeforeunload"></a>onbeforeunload</h6><p>在JavaScript中，onbeforeunload表示离开页面之前触发的一个事件。</p>
+<p>语法：</p>
+<pre><code>window.onbeforeunload = function(){
+    ……
+}
+</code></pre><p>说明：</p>
+<p>与window.onload相对的应该是window.onunload，不过一般情况下我们极少用到window.onunload，而更倾向于使用window.onbeforeunload。</p>
+<h6 id="onbeforeunload与onunload"><a href="#onbeforeunload与onunload" class="headerlink" title="onbeforeunload与onunload"></a>onbeforeunload与onunload</h6><pre><code>Onunload，onbeforeunload都是在刷新或关闭时调用，
+
+可以在&lt;script&gt;脚本中通过window.onunload来指定或者在&lt;body&gt;里指定。
+区别在于onbeforeunload在onunload之前执行，它还可以阻止onunload的执行。
+
+　　Onbeforeunload也是在页面刷新或关闭时调用，Onbeforeunload是正要去服务器读取新的页面时调用，此时还没开始读取；而onunload则已经从服务器上读到了需要加载的新的页面，在即将替换掉当前页面时调用。Onunload是无法阻止页面的更新和关闭的。而 Onbeforeunload 可以做到。
+
+1、onbeforeunload事件：
+
+　　说明：目前三大主流浏览器中firefox和IE都支持onbeforeunload事件,opera尚未支持。
+
+　　用法：
+
+　　　·object.onbeforeunload = handler
+
+　　　·&lt;element onbeforeunload = “handler” … &gt;&lt;/element&gt;
+
+　　描述：
+
+　　　事件触发的时候弹出一个有确定和取消的对话框，确定则离开页面，取消则继续待在本页。handler可以设一个返回值作为该对话框的显示文本。
+
+　　触发于：
+
+　　　·关闭浏览器窗口
+
+　　　·通过地址栏或收藏夹前往其他页面的时候
+
+　　　·点击返回，前进，刷新，主页其中一个的时候
+
+　　　·点击 一个前往其他页面的url连接的时候
+
+　　　·调用以下任意一个事件的时候：click，document write，document open，document close，window close ，window navigate ，window NavigateAndFind,location replace,location reload,form submit.
+
+　　　·当用window open打开一个页面，并把本页的window的名字传给要打开的页面的时候。
+
+　　　·重新赋予location.href的值的时候。
+
+　　　·通过input type=”submit”按钮提交一个具有指定action的表单的时候。
+
+　　可以用在以下元素：
+
+　　　·BODY, FRAMESET, window
+
+　　平台支持：
+
+　　　IE4+/Win, Mozilla 1.7a+, Netscape 7.2+, Firefox0.9+
+
+　　示例：
+
+　　　&lt;html xmlns=”http://www.w3.org/1999/xhtml“&gt;
+
+　　　&lt;head&gt;
+
+　　　&lt;meta http-equiv=”Content-Type” content=”text/html; charset=gb2312″ /&gt;
+
+　　　&lt;title&gt;onbeforeunload测试&lt;/title&gt;
+
+　　　&lt;script&gt;
+
+　　　function checkLeave(){
+
+　　　　event.returnValue=”确定离开当前页面吗？”;
+
+　　　}
+
+　　　&lt;/script&gt;
+
+　　　&lt;/head&gt;
+
+　　　&lt;body onbeforeunload=”checkLeave()”&gt;
+
+　　　&lt;/body&gt;
+
+　　　&lt;/html&gt;
+
+2、onunload事件
+
+　　用法：
+
+　　　·object.onunload = handler
+
+　　　·&lt;element onunload = “handler”&gt;&lt;/element&gt;
+
+　　描述：
+
+　　　当用户关闭一个页面时触发 onunload 事件。
+
+　　触发于：
+
+　　　·关闭浏览器窗口
+
+　　　·通过地址栏或收藏夹前往其他页面的时候
+
+　　　·点击返回，前进，刷新，主页其中一个的时候
+
+　　　·点击 一个前往其他页面的url连接的时候
+
+　　　·调用以下任意一个事件的时候：click，document write，document open，document close，window close ，window navigate ，window NavigateAndFind,location replace,location reload,form submit.
+
+　　　·当用window open打开一个页面，并把本页的window的名字传给要打开的页面的时候。
+
+　　　·重新赋予location.href的值的时候。
+
+　　　·通过input type=”submit”按钮提交一个具有指定action的表单的时候。
+
+　　示例：
+
+　　　&lt;html xmlns=http://www.w3.org/1999/xhtml&gt;
+
+　　　&lt;head&gt;
+
+　　　&lt;meta http-equiv=”Content-Type” content=”text/html; charset=gb2312″ /&gt;
+
+　　　&lt;title&gt;onunload测试&lt;/title&gt;
+
+　　　&lt;script&gt;
+
+　　　function checkLeave(){
+
+　　　　alert(”欢迎下次再来！”);
+
+　　　}
+
+　　　&lt;/script&gt;
+
+　　　&lt;/head&gt;
+
+　　　&lt;body onunload=”checkLeave()”&gt;
+
+　　　&lt;/body&gt;
+
+　　　&lt;/html&gt;
+
+分享：
+</code></pre><h3 id="事件监听"><a href="#事件监听" class="headerlink" title="事件监听"></a>事件监听</h3><p>想要给元素添加一个事件，其实我们有以下2种方式。</p>
+<ul>
+<li>（1）事件处理器</li>
+<li>（2）事件监听器</li>
+</ul>
+<h5 id="事件处理器"><a href="#事件处理器" class="headerlink" title="事件处理器"></a>事件处理器</h5><p>在前面的学习中，如果想要给元素添加一个事件，我们都是通过操作HTML属性的方式来实现，这种方式其实也叫“事件处理器”，例如：</p>
+<pre><code>oBtn.onclick = function(){……};
+</code></pre><h5 id="事件监听器"><a href="#事件监听器" class="headerlink" title="事件监听器"></a>事件监听器</h5><h6 id="绑定事件"><a href="#绑定事件" class="headerlink" title="绑定事件"></a>绑定事件</h6><p>所谓的“事件监听器”，指的是使用addEventListener()方法来为一个元素添加事件，又称之为“绑定事件”。</p>
+<p>语法：</p>
+<pre><code>obj.addEventListener(type , fn , false)
+</code></pre><p>说明：</p>
+<p>obj是一个DOM对象，指的是使用getElementById()、getElementsByTagName()等方法获取到的元素节点。</p>
+<p>type是一个字符串，指的是事件类型。例如单击事件用click，鼠标移入用mouseover等。注意，这个事件类型是不需要加上“on”前缀的。</p>
+<p>fn是一个函数名，或者一个匿名函数。</p>
+<p>false表示事件冒泡阶段调用。</p>
+<p>例如：</p>
+<pre><code>//fn是一个函数名
+oBtn.addEventListener(&quot;click&quot;, alertMes, false);
+function alertMes() 
+{
+    alert(&quot;JavaScript&quot;);
+}
+
+//fn是一个匿名函数
+oBtn.addEventListener(&quot;click&quot;, function () {
+    alert(&quot;JavaScript&quot;);
+}, false);
+</code></pre><p>上面这两段代码效果相同。</p>
+<pre><code>    &lt;script&gt;
+        window.onload = function () 
+        {
+            var oBtn = document.getElementById(&quot;btn&quot;);
+            oBtn.addEventListener(&quot;click&quot;, function () {
+                alert(&quot;第1次&quot;);
+            }, false);
+            oBtn.addEventListener(&quot;click&quot;, function () {
+                alert(&quot;第2次&quot;);
+            }, false);
+            oBtn.addEventListener(&quot;click&quot;, function () {
+                alert(&quot;第3次&quot;);
+            }, false);
+        }
+    &lt;/script&gt;
+</code></pre><p>上面：使用事件监听器这种方式来为同一个元素添加多个相同的事件，而这一点是事件处理器做不到的。</p>
+<p>一般情况下，如果想要为元素仅仅添加一个事件的话，下面两种方式其实是等价的。</p>
+<pre><code>obj.addEventListener(&quot;click&quot;, function () {……}, false);
+obj.onclick = function () {……};
+</code></pre><h6 id="解绑事件"><a href="#解绑事件" class="headerlink" title="解绑事件"></a>解绑事件</h6><p>在JavaScript中，可以使用removeEventListener()方法为元素解绑（或解除）某个事件。解绑事件与绑定事件是相反的操作。</p>
+<p>语法：</p>
+<pre><code>obj.removeEventListener(type , fn , false);
+</code></pre><p>说明：</p>
+<p>obj是一个DOM对象，指的是使用getElementById()、getElementsByTagName()等方法获取到的元素节点。</p>
+<p>type是一个字符串，指的是事件类型。例如，单击事件用click，鼠标移入用mouseover等。一定要注意，这里我们是不需要加上on前缀的。</p>
+<p><strong>对于removeEventListener()方法来说，fn必须是一个函数名，而不能是一个函数。</strong></p>
+<pre><code> window.onload = function () 
+        {
+            var oP = document.getElementById(&quot;content&quot;);
+            var oBtn = document.getElementById(&quot;btn&quot;);
+            //为p添加事件
+            oP.addEventListener(&quot;click&quot;, changeColor, false);
+            //点击按钮后，为p解除事件
+            oBtn.addEventListener(&quot;click&quot;, function () {
+                oP.removeEventListener(&quot;click&quot;, changeColor, false);
+            }, false);
+            function changeColor() 
+            {
+                this.style.color = &quot;hotpink&quot;;
+            }
+        }
+</code></pre><p><strong>如果你想要使用removeEventListener()方法来解除一个事件，那么当初使用addEventListener()添加事件的时候，就一定要用定义函数的形式。</strong></p>
+<p>实际上，removeEventListener()只可以解除“事件监听器”添加的事件，它是不可以解除“事件处理器”添加的事件。如果想要解除“事件处理器”添加的事件，我们可以使用“obj.事件名 = null;”来实现，如：</p>
+<pre><code>   oP.onclick = changeColor;
+            //点击按钮后，为p元素解除事件
+            oBtn.addEventListener(&quot;click&quot;, function () {
+                oP.onclick = null;
+            }, false);
+</code></pre><p><strong>解绑事件妙用法：</strong></p>
+<p>限制按钮只可以执行一次点击事件。实现思路很简单，在点击事件函数的最后解除事件就可以了。</p>
+<pre><code>   oP.onclick = changeColor;
+            //点击按钮后，为p元素解除事件
+            oBtn.addEventListener(&quot;click&quot;, function () {
+                oP.onclick = null;
+            }, false);
+</code></pre><h3 id="DLC：onload多次使用的解决方案"><a href="#DLC：onload多次使用的解决方案" class="headerlink" title="DLC：onload多次使用的解决方案"></a>DLC：onload多次使用的解决方案</h3><p>在实际开发中，有可能会使用多次window.onload，但是会发现JavaScript只执行最后一次window.onload。为了解决这个问题，就可以使用addEventListener()来实现。在这个例子中，只需要将每一个window.onload改为以下代码即可：</p>
+<pre><code>window.addEventListener(&quot;load&quot;,function(){……},false);
+</code></pre><p>事实上，还有一种解决方法，那就是使用网上流传甚广的addLoadEvent()函数。addLoadEvent不是JavaScript内置函数，而是需要自己定义的。其中，addLoadEvent()函数代码如下：</p>
+<pre><code>//装饰者模式
+function addLoadEvent(func)
+{
+    var oldonload = window.onload;
+    if (typeof window.onload != &quot;function&quot;) 
+    {
+        window.onload = func;
+    }else {
+        window.onload = function()
+        {
+            oldonload();
+            func();
+        }
+    }
+}
+</code></pre><p>然后我们只需要调用addLoadEvent()函数，就等于调用window.onload了。调用方法如下：</p>
+<pre><code>addLoadEvent(function(){
+    ……
+});
+</code></pre><h3 id="event对象"><a href="#event对象" class="headerlink" title="event对象"></a>event对象</h3><p>当一个事件发生的时候，这个事件有关的详细信息都会临时保存到一个指定的地方，这个地方就是event对象。</p>
+<p>event对象常用属性如表所示</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">type</td>
+<td style="text-align:left">事件类型</td>
+</tr>
+<tr>
+<td style="text-align:left">keyCode</td>
+<td style="text-align:left">键码值</td>
+</tr>
+<tr>
+<td style="text-align:left">shiftKey</td>
+<td style="text-align:left">是否按下shift键</td>
+</tr>
+<tr>
+<td style="text-align:left">ctrlKey</td>
+<td style="text-align:left">是否按下Ctrl键</td>
+</tr>
+<tr>
+<td style="text-align:left">altKey</td>
+<td style="text-align:left">是否按下Alt键</td>
+</tr>
+</tbody>
+</table>
+<h5 id="type"><a href="#type" class="headerlink" title="type"></a>type</h5><p>在JavaScript中，我们可以使用event对象的type属性来获取事件的类型。</p>
+<pre><code>oBtn.onclick = function (e) 
+            {
+                alert(e.type);
+            };
+</code></pre><p>实际上，每次调用一个事件的时候，JavaScript都会默认给这个事件函数加上一个隐藏的参数，这个参数就是event对象。一般来说，event对象是作为事件函数的第1个参数传入的</p>
+<p>e仅仅是一个变量名，它存储的是一个event对象。也就是说，e可以换成其他名字，如ev、event、a等都可以，</p>
+<h5 id="keyCode"><a href="#keyCode" class="headerlink" title="keyCode"></a>keyCode</h5><p>在JavaScript中，如果我们想要获取按下了键盘中的哪个键，可以使用event对象的keyCode属性来获取。</p>
+<p>语法：</p>
+<pre><code>event.keyCode
+</code></pre><p>说明：</p>
+<p>event.keyCode返回的是一个数值，常用的按键及对应的键码如表所示。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">键码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">W（上）</td>
+<td style="text-align:left">87</td>
+</tr>
+<tr>
+<td style="text-align:left">S（下）</td>
+<td style="text-align:left">83</td>
+</tr>
+<tr>
+<td style="text-align:left">A（左）</td>
+<td style="text-align:left">65</td>
+</tr>
+<tr>
+<td style="text-align:left">D（右）</td>
+<td style="text-align:left">68</td>
+</tr>
+<tr>
+<td style="text-align:left">↑</td>
+<td style="text-align:left">38</td>
+</tr>
+<tr>
+<td style="text-align:left">↓</td>
+<td style="text-align:left">40</td>
+</tr>
+<tr>
+<td style="text-align:left">←</td>
+<td style="text-align:left">37</td>
+</tr>
+<tr>
+<td style="text-align:left">→</td>
+<td style="text-align:left">39</td>
+</tr>
+</tbody>
+</table>
+<p>如果是shift、ctrl和alt键，我们不需要通过keyCode属性来获取，而是可以通过shiftKey、ctrlKey和altKey属性获取。</p>
+<p>禁止按键：</p>
+<pre><code> window.onload = function () {
+            document.onkeydown = function (e) {
+                if (e.shiftKey || e.altKey || e.ctrlKey) {
+                    alert(&quot;禁止使用shift、alt、ctrl键！&quot;)
+                }
+            }
+        }
+</code></pre><p>e.keyCode返回的是一个数字，而e.shiftKey、e.ctrlKey、e.altKey返回的都是布尔值（true或false），注意一下两者的区别。</p>
+<h3 id="this"><a href="#this" class="headerlink" title="this"></a>this</h3><p>在JavaScript中，this是非常复杂的。这里只记录this在事件操作中的使用情况进行介绍，而对于this在其他场合（如面向对象开发等）的使用，在JavaScript进阶部分再详细讲解。</p>
+<p>在事件操作中，可以这样理解：<strong>哪个DOM对象（元素节点）调用了this所在的函数，那么this指向的就是哪个DOM对象</strong>。</p>
+<pre><code>window.onload = function () 
+        {
+            var oDiv = document.getElementsByTagName(&quot;div&quot;)[0];
+            oDiv.onclick = function () 
+            {
+                this.style.color = &quot;hotpink&quot;;
+            }
+        }
+
+
+var oDiv = document.getElementsByTagName(&quot;div&quot;)[0];
+            oDiv.onclick = changeColor;
+            function changeColor()
+            {
+                this.style.color = &quot;hotpink&quot;;
+            }
+</code></pre><p>上面两个例子等效，</p>
+<p>又如：</p>
+<pre><code> var oDiv = document.getElementsByTagName(&quot;div&quot;)[0];
+            var oP = document.getElementsByTagName(&quot;p&quot;)[0];
+            oDiv.onclick = changeColor;
+            oP.onclick = changeColor;
+            function changeColor()
+            {
+                this.style.color = &quot;hotpink&quot;;
+            }
+</code></pre><h2 id="Window对象"><a href="#Window对象" class="headerlink" title="Window对象"></a>Window对象</h2><p>在JavaScript中，一个浏览器窗口就是一个window对象（这句话很重要）。</p>
+<p>window下的子对象</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">子对象</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">document</td>
+<td style="text-align:left">文档对象，用于操作页面元素</td>
+</tr>
+<tr>
+<td style="text-align:left">location</td>
+<td style="text-align:left">地址对象，用于操作URL地址</td>
+</tr>
+<tr>
+<td style="text-align:left">navigator</td>
+<td style="text-align:left">浏览器对象，用于获取浏览器版本信息</td>
+</tr>
+<tr>
+<td style="text-align:left">history</td>
+<td style="text-align:left">历史对象，用于操作浏览历史</td>
+</tr>
+<tr>
+<td style="text-align:left">screen</td>
+<td style="text-align:left">屏幕对象，用于操作屏幕宽度高度</td>
+</tr>
+</tbody>
+</table>
+<p>window对象常用方法</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">alert()</td>
+<td style="text-align:left">提示对话框</td>
+</tr>
+<tr>
+<td style="text-align:left">confirm()</td>
+<td style="text-align:left">判断对话框</td>
+</tr>
+<tr>
+<td style="text-align:left">prompt()</td>
+<td style="text-align:left">输入对话框</td>
+</tr>
+<tr>
+<td style="text-align:left">open()</td>
+<td style="text-align:left">打开窗口</td>
+</tr>
+<tr>
+<td style="text-align:left">close()</td>
+<td style="text-align:left">关闭窗口</td>
+</tr>
+<tr>
+<td style="text-align:left">setTimeout()</td>
+<td style="text-align:left">开启“一次性”定时器</td>
+</tr>
+<tr>
+<td style="text-align:left">clearTimeout()</td>
+<td style="text-align:left">关闭“一次性”定时器</td>
+</tr>
+<tr>
+<td style="text-align:left">setInterval()</td>
+<td style="text-align:left">开启“重复性”定时器</td>
+</tr>
+<tr>
+<td style="text-align:left">clearInterval()</td>
+<td style="text-align:left">关闭“重复性”定时器</td>
+</tr>
+</tbody>
+</table>
+<p>对于window对象来说，无论是它的属性，还是方法，都可以省略window前缀。例如window.alert()可以简写为alert()，window.open()可以简写为open()，甚至window.document.getElementById()可以简写为document.getElementById()，以此类推。</p>
+<p>常用window对象：</p>
+<h3 id="窗口操作"><a href="#窗口操作" class="headerlink" title="窗口操作"></a>窗口操作</h3><h5 id="打开窗口"><a href="#打开窗口" class="headerlink" title="打开窗口"></a>打开窗口</h5><p>在JavaScript中，可以使用window对象的open()方法来打开一个新窗口。</p>
+<p>语法：</p>
+<pre><code>window.open(url, target)
+</code></pre><p>说明：</p>
+<p>window.open()可以直接简写为open()，不过我们一般都习惯加上window前缀。window.open()参数有很多，但是只有url和target这两个用得上。</p>
+<p>url指的是新窗口的地址，如果url为空，则表示打开一个空白窗口。空白窗口很有用，我们可以使用document.write()往空白窗口输出文本，甚至输出一个HTML页面。</p>
+<p>target表示打开方式，它的取值跟a标签中target属性的取值是一样的，常用取值有两个：_blank和_self。当target为“_blank（默认值）”，表示在新窗口打开；当target为“_self”时，表示在当前窗口打开。 </p>
+<pre><code> oBtn.onclick = function () 
+            {
+                window.open(&quot;nanivy.space&quot;);
+            };
+往新打开的空白网页加入魔法：
+ var oBtn = document.getElementById(&quot;btn&quot;);
+            oBtn.onclick = function () 
+            {
+                var opener = window.open();
+                opener.document.write(&quot;这是一个新窗口&quot;);
+                opener.document.body.style.backgroundColor = &quot;lightskyblue&quot;;
+            };
+示例2：
+ oBtn.onclick = function () 
+            {
+                opener = window.open();
+                var strHtml = &#39;&lt;!DOCTYPE html&gt;\
+                            &lt;html&gt;\
+                            &lt;head&gt;\
+                                &lt;title&gt;&lt;/title&gt;\
+                            &lt;/head&gt;\
+                            &lt;body&gt;\
+                                &lt;strong&gt;小心偷影子的人，他会带走你的心。&lt;/strong&gt;\
+                            &lt;/body&gt;\
+                            &lt;/html&gt;&#39;;        
+                opener.document.write(strHtml);
+            };
+</code></pre><p>opener是一个空白页面窗口，就可以使用document.write()方法来输出一个HTML文档了</p>
+<p>window.open()就像函数调用一样，会返回（也就是return）一个值，这个值就是新窗口对应的window对象。也就是说，此时opener就是这个新窗口的window对象。只要我们获取到opener（也就是新窗口的window对象），就可以像平常那样随意操作页面的元素.</p>
+<p>如果你打开的是同一个域名下的页面或空白窗口，就可以像上面那样操作新窗口的元素或样式。但是如果你打开的是另外一个域名下面的页面，是不允许操作新窗口的内容的，因为这个涉及跨越权限的问题。</p>
+<h5 id="关闭窗口"><a href="#关闭窗口" class="headerlink" title="关闭窗口"></a>关闭窗口</h5><p>在JavaScript中，我们可以使用window.close()来关闭一个新窗口。</p>
+<p>语法：</p>
+<pre><code>window.close()
+</code></pre><p>说明：</p>
+<p>window.close()方法是没有参数的。</p>
+<pre><code>  oBtn.onclick = function () 
+            {
+                window.close();
+            };
+打开又关闭一个窗口
+btnOpen.onclick = function ()
+            {
+                opener = window.open(&quot;nanivy.space&quot;);
+            };
+            btnClose.onclick = function () {
+                opener.close();
+            }
+</code></pre><p>此外还有其他窗口操作，待拓展</p>
+<h5 id="待补充：窗口最大化、最小化、控制窗口大小、移动窗口等"><a href="#待补充：窗口最大化、最小化、控制窗口大小、移动窗口等" class="headerlink" title="待补充：窗口最大化、最小化、控制窗口大小、移动窗口等"></a>待补充：窗口最大化、最小化、控制窗口大小、移动窗口等</h5><h3 id="对话框"><a href="#对话框" class="headerlink" title="对话框"></a>对话框</h3><h5 id="alert"><a href="#alert" class="headerlink" title="alert()"></a>alert()</h5><p>在JavaScript中，alert()对话框一般仅仅用于提示文字。对于alert()，只需记住一点就行：在alert()中实现文本换行，用的是\n。</p>
+<p>语法：</p>
+<pre><code>alert(&quot;提示文字&quot;)
+</code></pre><h5 id="confirm"><a href="#confirm" class="headerlink" title="confirm()"></a>confirm()</h5><p>在JavaScript中，confirm()对话框不仅提示文字，还提供确认。    </p>
+<p>语法：</p>
+<pre><code>confirm(&quot;提示文字&quot;)
+</code></pre><p>说明：</p>
+<p>如果用户点击【确定】按钮，则confirm()返回true。如果用户点击【取消】按钮，则confirm()返回false。</p>
+<pre><code> oBtn.onclick = function () 
+            {
+                if (confirm(&quot;确定要跳转到绿叶首页吗？&quot;)) {
+                    window.location.href = &quot;http://www.lvyestudy.com&quot;;
+                }else{
+                    document.write(&quot;你取消了跳转&quot;);
+                }
+            };
+</code></pre><h5 id="prompt"><a href="#prompt" class="headerlink" title="prompt()"></a>prompt()</h5><p>在JavaScript中，prompt()对话框不仅提示文字，还返回一个字符串。</p>
+<p>语法：</p>
+<pre><code>prompt(&quot;提示文字&quot;)
+</code></pre><h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">alert()</td>
+<td style="text-align:left">仅提示文字，没有返回值</td>
+</tr>
+<tr>
+<td style="text-align:left">confirm()</td>
+<td style="text-align:left">具有提示文字，返回“布尔值”（true或false）</td>
+</tr>
+<tr>
+<td style="text-align:left">prompt()</td>
+<td style="text-align:left">具有提示文字，返回“字符串”</td>
+</tr>
+</tbody>
+</table>
+<h3 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h3><h5 id="setTimeout-和clearTimeout"><a href="#setTimeout-和clearTimeout" class="headerlink" title="setTimeout()和clearTimeout()"></a>setTimeout()和clearTimeout()</h5><p>在JavaScript中，我们可以使用setTimeout()方法来“一次性”地调用函数，并且可以使用clearTimeout()来取消执行setTimeout()。</p>
+<p>语法：</p>
+<pre><code>setTimeout(code, time);
+</code></pre><p>说明：</p>
+<p>参数code可以是一段代码，可以是一个函数，也可以是一个函数名。</p>
+<p>参数time是时间，单位为毫秒，表示要过多长时间才执行code中的代码。</p>
+<pre><code>code是一段代码，2s；
+  window.onload = function ()
+        {
+            setTimeout(&#39;alert(&quot;欢迎来到xxx&quot;);&#39;, 2000);
+        }
+code是一段函数
+ window.onload = function () 
+        {
+            setTimeout(function () {
+                alert(&quot;欢迎！&quot;);
+            }, 2000);
+        }
+code是函数名
+  window.onload = function () 
+        {
+            setTimeout(alertMes, 2000);
+        }
+        function alertMes(){
+            alert(&quot;欢迎来到绿叶学习网&quot;);
+        }
+</code></pre><p>这里setTimeout()第一个参数是一个函数名，这个函数名是不需要加括号()的！下面两种写法是等价的：</p>
+<pre><code>setTimeout(alertMes, 2000)
+setTimeout(&quot;alertMes()&quot;, 2000)
+</code></pre><p>clearTimeout的用法：</p>
+<pre><code> window.onload = function () 
+        {
+            //获取元素
+            var oBtn = document.getElementsByTagName(&quot;input&quot;);
+            //timer存放定时器
+            var timer = null;
+            oBtn[0].onclick = function () 
+            {
+                timer = setTimeout(function () {
+                    alert(&quot;欢迎来到绿叶学习网&quot;);
+                }, 2000);
+            };
+            oBtn[1].onclick = function () 
+            {
+                clearTimeout(timer);
+            };
+        }
+</code></pre><h5 id="setInterval-和clearInterval"><a href="#setInterval-和clearInterval" class="headerlink" title="setInterval()和clearInterval()"></a>setInterval()和clearInterval()</h5><p>在JavaScript中，可以使用setInterval()方法来“重复性”地调用函数，并且可以使用clearInterval()来取消执行setInterval()。</p>
+<p>语法：</p>
+<pre><code>setInterval(code, time);
+</code></pre><p>说明：</p>
+<p>参数code可以是一段代码，可以是一个函数，也可以是一个函数名。</p>
+<p>参数time是时间，单位为毫秒，表示要过多长时间才执行code中的代码。</p>
+<p>此外，setInterval()跟setTimeout()语法是一样的，唯一不同的是：setTimeout()只执行一次；而setInterval()可以重复执行无数次。对于setInterval()来说，下面3种方式都是正确的，这个跟setTimeout()一样：</p>
+<pre><code>//方式1
+setInterval(function(){…}, 2000)
+//方式2
+setInterval(alertMes, 2000)
+//方式3
+setInterval(&quot;alertMes()&quot;, 2000)
+
+示例：倒计时器
+  var timer = null;
+            //i用于计数
+            var i = 0;
+            //“开始”按钮
+            oBtn[0].onclick = function () 
+            {
+                //每次点击“开始”按钮，一开始就清除一次定时器，避免多次点击开始会产生bug。
+                clearInterval(timer);
+                //每隔1秒切换一次背景颜色
+                timer = setInterval(function () {
+                    oDiv.style.backgroundColor = colors[i];
+                    i++;
+                    i = i % colors.length;
+                }, 1000);
+            };
+            //“暂停”按钮
+            oBtn[1].onclick = function () 
+            {
+                clearInterval(timer);
+            };
+</code></pre><p>clearInterval()用法同clearTimeout()</p>
+<p>用变量来保存计时器，然后直接清除；</p>
+<pre><code> clearInterval(timer);
+</code></pre><h3 id="location对象"><a href="#location对象" class="headerlink" title="location对象"></a>location对象</h3><p>在JavaScript中，可以使用window对象下的location子对象来操作当前窗口的URL。所谓URL，指的就是页面地址。对于location对象，只需要掌握以下3个属性（其他不用管），如表所示。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">href</td>
+<td style="text-align:left">当前页面地址</td>
+</tr>
+<tr>
+<td style="text-align:left">search</td>
+<td style="text-align:left">当前页面地址“？”后面的内容</td>
+</tr>
+<tr>
+<td style="text-align:left">hash</td>
+<td style="text-align:left">当前页面地址“#”后面的内容</td>
+</tr>
+</tbody>
+</table>
+<h5 id="window-location-href"><a href="#window-location-href" class="headerlink" title="window.location.href"></a>window.location.href</h5><p>在JavaScript中，我们可以使用location对象的href属性来获取或设置当前页面的地址。</p>
+<p>语法：</p>
+<pre><code>window.location.href
+</code></pre><p>说明：</p>
+<p>window.location.href可以直接简写为location.href，不过我们一般都习惯加上window前缀。</p>
+<pre><code>   var url = window.location.href;
+        document.write(&quot;当前页面地址是：&quot; + url);
+
+  2s跳转
+    setTimeout(function () {
+            window.location.href = &quot;http://www.lvyestudy.com&quot;;
+        }, 2000);
+</code></pre><h5 id="window-location-search"><a href="#window-location-search" class="headerlink" title="window.location.search"></a>window.location.search</h5><p>在JavaScript中，我们可以使用location对象的search属性来获取和设置当前页面地址“?”后面的内容。</p>
+<p>语法：</p>
+<pre><code>window.location.search
+例：
+  document.write(window.location.search);
+</code></pre><h5 id="window-location-hash"><a href="#window-location-hash" class="headerlink" title="window.location.hash"></a>window.location.hash</h5><p>在JavaScript中，可以使用location对象的hash属性来获取和设置当前页面地址井号（#）后面的内容。井号（#）一般用于锚点链接。</p>
+<pre><code>window.location.hash
+</code></pre><h3 id="navigator对象"><a href="#navigator对象" class="headerlink" title="navigator对象"></a>navigator对象</h3><p>在JavaScript中，可以使用window对象下的子对象navigator来获取浏览器的类型。</p>
+<p>语法：</p>
+<pre><code>window.navigator.userAgent
+
+if (window.navigator.userAgent.indexOf(&quot;MSIE&quot;) != -1) {
+            alert(&quot;这是IE&quot;);
+        }else if (window.navigator.userAgent.indexOf(&quot;Chrome&quot;) != -1) {
+            alert(&quot;这是Chrome&quot;);
+        }else if (window.navigator.userAgent.indexOf(&quot;Firefox&quot;) != -1) {
+            alert(&quot;这是Firefox&quot;);
+        }
+</code></pre><h3 id="document对象"><a href="#document对象" class="headerlink" title="document对象"></a>document对象</h3><p>常用</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">document.title</td>
+<td style="text-align:left">获取文档的title</td>
+</tr>
+<tr>
+<td style="text-align:left">document.body</td>
+<td style="text-align:left">获取文档的body</td>
+</tr>
+<tr>
+<td style="text-align:left">document.forms</td>
+<td style="text-align:left">获取所有form元素</td>
+</tr>
+<tr>
+<td style="text-align:left">document.images</td>
+<td style="text-align:left">获取所有img元素</td>
+</tr>
+<tr>
+<td style="text-align:left">document.links</td>
+<td style="text-align:left">获取所有a元素</td>
+</tr>
+<tr>
+<td style="text-align:left">document.cookie</td>
+<td style="text-align:left">文档的cookie</td>
+</tr>
+<tr>
+<td style="text-align:left">document.URL</td>
+<td style="text-align:left">当前文档的URL</td>
+</tr>
+<tr>
+<td style="text-align:left">document.referrer</td>
+<td style="text-align:left">返回使浏览者到达当前文档的URL</td>
+</tr>
+</tbody>
+</table>
+<p>（1）document.title和document.body之前获取元素已经了解。</p>
+<p>（2）document.forms、document.images、document.links这3个分别等价于下面3个，所以一般用document.getElementsByTagName来获取就行了，不需要去记忆。</p>
+<pre><code>document.getElementsByTagName(&quot;form&quot;)
+document.getElementsByTagName(&quot;img&quot;)
+document.getElementsByTagName(&quot;a&quot;)
+</code></pre><p>（3）cookie一般结合后端技术操作中用得比较多，document.cookie单纯在前端中用得也不是非常多，我们简单看一下就行。</p>
+<h5 id="document-URL"><a href="#document-URL" class="headerlink" title="document.URL"></a>document.URL</h5><p>在JavaScript中，我们可以使用document对象的URL属性来获取当前页面的地址。</p>
+<p>语法：</p>
+<pre><code>document.URL
+
+ &lt;script&gt;
+        var url = document.URL;
+        document.write(&quot;当前页面地址是：&quot; + url);
+    &lt;/script&gt;
+</code></pre><p>document.URL和window.location.href都可以获取当前页面的URL，不过它们也有区别：document.URL只能获取不能设置；window.location.href既可以获取也可以设置。</p>
+<h5 id="document-referrer"><a href="#document-referrer" class="headerlink" title="document.referrer"></a>document.referrer</h5><p>在JavaScript中，我们可以使用document对象的referrer属性来获取用户在访问当前页面之前所在页面的地址。例如我从页面A的某个链接进入页面B，如果在页面B中使用document.referrer，就可以获取到页面A的地址。</p>
+<p>以建立两个页面，然后在第1个页面设置一个超链接指向第2个页面。当我们从第1个页面超链接进入第2个页面时，在第2个页面使用document.referrer就可以获取第1个页面的地址了。</p>
+<h5 id="document对象方法"><a href="#document对象方法" class="headerlink" title="document对象方法"></a>document对象方法</h5><p>常用</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">document.getElementById()</td>
+<td style="text-align:left">通过id获取元素</td>
+</tr>
+<tr>
+<td style="text-align:left">document.getElementsByTagName()</td>
+<td style="text-align:left">通过标签名获取元素</td>
+</tr>
+<tr>
+<td style="text-align:left">document.getElementsByClassName()</td>
+<td style="text-align:left">通过class获取元素</td>
+</tr>
+<tr>
+<td style="text-align:left">document.getElementsByName()</td>
+<td style="text-align:left">通过name获取元素</td>
+</tr>
+<tr>
+<td style="text-align:left">document.querySelector()</td>
+<td style="text-align:left">通过选择器获取元素，只获取第1个</td>
+</tr>
+<tr>
+<td style="text-align:left">document.querySelectorAll()</td>
+<td style="text-align:left">通过选择器获取元素，获取所有</td>
+</tr>
+<tr>
+<td style="text-align:left">document.createElement()</td>
+<td style="text-align:left">创建元素节点</td>
+</tr>
+<tr>
+<td style="text-align:left">document.createTextNode()</td>
+<td style="text-align:left">创建文本节点</td>
+</tr>
+<tr>
+<td style="text-align:left">document.write()</td>
+<td style="text-align:left">输出内容</td>
+</tr>
+<tr>
+<td style="text-align:left">document.writeln()</td>
+<td style="text-align:left">输出内容并换行</td>
+</tr>
+</tbody>
+</table>
+<h6 id="document-write"><a href="#document-write" class="headerlink" title="document.write()"></a>document.write()</h6><p>在JavaScript中，可以使用document.write()输出内容。这个方法我们已经接触得够多了，这里不再赘述。</p>
+<p>语法：</p>
+<pre><code>document.write(&quot;内容&quot;);
+ document.write(&#39;&lt;div style=&quot;color:hotpink;&quot;&gt;绿叶学习网&lt;/div&gt;&#39;);
+</code></pre><p>document.write()不仅可以输出文本，还可以输出标签。此外，document.write()都是往body标签内输出内容的。</p>
+<h6 id="document-writeln"><a href="#document-writeln" class="headerlink" title="document.writeln()"></a>document.writeln()</h6><p>不常用</p>
+<p>writeln()方法跟write()方法相似，唯一区别是：writeln()方法会在输出内容后面多加上一个换行符\n。</p>
+<p>一般情况下，这两种方法在输出效果上是没有区别的，仅当在查看源码才看得出来区别，除非把内容输出到pre标签内。</p>
+<p>语法：</p>
+<pre><code>document.writeln(&quot;内容&quot;)
+</code></pre>
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3null"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3null"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2021/09/10/近期自我总结21.9/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/illust_81243573_20200503_002117.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/illust_81243573_20200503_002117.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                近期自我总结</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2021/08/13/前端学习记——CSS基础/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/88866964.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/88866964.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                前端学习笔记——CSS基础</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "A4UqsWsXYTvl3ILey3Nis8hs-gzGzoHsz",
+        appKey: "s2r99t5u9k6DkKd3O6JbRauV",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="https://nanivy.space/" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.1/qq_pic_merged_1602861906220.jpg" itemprop="image" alt="NanIvy" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="https://nanivy.space/" itemprop="url" rel="author">NanIvy</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>菜菜子新人</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+   <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/xuehua.js"></script>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 NanIvy<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2020</p>
+    </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "","name":"","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "","name":"","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@l1/live2d/live2d/autoload.js"></script>
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/ico/tx.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">ロリが好きなのNanIvy</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="https://github.com/0NanIvy0" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/技术/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/生活/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/随想/">
+                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                  随想
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/bangumi/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  番组
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+              <li>
+                <a href="/theme-sakura/">
+                  <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                  主题
+                </a>
+              </li>
+            
+              <li>
+                <a href="/lab/">
+                  <i class="fa fa-cogs" aria-hidden="true"></i>
+                  Lab
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="749401279"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+</body>
+</html>
