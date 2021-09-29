@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2021-09-12T14:03:17.238Z</updated>
+  <updated>2021-09-29T09:09:08.174Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于原生js的checkbox的全选，不选，反选的写法</title>
+    <link href="/2021/09/21/%E5%85%B3%E4%BA%8E%E5%8E%9F%E7%94%9Fjs%E7%9A%84checkbox%E7%9A%84%E5%85%A8%E9%80%89%EF%BC%8C%E4%B8%8D%E9%80%89%EF%BC%8C%E5%8F%8D%E9%80%89%E7%9A%84bug/"/>
+    <id>/2021/09/21/关于原生js的checkbox的全选，不选，反选的bug/</id>
+    <published>2021-09-21T01:07:22.000Z</published>
+    <updated>2021-09-29T09:09:08.174Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;正常操作代码：&quot;&gt;&lt;a href=&quot;#正常操作代码：&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="学习" scheme="/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="JavaScript" scheme="/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>近期自我总结21.9</title>
