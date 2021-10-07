@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Category: 技术 | NanIvy</title>
+  <title itemprop="name">前端学习笔记——ES6部分新特性的认识 | NanIvy</title>
  <link rel="shortcut icon" href="images/favicon.ico">
   <meta http-equiv="x-dns-prefetch-control" content="on">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
@@ -296,633 +296,441 @@
   </div>
 </header>
 
-      
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
-<div class="pattern-center ">
-  <div class="pattern-attachment-img">
-    <img data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/070920521195_497a78c7d1f6f2cb502281b45e1c7ad865ef6e77d_raw.jpg" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/070920521195_396ab5f08f4190a0843e253a5d2dfabce6fd498c8_raw.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/070920521195_396ab5f08f4190a0843e253a5d2dfabce6fd498c8_raw.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      前端学习笔记——ES6部分新特性的认识</h1>
+      <p class="entry-census">
+        <span>
+          <a href="https://nanivy.space/">
+            <img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.1/qq_pic_merged_1602861906220.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="https://nanivy.space/">NanIvy</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2021-10-3<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
   </div>
-  <header class="pattern-header ">
-    <h1 class="cat-title">野生技术协会</h1>
-    <span class="cat-des">
-      <p>Geek – Only for Love</p>
-    </span>
-  </header>
-</div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <p>待深入：symbol，迭代器生成器，promise</p>
+<p>部分参考<a href="https://blog.csdn.net/weixin_45495667/article/details/106967467" target="_blank" rel="noopener">https://blog.csdn.net/weixin_45495667/article/details/106967467</a></p>
+<h2 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h2><p>let声明变量，const声明常量、</p>
+<p>const声明常量（指向地址，数组用push等还是能改），值不能修改，一般使用大写（潜规则）。 </p>
+<h3 id="var-和-let、const的区别"><a href="#var-和-let、const的区别" class="headerlink" title="var 和 let、const的区别"></a>var 和 let、const的区别</h3><h5 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h5><p>let 和 const 是块级作用域，仅在整个大括号内可见<br>var 只有全局作用域和函数作用域</p>
+<h5 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h5><p>var 存在变量提升，未声明使用默认值undefined<br>let、const未声明会提示ReferenceError（不存在变量提升 ）</p>
+<pre><code>console.log(a)        //undefined
+var a = 1
+
+console.log(a)
+//Uncaught ReferenceError: a is not defined
+let a = 1
+</code></pre><h5 id="重复声明"><a href="#重复声明" class="headerlink" title="重复声明"></a>重复声明</h5><p>var 允许重复声明<br>let、const不允许在相同作用域重复声明</p>
+<pre><code>let a
+let a
+//Uncaught SyntaxError: Identifier &#39;a&#39; has already been declared
+</code></pre><h5 id="全局对象属性"><a href="#全局对象属性" class="headerlink" title="全局对象属性"></a>全局对象属性</h5><p>let、const声明的全局变量不属于全局对象的属性</p>
+<pre><code>let b = 0
+console.log(this.b)        //undefiend
+</code></pre><h2 id="变量解构赋值"><a href="#变量解构赋值" class="headerlink" title="变量解构赋值"></a>变量解构赋值</h2><pre><code>数组解构
+let [x, , y] = [1, 2, 3];
+x // 1
+y // 3
+
+
+对象解构
+let data = {
+  id: 1,
+  name: &#39;xiaoMing&#39;,
+  age: 18
+};
+let { id, age } = data;
+console.log(id, age);    //1, 18
+
+
+字符串解构
+const [a, b, c, d, e] = &#39;hello&#39;;
+a // &quot;h&quot;
+b // &quot;e&quot;
+c // &quot;l&quot;
+d // &quot;l&quot;
+e // &quot;o&quot;
+
+</code></pre><h2 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h2><p>模板字符串是增强版的字符串，用反引号（`）标识，可以当作普通字符串使用，也可以用来定义多行字符。也可以结合${}实现在字符串中嵌入变量。</p>
+<pre><code>let a = `super
+aaa`
+let b = &quot;star&quot;
+let c = `${a}${b}`    //相当于字符串a+b；
+console.log(c)        
+/*
+super
+aaastar
+*/
+</code></pre><p>可以在字符串内调用函数</p>
+<pre><code>function fn() {
+  return &quot;Hello World&quot;;
+}
+
+`foo ${fn()} bar`
+// foo Hello World bar
+</code></pre><h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><p> =&gt;</p>
+<h5 id="简化作用："><a href="#简化作用：" class="headerlink" title="简化作用："></a>简化作用：</h5><pre><code>let fn = function(){xxx}
+简化为：
+let fn =() =&gt; {xxx}
+</code></pre><h5 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h5><p>（1）函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。即继承上下文的this对象<br>（2）不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。</p>
+<p>tip:this 是静态的 this始终指向函数声明时所在作用域下的this的值</p>
+<p>function是谁调用this就是谁，箭头函数是写在哪里this就是谁。  </p>
+<p> （3）箭头函数不能使用arguments，但1可以使用rest替代.</p>
+<pre><code class="javascript">// 箭头函数
+function id () {
+    () =&gt; { console.log(this.id) }
+}
+// ES5普通函数
+function id () {
+    var _this = this;
+    function () {
+        console.log(_this.id) 
+    }
+}
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+function getname(){
+console.log(this.naem);
+}
+let getname2 = () =&gt; {
+conslole.log(this.name);
+}
+
+Window.name = &#39;233&#39;;
+const nico = {
+name:&#39;666&#39;
+}
+
+直接调用
+getname(); //233
+getname2(); //233
+方法调用
+getname.call(nico); //666
+getname2.call(nico; //23
+//////rest替代arguments////////
+let func = (...rest) =&gt; {
+  console.log(rest)
+  //[1,2,3]
+}
+
+func(1,2,3)
+
+或者let func = (a，b，c，...rest)但rest一定要方最后
+func(1,2,3，4，5，6，6，778，9)
+</code></pre>
+<h2 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h2><p>for in循环遍历的是数组的键值(索引)，而for of循环遍历的是数组的值。</p>
+<h4 id="for……of"><a href="#for……of" class="headerlink" title="for……of"></a>for……of</h4><pre><code class="js">语法:
+for (variable of iterable) {
+    //statements
+}
+
+/////
+const array1 = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;];
+
+for (const element of array1) {
+  console.log(element);
+}
+
+// expected output: &quot;a&quot;
+// expected output: &quot;b&quot;
+// expected output: &quot;c&quot;
+////////迭代Array
+let iterable = [10, 20, 30];
+
+for (let value of iterable) {
+    value += 1;
+    console.log(value);
+}
+// 11
+// 21
+// 31
+//////////////迭代String
+let iterable = &quot;boo&quot;;
+
+for (let value of iterable) {
+  console.log(value);
+}
+// &quot;b&quot;
+// &quot;o&quot;
+// &quot;o&quot;
+/////////////////迭代Map
+let iterable = new Map([[&quot;a&quot;, 1], [&quot;b&quot;, 2], [&quot;c&quot;, 3]]);
+
+for (let entry of iterable) {
+  console.log(entry);
+}
+// [&quot;a&quot;, 1]
+// [&quot;b&quot;, 2]
+// [&quot;c&quot;, 3]
+
+for (let [key, value] of iterable) {
+  console.log(value);
+}
+// 1
+// 2
+// 3
+////////////迭代 DOM 集合
+//注意：这只能在实现了NodeList.prototype[Symbol.iterator]的平台上运行
+let articleParagraphs = document.querySelectorAll(&quot;article &gt; p&quot;);
+
+for (let paragraph of articleParagraphs) {
+  paragraph.classList.add(&quot;read&quot;);
+}
+</code></pre>
+<h4 id="for……in"><a href="#for……in" class="headerlink" title="for……in"></a>for……in</h4><p>for/in 语句用于循环对象属性。</p>
+<p>循环中的代码每执行一次，就会对数组的元素或者对象的属性进行一次操作。</p>
+<pre><code>for (var in object) {
+ 执行的代码块
+}
+</code></pre><h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><pre><code class="js">        var fs = require(&#39;fs&#39;);
+        const p = new Promise(function(resolve,reject){
+            fs.readFile(&quot;1.html&quot;,(err,data)=&gt;{
+                if(err) reject(err);
+                resolve(data);
+            });
+        });
+
+        p.then(function(value){
+            console.log(value.toString());
+        },function(reason){
+            console.log(&quot;system error!&quot;)
+        });
+
+</code></pre>
+<h2 id="async-await"><a href="#async-await" class="headerlink" title="async-await"></a>async-await</h2><h2 id="扩展运算符"><a href="#扩展运算符" class="headerlink" title="扩展运算符"></a>扩展运算符</h2><p>【…】扩展运算符能将【数组】转化为逗号分隔的【参数序列】</p>
+<p>应用场景</p>
+<h5 id="复制对象"><a href="#复制对象" class="headerlink" title="复制对象"></a>复制对象</h5><pre><code class="js">let a = [11, 12, 13]
+let b = a 
+let c = [...a]
+a.push(14)
+console.log(b)        //[11, 12, 13, 14]
+console.log(c)        //[11, 12, 13]
+P.S. 只能针对一维数组
+const obj = {a:{b:1}}
+const {...x) = obj
+obj.a.b = 2
+console.log(b)    //{a:{b:2}}
+</code></pre>
+<h5 id="合并对象"><a href="#合并对象" class="headerlink" title="合并对象"></a>合并对象</h5><pre><code class="js">let a = {...obj1, ...obj2}
+P.S. 后面的属性会覆盖前面同名属性
+let obj1 = {a:1, b:2}
+let obj2 = {...obj1, ...{a:2, b:4}}
+console.log(obj2)        //{a:2, b:4}
+</code></pre>
+<h5 id="变量解构（以及将伪数组转化为真数组）"><a href="#变量解构（以及将伪数组转化为真数组）" class="headerlink" title="变量解构（以及将伪数组转化为真数组）"></a>变量解构（以及将伪数组转化为真数组）</h5><pre><code class="js">const [first, ...last] = [1, 2, 3]
+console.log(last)        //[2, 3]
+/////////////////////
+const divs =document.querySelectorALL(&#39;div&#39;);       //获得伪数组
+const divArr = [...divs];             //伪转真
+console.log(divArr);   //此时已经变成了真数组
+</code></pre>
+<h5 id="扩展函数参数"><a href="#扩展函数参数" class="headerlink" title="扩展函数参数"></a>扩展函数参数</h5><pre><code class="js">function show(...a){
+    console.log(a)        //[11, 12, 13]
+}
+show(11, 12, 13)
+</code></pre>
+<h2 id="object-assign（）"><a href="#object-assign（）" class="headerlink" title="object.assign（）"></a>object.assign（）</h2><p>Object.assign()方法用于将所有可枚举属性的值从一个或多个源对象分配到目标对象。它将返回目标对象。</p>
+<pre><code class="js">const target = { a: 1, b: 2 };
+const source = { b: 4, c: 5 };
+
+const returnedTarget = Object.assign(target, source);
+
+console.log(target);
+// expected output: Object { a: 1, b: 4, c: 5 }
+
+console.log(returnedTarget);
+// expected output: Object { a: 1, b: 4, c: 5 }
+
+语法
+Object.assign(target, source1,sur2,...)
+</code></pre>
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><h5 id="target"><a href="#target" class="headerlink" title="target"></a>target</h5><p>目标对象。</p>
+<h5 id="sources"><a href="#sources" class="headerlink" title="sources"></a>sources</h5><p>源对象。</p>
+<h4 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h4><p>目标对象。</p>
+<h4 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h4><p>如果目标对象中的属性具有相同的键，则属性将被源对象中的属性覆盖。后面的源对象的属性将类似地覆盖前面的源对象的属性。</p>
+<h2 id="set和map数据结构"><a href="#set和map数据结构" class="headerlink" title="set和map数据结构"></a>set和map数据结构</h2><h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><p>Set对象允许你存储任何类型的唯一值，无论是原始值或者是对象引用。</p>
+<pre><code class="js">let mySet = new Set();
+
+mySet.add(1); // Set [ 1 ]
+mySet.add(5); // Set [ 1, 5 ]
+mySet.add(5); // Set [ 1, 5 ]
+mySet.add(&quot;some text&quot;); // Set [ 1, 5, &quot;some text&quot; ]
+let o = {a: 1, b: 2};
+mySet.add(o);
+
+mySet.add({a: 1, b: 2}); // o 指向的是不同的对象，所以没问题
+
+mySet.has(1); // true
+mySet.has(3); // false
+mySet.has(5);              // true
+mySet.has(Math.sqrt(25));  // true
+mySet.has(&quot;Some Text&quot;.toLowerCase()); // true
+mySet.has(o); // true
+
+mySet.size; // 5
+
+mySet.delete(5);  // true,  从set中移除5
+mySet.has(5);     // false, 5已经被移除
+
+mySet.size; // 4, 刚刚移除一个值
+
+console.log(mySet);
+// logs Set(4) [ 1, &quot;some text&quot;, {…}, {…} ] in Firefox
+// logs Set(4) { 1, &quot;some text&quot;, {…}, {…} } in Chrome
+</code></pre>
+<h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><p>Map对象保存键值对，并且能够记住键的原始插入顺序。任何值(对象或者原始值）都可以作为一个键或一个值。</p>
+<p>一个Map对象在迭代时会根据对象中元素的插入顺序来进行 — 一个 for…of 循环在每次迭代后会返回一个形式为[key，value]的数组。</p>
+<p>Map.length：属性 length 的值为 0 。<br>想要计算一个<code>Map</code> 中的条目数量， 使用 [<code>Map.prototype.size</code>]</p>
+<pre><code class="js">let myMap = new Map();
+
+let keyObj = {};
+let keyFunc = function() {};
+let keyString = &#39;a string&#39;;
+
+// 添加键
+myMap.set(keyString, &quot;和键&#39;a string&#39;关联的值&quot;);
+myMap.set(keyObj, &quot;和键keyObj关联的值&quot;);
+myMap.set(keyFunc, &quot;和键keyFunc关联的值&quot;);
+
+myMap.size; // 3
+
+// 读取值
+myMap.get(keyString);    // &quot;和键&#39;a string&#39;关联的值&quot;
+myMap.get(keyObj);       // &quot;和键keyObj关联的值&quot;
+myMap.get(keyFunc);      // &quot;和键keyFunc关联的值&quot;
+
+myMap.get(&#39;a string&#39;);   // &quot;和键&#39;a string&#39;关联的值&quot;
+                         // 因为keyString === &#39;a string&#39;
+myMap.get({});           // undefined, 因为keyObj !== {}
+myMap.get(function() {}); // undefined, 因为keyFunc !== function () {}
+</code></pre>
+<h2 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h2><p>Symbol 值通过Symbol函数生成。这就是说，对象的属性名现在可以有两种类型，一种是原来就有的字符串，另一种就是新增的 Symbol 类型。凡是属性名属于 Symbol 类型，就都是独一无二的，可以保证不会与其他属性名产生冲突。</p>
+<h5 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h5><p>1.Symbol值唯一，用来解决命名冲突的问题。</p>
+<p>2.Symbol值不能与其他数据进行运算。</p>
+<p>3.Symbol定义的对象属性不能使用for……in循环遍历，但是可以使用Reflect.ownKeys来获取对象的所有键名、</p>
+<p>tips：Symbol.for（）与Symbol（）这两种写法，都会生成新的Symbol，区别是前者会被登记在全局环境中提供搜索，后者不会。</p>
+<pre><code class="js">// 没有参数的情况
+let s1 = Symbol();
+typeof s1        // &quot;symbol&quot;
+let s2 = Symbol();
+
+s1 === s2         // false
+
+// 有参数的情况
+let s1 = Symbol(&#39;foo&#39;);
+let s2 = Symbol(&#39;foo&#39;);
+
+s1 === s2         // false
+//Symbol.fot
+let s1 = Symbol.fot(&#39;nico&#39;);
+let s2 = Symbol.for(&#39;nico&#39;);
+s1 === s2 //true
+</code></pre>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2>
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3null"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3null"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2021/09/21/关于原生js的checkbox的全选，不选，反选的bug/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/IMG_20200813_180722.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/IMG_20200813_180722.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                关于原生js的checkbox的全选，不选，反选的写法</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
       
-  <!-- 首页默认取最最新文章集 -->
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2021/10/03/前端学习笔记——ES6部分新特性的认识/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/070920521195_396ab5f08f4190a0843e253a5d2dfabce6fd498c8_raw.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2021/10/03/前端学习笔记——ES6部分新特性的认识/">
-    前端学习笔记——ES6部分新特性的认识</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2021-10-3</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2021/10/03/前端学习笔记——ES6部分新特性的认识/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2021/09/21/关于原生js的checkbox的全选，不选，反选的bug/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/IMG_20200813_180722.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2021/09/21/关于原生js的checkbox的全选，不选，反选的bug/">
-    关于原生js的checkbox的全选，不选，反选的写法</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2021-9-21</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2021/09/21/关于原生js的checkbox的全选，不选，反选的bug/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2021/09/02/前端学习笔记——JavaScript基础/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/070921082586_8IMG_20210223_115551.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2021/09/02/前端学习笔记——JavaScript基础/">
-    前端学习笔记——JavaScript基础</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2021-9-2</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2021/09/02/前端学习笔记——JavaScript基础/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2021/08/13/前端学习笔记——CSS基础/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/88866964.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2021/08/13/前端学习笔记——CSS基础/">
-    前端学习笔记——CSS基础</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2021-8-13</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2021/08/13/前端学习笔记——CSS基础/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2021/07/13/前端学习笔记——HTML基础/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/91057442_0.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2021/07/13/前端学习笔记——HTML基础/">
-    前端学习笔记——HTML基础</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2021-7-13</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2021/07/13/前端学习笔记——HTML基础/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2021/02/25/web学习笔记——CSRF/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/070920585858_1386426089.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2021/02/25/web学习笔记——CSRF/">
-    web学习笔记——CSRF</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2021-2-25</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2021/02/25/web学习笔记——CSRF/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2021/02/09/web学习笔记——http请求响应/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/070921020824_688956271.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2021/02/09/web学习笔记——http请求响应/">
-    web学习笔记——http请求响应</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2021-2-9</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2021/02/09/web学习笔记——http请求响应/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2021/01/29/web学习笔记——文件上传/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/070921020824_187941067.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2021/01/29/web学习笔记——文件上传/">
-    web学习笔记——文件上传</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2021-1-29</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2021/01/29/web学习笔记——文件上传/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2021/01/03/web学习笔记——SQL注入/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/070921020824_889486778.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2021/01/03/web学习笔记——SQL注入/">
-    web学习笔记——SQL注入</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2021-1-3</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2021/01/03/web学习笔记——SQL注入/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "A4UqsWsXYTvl3ILey3Nis8hs-gzGzoHsz",
+        appKey: "s2r99t5u9k6DkKd3O6JbRauV",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
 
-
-      <div class="clearer">
-      </div>
-    </main>
-    <!--  -->
-    
-  </div>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="https://nanivy.space/" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.1/qq_pic_merged_1602861906220.jpg" itemprop="image" alt="NanIvy" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="https://nanivy.space/" itemprop="url" rel="author">NanIvy</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>菜菜子新人</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
 
-<!-- 
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2021/10/03/前端学习笔记——ES6部分新特性的认识/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/070920521195_396ab5f08f4190a0843e253a5d2dfabce6fd498c8_raw.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2021/10/03/前端学习笔记——ES6部分新特性的认识/">
-    前端学习笔记——ES6部分新特性的认识</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2021-10-3</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2021/10/03/前端学习笔记——ES6部分新特性的认识/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2021/09/21/关于原生js的checkbox的全选，不选，反选的bug/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/IMG_20200813_180722.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2021/09/21/关于原生js的checkbox的全选，不选，反选的bug/">
-    关于原生js的checkbox的全选，不选，反选的写法</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2021-9-21</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2021/09/21/关于原生js的checkbox的全选，不选，反选的bug/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2021/09/02/前端学习笔记——JavaScript基础/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/070921082586_8IMG_20210223_115551.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2021/09/02/前端学习笔记——JavaScript基础/">
-    前端学习笔记——JavaScript基础</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2021-9-2</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2021/09/02/前端学习笔记——JavaScript基础/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2021/08/13/前端学习笔记——CSS基础/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/88866964.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2021/08/13/前端学习笔记——CSS基础/">
-    前端学习笔记——CSS基础</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2021-8-13</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2021/08/13/前端学习笔记——CSS基础/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2021/07/13/前端学习笔记——HTML基础/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/91057442_0.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2021/07/13/前端学习笔记——HTML基础/">
-    前端学习笔记——HTML基础</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2021-7-13</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2021/07/13/前端学习笔记——HTML基础/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2021/02/25/web学习笔记——CSRF/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/070920585858_1386426089.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2021/02/25/web学习笔记——CSRF/">
-    web学习笔记——CSRF</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2021-2-25</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2021/02/25/web学习笔记——CSRF/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2021/02/09/web学习笔记——http请求响应/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/070921020824_688956271.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2021/02/09/web学习笔记——http请求响应/">
-    web学习笔记——http请求响应</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2021-2-9</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2021/02/09/web学习笔记——http请求响应/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2021/01/29/web学习笔记——文件上传/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/070921020824_187941067.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2021/01/29/web学习笔记——文件上传/">
-    web学习笔记——文件上传</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2021-1-29</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2021/01/29/web学习笔记——文件上传/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2021/01/03/web学习笔记——SQL注入/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/0NanIvy0/cdn@1.3/pic/070921020824_889486778.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2021/01/03/web学习笔记——SQL注入/">
-    web学习笔记——SQL注入</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2021-1-3</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2021/01/03/web学习笔记——SQL注入/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
 
- -->
+
     </div>    
    <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/xuehua.js"></script>
     <div class="ins-search">

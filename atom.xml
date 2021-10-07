@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2021-09-29T09:09:08.174Z</updated>
+  <updated>2021-10-07T04:58:12.000Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端学习笔记——ES6部分新特性的认识</title>
+    <link href="/2021/10/03/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94ES6%E9%83%A8%E5%88%86%E6%96%B0%E7%89%B9%E6%80%A7%E7%9A%84%E8%AE%A4%E8%AF%86/"/>
+    <id>/2021/10/03/前端学习笔记——ES6部分新特性的认识/</id>
+    <published>2021-10-03T02:07:22.000Z</published>
+    <updated>2021-10-07T04:58:12.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;待深入：symbol，迭代器生成器，promise&lt;/p&gt;
+&lt;p&gt;部分参考&lt;a href=&quot;https://blog.csdn.net/weixin_45495667/article/details/106967467&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="学习" scheme="/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="ES6" scheme="/tags/ES6/"/>
+    
+  </entry>
   
   <entry>
     <title>关于原生js的checkbox的全选，不选，反选的写法</title>
@@ -206,9 +235,9 @@
       <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="CSRF漏洞" scheme="/tags/CSRF%E6%BC%8F%E6%B4%9E/"/>
-    
       <category term="学习" scheme="/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="CSRF漏洞" scheme="/tags/CSRF%E6%BC%8F%E6%B4%9E/"/>
     
   </entry>
   
@@ -264,9 +293,9 @@
       <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="学习" scheme="/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="文件上传漏洞" scheme="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/"/>
+    
+      <category term="学习" scheme="/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
