@@ -235,9 +235,9 @@
       <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="学习" scheme="/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="CSRF漏洞" scheme="/tags/CSRF%E6%BC%8F%E6%B4%9E/"/>
+    
+      <category term="学习" scheme="/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -293,9 +293,9 @@
       <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="文件上传漏洞" scheme="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/"/>
-    
       <category term="学习" scheme="/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="文件上传漏洞" scheme="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/"/>
     
   </entry>
   
