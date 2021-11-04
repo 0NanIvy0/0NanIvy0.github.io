@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2021-10-27T16:26:58.747Z</updated>
+  <updated>2021-11-04T08:27:54.045Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端学习笔记——AJAX</title>
+    <link href="/2021/11/03/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94AJAX/"/>
+    <id>/2021/11/03/前端学习笔记——AJAX/</id>
+    <published>2021-11-03T01:07:22.000Z</published>
+    <updated>2021-11-04T08:27:54.045Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;初学相关工具&quot;&gt;&lt;a href=&quot;#初学相关工具&quot; class=&quot;headerlink&quot; title=&quot;初学相关工具&quot;&gt;&lt;/a&gt;初学相关工具&lt;/h2&gt;&lt;p&gt;express框架&lt;/p&gt;
+&lt;p&gt;npm init –yes&lt;/p&gt;
+&lt;p&gt;npm i
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="学习" scheme="/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="AJAX" scheme="/tags/AJAX/"/>
+    
+  </entry>
   
   <entry>
     <title>近期自我总结21.10</title>
@@ -50,7 +80,7 @@
     <link href="/2021/10/23/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94flex%E5%B8%83%E5%B1%80%E7%9A%84%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7/"/>
     <id>/2021/10/23/前端学习笔记——flex布局的常用属性/</id>
     <published>2021-10-23T02:07:22.000Z</published>
-    <updated>2021-10-27T16:14:09.157Z</updated>
+    <updated>2021-10-27T16:33:15.787Z</updated>
     
     <summary type="html">
     
