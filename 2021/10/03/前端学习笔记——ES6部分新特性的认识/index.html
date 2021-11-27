@@ -506,19 +506,28 @@ for (let paragraph of articleParagraphs) {
 <pre><code>for (var in object) {
  执行的代码块
 }
-</code></pre><h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><pre><code class="js">        var fs = require(&#39;fs&#39;);
-        const p = new Promise(function(resolve,reject){
-            fs.readFile(&quot;1.html&quot;,(err,data)=&gt;{
-                if(err) reject(err);
-                resolve(data);
-            });
+</code></pre><h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><pre><code class="js">
+        const btn = document.getElementsByTagName(&#39;button&#39;)[0];
+        btn.addEventListener(&#39;click&#39;,function(){
+
+            const p = new Promise((resolve,reject) =&gt; {
+                setTimeout(() =&gt; {
+                    let n = Math.floor((Math.random()*100)+1);
+                    if(n&gt;30) 
+                    {resolve();}
+                    else
+                    {reject();}
+                }, 500);
+            });  
+
+            p.then(function(){
+               alert(&#39;no&#39;);
+            },function(){
+                alert(&#39;yes!&#39;);
+            })
+
         });
 
-        p.then(function(value){
-            console.log(value.toString());
-        },function(reason){
-            console.log(&quot;system error!&quot;)
-        });
 
 </code></pre>
 <h2 id="async-await"><a href="#async-await" class="headerlink" title="async-await"></a>async-await</h2><h2 id="扩展运算符"><a href="#扩展运算符" class="headerlink" title="扩展运算符"></a>扩展运算符</h2><p>【…】扩展运算符能将【数组】转化为逗号分隔的【参数序列】</p>
