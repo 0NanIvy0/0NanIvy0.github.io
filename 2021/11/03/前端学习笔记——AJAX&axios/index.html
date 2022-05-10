@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">前端学习笔记——AJAX | NanIvy</title>
+  <title itemprop="name">前端学习笔记——AJAX&amp;axios | NanIvy</title>
  <link rel="shortcut icon" href="images/favicon.ico">
   <meta http-equiv="x-dns-prefetch-control" content="on">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
@@ -306,7 +306,7 @@
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      前端学习笔记——AJAX</h1>
+      前端学习笔记——AJAX&axios</h1>
       <p class="entry-census">
         <span>
           <a href="https://nanivy.space/">
@@ -592,7 +592,372 @@ response.setHeader(&#39;Access-Control-Allow-Methods&#39;,&#39;&#39;*&#39;);允�
 response.setHeader(&#39;Access-Control-Allow-Headers&#39;,&#39;*&#39;);
 //允许各种自定义头
 </code></pre>
+<h2 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h2><h3 id="axios的引入："><a href="#axios的引入：" class="headerlink" title="axios的引入："></a>axios的引入：</h3><p>Using npm:</p>
+<pre><code>$ npm install axios
+</code></pre><p>Using bower:</p>
+<pre><code>$ bower install axios
+</code></pre><p>Using yarn:</p>
+<pre><code>$ yarn add axios
+</code></pre><p>Using jsDelivr CDN:</p>
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>Using unpkg CDN:</p>
+<pre><code>&lt;script src=&quot;https://unpkg.com/axios/dist/axios.min.js&quot;&gt;&lt;/script&gt;
+</code></pre><h3 id="axios初体验"><a href="#axios初体验" class="headerlink" title="axios初体验"></a>axios初体验</h3><p>增删改查：   使用基本操作</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+    &lt;script src=&quot;https://unpkg.com/axios/dist/axios.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;button&gt;get 请求&lt;/button&gt;
+    &lt;button&gt;post 请求&lt;/button&gt;
+    &lt;button&gt;put 请求&lt;/button&gt;
+    &lt;button&gt;delete 请求&lt;/button&gt;
+    &lt;script&gt;
+        const oget=document.getElementsByTagName(&#39;button&#39;)[0];
+        oget.onclick = function(){
+            axios({
+                method:&#39;GET&#39;,
+                url:&#39;http://127.0.0.1:3000/posts/2&#39;,
+            }).then(response =&gt;{
+                console.log(response);
+            });
+        }
 
+        const opost=document.getElementsByTagName(&#39;button&#39;)[1];
+        opost.onclick = function(){
+            axios({
+                method:&#39;POST&#39;,
+                url:&#39;http://127.0.0.1:3000/posts&#39;,
+                // 设置请求体
+                data:{
+                    title:&#39;post-test&#39;,
+                    author:&#39;nico&#39;
+                }
+            }).then(response =&gt;{
+                console.log(response);
+            });
+        }
+
+        const oput=document.getElementsByTagName(&#39;button&#39;)[2];
+        oput.onclick = function(){
+            axios({
+                method:&#39;PUT&#39;,
+                url:&#39;http://127.0.0.1:3000/posts/3&#39;,
+                // 设置请求体
+                data:{
+                    title:&#39;put-test&#39;,
+                    author:&#39;nanivy&#39;
+                }
+            }).then(response =&gt;{
+                console.log(response);
+            });
+        }
+
+        const odelete=document.getElementsByTagName(&#39;button&#39;)[3];
+        odelete.onclick = function(){
+            axios({
+                method:&#39;delete&#39;,
+                url:&#39;http://127.0.0.1:3000/posts/3&#39;,
+                // 设置请求体
+
+            }).then(response =&gt;{
+                console.log(response);
+            });
+        }
+
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h3 id="axios请求方法"><a href="#axios请求方法" class="headerlink" title="axios请求方法"></a>axios请求方法</h3><pre><code>        方式一:  axios.post(&#39;/url&#39;,data,config)
+
+      方式二:  axios({
+        method: &#39;post&#39;,
+        url: &#39;/url&#39;,
+        data: data,
+        config: config
+      })
+</code></pre><p>其他方法同理。</p>
+<p>参考：<a href="http://www.axios-js.com/zh-cn/docs/" target="_blank" rel="noopener">http://www.axios-js.com/zh-cn/docs/</a></p>
+<h4 id="请求方法的别名"><a href="#请求方法的别名" class="headerlink" title="请求方法的别名"></a>请求方法的别名</h4><p>为方便起见，为所有支持的请求方法提供了别名</p>
+<p>axios.request(config)</p>
+<p>axios.get(url[, config])</p>
+<p>axios.delete(url[, config])</p>
+<p>axios.head(url[, config])</p>
+<p>axios.options(url[, config])</p>
+<p>axios.post(url[, data[, config]])</p>
+<p>axios.put(url[, data[, config]])</p>
+<p>axios.patch(url[, data[, config]])</p>
+<h6 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h6><p>在使用别名方法时， <code>url</code>、<code>method</code>、<code>data</code> 这些属性都不必在配置中指定。</p>
+<h4 id="请求配置"><a href="#请求配置" class="headerlink" title="请求配置"></a>请求配置</h4><p>这些是创建请求时可以用的配置选项。只有 <code>url</code> 是必需的。如果没有指定 <code>method</code>，请求将默认使用 <code>get</code>方法。</p>
+<pre><code class="js">{
+   // `url` 是用于请求的服务器 URL
+  url: &#39;/user&#39;,
+
+  // `method` 是创建请求时使用的方法
+  method: &#39;get&#39;, // default
+
+  // `baseURL` 将自动加在 `url` 前面，除非 `url` 是一个绝对 URL。
+  // 它可以通过设置一个 `baseURL` 便于为 axios 实例的方法传递相对 URL
+  baseURL: &#39;https://some-domain.com/api/&#39;,
+
+  // `transformRequest` 允许在向服务器发送前，修改请求数据
+  // 只能用在 &#39;PUT&#39;, &#39;POST&#39; 和 &#39;PATCH&#39; 这几个请求方法
+  // 后面数组中的函数必须返回一个字符串，或 ArrayBuffer，或 Stream
+  transformRequest: [function (data, headers) {
+    // 对 data 进行任意转换处理
+    return data;
+  }],
+
+  // `transformResponse` 在传递给 then/catch 前，允许修改响应数据
+  transformResponse: [function (data) {
+    // 对 data 进行任意转换处理
+    return data;
+  }],
+
+  // `headers` 是即将被发送的自定义请求头
+  headers: {&#39;X-Requested-With&#39;: &#39;XMLHttpRequest&#39;},
+
+  // `params` 是即将与请求一起发送的 URL 参数
+  // 必须是一个无格式对象(plain object)或 URLSearchParams 对象
+  params: {
+    ID: 12345
+  },
+
+   // `paramsSerializer` 是一个负责 `params` 序列化的函数
+  // (e.g. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
+  paramsSerializer: function(params) {
+    return Qs.stringify(params, {arrayFormat: &#39;brackets&#39;})
+  },
+
+  // `data` 是作为请求主体被发送的数据
+  // 只适用于这些请求方法 &#39;PUT&#39;, &#39;POST&#39;, 和 &#39;PATCH&#39;
+  // 在没有设置 `transformRequest` 时，必须是以下类型之一：
+  // - string, plain object, ArrayBuffer, ArrayBufferView, URLSearchParams
+  // - 浏览器专属：FormData, File, Blob
+  // - Node 专属： Stream
+  data: {
+    firstName: &#39;Fred&#39;
+  },
+
+  // `timeout` 指定请求超时的毫秒数(0 表示无超时时间)
+  // 如果请求话费了超过 `timeout` 的时间，请求将被中断
+  timeout: 1000,
+
+   // `withCredentials` 表示跨域请求时是否需要使用凭证（cookie）
+  withCredentials: false, // default
+
+  // `adapter` 允许自定义处理请求，以使测试更轻松
+  // 返回一个 promise 并应用一个有效的响应 (查阅 [response docs](#response-api)).
+  adapter: function (config) {
+    /* ... */
+  },
+
+ // `auth` 表示应该使用 HTTP 基础验证，并提供凭据
+  // 这将设置一个 `Authorization` 头，覆写掉现有的任意使用 `headers` 设置的自定义 `Authorization`头
+  auth: {
+    username: &#39;janedoe&#39;,
+    password: &#39;s00pers3cret&#39;
+  },
+
+   // `responseType` 表示服务器响应的数据类型，可以是 &#39;arraybuffer&#39;, &#39;blob&#39;, &#39;document&#39;, &#39;json&#39;, &#39;text&#39;, &#39;stream&#39;
+  responseType: &#39;json&#39;, // default
+
+  // `responseEncoding` indicates encoding to use for decoding responses
+  // Note: Ignored for `responseType` of &#39;stream&#39; or client-side requests
+  responseEncoding: &#39;utf8&#39;, // default
+
+   // `xsrfCookieName` 是用作 xsrf token 的值的cookie的名称
+  xsrfCookieName: &#39;XSRF-TOKEN&#39;, // default
+
+  // `xsrfHeaderName` is the name of the http header that carries the xsrf token value
+  xsrfHeaderName: &#39;X-XSRF-TOKEN&#39;, // default
+
+   // `onUploadProgress` 允许为上传处理进度事件
+  onUploadProgress: function (progressEvent) {
+    // Do whatever you want with the native progress event
+  },
+
+  // `onDownloadProgress` 允许为下载处理进度事件
+  onDownloadProgress: function (progressEvent) {
+    // 对原生进度事件的处理
+  },
+
+   // `maxContentLength` 定义允许的响应内容的最大尺寸
+  maxContentLength: 2000,
+
+  // `validateStatus` 定义对于给定的HTTP 响应状态码是 resolve 或 reject  promise 。如果 `validateStatus` 返回 `true` (或者设置为 `null` 或 `undefined`)，promise 将被 resolve; 否则，promise 将被 rejecte
+  validateStatus: function (status) {
+    return status &gt;= 200 &amp;&amp; status &lt; 300; // default
+  },
+
+  // `maxRedirects` 定义在 node.js 中 follow 的最大重定向数目
+  // 如果设置为0，将不会 follow 任何重定向
+  maxRedirects: 5, // default
+
+  // `socketPath` defines a UNIX Socket to be used in node.js.
+  // e.g. &#39;/var/run/docker.sock&#39; to send requests to the docker daemon.
+  // Only either `socketPath` or `proxy` can be specified.
+  // If both are specified, `socketPath` is used.
+  socketPath: null, // default
+
+  // `httpAgent` 和 `httpsAgent` 分别在 node.js 中用于定义在执行 http 和 https 时使用的自定义代理。允许像这样配置选项：
+  // `keepAlive` 默认没有启用
+  httpAgent: new http.Agent({ keepAlive: true }),
+  httpsAgent: new https.Agent({ keepAlive: true }),
+
+  // &#39;proxy&#39; 定义代理服务器的主机名称和端口
+  // `auth` 表示 HTTP 基础验证应当用于连接代理，并提供凭据
+  // 这将会设置一个 `Proxy-Authorization` 头，覆写掉已有的通过使用 `header` 设置的自定义 `Proxy-Authorization` 头。
+  proxy: {
+    host: &#39;127.0.0.1&#39;,
+    port: 9000,
+    auth: {
+      username: &#39;mikeymike&#39;,
+      password: &#39;rapunz3l&#39;
+    }
+  },
+
+  // `cancelToken` 指定用于取消请求的 cancel token
+  // （查看后面的 Cancellation 这节了解更多）
+  cancelToken: new CancelToken(function (cancel) {
+  })
+}
+</code></pre>
+<h4 id="tip：data与params"><a href="#tip：data与params" class="headerlink" title="tip：data与params"></a>tip：data与params</h4><p>params是添加到url的请求字符串中的，一般用于get请求。<br>data是添加到请求体（body）中的， 一般用于post请求。</p>
+<h4 id="响应结构"><a href="#响应结构" class="headerlink" title="响应结构"></a>响应结构</h4><p>某个请求的响应包含以下信息</p>
+<pre><code class="js">{
+  // `data` 由服务器提供的响应
+  data: {},
+
+  // `status` 来自服务器响应的 HTTP 状态码
+  status: 200,
+
+  // `statusText` 来自服务器响应的 HTTP 状态信息
+  statusText: &#39;OK&#39;,
+
+  // `headers` 服务器响应的头
+  headers: {},
+
+   // `config` 是为请求提供的配置信息
+  config: {},
+ // &#39;request&#39;
+  // `request` is the request that generated this response
+  // It is the last ClientRequest instance in node.js (in redirects)
+  // and an XMLHttpRequest instance the browser
+  request: {}
+}
+</code></pre>
+<p>使用 <code>then</code> 时，你将接收下面这样的响应 :</p>
+<pre><code class="js">axios.get(&#39;/user/12345&#39;)
+  .then(function(response) {
+    console.log(response.data);
+    console.log(response.status);
+    console.log(response.statusText);
+    console.log(response.headers);
+    console.log(response.config);
+  });
+</code></pre>
+<h4 id="axios配置默认参数："><a href="#axios配置默认参数：" class="headerlink" title="axios配置默认参数："></a>axios配置默认参数：</h4><p>请求对象中的配置  都是可以设置的：</p>
+<p>如：</p>
+<pre><code>axios.defaults.method = &#39;GET&#39;;
+axios.defaults.baseURL = &#39;http://localhost:3000&#39;
+</code></pre><h3 id="axios创建实例对象"><a href="#axios创建实例对象" class="headerlink" title="axios创建实例对象"></a>axios创建实例对象</h3><p>可以使用自定义配置新建一个 axios 实例</p>
+<h5 id="axios-create-config"><a href="#axios-create-config" class="headerlink" title="axios.create([config])"></a>axios.create([config])</h5><pre><code>const instance = axios.create({
+  baseURL: &#39;https://some-domain.com/api/&#39;,
+  timeout: 1000,
+  headers: {&#39;X-Custom-Header&#39;: &#39;foobar&#39;}
+});
+
+
+instance（）；
+instance（{url：‘/xx’}）.then（response=&gt;{XXXXX}）;
+instance.get（‘/xx’）.then（response=&gt;{XXXXX}）;
+
+</code></pre><h3 id="axios拦截器"><a href="#axios拦截器" class="headerlink" title="axios拦截器"></a>axios拦截器</h3><p>在请求或响应被 <code>then</code> 或 <code>catch</code> 处理前拦截它们。</p>
+<pre><code>// 添加请求拦截器
+axios.interceptors.request.use(function (config) {
+    // 在发送请求之前做些什么
+    return config;
+  }, function (error) {
+    // 对请求错误做些什么
+    return Promise.reject(error);
+  });
+
+// 添加响应拦截器
+axios.interceptors.response.use(function (response) {
+    // 对响应数据做点什么
+    return response;
+  }, function (error) {
+    // 对响应错误做点什么
+    return Promise.reject(error);
+  });
+</code></pre><p>稍后移除拦截器，可以这样：</p>
+<pre><code>const myInterceptor = axios.interceptors.request.use(function () {/*...*/});
+axios.interceptors.request.eject(myInterceptor);
+</code></pre><p>可以为自定义 axios 实例添加拦截器</p>
+<pre><code>const instance = axios.create();
+instance.interceptors.request.use(function () {/*...*/});
+</code></pre><h3 id="axios取消请求"><a href="#axios取消请求" class="headerlink" title="axios取消请求"></a>axios取消请求</h3><h4 id="更偏向使用第二种方法："><a href="#更偏向使用第二种方法：" class="headerlink" title="更偏向使用第二种方法："></a>更偏向使用第二种方法：</h4><p>使用 <code>CancelToken.source</code> 工厂方法创建 cancel token，像这样：</p>
+<pre><code>const CancelToken = axios.CancelToken;
+const source = CancelToken.source();
+
+axios.get(&#39;/user/12345&#39;, {
+  cancelToken: source.token
+}).catch(function(thrown) {
+  if (axios.isCancel(thrown)) {
+    console.log(&#39;Request canceled&#39;, thrown.message);
+  } else {
+     // 处理错误
+  }
+});
+
+axios.post(&#39;/user/12345&#39;, {
+  name: &#39;new name&#39;
+}, {
+  cancelToken: source.token
+})
+
+// 取消请求（message 参数是可选的）
+source.cancel(&#39;Operation canceled by the user.&#39;);
+</code></pre><p>还可以通过传递一个 executor 函数到 <code>CancelToken</code> 的构造函数来创建 cancel token：</p>
+<pre><code>const CancelToken = axios.CancelToken;
+let cancel;
+
+axios.get(&#39;/user/12345&#39;, {
+  cancelToken: new axios.CancelToken(function(c) {
+    cancel = c;
+  })
+});
+
+// cancel the request
+cancel();
+</code></pre><h4 id="防抖示例："><a href="#防抖示例：" class="headerlink" title="防抖示例："></a>防抖示例：</h4><pre><code class="js">const oget=document.getElementsByTagName(&#39;button&#39;)[0];
+        let cancel=null;
+        oget.onclick = function(){
+            if(cancel!==null){
+                cancel();
+            }
+            axios({
+                method:&#39;GET&#39;,
+                url:&#39;http://127.0.0.1:3000/posts/2&#39;,
+
+                cancelToken: new axios.CancelToken((c)=&gt;{
+                    cancel=c;
+                })
+
+            }).then(response =&gt;{
+                console.log(response);
+                cancel=null;
+            });
+        }
+</code></pre>
+<h3 id="源码待学习"><a href="#源码待学习" class="headerlink" title="源码待学习"></a>源码待学习</h3>
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
